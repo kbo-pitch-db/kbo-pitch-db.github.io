@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "generatedFrom": "dataset/clips.csv",
-  "packageVersion": "20261026T120241Z",
+  "packageVersion": "20261026T132659Z",
   "packageStats": {
     "videoBytes": 4566835,
     "videoMegabytes": 4.4
@@ -27,7 +27,7 @@
       "frames": 64,
       "source": "[한화 vs 삼성] 8⧸7 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [rBd0Xo0hFIs].mp4",
       "sourceStart": 82.082,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=rBd0Xo0hFIs&t=82s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -38,7 +38,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0e1f00c192b9_c0028/pose.mp4",
-      "poseThumbnail": "assets/0e1f00c192b9_c0028/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0e1f00c192b9_c0028/pose_thumbnail.jpg",
+      "sourceId": "0e1f00c192b9",
+      "sourceVideoId": "rBd0Xo0hFIs",
+      "sourceEnd": 84.1841
     },
     {
       "id": "7a71e8034846_c0017",
@@ -60,7 +63,7 @@
       "frames": 165,
       "source": "[키움 vs 삼성] 4⧸2 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [g6kY09Ggx6g].mp4",
       "sourceStart": 600.1996,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=g6kY09Ggx6g&t=600s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -71,7 +74,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/7a71e8034846_c0017/pose.mp4",
-      "poseThumbnail": "assets/7a71e8034846_c0017/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/7a71e8034846_c0017/pose_thumbnail.jpg",
+      "sourceId": "7a71e8034846",
+      "sourceVideoId": "g6kY09Ggx6g",
+      "sourceEnd": 602.9357
     },
     {
       "id": "99f1a527c09b_c0022",
@@ -93,7 +99,7 @@
       "frames": 64,
       "source": "[키움 vs KIA] 3⧸23 경기 I  2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [7UdYlQpNmIY].mp4",
       "sourceStart": 484.8844,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=7UdYlQpNmIY&t=484s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -104,7 +110,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/99f1a527c09b_c0022/pose.mp4",
-      "poseThumbnail": "assets/99f1a527c09b_c0022/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/99f1a527c09b_c0022/pose_thumbnail.jpg",
+      "sourceId": "99f1a527c09b",
+      "sourceVideoId": "7UdYlQpNmIY",
+      "sourceEnd": 486.9865
     },
     {
       "id": "fa1febd5056f_c0015",
@@ -126,7 +135,7 @@
       "frames": 50,
       "source": "[롯데 vs KIA] 9⧸12 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [oQKJQLsYCGw].mp4",
       "sourceStart": 217.217,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=217s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -137,7 +146,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/fa1febd5056f_c0015/pose.mp4",
-      "poseThumbnail": "assets/fa1febd5056f_c0015/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/fa1febd5056f_c0015/pose_thumbnail.jpg",
+      "sourceId": "fa1febd5056f",
+      "sourceVideoId": "oQKJQLsYCGw",
+      "sourceEnd": 218.852
     },
     {
       "id": "1e24233962b6_c0018",
@@ -159,7 +171,7 @@
       "frames": 155,
       "source": "[NC vs 한화] 6⧸8 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [z_g4sil9W00].mp4",
       "sourceStart": 328.4,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=z_g4sil9W00&t=328s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -170,7 +182,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1e24233962b6_c0018/pose.mp4",
-      "poseThumbnail": "assets/1e24233962b6_c0018/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1e24233962b6_c0018/pose_thumbnail.jpg",
+      "sourceId": "1e24233962b6",
+      "sourceVideoId": "z_g4sil9W00",
+      "sourceEnd": 330.9667
     },
     {
       "id": "d644482ee06d_c0037",
@@ -192,7 +207,7 @@
       "frames": 105,
       "source": "[NC vs 키움] 5⧸21 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [yOfZUwpUGiA].mp4",
       "sourceStart": 223.0,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=yOfZUwpUGiA&t=223s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -203,7 +218,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/d644482ee06d_c0037/pose.mp4",
-      "poseThumbnail": "assets/d644482ee06d_c0037/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/d644482ee06d_c0037/pose_thumbnail.jpg",
+      "sourceId": "d644482ee06d",
+      "sourceVideoId": "yOfZUwpUGiA",
+      "sourceEnd": 224.7333
     },
     {
       "id": "782c3ca51bd5_c0039",
@@ -225,7 +243,7 @@
       "frames": 178,
       "source": "[LG vs SSG] 4⧸19 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [1PGn7-tlC1w].mp4",
       "sourceStart": 492.5,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=1PGn7-tlC1w&t=492s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -236,7 +254,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/782c3ca51bd5_c0039/pose.mp4",
-      "poseThumbnail": "assets/782c3ca51bd5_c0039/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/782c3ca51bd5_c0039/pose_thumbnail.jpg",
+      "sourceId": "782c3ca51bd5",
+      "sourceVideoId": "1PGn7-tlC1w",
+      "sourceEnd": 495.45
     },
     {
       "id": "b902a8ad2499_c0013",
@@ -258,7 +279,7 @@
       "frames": 127,
       "source": "[NC vs KIA] 7⧸24 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [vX-XENoPA2c].mp4",
       "sourceStart": 235.7355,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=vX-XENoPA2c&t=235s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -269,7 +290,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/b902a8ad2499_c0013/pose.mp4",
-      "poseThumbnail": "assets/b902a8ad2499_c0013/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/b902a8ad2499_c0013/pose_thumbnail.jpg",
+      "sourceId": "b902a8ad2499",
+      "sourceVideoId": "vX-XENoPA2c",
+      "sourceEnd": 237.8376
     },
     {
       "id": "98e127654749_c0007",
@@ -291,7 +315,7 @@
       "frames": 114,
       "source": "[LG vs KIA] 6⧸20 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [GmQI2Xw9dj0].mp4",
       "sourceStart": 215.0,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=GmQI2Xw9dj0&t=215s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -302,7 +326,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/98e127654749_c0007/pose.mp4",
-      "poseThumbnail": "assets/98e127654749_c0007/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/98e127654749_c0007/pose_thumbnail.jpg",
+      "sourceId": "98e127654749",
+      "sourceVideoId": "GmQI2Xw9dj0",
+      "sourceEnd": 216.8833
     },
     {
       "id": "d4ea211e62bd_c0026",
@@ -324,7 +351,7 @@
       "frames": 62,
       "source": "[KIA vs LG] 8⧸16 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [2CmG5TBNngc].mp4",
       "sourceStart": 381.9816,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=2CmG5TBNngc&t=381s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -335,7 +362,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/d4ea211e62bd_c0026/pose.mp4",
-      "poseThumbnail": "assets/d4ea211e62bd_c0026/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/d4ea211e62bd_c0026/pose_thumbnail.jpg",
+      "sourceId": "d4ea211e62bd",
+      "sourceVideoId": "2CmG5TBNngc",
+      "sourceEnd": 384.017
     },
     {
       "id": "0b70417b94ab_c0015",
@@ -357,7 +387,7 @@
       "frames": 102,
       "source": "[삼성 vs NC] 8⧸17 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [m2lpw1y06Fs].mp4",
       "sourceStart": 298.298,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=m2lpw1y06Fs&t=298s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -368,7 +398,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0b70417b94ab_c0015/pose.mp4",
-      "poseThumbnail": "assets/0b70417b94ab_c0015/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0b70417b94ab_c0015/pose_thumbnail.jpg",
+      "sourceId": "0b70417b94ab",
+      "sourceVideoId": "m2lpw1y06Fs",
+      "sourceEnd": 301.668
     },
     {
       "id": "1e24233962b6_c0014",
@@ -390,7 +423,7 @@
       "frames": 152,
       "source": "[NC vs 한화] 6⧸8 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [z_g4sil9W00].mp4",
       "sourceStart": 151.4,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=z_g4sil9W00&t=151s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -401,7 +434,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1e24233962b6_c0014/pose.mp4",
-      "poseThumbnail": "assets/1e24233962b6_c0014/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1e24233962b6_c0014/pose_thumbnail.jpg",
+      "sourceId": "1e24233962b6",
+      "sourceVideoId": "z_g4sil9W00",
+      "sourceEnd": 153.9167
     },
     {
       "id": "b902a8ad2499_c0003",
@@ -423,7 +459,7 @@
       "frames": 209,
       "source": "[NC vs KIA] 7⧸24 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [vX-XENoPA2c].mp4",
       "sourceStart": 103.9038,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=vX-XENoPA2c&t=103s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -434,7 +470,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/b902a8ad2499_c0003/pose.mp4",
-      "poseThumbnail": "assets/b902a8ad2499_c0003/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/b902a8ad2499_c0003/pose_thumbnail.jpg",
+      "sourceId": "b902a8ad2499",
+      "sourceVideoId": "vX-XENoPA2c",
+      "sourceEnd": 107.3739
     },
     {
       "id": "02dad52fd781_c0049",
@@ -456,7 +495,7 @@
       "frames": 149,
       "source": "[SSG vs LG] 8⧸22 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [j75iUaTczwE].mp4",
       "sourceStart": 462.6622,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=j75iUaTczwE&t=462s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -467,7 +506,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/02dad52fd781_c0049/pose.mp4",
-      "poseThumbnail": "assets/02dad52fd781_c0049/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/02dad52fd781_c0049/pose_thumbnail.jpg",
+      "sourceId": "02dad52fd781",
+      "sourceVideoId": "j75iUaTczwE",
+      "sourceEnd": 467.6005
     },
     {
       "id": "0d84991ce9f6_c0017",
@@ -489,7 +531,7 @@
       "frames": 185,
       "source": "[LG vs SSG] 5⧸30 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [mM9X03fKoYM].mp4",
       "sourceStart": 113.4133,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=113s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -500,7 +542,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0d84991ce9f6_c0017/pose.mp4",
-      "poseThumbnail": "assets/0d84991ce9f6_c0017/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0d84991ce9f6_c0017/pose_thumbnail.jpg",
+      "sourceId": "0d84991ce9f6",
+      "sourceVideoId": "mM9X03fKoYM",
+      "sourceEnd": 116.483
     },
     {
       "id": "d4ea211e62bd_c0014",
@@ -522,7 +567,7 @@
       "frames": 61,
       "source": "[KIA vs LG] 8⧸16 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [2CmG5TBNngc].mp4",
       "sourceStart": 115.9158,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=2CmG5TBNngc&t=115s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -533,7 +578,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/d4ea211e62bd_c0014/pose.mp4",
-      "poseThumbnail": "assets/d4ea211e62bd_c0014/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/d4ea211e62bd_c0014/pose_thumbnail.jpg",
+      "sourceId": "d4ea211e62bd",
+      "sourceVideoId": "2CmG5TBNngc",
+      "sourceEnd": 117.9178
     },
     {
       "id": "8eeef70dce48_c0034",
@@ -555,7 +603,7 @@
       "frames": 324,
       "source": "[KIA vs KT] 4⧸2 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [JUlbGhAP9Rg].mp4",
       "sourceStart": 137.6,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=JUlbGhAP9Rg&t=137s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -566,7 +614,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/8eeef70dce48_c0034/pose.mp4",
-      "poseThumbnail": "assets/8eeef70dce48_c0034/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/8eeef70dce48_c0034/pose_thumbnail.jpg",
+      "sourceId": "8eeef70dce48",
+      "sourceVideoId": "JUlbGhAP9Rg",
+      "sourceEnd": 142.9833
     },
     {
       "id": "8eeef70dce48_c0007",
@@ -588,7 +639,7 @@
       "frames": 162,
       "source": "[KIA vs KT] 4⧸2 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [JUlbGhAP9Rg].mp4",
       "sourceStart": 145.1,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=JUlbGhAP9Rg&t=145s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "missing frames present",
@@ -599,7 +650,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/8eeef70dce48_c0007/pose.mp4",
-      "poseThumbnail": "assets/8eeef70dce48_c0007/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/8eeef70dce48_c0007/pose_thumbnail.jpg",
+      "sourceId": "8eeef70dce48",
+      "sourceVideoId": "JUlbGhAP9Rg",
+      "sourceEnd": 147.7833
     },
     {
       "id": "8eeef70dce48_c0049",
@@ -621,7 +675,7 @@
       "frames": 420,
       "source": "[KIA vs KT] 4⧸2 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [JUlbGhAP9Rg].mp4",
       "sourceStart": 157.5,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=JUlbGhAP9Rg&t=157s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -632,7 +686,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/8eeef70dce48_c0049/pose.mp4",
-      "poseThumbnail": "assets/8eeef70dce48_c0049/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/8eeef70dce48_c0049/pose_thumbnail.jpg",
+      "sourceId": "8eeef70dce48",
+      "sourceVideoId": "JUlbGhAP9Rg",
+      "sourceEnd": 164.4833
     },
     {
       "id": "1161553ed7d7_c0017",
@@ -654,7 +711,7 @@
       "frames": 142,
       "source": "[KIA vs KT] 4⧸3 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [kI5XiYCjRm8].mp4",
       "sourceStart": 120.3,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=kI5XiYCjRm8&t=120s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -665,7 +722,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1161553ed7d7_c0017/pose.mp4",
-      "poseThumbnail": "assets/1161553ed7d7_c0017/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1161553ed7d7_c0017/pose_thumbnail.jpg",
+      "sourceId": "1161553ed7d7",
+      "sourceVideoId": "kI5XiYCjRm8",
+      "sourceEnd": 122.65
     },
     {
       "id": "1161553ed7d7_c0063",
@@ -687,7 +747,7 @@
       "frames": 189,
       "source": "[KIA vs KT] 4⧸3 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [kI5XiYCjRm8].mp4",
       "sourceStart": 137.0,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=kI5XiYCjRm8&t=137s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -698,7 +758,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1161553ed7d7_c0063/pose.mp4",
-      "poseThumbnail": "assets/1161553ed7d7_c0063/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1161553ed7d7_c0063/pose_thumbnail.jpg",
+      "sourceId": "1161553ed7d7",
+      "sourceVideoId": "kI5XiYCjRm8",
+      "sourceEnd": 140.1333
     },
     {
       "id": "1161553ed7d7_c0015",
@@ -720,7 +783,7 @@
       "frames": 143,
       "source": "[KIA vs KT] 4⧸3 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [kI5XiYCjRm8].mp4",
       "sourceStart": 237.9,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=kI5XiYCjRm8&t=237s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -731,7 +794,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1161553ed7d7_c0015/pose.mp4",
-      "poseThumbnail": "assets/1161553ed7d7_c0015/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1161553ed7d7_c0015/pose_thumbnail.jpg",
+      "sourceId": "1161553ed7d7",
+      "sourceVideoId": "kI5XiYCjRm8",
+      "sourceEnd": 240.2667
     },
     {
       "id": "1161553ed7d7_c0004",
@@ -753,7 +819,7 @@
       "frames": 230,
       "source": "[KIA vs KT] 4⧸3 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [kI5XiYCjRm8].mp4",
       "sourceStart": 166.0,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=kI5XiYCjRm8&t=166s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "missing frames present",
@@ -764,7 +830,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1161553ed7d7_c0004/pose.mp4",
-      "poseThumbnail": "assets/1161553ed7d7_c0004/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1161553ed7d7_c0004/pose_thumbnail.jpg",
+      "sourceId": "1161553ed7d7",
+      "sourceVideoId": "kI5XiYCjRm8",
+      "sourceEnd": 169.8167
     },
     {
       "id": "3ef5720dccec_c0010",
@@ -786,7 +855,7 @@
       "frames": 135,
       "source": "[롯데 vs KT] 9⧸24 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [HZzAe0yrZ24].mp4",
       "sourceStart": 179.9798,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=HZzAe0yrZ24&t=179s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "missing frames present",
@@ -797,7 +866,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/3ef5720dccec_c0010/pose.mp4",
-      "poseThumbnail": "assets/3ef5720dccec_c0010/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/3ef5720dccec_c0010/pose_thumbnail.jpg",
+      "sourceId": "3ef5720dccec",
+      "sourceVideoId": "HZzAe0yrZ24",
+      "sourceEnd": 184.4509
     },
     {
       "id": "1161553ed7d7_c0041",
@@ -819,7 +891,7 @@
       "frames": 145,
       "source": "[KIA vs KT] 4⧸3 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [kI5XiYCjRm8].mp4",
       "sourceStart": 178.6,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=kI5XiYCjRm8&t=178s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -830,7 +902,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1161553ed7d7_c0041/pose.mp4",
-      "poseThumbnail": "assets/1161553ed7d7_c0041/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1161553ed7d7_c0041/pose_thumbnail.jpg",
+      "sourceId": "1161553ed7d7",
+      "sourceVideoId": "kI5XiYCjRm8",
+      "sourceEnd": 181.0
     },
     {
       "id": "0e1f00c192b9_c0015",
@@ -852,7 +927,7 @@
       "frames": 116,
       "source": "[한화 vs 삼성] 8⧸7 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [rBd0Xo0hFIs].mp4",
       "sourceStart": 103.103,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=rBd0Xo0hFIs&t=103s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -863,7 +938,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0e1f00c192b9_c0015/pose.mp4",
-      "poseThumbnail": "assets/0e1f00c192b9_c0015/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0e1f00c192b9_c0015/pose_thumbnail.jpg",
+      "sourceId": "0e1f00c192b9",
+      "sourceVideoId": "rBd0Xo0hFIs",
+      "sourceEnd": 106.9402
     },
     {
       "id": "7ef66f7a16b0_c0032",
@@ -885,7 +963,7 @@
       "frames": 366,
       "source": "[SSG vs 삼성] 3⧸31 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [SUYxUhDFLx4].mp4",
       "sourceStart": 111.3112,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=SUYxUhDFLx4&t=111s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -896,7 +974,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/7ef66f7a16b0_c0032/pose.mp4",
-      "poseThumbnail": "assets/7ef66f7a16b0_c0032/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/7ef66f7a16b0_c0032/pose_thumbnail.jpg",
+      "sourceId": "7ef66f7a16b0",
+      "sourceVideoId": "SUYxUhDFLx4",
+      "sourceEnd": 117.4006
     },
     {
       "id": "0e1f00c192b9_c0016",
@@ -918,7 +999,7 @@
       "frames": 56,
       "source": "[한화 vs 삼성] 8⧸7 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [rBd0Xo0hFIs].mp4",
       "sourceStart": 200.4002,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=rBd0Xo0hFIs&t=200s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -929,7 +1010,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0e1f00c192b9_c0016/pose.mp4",
-      "poseThumbnail": "assets/0e1f00c192b9_c0016/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0e1f00c192b9_c0016/pose_thumbnail.jpg",
+      "sourceId": "0e1f00c192b9",
+      "sourceVideoId": "rBd0Xo0hFIs",
+      "sourceEnd": 202.2354
     },
     {
       "id": "98e127654749_c0027",
@@ -951,7 +1035,7 @@
       "frames": 125,
       "source": "[LG vs KIA] 6⧸20 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [GmQI2Xw9dj0].mp4",
       "sourceStart": 107.5,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=GmQI2Xw9dj0&t=107s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -962,7 +1046,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/98e127654749_c0027/pose.mp4",
-      "poseThumbnail": "assets/98e127654749_c0027/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/98e127654749_c0027/pose_thumbnail.jpg",
+      "sourceId": "98e127654749",
+      "sourceVideoId": "GmQI2Xw9dj0",
+      "sourceEnd": 109.5667
     },
     {
       "id": "b902a8ad2499_c0014",
@@ -984,7 +1071,7 @@
       "frames": 207,
       "source": "[NC vs KIA] 7⧸24 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [vX-XENoPA2c].mp4",
       "sourceStart": 266.266,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=vX-XENoPA2c&t=266s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -995,7 +1082,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/b902a8ad2499_c0014/pose.mp4",
-      "poseThumbnail": "assets/b902a8ad2499_c0014/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/b902a8ad2499_c0014/pose_thumbnail.jpg",
+      "sourceId": "b902a8ad2499",
+      "sourceVideoId": "vX-XENoPA2c",
+      "sourceEnd": 269.7028
     },
     {
       "id": "98e127654749_c0020",
@@ -1017,7 +1107,7 @@
       "frames": 145,
       "source": "[LG vs KIA] 6⧸20 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [GmQI2Xw9dj0].mp4",
       "sourceStart": 120.4,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=GmQI2Xw9dj0&t=120s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1028,7 +1118,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/98e127654749_c0020/pose.mp4",
-      "poseThumbnail": "assets/98e127654749_c0020/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/98e127654749_c0020/pose_thumbnail.jpg",
+      "sourceId": "98e127654749",
+      "sourceVideoId": "GmQI2Xw9dj0",
+      "sourceEnd": 122.8
     },
     {
       "id": "3ef5720dccec_c0013",
@@ -1050,7 +1143,7 @@
       "frames": 59,
       "source": "[롯데 vs KT] 9⧸24 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [HZzAe0yrZ24].mp4",
       "sourceStart": 287.287,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=HZzAe0yrZ24&t=287s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1061,7 +1154,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/3ef5720dccec_c0013/pose.mp4",
-      "poseThumbnail": "assets/3ef5720dccec_c0013/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/3ef5720dccec_c0013/pose_thumbnail.jpg",
+      "sourceId": "3ef5720dccec",
+      "sourceVideoId": "HZzAe0yrZ24",
+      "sourceEnd": 289.2223
     },
     {
       "id": "fa1febd5056f_c0025",
@@ -1083,7 +1179,7 @@
       "frames": 87,
       "source": "[롯데 vs KIA] 9⧸12 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [oQKJQLsYCGw].mp4",
       "sourceStart": 154.7546,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=154s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1094,7 +1190,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/fa1febd5056f_c0025/pose.mp4",
-      "poseThumbnail": "assets/fa1febd5056f_c0025/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/fa1febd5056f_c0025/pose_thumbnail.jpg",
+      "sourceId": "fa1febd5056f",
+      "sourceVideoId": "oQKJQLsYCGw",
+      "sourceEnd": 157.6241
     },
     {
       "id": "3ef5720dccec_c0014",
@@ -1116,7 +1215,7 @@
       "frames": 69,
       "source": "[롯데 vs KT] 9⧸24 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [HZzAe0yrZ24].mp4",
       "sourceStart": 341.1408,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=HZzAe0yrZ24&t=341s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1127,7 +1226,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/3ef5720dccec_c0014/pose.mp4",
-      "poseThumbnail": "assets/3ef5720dccec_c0014/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/3ef5720dccec_c0014/pose_thumbnail.jpg",
+      "sourceId": "3ef5720dccec",
+      "sourceVideoId": "HZzAe0yrZ24",
+      "sourceEnd": 343.4097
     },
     {
       "id": "0d84991ce9f6_c0039",
@@ -1149,7 +1251,7 @@
       "frames": 259,
       "source": "[LG vs SSG] 5⧸30 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [mM9X03fKoYM].mp4",
       "sourceStart": 170.4703,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=170s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1160,7 +1262,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0d84991ce9f6_c0039/pose.mp4",
-      "poseThumbnail": "assets/0d84991ce9f6_c0039/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0d84991ce9f6_c0039/pose_thumbnail.jpg",
+      "sourceId": "0d84991ce9f6",
+      "sourceVideoId": "mM9X03fKoYM",
+      "sourceEnd": 174.7746
     },
     {
       "id": "b54e0e701d77_c0034",
@@ -1182,7 +1287,7 @@
       "frames": 159,
       "source": "[SSG vs 키움] 5⧸17 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [OJxlJHCJMDQ].mp4",
       "sourceStart": 34.0,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=OJxlJHCJMDQ&t=34s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1193,7 +1298,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/b54e0e701d77_c0034/pose.mp4",
-      "poseThumbnail": "assets/b54e0e701d77_c0034/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/b54e0e701d77_c0034/pose_thumbnail.jpg",
+      "sourceId": "b54e0e701d77",
+      "sourceVideoId": "OJxlJHCJMDQ",
+      "sourceEnd": 36.6333
     },
     {
       "id": "0d84991ce9f6_c0042",
@@ -1215,7 +1323,7 @@
       "frames": 173,
       "source": "[LG vs SSG] 5⧸30 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [mM9X03fKoYM].mp4",
       "sourceStart": 196.9968,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=196s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1226,7 +1334,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0d84991ce9f6_c0042/pose.mp4",
-      "poseThumbnail": "assets/0d84991ce9f6_c0042/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0d84991ce9f6_c0042/pose_thumbnail.jpg",
+      "sourceId": "0d84991ce9f6",
+      "sourceVideoId": "mM9X03fKoYM",
+      "sourceEnd": 199.8663
     },
     {
       "id": "fa1febd5056f_c0007",
@@ -1248,7 +1359,7 @@
       "frames": 190,
       "source": "[롯데 vs KIA] 9⧸12 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [oQKJQLsYCGw].mp4",
       "sourceStart": 113.113,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=113s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1259,7 +1370,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/fa1febd5056f_c0007/pose.mp4",
-      "poseThumbnail": "assets/fa1febd5056f_c0007/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/fa1febd5056f_c0007/pose_thumbnail.jpg",
+      "sourceId": "fa1febd5056f",
+      "sourceVideoId": "oQKJQLsYCGw",
+      "sourceEnd": 119.4193
     },
     {
       "id": "fa1febd5056f_c0030",
@@ -1281,7 +1395,7 @@
       "frames": 82,
       "source": "[롯데 vs KIA] 9⧸12 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [oQKJQLsYCGw].mp4",
       "sourceStart": 124.9248,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=124s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1292,7 +1406,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/fa1febd5056f_c0030/pose.mp4",
-      "poseThumbnail": "assets/fa1febd5056f_c0030/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/fa1febd5056f_c0030/pose_thumbnail.jpg",
+      "sourceId": "fa1febd5056f",
+      "sourceVideoId": "oQKJQLsYCGw",
+      "sourceEnd": 127.6275
     },
     {
       "id": "fa1febd5056f_c0014",
@@ -1314,7 +1431,7 @@
       "frames": 142,
       "source": "[롯데 vs KIA] 9⧸12 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [oQKJQLsYCGw].mp4",
       "sourceStart": 271.0708,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=271s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1325,7 +1442,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/fa1febd5056f_c0014/pose.mp4",
-      "poseThumbnail": "assets/fa1febd5056f_c0014/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/fa1febd5056f_c0014/pose_thumbnail.jpg",
+      "sourceId": "fa1febd5056f",
+      "sourceVideoId": "oQKJQLsYCGw",
+      "sourceEnd": 275.7755
     },
     {
       "id": "210747e6a7e9_c0015",
@@ -1347,7 +1467,7 @@
       "frames": 108,
       "source": "[두산 vs 삼성] 4⧸17 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [FCYngjBRmZw].mp4",
       "sourceStart": 683.0824,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=FCYngjBRmZw&t=683s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1358,7 +1478,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/210747e6a7e9_c0015/pose.mp4",
-      "poseThumbnail": "assets/210747e6a7e9_c0015/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/210747e6a7e9_c0015/pose_thumbnail.jpg",
+      "sourceId": "210747e6a7e9",
+      "sourceVideoId": "FCYngjBRmZw",
+      "sourceEnd": 684.8675
     },
     {
       "id": "02dad52fd781_c0020",
@@ -1380,7 +1503,7 @@
       "frames": 79,
       "source": "[SSG vs LG] 8⧸22 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [j75iUaTczwE].mp4",
       "sourceStart": 669.0684,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=j75iUaTczwE&t=669s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1391,7 +1514,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/02dad52fd781_c0020/pose.mp4",
-      "poseThumbnail": "assets/02dad52fd781_c0020/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/02dad52fd781_c0020/pose_thumbnail.jpg",
+      "sourceId": "02dad52fd781",
+      "sourceVideoId": "j75iUaTczwE",
+      "sourceEnd": 671.671
     },
     {
       "id": "02dad52fd781_c0038",
@@ -1413,7 +1539,7 @@
       "frames": 172,
       "source": "[SSG vs LG] 8⧸22 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [j75iUaTczwE].mp4",
       "sourceStart": 688.0874,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=j75iUaTczwE&t=688s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1424,7 +1550,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/02dad52fd781_c0038/pose.mp4",
-      "poseThumbnail": "assets/02dad52fd781_c0038/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/02dad52fd781_c0038/pose_thumbnail.jpg",
+      "sourceId": "02dad52fd781",
+      "sourceVideoId": "j75iUaTczwE",
+      "sourceEnd": 693.7931
     },
     {
       "id": "0d84991ce9f6_c0036",
@@ -1446,7 +1575,7 @@
       "frames": 210,
       "source": "[LG vs SSG] 5⧸30 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [mM9X03fKoYM].mp4",
       "sourceStart": 719.1184,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=719s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1457,7 +1586,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/0d84991ce9f6_c0036/pose.mp4",
-      "poseThumbnail": "assets/0d84991ce9f6_c0036/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/0d84991ce9f6_c0036/pose_thumbnail.jpg",
+      "sourceId": "0d84991ce9f6",
+      "sourceVideoId": "mM9X03fKoYM",
+      "sourceEnd": 722.6052
     },
     {
       "id": "8eeef70dce48_c0032",
@@ -1479,7 +1611,7 @@
       "frames": 258,
       "source": "[KIA vs KT] 4⧸2 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [JUlbGhAP9Rg].mp4",
       "sourceStart": 843.8,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=JUlbGhAP9Rg&t=843s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1490,7 +1622,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/8eeef70dce48_c0032/pose.mp4",
-      "poseThumbnail": "assets/8eeef70dce48_c0032/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/8eeef70dce48_c0032/pose_thumbnail.jpg",
+      "sourceId": "8eeef70dce48",
+      "sourceVideoId": "JUlbGhAP9Rg",
+      "sourceEnd": 848.0833
     },
     {
       "id": "8eeef70dce48_c0036",
@@ -1512,7 +1647,7 @@
       "frames": 120,
       "source": "[KIA vs KT] 4⧸2 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [JUlbGhAP9Rg].mp4",
       "sourceStart": 626.4,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=JUlbGhAP9Rg&t=626s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "missing frames present",
@@ -1523,7 +1658,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/8eeef70dce48_c0036/pose.mp4",
-      "poseThumbnail": "assets/8eeef70dce48_c0036/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/8eeef70dce48_c0036/pose_thumbnail.jpg",
+      "sourceId": "8eeef70dce48",
+      "sourceVideoId": "JUlbGhAP9Rg",
+      "sourceEnd": 628.3833
     },
     {
       "id": "1e24233962b6_c0027",
@@ -1545,7 +1683,7 @@
       "frames": 127,
       "source": "[NC vs 한화] 6⧸8 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [z_g4sil9W00].mp4",
       "sourceStart": 118.0,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=z_g4sil9W00&t=118s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1556,7 +1694,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/1e24233962b6_c0027/pose.mp4",
-      "poseThumbnail": "assets/1e24233962b6_c0027/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/1e24233962b6_c0027/pose_thumbnail.jpg",
+      "sourceId": "1e24233962b6",
+      "sourceVideoId": "z_g4sil9W00",
+      "sourceEnd": 120.1
     },
     {
       "id": "b54e0e701d77_c0041",
@@ -1578,7 +1719,7 @@
       "frames": 366,
       "source": "[SSG vs 키움] 5⧸17 경기 I 2024 신한 SOL뱅크 KBO 리그 I 하이라이트 I TVING [OJxlJHCJMDQ].mp4",
       "sourceStart": 436.8,
-      "sourceUrl": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=OJxlJHCJMDQ&t=436s",
       "model": "RTMPose",
       "coordinate": "17-joint COCO; crop pixels",
       "poseStatus": "available",
@@ -1589,7 +1730,10 @@
       "poseFile": "pose.json",
       "mediaPolicy": "pose-only",
       "poseVideo": "assets/b54e0e701d77_c0041/pose.mp4",
-      "poseThumbnail": "assets/b54e0e701d77_c0041/pose_thumbnail.jpg"
+      "poseThumbnail": "assets/b54e0e701d77_c0041/pose_thumbnail.jpg",
+      "sourceId": "b54e0e701d77",
+      "sourceVideoId": "OJxlJHCJMDQ",
+      "sourceEnd": 442.8833
     }
   ],
   "mediaPolicy": "pose-only"

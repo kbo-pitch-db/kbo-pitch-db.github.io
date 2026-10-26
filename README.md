@@ -1,6 +1,6 @@
 # KBO Pitch Lab
 
-A static, bilingual (English/Korean) explorer for KBO pitching motion and 2D pose estimates. Public playback uses skeleton-only H.264 MP4 animations rendered from COCO-17 coordinates on a plain background, without broadcast images or audio. Thumbnails are rendered from the same skeletons.
+A static, bilingual (English/Korean) explorer for KBO pitching motion and 2D pose estimates. Hosted media playback uses skeleton-only H.264 MP4 animations rendered from COCO-17 coordinates on a plain background, without broadcast images or audio. Thumbnails are rendered from the same skeletons.
 
 ## Run locally
 
@@ -18,7 +18,9 @@ The builder uses `../dataset/clips.csv`, `sources.csv`, and optional Naver metad
 
 The build replaces `data/assets/`. It reserves clips from recent source videos, then groups repeat pitchers; `--clip-ids ID,ID` and `--pitcher NAME` restrict pose selection. `--max-video-mb` limits the total generated skeleton video size. `--sample` generates an illustrative skeleton animation without source media.
 
-No broadcast samples are currently approved for publication. Choosing representative broadcast samples later requires an explicit media policy and an allowlist; selecting pose clip IDs does not publish their broadcast footage.
+Each clip can also show its original video through a timestamped YouTube link and an optional, click-to-load YouTube embed. The dataset provider video ID and exact start/end times populate `sourceVideoId`, `sourceId`, `sourceStart`, `sourceEnd`, and `sourceUrl`. Watch links round the start down to a whole second; the embed uses that start and rounds the end up. YouTube seeking is approximate and is independent of the pose controls. The iframe loads from `youtube-nocookie.com` only after expansion and is removed when collapsed or when a different clip is selected. A direct YouTube link remains available when embedding or regional playback is restricted. No broadcast video is copied into the site.
+
+No broadcast samples are currently approved for self-hosted publication. Choosing representative broadcast samples later requires an explicit media policy and an allowlist; selecting pose clip IDs does not publish their broadcast footage.
 
 ## Public data boundary
 

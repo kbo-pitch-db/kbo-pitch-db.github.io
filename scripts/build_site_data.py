@@ -3,6 +3,8 @@
 import argparse
 import csv
 import json
+import math
+import re
 import shutil
 import subprocess
 from collections import defaultdict
@@ -72,6 +74,23 @@ def rows(path):
         return []
     with path.open(encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
+
+
+
+def source_reference(source, clip):
+    """Link the recorded provider ID and original timeline, without publishing media."""
+    video_id = source.get("provider_video_id", "")
+    if not re.fullmatch(r"[A-Za-z0-9_-]{11}", video_id):
+        return {}
+    try:
+        start, end = float(clip["start_time"]), float(clip["end_time"])
+    except (KeyError, TypeError, ValueError):
+        return {}
+    if not math.isfinite(start) or not math.isfinite(end) or start < 0 or end <= start:
+        return {}
+    return {"sourceId": source["source_id"], "sourceVideoId": video_id,
+            "sourceStart": start, "sourceEnd": end,
+            "sourceUrl": f"https://www.youtube.com/watch?v={video_id}&t={math.floor(start)}s"}
 
 
 def main():
@@ -211,7 +230,7 @@ def main():
         with (target / pose_name).open("w", encoding="utf-8") as f:
             json.dump({"fps": fps, "coordinate_system": "crop pixels", "joints": JOINTS, "frames": frames}, f, ensure_ascii=False, separators=(",", ":"))
         duration = float(clip["end_time"]) - float(clip["start_time"])
-        result.append({"id": cid, "player": player or "Unknown pitcher", "playerKnown": bool(player), "playerKey": player_key, "playerCode": player_code, "playerNameSource": "naver_auto_accepted" if player else "unknown", "team": src.get("teams_text", "Unknown"), "hand": "", "pitch": pitch.get("pitch_type_raw", ""), "speed": pitch.get("speed_kmh", ""), "date": src.get("game_date", ""), "matchup": src.get("teams_text", ""), "inning": pitch.get("inning", ""), "pitchNumber": pitch.get("pitcher_pitch_number", ""), "duration": round(duration, 2), "fps": fps, "frames": len(frames), "source": src.get("source_name", src.get("source_path", "")), "sourceStart": float(clip["start_time"]), "sourceUrl": "", "model": "RTMPose", "coordinate": "17-joint COCO; crop pixels", "poseStatus": "missing frames present" if any(not any(p for p in fr["keypoints"]) for fr in frames) else "available", "confidence": "Per-joint confidence included in pose JSON", "mediaPolicy": "pose-only", "poseVideo": str(rel_folder / "pose.mp4"), "poseThumbnail": str(rel_folder / "pose_thumbnail.jpg"), "pose": str(rel_folder / pose_name), "example": False, "review": clip.get("review_status", "unreviewed"), "poseFile": pose_name})
+        result.append({"id": cid, "player": player or "Unknown pitcher", "playerKnown": bool(player), "playerKey": player_key, "playerCode": player_code, "playerNameSource": "naver_auto_accepted" if player else "unknown", "team": src.get("teams_text", "Unknown"), "hand": "", "pitch": pitch.get("pitch_type_raw", ""), "speed": pitch.get("speed_kmh", ""), "date": src.get("game_date", ""), "matchup": src.get("teams_text", ""), "inning": pitch.get("inning", ""), "pitchNumber": pitch.get("pitcher_pitch_number", ""), "duration": round(duration, 2), "fps": fps, "frames": len(frames), "source": src.get("source_name", src.get("source_path", "")), **source_reference(src, clip), "model": "RTMPose", "coordinate": "17-joint COCO; crop pixels", "poseStatus": "missing frames present" if any(not any(p for p in fr["keypoints"]) for fr in frames) else "available", "confidence": "Per-joint confidence included in pose JSON", "mediaPolicy": "pose-only", "poseVideo": str(rel_folder / "pose.mp4"), "poseThumbnail": str(rel_folder / "pose_thumbnail.jpg"), "pose": str(rel_folder / pose_name), "example": False, "review": clip.get("review_status", "unreviewed"), "poseFile": pose_name})
         if args.limit and len(result) >= args.limit:
             break
     index = {"schemaVersion": 3, "mediaPolicy": "pose-only", "generatedFrom": "dataset/clips.csv",
