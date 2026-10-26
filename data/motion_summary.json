@@ -1,0 +1,23 @@
+{
+  "clips": 813,
+  "frames": 135741,
+  "status_counts": {
+    "limited": 111,
+    "available": 702
+  },
+  "median_2d_displacement_px": 1.703300952911377,
+  "median_2d_acceleration_ratio_refined_to_raw": 0.07252998107405816,
+  "median_3d_acceleration_ratio_refined_to_raw": 0.09796288451298603,
+  "median_3d_supported_joint_ratio": 0.9392478302796529,
+  "association_rejected_frames": 10846,
+  "model": "MediaPipe BlazePose GHUM full",
+  "interpretation": "Stability diagnostics only. Acceleration reductions are per-clip medians on common supported joints, then aggregated across clips. No 3D ground truth, calibrated scale, world translation, OpenSim IK, kinetics or pitching validation.",
+  "checks": [
+    "all active clip IDs indexed",
+    "raw input hashes match",
+    "source frame/time align exactly",
+    "expected COCO-17 shapes",
+    "supported coordinates finite",
+    "3D hip center at origin"
+  ]
+}

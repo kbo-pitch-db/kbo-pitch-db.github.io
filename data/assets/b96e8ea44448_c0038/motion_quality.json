@@ -1,0 +1,26 @@
+{
+  "method": "monocular-refine-v1",
+  "strength": 0.45,
+  "max_gap": 3,
+  "raw_2d_sha256": "4f4d6dba583834e75c621b15a0e8d050fad82d3b6258d1f5de1fe993a28fbde8",
+  "interpolated_2d_joints": 1,
+  "outlier_2d_joints": 0,
+  "raw_acceleration_px_s2": 25863.541902254692,
+  "refined_acceleration_px_s2": 1725.8747094970229,
+  "median_displacement_px": 2.3055944442749023,
+  "interpretation": "Stability diagnostics only; no 3D ground truth or pitching validation.",
+  "3d": {
+    "valid_joint_ratio": 0.9653979238754326,
+    "interpolated_joints": 8,
+    "outlier_joints": 4,
+    "weak_perspective_pixels_per_model_meter": 320.5926818847656,
+    "median_root_relative_reprojection_px": 14.795072555541992,
+    "raw_acceleration_model_m_s2": 194.15415673657782,
+    "refined_acceleration_model_m_s2": 18.753943492999447,
+    "status": "available",
+    "association_rejected_frames": 0,
+    "median_reprojection_torso_ratio": 0.10371761999581754,
+    "model": "MediaPipe BlazePose GHUM full",
+    "model_sha256": "e9a5c5cb17f736fafd4c2ec1da3b3d331d6edbe8a0d32395855aeb2cdfd64b9f"
+  }
+}

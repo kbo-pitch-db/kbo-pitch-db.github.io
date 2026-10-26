@@ -1,12 +1,33 @@
 # KBO Pitch Lab
 
-A static, bilingual (English/Korean) explorer for KBO pitching motion and 2D pose estimates. Hosted media playback uses skeleton-only H.264 MP4 animations rendered from COCO-17 coordinates on a plain background, without broadcast images or audio. Thumbnails are rendered from the same skeletons.
+## 2D / 3D motion comparison
+
+All 813 clips / 135,741 frames completed inference and alignment checks. Tracking/reprojection heuristics mark 702 clips `available` and 111 `limited`; all remain unreviewed. Aggregate diagnostics are in `data/motion_summary.json`.
+
+The 813 packaged clips include original/refined 2D and learned/refined monocular 3D. Switch views, adjust the correction percentage, and rotate 3D by dragging or using rotation/tilt sliders. Playback speed, seeking and frame stepping use the MP4 clock when available and a browser clock for numerical playback. JSON/CSV export the selected coordinates and current correction blend; the MP4 download remains the original 2D skeleton. Amber joints mark short-gap interpolation; long gaps remain absent. Rendering uses fixed clip-wide bounds.
+
+Inspired by [OpenCap Monocular](https://github.com/utahmobl/opencap-monocular), the implementation separates learned 3D initialization from image, body and temporal constraints. The actual model is [MediaPipe BlazePose GHUM full](https://developers.google.com/edge/mediapipe/solutions/vision/pose_landmarker). Confidence-weighted acceleration smoothing, bounded interpolation, RTMPose image evidence, a weak-perspective scale and clip-specific symmetric limb lengths refine the output. This is not the full OpenCap pipeline: WHAM, calibrated camera extrinsics, OpenSim IK, joint limits, floor contact and forces are not implemented. Pitching accuracy has not been validated. Coordinates are model-estimated meters relative to the hips, with x right, y up and z toward the camera.
+
+```bash
+# Python with mediapipe==0.10.11, numpy and OpenCV. CPU inference resumes its cache.
+python scripts/infer_monocular.py --dataset ../dataset --workers 4
+# Python with numpy and scipy. Original inputs are preserved.
+python scripts/refine_motion.py --dataset ../dataset --strength .45 --max-gap 3
+python scripts/build_site_data.py --dataset ../dataset --output data --limit 0 --numeric-only
+python scripts/audit_motion.py --dataset ../dataset
+```
+
+`../dataset/motion.csv` indexes the separate refined/3D NPZ files and quality reports. Model SHA256 and input signatures accompany priors. Detector scores remain distinct from interpolation/outlier flags. The browser correction slider blends two computed trajectories; it does not rerun the temporal optimization. Zero correction restores the original coordinates. Quality reports describe missingness, rejected associations, acceleration and reprojection, not ground-truth accuracy.
+
+Run `node tests/motion_viewer.test.cjs` and `python -m unittest discover -s tests -p 'test_*.py' -v` for view/export behavior and numerical invariants. Browser visual testing needs a browser-capable environment and local server.
+
+A static, bilingual (English/Korean) explorer for KBO pitching motion and 2D/3D pose estimates. Hosted media playback uses skeleton-only H.264 MP4 animations rendered from COCO-17 coordinates on a plain background, without broadcast images or audio. Thumbnails are rendered from the same skeletons.
 
 ## Run locally
 
 Serve only this site folder, for example `python3 -m http.server 8000` from this directory, then open `http://localhost:8000`. Do not serve the parent workspace, which contains private source media and local backups.
 
-The current package contains 48 real pose sequences. Playback supports speed selection, seeking, and frame stepping. Pose JSON, CSV, and skeleton MP4 downloads remain available. Names linked automatically through Naver are not verified identities, and pose estimates are not validated biomechanical measurements.
+The current package contains 813 real pose sequences. All clips support numeric playback; 48 retain their original skeleton MP4 downloads. Playback supports speed selection, seeking, and frame stepping. Pose JSON, CSV, and skeleton MP4 downloads remain available. Names linked automatically through Naver are not verified identities, and pose estimates are not validated biomechanical measurements.
 
 ## Build data
 
@@ -16,7 +37,7 @@ The builder uses `../dataset/clips.csv`, `sources.csv`, and optional Naver metad
 ../.venv/bin/python scripts/build_site_data.py --dataset ../dataset --output data --limit 48 --max-video-mb 185
 ```
 
-The build replaces `data/assets/`. It reserves clips from recent source videos, then groups repeat pitchers; `--clip-ids ID,ID` and `--pitcher NAME` restrict pose selection. `--max-video-mb` limits the total generated skeleton video size. `--sample` generates an illustrative skeleton animation without source media.
+The default build replaces `data/assets/`; `--numeric-only` preserves existing MP4 files and adds numeric data and skeleton thumbnails. It reserves clips from recent source videos, then groups repeat pitchers; `--clip-ids ID,ID` and `--pitcher NAME` restrict pose selection. `--max-video-mb` limits the total generated skeleton video size. `--sample` generates an illustrative skeleton animation without source media.
 
 Each clip can also show its original video through a timestamped YouTube link and an optional, click-to-load YouTube embed. The dataset provider video ID and exact start/end times populate `sourceVideoId`, `sourceId`, `sourceStart`, `sourceEnd`, and `sourceUrl`. Watch links round the start down to a whole second; the embed uses that start and rounds the end up. YouTube seeking is approximate and is independent of the pose controls. The iframe loads from `youtube-nocookie.com` only after expansion and is removed when collapsed or when a different clip is selected. A direct YouTube link remains available when embedding or regional playback is restricted. No broadcast video is copied into the site.
 
@@ -24,7 +45,7 @@ No broadcast samples are currently approved for self-hosted publication. Choosin
 
 ## Public data boundary
 
-The site index (`data/clips.json`, schema version 3) and every clip declare `mediaPolicy: "pose-only"`. `poseVideo`, `poseThumbnail`, and `pose` point to skeleton MP4, skeleton JPEG, and numerical JSON files. The browser does not use legacy `video`, `overlay`, or `thumbnail` fields, including when an old index is returned. `packageVersion` refreshes replaced media.
+The site index (`data/clips.json`, schema version 4) and every clip declare `mediaPolicy: "pose-only"`. `poseVideo`, `poseThumbnail`, and `pose` point to skeleton MP4, skeleton JPEG, and numerical JSON files. `poseRefined`, `pose3d`, `pose3dRaw`, and `motionQuality` link additional numerical assets. The browser does not use legacy `video`, `overlay`, or `thumbnail` fields, including when an old index is returned. `packageVersion` refreshes replaced media.
 
 Each pose JSON contains FPS, coordinate system, the COCO-17 joint order, and frame records with source frame/time and nullable `[x, y, confidence]` values in crop-pixel coordinates. Rendering uses fixed bounds for the complete clip, omits joints below 0.2 confidence, preserves missing frames, and adds no audio.
 

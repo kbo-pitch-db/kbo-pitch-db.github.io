@@ -76,6 +76,25 @@ def rows(path):
         return list(csv.DictReader(f))
 
 
+def render_thumbnail(pose, target):
+    import cv2
+    import numpy as np
+    def valid(p):
+        return p is not None and (p[2] is None or p[2] >= .2)
+    all_points = np.array([p[:2] for f in pose['frames'] for p in f['keypoints'] if valid(p)])
+    low, high = (all_points.min(0),all_points.max(0)) if all_points.size else (np.zeros(2),np.ones(2))
+    center = (low+high)/2
+    scale = 150/max(1,*(high-low))
+    frame = pose['frames'][min(len(pose['frames'])-1,round(.8*pose['fps']))]
+    points = [tuple(np.rint((np.array(p[:2])-center)*scale+90).astype(int)) if valid(p) else None for p in frame['keypoints']]
+    picture = np.full((180,180,3),(27,32,20),np.uint8)
+    for a,b in BONES:
+        if points[a] and points[b]:cv2.line(picture,points[a],points[b],(104,240,180),2,cv2.LINE_AA)
+    for point in points:
+        if point:cv2.circle(picture,point,2,(230,250,230),-1,cv2.LINE_AA)
+    cv2.imwrite(str(target/'pose_thumbnail.jpg'),picture)
+
+
 
 def source_reference(source, clip):
     """Link the recorded provider ID and original timeline, without publishing media."""
@@ -105,6 +124,7 @@ def main():
     ap.add_argument("--clip-ids", help="comma-separated dataset_clip_id values")
     ap.add_argument("--pitcher", help="only include clips with this automatically linked pitcher name")
     ap.add_argument("--sample", action="store_true", help="write illustrative demo data without copying real media")
+    ap.add_argument('--numeric-only',action='store_true',help='render with a browser clock; preserve existing skeleton MP4s and add only numeric data/thumbnails')
     args = ap.parse_args()
     out = args.output
     out.mkdir(parents=True, exist_ok=True)
@@ -126,7 +146,7 @@ def main():
     result = []
     copied_bytes = 0
     asset_root = out / "assets"
-    if asset_root.exists():
+    if asset_root.exists() and not args.numeric_only:
         shutil.rmtree(asset_root)
     asset_root.mkdir(exist_ok=True)
     # Keep multiple clips for the same automatically linked pitcher name in the
@@ -174,7 +194,7 @@ def main():
         selected = {clip["dataset_clip_id"] for clip in ordered}
         ordered += [clip for name in featured for clip in buckets[name][args.clips_per_pitcher:]
                     if clip["dataset_clip_id"] not in selected]
-        clips = list({clip["dataset_clip_id"]: clip for clip in ordered + unknown}.values())
+        clips = list({clip["dataset_clip_id"]: clip for clip in ordered + clips}.values())
     for clip in clips:
         cid = clip["dataset_clip_id"]
         pitch = accepted.get(cid, {})
@@ -221,8 +241,11 @@ def main():
         target.mkdir(parents=True, exist_ok=True)
         pose_name = "pose.json"
         pose_data = {"fps": fps, "coordinate_system": "crop pixels", "joints": JOINTS, "frames": frames}
-        render_pose_media(pose_data, target)
-        video_size = (target / "pose.mp4").stat().st_size
+        if args.numeric_only:
+            render_thumbnail(pose_data, target)
+        else:
+            render_pose_media(pose_data, target)
+        video_size = (target / "pose.mp4").stat().st_size if (target/'pose.mp4').exists() else 0
         if args.max_video_mb and copied_bytes + video_size > args.max_video_mb * 1024 * 1024:
             shutil.rmtree(target)
             continue
@@ -230,13 +253,16 @@ def main():
         with (target / pose_name).open("w", encoding="utf-8") as f:
             json.dump({"fps": fps, "coordinate_system": "crop pixels", "joints": JOINTS, "frames": frames}, f, ensure_ascii=False, separators=(",", ":"))
         duration = float(clip["end_time"]) - float(clip["start_time"])
-        result.append({"id": cid, "player": player or "Unknown pitcher", "playerKnown": bool(player), "playerKey": player_key, "playerCode": player_code, "playerNameSource": "naver_auto_accepted" if player else "unknown", "team": src.get("teams_text", "Unknown"), "hand": "", "pitch": pitch.get("pitch_type_raw", ""), "speed": pitch.get("speed_kmh", ""), "date": src.get("game_date", ""), "matchup": src.get("teams_text", ""), "inning": pitch.get("inning", ""), "pitchNumber": pitch.get("pitcher_pitch_number", ""), "duration": round(duration, 2), "fps": fps, "frames": len(frames), "source": src.get("source_name", src.get("source_path", "")), **source_reference(src, clip), "model": "RTMPose", "coordinate": "17-joint COCO; crop pixels", "poseStatus": "missing frames present" if any(not any(p for p in fr["keypoints"]) for fr in frames) else "available", "confidence": "Per-joint confidence included in pose JSON", "mediaPolicy": "pose-only", "poseVideo": str(rel_folder / "pose.mp4"), "poseThumbnail": str(rel_folder / "pose_thumbnail.jpg"), "pose": str(rel_folder / pose_name), "example": False, "review": clip.get("review_status", "unreviewed"), "poseFile": pose_name})
+        result.append({"id": cid, "player": player or "Unknown pitcher", "playerKnown": bool(player), "playerKey": player_key, "playerCode": player_code, "playerNameSource": "naver_auto_accepted" if player else "unknown", "team": src.get("teams_text", "Unknown"), "hand": "", "pitch": pitch.get("pitch_type_raw", ""), "speed": pitch.get("speed_kmh", ""), "date": src.get("game_date", ""), "matchup": src.get("teams_text", ""), "inning": pitch.get("inning", ""), "pitchNumber": pitch.get("pitcher_pitch_number", ""), "duration": round(duration, 2), "fps": fps, "frames": len(frames), "source": src.get("source_name", src.get("source_path", "")), **source_reference(src, clip), "model": "RTMPose", "coordinate": "17-joint COCO; crop pixels", "poseStatus": "missing frames present" if any(not any(p for p in fr["keypoints"]) for fr in frames) else "available", "confidence": "Per-joint confidence included in pose JSON", "mediaPolicy": "pose-only", "poseVideo": str(rel_folder / "pose.mp4") if (target/"pose.mp4").exists() else "", "poseThumbnail": str(rel_folder / "pose_thumbnail.jpg"), "pose": str(rel_folder / pose_name), "example": False, "review": clip.get("review_status", "unreviewed"), "poseFile": pose_name})
         if args.limit and len(result) >= args.limit:
             break
     index = {"schemaVersion": 3, "mediaPolicy": "pose-only", "generatedFrom": "dataset/clips.csv",
              "packageVersion": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
              "packageStats": {"videoBytes": copied_bytes, "videoMegabytes": round(copied_bytes / 1024 / 1024, 1)}, "clips": result}
     (out / "clips.json").write_text(json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8")
+    if (dataset / 'motion.csv').is_file():
+        from package_motion import package
+        package(dataset, out)
 
 
 def write_sample(out):
