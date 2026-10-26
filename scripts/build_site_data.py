@@ -20,7 +20,7 @@ BONES = [(0, 1), (0, 2), (1, 3), (2, 4), (5, 6), (5, 7), (7, 9),
          (13, 15), (12, 14), (14, 16)]
 
 
-def render_pose_media(pose, target):
+def render_pose_media(pose, target, filename='pose.mp4'):
     """Render only numeric keypoints; never read broadcast images or audio."""
     import cv2
     import numpy as np
@@ -47,14 +47,14 @@ def render_pose_media(pose, target):
                '-f', 'rawvideo', '-vcodec', 'rawvideo', '-pix_fmt', 'bgr24',
                '-s', f'{width}x{height}', '-r', str(pose['fps']), '-i', '-',
                '-an', '-c:v', 'libx264', '-preset', 'fast', '-crf', '23',
-               '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(target / 'pose.mp4')]
+               '-pix_fmt', 'yuv420p', '-movflags', '+faststart', str(target / filename)]
     with subprocess.Popen(command, stdin=subprocess.PIPE) as process:
         try:
             for i, frame in enumerate(pose['frames']):
                 image = np.full((height, width, 3), (27, 32, 20), dtype=np.uint8)
                 joints = [tuple(np.rint((np.array(p[:2]) - center) * scale + [width / 2, height / 2]).astype(int))
                           if visible(p) else None for p in frame['keypoints']]
-                for a, b in BONES:
+                for a, b in pose.get('edges',BONES):
                     if a < len(joints) and b < len(joints) and joints[a] is not None and joints[b] is not None:
                         cv2.line(image, joints[a], joints[b], (104, 240, 180), 3, cv2.LINE_AA)
                 for point in joints:

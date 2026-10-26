@@ -70,9 +70,9 @@ vm.runInContext(fs.readFileSync(path.join(root,'motion_viewer.js'),'utf8'),conte
   assert.equal(controls[before+1].hidden,false,'numeric-only original 2D renders on canvas');
   context.window.MotionViewer.dispose();
   const halpeNames=['head','neck','hip','left_big_toe','right_big_toe','left_small_toe','right_small_toe','left_heel','right_heel'];
-  const halpe={...raw,model:'RTMPose Halpe-26 synthetic UI fixture',joints:[...raw.joints,...halpeNames],
+  const halpe={...raw,model:'RTMPose Halpe-26 synthetic UI fixture',joints:[...raw.joints.slice(0,17),...halpeNames],
     edges:[[5,7],[7,9],[15,20],[15,22],[15,24],[16,21],[16,23],[16,25]],
-    frames:raw.frames.map(f=>({...f,keypoints:[...f.keypoints,...halpeNames.map((_,i)=>[100+i,300+i,.9])]}))};
+    frames:raw.frames.map(f=>({...f,keypoints:[...f.keypoints.slice(0,17),...halpeNames.map((_,i)=>[100+i,300+i,.9])]}))};
   context.fetch=async()=>({ok:true,json:async()=>halpe});
   const halpeClip={...clip,poseVideo:'',pose3d:undefined,pose3dRaw:undefined,poseRefined:'synthetic-halpe-fixture'};
   const halpeBefore=controls.length;

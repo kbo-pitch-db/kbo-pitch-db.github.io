@@ -1,0 +1,22 @@
+{
+  "valid_joint_ratio": 0.9861111111111112,
+  "interpolated_joints": 0,
+  "outlier_joints": 0,
+  "weak_perspective_pixels_per_model_meter": 332.2737731933594,
+  "median_root_relative_reprojection_px": 12.361647605895996,
+  "raw_acceleration_model_m_s2": 11.351445875774516,
+  "refined_acceleration_model_m_s2": 3.6626975405608357,
+  "status": "available",
+  "model": "WHAM (RTMPose Halpe-26 input)",
+  "model_sha256": "91a02246e4ae21e9fc5f4e47268a65c25e4e6e7eeb9f072f74c2343a32d94b9b",
+  "pose_2d_model": "RTMPose-m Halpe-26",
+  "pose_2d_layout": "halpe26",
+  "pose_3d_layout": "coco17",
+  "strength": 0.45,
+  "max_gap": 3,
+  "method": "rtmpose-halpe26-wham-v1",
+  "review_status": "unreviewed",
+  "benchmark_eligible": false,
+  "interpretation": "Camera-relative WHAM/SMPL estimate; no SLAM, OpenSim IK, calibrated scale or pitching ground truth.",
+  "median_reprojection_torso_ratio": 0.07867277858703568
+}

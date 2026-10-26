@@ -113,8 +113,14 @@ def package_wham(dataset, output):
             pose3dStatus=item['pose_3d_status'],motionMethod=item['method'],
             motionQuality=str(Path('assets')/clip['id']/'motion_wham_quality.json'),
             whamSignature=item['input_signature'])
-        # A legacy COCO-17 MP4 is not the new 26-joint sequence; use the numerical clock.
+        # Reuse only a video rendered from exactly these 26-joint numerical inputs.
         clip['poseVideo'] = ''
+        video_signature=folder/'pose_halpe26_video.json'
+        if video_signature.exists() and (folder/'pose_halpe26.mp4').is_file():
+            import hashlib
+            signature=json.loads(video_signature.read_text())
+            if signature.get('pose_sha256')==hashlib.sha256((folder/'pose_halpe26.json').read_bytes()).hexdigest():
+                clip['poseVideo']=str(Path('assets')/clip['id']/'pose_halpe26.mp4')
         from build_site_data import render_thumbnail
         render_thumbnail(payloads[0][2],folder)
         cleanup.extend(folder/name for name in ['pose.json','pose_refined.json','pose_3d.json',

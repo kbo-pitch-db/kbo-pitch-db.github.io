@@ -1,7 +1,7 @@
 /* Numeric-only 2D/3D viewer. The existing MP4 supplies the shared playback clock. */
 window.MotionViewer = (() => {
   let state = null, animation = 0, generation = 0;
-  const edges = [[0,1],[0,2],[1,3],[2,4],[5,6],[5,7],[7,9],[6,8],[8,10],[5,11],[6,12],[11,12],[11,13],[13,15],[12,14],[14,16]];
+  const edges = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,6],[5,6],[5,7],[7,9],[6,8],[8,10],[5,11],[6,12],[11,12],[11,13],[13,15],[12,14],[14,16]];
   const copy = {
     en: {view:'Motion view',raw2:'2D · original',smooth2:'2D · refined',raw3:'3D · learned',smooth3:'3D · refined',
       blend:'Correction',yaw:'Rotate',pitch:'Tilt',reset:'Reset view',
@@ -120,7 +120,7 @@ window.MotionViewer = (() => {
     s.control.querySelector('output').value = Math.round(s.blend*100)+'%';
     s.control.querySelector('.motion-orbit').hidden = !is3d;
     s.control.querySelector('.motion-3d-note').hidden = !is3d;
-    s.canvas.hidden = s.mode === 'raw2' && Boolean(s.clip.poseVideo);
+    s.canvas.hidden = false;
     s.video.classList.toggle('motion-clock', !s.canvas.hidden);
     const label = s.panel.querySelector('.video-label');
     label.querySelector('span').textContent = s.t[s.mode];

@@ -1,0 +1,7 @@
+{
+  "pose_sha256": "74b34f6d0f3e52ca971ca6a955dbf2d0048b1c106d5b479edad1f9941d178382",
+  "model": "RTMPose-m Halpe-26",
+  "frames": 139,
+  "fps": 60.0,
+  "mediaPolicy": "pose-only"
+}
