@@ -27,7 +27,7 @@
     const index = await indexResponse.json();
     const clip = (index.clips || []).find(item => item.pose && !item.example && item.frames >= 30);
     if (!clip) return;
-    const poseUrl = new URL(clip.pose, indexUrl);
+    const poseUrl = new URL(clip.poseRefined || clip.pose, indexUrl);
     if (index.packageVersion) poseUrl.searchParams.set('v', index.packageVersion);
     const poseResponse = await fetch(poseUrl);
     if (!poseResponse.ok) return;

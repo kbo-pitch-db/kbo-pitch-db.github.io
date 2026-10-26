@@ -34,7 +34,7 @@ The full migration completed on 2026-10-27: all 813 source clips / 135,741 frame
 
 `data/wham_audit.json` records the final input-hash, frame/time, joint-layout, confidence and provenance checks, including all 3,252 public numerical payloads and links to 48 optional Halpe-26 MP4s. Median refined/raw 3D acceleration is 0.360 across clips; this measures stability, not pitching accuracy. `data/wham_batch_report.json` records worker exit codes and completion counts.
 
-The 813 packaged clips include original/refined 2D and learned/refined monocular 3D. Switch views, adjust the correction percentage, and rotate 3D by dragging or using rotation/tilt sliders. Playback speed, seeking and frame stepping use a browser clock for numerical motion views. Optional MP4 files remain available as downloads. JSON/CSV export the selected coordinates and current correction blend; the MP4 download remains the original 2D skeleton. Amber joints mark short-gap interpolation; long gaps remain absent. Rendering uses fixed clip-wide bounds.
+The viewer displays only the final refined results: 2D on the left and monocular 3D on the right, including on narrow screens. One browser clock synchronizes playback, speed, seeking and frame stepping. Rotate or tilt the 3D view by dragging or using its sliders; the 2D projection stays fixed. Each panel downloads its exact final JSON/CSV independently. Amber joints mark short-gap interpolation; long gaps remain absent. Rendering uses fixed clip-wide bounds. Original/intermediate numerical assets and optional MP4s remain in the archive for reproducibility.
 
 Inspired by [OpenCap Monocular](https://github.com/utahmobl/opencap-monocular), the implementation separates learned 3D initialization from image, body and temporal constraints. WHAM supplies the learned 3D and SMPL body model; confidence-weighted acceleration smoothing, bounded interpolation, image observations, a weak-perspective scale and segment lengths refine the exported joints. Calibrated camera extrinsics, OpenSim IK, joint limits and force estimates are not implemented. Pitching accuracy has not been validated. Coordinates are model-estimated meters relative to the hips, with x right, y up and z toward the camera.
 
@@ -46,17 +46,17 @@ Inspired by [OpenCap Monocular](https://github.com/utahmobl/opencap-monocular), 
 ../.venv/bin/python scripts/render_motion_videos.py --output data --limit 48
 ```
 
-`../dataset/motion_wham.csv` indexes raw/refined Halpe-26, raw/refined WHAM and quality reports. Model SHA256 and input signatures accompany priors. Detector scores remain distinct from interpolation/outlier flags. The browser correction slider blends two computed trajectories; it does not rerun temporal optimization. Zero correction restores original coordinates. Quality reports describe support, acceleration and reprojection, not ground-truth accuracy. The earlier BlazePose experiment remains in dataset `motion.csv` and the legacy `infer_monocular.py`/`refine_motion.py` scripts; these are not the WHAM execution path.
+`../dataset/motion_wham.csv` indexes raw/refined Halpe-26, raw/refined WHAM and quality reports. Model SHA256 and input signatures accompany priors. Detector scores remain distinct from interpolation/outlier flags. The browser loads the final refined 2D/3D trajectories directly. Quality reports describe support, acceleration and reprojection, not ground-truth accuracy. The earlier BlazePose experiment remains in dataset `motion.csv` and the legacy `infer_monocular.py`/`refine_motion.py` scripts; these are not the WHAM execution path.
 
 Run `node tests/motion_viewer.test.cjs` and `python -m unittest discover -s tests -p 'test_*.py' -v` for view/export behavior and numerical invariants. Browser visual testing needs a browser-capable environment and local server.
 
-A static, bilingual (English/Korean) explorer for KBO pitching motion and 2D/3D pose estimates. Playback renders numerical keypoints on a plain background, with optional skeleton-only H.264 MP4 downloads and no broadcast images or audio. Thumbnails are rendered from the same skeletons.
+A static, bilingual (English/Korean) explorer for KBO pitching motion and 2D/3D pose estimates. The two final motion panels render numerical keypoints on a plain background and offer JSON/CSV downloads. Optional skeleton-only H.264 MP4 files remain in the data archive. Thumbnails are rendered from skeletons; no broadcast images or audio are hosted.
 
 ## Run locally
 
 Serve only this site folder, for example `python3 -m http.server 8000` from this directory, then open `http://localhost:8000`. Do not serve the parent workspace, which contains private source media and local backups.
 
-The current package contains 813 real pose sequences. All clips support numeric playback; a 48-clip subset also provides Halpe-26 skeleton MP4 downloads. Playback supports speed selection, seeking, and frame stepping. Pose JSON, CSV, and skeleton MP4 downloads remain available. Names linked automatically through Naver are not verified identities, and pose estimates are not validated biomechanical measurements.
+The current package contains 813 real pose sequences. All clips support synchronized final 2D/3D playback, speed selection, seeking, frame stepping and separate JSON/CSV downloads. A 48-clip subset also retains original Halpe-26 skeleton MP4s in the data archive. Names linked automatically through Naver are not verified identities, and pose estimates are not validated biomechanical measurements.
 
 ## Build data
 

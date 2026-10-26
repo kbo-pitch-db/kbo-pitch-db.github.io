@@ -4,7 +4,7 @@ I18N.en.poseVideo='2D pose animation';I18N.ko.poseVideo='2D 포즈 영상';I18N.
 I18N.en.profilePhoto='profile photo';I18N.ko.profilePhoto='프로필 사진';I18N.en.photoSource='Profile photo: KBO ↗';I18N.ko.photoSource='프로필 사진: KBO ↗';
 Object.assign(I18N.en,{youtubeSource:'Original on YouTube',youtubeOpen:'Open on YouTube ↗',youtubeShow:'Show source video',youtubeHide:'Hide source video',youtubeNote:'Plays on YouTube at the recorded source time. If playback is restricted, open the link above. Pose playback is controlled separately.'});
 Object.assign(I18N.ko,{youtubeSource:'YouTube 원본',youtubeOpen:'YouTube에서 열기 ↗',youtubeShow:'원본 영상 펼치기',youtubeHide:'원본 영상 접기',youtubeNote:'기록된 원본 시각에서 YouTube 영상을 재생합니다. 재생이 제한되면 위 링크를 이용하세요. 포즈 영상은 별도로 조작합니다.'});
-const $=s=>document.querySelector(s);function getSavedLanguage(){try{return localStorage.getItem('kbo-lang')==='ko'?'ko':'en'}catch(e){return'en'}}function saveLanguage(v){try{localStorage.setItem('kbo-lang',v)}catch(e){}}const app={lang:getSavedLanguage(),clips:[],filtered:[],selected:null,expanded:new Set(),profiles:{},failedPortraits:new Set(),pose:null,poseUrl:null,video:null,toastTimer:null};const tr=k=>I18N[app.lang][k]||I18N.en[k]||k;const text=(el,k)=>{if(el)el.textContent=tr(k)};const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const local=()=>location.protocol==='file:';let DATA_VERSION='';const url=p=>{if(!p)return '';const value=new URL(p,DATA_URL);if(DATA_VERSION)value.searchParams.set('v',DATA_VERSION);return value.href};
+const $=s=>document.querySelector(s);function getSavedLanguage(){try{return localStorage.getItem('kbo-lang')==='ko'?'ko':'en'}catch(e){return'en'}}function saveLanguage(v){try{localStorage.setItem('kbo-lang',v)}catch(e){}}const app={lang:getSavedLanguage(),clips:[],filtered:[],selected:null,expanded:new Set(),profiles:{},failedPortraits:new Set(),pose:null,poses:{},poseUrl:null,video:null,toastTimer:null};const tr=k=>I18N[app.lang][k]||I18N.en[k]||k;const text=(el,k)=>{if(el)el.textContent=tr(k)};const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const local=()=>location.protocol==='file:';let DATA_VERSION='';const url=p=>{if(!p)return '';const value=new URL(p,DATA_URL);if(DATA_VERSION)value.searchParams.set('v',DATA_VERSION);return value.href};
 const DATA_URL=new URL('data/clips.json',document.currentScript.src).href;
 async function init(){try{const [res,profiles]=await Promise.all([fetch(DATA_URL,{cache:'no-store'}),fetch(new URL('player_profiles.json',DATA_URL),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({}))]);app.profiles=profiles.players||{};if(!res.ok)throw Error('index');const data=await res.json();DATA_VERSION=data.packageVersion||'';app.clips=Array.isArray(data.clips)?data.clips.map(c=>({...c,video:c.mediaPolicy==='pose-only'?c.poseVideo:'',thumbnail:c.mediaPolicy==='pose-only'?c.poseThumbnail:'',overlay:'',overlayThumbnail:''})):[];if(!app.clips.length)throw Error('empty');populateFilters();filter();const counts=new Map();for(const clip of app.filtered)counts.set(groupKey(clip),(counts.get(groupKey(clip))||0)+1);const first=[...app.filtered].filter(clip=>clip.playerKnown).sort((a,b)=>(counts.get(groupKey(b))||0)-(counts.get(groupKey(a))||0)||displayPlayer(a).localeCompare(displayPlayer(b)))[0]||app.filtered[0];if(first)selectClip(first.id,{scroll:false});}catch(e){$('#clip-list').innerHTML=`<div class="empty-state"><h3>${escapeHtml(tr('badData'))}</h3><p>${local()?'Opening index.html as file may block data loading. Use python3 -m http.server 8000.':''}</p></div>`;$('#result-count').textContent='0';}}
 function bind(){$('#lang-toggle').addEventListener('click',()=>{app.lang=app.lang==='en'?'ko':'en';saveLanguage(app.lang);applyLanguage();populateFilters();renderList();if(app.selected)renderDetail(app.selected)});$('#search').addEventListener('input',filter);['team-filter','hand-filter','pitch-filter'].forEach(id=>$('#'+id).addEventListener('change',filter));$('#clear-filters').addEventListener('click',clearFilters);$('#empty-clear').addEventListener('click',clearFilters);$('#menu-btn').addEventListener('click',()=>$('.main-nav').classList.toggle('open'));document.querySelectorAll('.nav-link').forEach(a=>a.addEventListener('click',()=>$('.main-nav').classList.remove('open')));document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();$('#search').focus()}if(app.video&&e.key==='ArrowLeft'){e.preventDefault();stepFrame(-1)}if(app.video&&e.key==='ArrowRight'){e.preventDefault();stepFrame(1)}if(app.video&&e.code==='Space'&&!['INPUT','SELECT','TEXTAREA','BUTTON'].includes(document.activeElement.tagName)){e.preventDefault();togglePlayback()}})}
@@ -77,8 +77,11 @@ function renderSource(c,panel){
     }
   });
 }
-function selectClip(id,{scroll=true}={}){const c=app.clips.find(x=>x.id===id);if(!c)return;app.video?.pause();app.selected=c;app.expanded.add(groupKey(c));app.pose=null;app.poseUrl=null;renderList();renderDetail(c);if(scroll&&innerWidth<760)$('#detail-panel').scrollIntoView({behavior:'smooth',block:'start'})}
-async function renderDetail(c){window.MotionViewer?.dispose();const panel=$('#detail-panel');app.video?.pause();app.video=null;const val=(k,v)=>`<div class="meta-item" data-meta="${k}"><span class="meta-key">${escapeHtml(tr(k))}</span><span class="meta-value" title="${escapeHtml(v||'')}">${escapeHtml(v||tr('unknown'))}</span></div>`;const tags=[c.pitch&&`<span class="detail-tag accent">${escapeHtml(displayPitch(c))}</span>`,c.hand&&`<span class="detail-tag">${escapeHtml(c.hand==='R'?tr('right'):tr('left'))}</span>`,c.example&&`<span class="detail-tag">${escapeHtml(tr('example'))}</span>`].filter(Boolean).join('');panel.innerHTML=`<div class="detail-content"><div class="video-pair"><section class="video-cell"><div class="video-label"><span>${escapeHtml(tr('poseVideo'))}</span><i>2D POSE</i></div><div class="player-wrap"><video id="clip-video" playsinline preload="metadata" ${c.thumbnail?`poster="${escapeHtml(url(c.thumbnail))}"`:''} ${c.video&&!c.poseRefined?`src="${escapeHtml(url(c.video))}"`:''}></video><div class="video-fallback ${c.video?'hidden':''}" id="video-fallback"><div><span class="fallback-mark">${c.example?'✳':'⌁'}</span>${escapeHtml(c.example?'Synthetic pose preview. No real broadcast footage is included.':tr('missingVideo'))}</div></div></div></section></div><div class="player-bar"><button class="control-btn" id="back-frame" title="Previous frame">‹</button><button class="control-btn" id="play-btn" title="Play or pause">▶</button><button class="control-btn" id="next-frame" title="Next frame">›</button><input class="frame-range" id="frame-range" type="range" min="0" max="${Math.max(0,(c.frames||1)-1)}" value="0" aria-label="Frame position"><span class="time-code" id="time-code">00:00.00</span><select class="speed-select" id="speed-select" aria-label="Playback speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div><div class="detail-body"><div class="detail-title-row"><div><h3 class="detail-player">${escapeHtml(displayPlayer(c))}</h3><div class="detail-matchup">${escapeHtml(c.matchup||displayTeam(c))}${c.date?' · '+escapeHtml(c.date):''}${c.inning?' · '+escapeHtml(c.inning)+' INN':''}</div></div><span class="detail-id">${escapeHtml(c.id)}</span></div><div class="detail-tags">${tags}</div><div class="metadata-grid">${val('teamLabel',displayTeam(c))}${val('handLabel',c.hand?(c.hand==='R'?tr('right'):tr('left')):tr('notRecorded'))}${val('pitchLabel',displayPitch(c))}${val('dateLabel',c.date)}${val('inningLabel',c.inning)}${val('pitchNumberLabel',c.pitchNumber)}${val('clipDuration',c.duration?`${c.duration.toFixed?c.duration.toFixed(2):c.duration} s`:'' )}${val('fps',c.fps?`${c.fps} fps`:'')}${val('frameCount',c.frames?String(c.frames):'')}${val('source',c.source)}${val('model',c.model)}${val('coords',c.coordinate)}<div class="meta-item"><span class="meta-key">${escapeHtml(tr('poseStatus'))}</span><span class="meta-value pose-status"><i></i>${escapeHtml(c.poseStatus||tr('unknown'))}</span></div></div><div class="download-row"><span class="download-note">${escapeHtml(c.example?tr('example'):`${c.review||'unreviewed'} · ${tr('confidence')}: ${c.confidence||tr('noConfidence')}`)}</span><div class="download-actions"><button class="download-btn" id="download-json">${escapeHtml(tr('downloadJson'))}</button><button class="download-btn" id="download-csv">${escapeHtml(tr('downloadCsv'))}</button>${c.video?`<a class="download-btn primary" href="${escapeHtml(url(c.video))}" download>${escapeHtml(tr('downloadVideo'))}</a>`:''}${c.npz?`<a class="download-btn" href="${escapeHtml(url(c.npz))}" download>NPZ</a>`:''}</div></div></div></div>`;
+function selectClip(id,{scroll=true}={}){const c=app.clips.find(x=>x.id===id);if(!c)return;app.video?.pause();app.selected=c;app.expanded.add(groupKey(c));app.pose=null;app.poses={};app.poseUrl=null;renderList();renderDetail(c);if(scroll&&innerWidth<760)$('#detail-panel').scrollIntoView({behavior:'smooth',block:'start'})}
+function renderMotionPanels(c){
+  return `<div class="video-pair">${[2,3].map(dimension=>`<section class="video-cell" data-dimension="${dimension}"><div class="video-label"><span>${escapeHtml(tr(dimension===2?'final2d':'final3d'))}</span><i>${dimension===2?'HALPE-26':'WHAM'}</i></div><div class="player-wrap"><canvas class="motion-canvas" data-dimension="${dimension}" width="720" height="720" role="img" aria-label="${escapeHtml(tr(dimension===2?'final2d':'final3d'))}" hidden></canvas><div class="motion-placeholder" data-dimension="${dimension}" role="status">${escapeHtml(tr('loading'))}</div></div><div class="motion-downloads"><button class="download-btn" type="button" data-dimension="${dimension}" data-format="json" disabled aria-label="${dimension}D JSON">JSON ↓</button><button class="download-btn" type="button" data-dimension="${dimension}" data-format="csv" disabled aria-label="${dimension}D CSV">CSV ↓</button></div></section>`).join('')}</div>`;
+}
+async function renderDetail(c){window.MotionViewer?.dispose();const panel=$('#detail-panel');app.video?.pause();app.video=null;const val=(k,v)=>`<div class="meta-item" data-meta="${k}"><span class="meta-key">${escapeHtml(tr(k))}</span><span class="meta-value" title="${escapeHtml(v||'')}">${escapeHtml(v||tr('unknown'))}</span></div>`;const tags=[c.pitch&&`<span class="detail-tag accent">${escapeHtml(displayPitch(c))}</span>`,c.hand&&`<span class="detail-tag">${escapeHtml(c.hand==='R'?tr('right'):tr('left'))}</span>`,c.example&&`<span class="detail-tag">${escapeHtml(tr('example'))}</span>`].filter(Boolean).join('');panel.innerHTML=`<div class="detail-content">${renderMotionPanels(c)}<div class="player-bar"><button class="control-btn" id="back-frame" title="Previous frame">‹</button><button class="control-btn" id="play-btn" title="Play or pause">▶</button><button class="control-btn" id="next-frame" title="Next frame">›</button><input class="frame-range" id="frame-range" type="range" min="0" max="${Math.max(0,(c.frames||1)-1)}" value="0" aria-label="Frame position"><span class="time-code" id="time-code">00:00.00</span><select class="speed-select" id="speed-select" aria-label="Playback speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div><div class="detail-body"><div class="detail-title-row"><div><h3 class="detail-player">${escapeHtml(displayPlayer(c))}</h3><div class="detail-matchup">${escapeHtml(c.matchup||displayTeam(c))}${c.date?' · '+escapeHtml(c.date):''}${c.inning?' · '+escapeHtml(c.inning)+' INN':''}</div></div><span class="detail-id">${escapeHtml(c.id)}</span></div><div class="detail-tags">${tags}</div><div class="metadata-grid">${val('teamLabel',displayTeam(c))}${val('handLabel',c.hand?(c.hand==='R'?tr('right'):tr('left')):tr('notRecorded'))}${val('pitchLabel',displayPitch(c))}${val('dateLabel',c.date)}${val('inningLabel',c.inning)}${val('pitchNumberLabel',c.pitchNumber)}${val('clipDuration',c.duration?`${c.duration.toFixed?c.duration.toFixed(2):c.duration} s`:'' )}${val('fps',c.fps?`${c.fps} fps`:'')}${val('frameCount',c.frames?String(c.frames):'')}${val('source',c.source)}${val('model',c.model3d?`${c.model} / ${c.model3d}`:c.model)}${val('coords',c.pose3d?'2D: crop pixels · 3D: hip-relative model meters':c.coordinate)}<div class="meta-item"><span class="meta-key">${escapeHtml(tr('poseStatus'))}</span><span class="meta-value pose-status"><i></i>${escapeHtml(c.poseStatus||tr('unknown'))}</span></div></div><div class="download-row"><span class="download-note">${escapeHtml(c.example?tr('example'):`${c.review||'unreviewed'} · ${tr('confidence')}: ${c.confidence||tr('noConfidence')}`)}</span></div></div></div>`;
   renderSource(c,panel);
   const profile=playerProfile(c);
   if(profile){
@@ -93,61 +96,71 @@ async function renderDetail(c){window.MotionViewer?.dispose();const panel=$('#de
     panel.querySelector('.detail-tags').after(box);
     box.querySelectorAll('.related-clip').forEach(button=>button.addEventListener('click',()=>selectClip(button.dataset.relatedId)));
   }
-  const video=c.poseRefined?window.MotionViewer.createClock($('#clip-video'),c.frames,c.fps):$('#clip-video');app.video=video;
-  if(c.poseRefined)$('#video-fallback').classList.add('hidden');
-  video.addEventListener('loadedmetadata',()=>{if(video.videoWidth&&video.videoHeight)video.closest('.player-wrap').style.setProperty('--media-aspect',String(video.videoWidth/video.videoHeight));updateFrameUi()});
+  const video=window.MotionViewer.createClock(panel.querySelector('.player-wrap'),c.frames,c.fps);app.video=video;app.pose=null;app.poses={};
   video.addEventListener('timeupdate',updateFrameUi);
   video.addEventListener('play',()=>{$('#play-btn').textContent='Ⅱ'});
   const paused=()=>{$('#play-btn').textContent='▶'};
   video.addEventListener('pause',paused);video.addEventListener('ended',paused);
-  video.addEventListener('error',()=>{$('#video-fallback').classList.remove('hidden');$('#video-fallback').textContent=tr('playbackUnavailable')});
   $('#play-btn').addEventListener('click',togglePlayback);
   $('#back-frame').addEventListener('click',()=>stepFrame(-1));
   $('#next-frame').addEventListener('click',()=>stepFrame(1));
   $('#speed-select').addEventListener('change',e=>{video.playbackRate=Number(e.target.value)});
   $('#frame-range').addEventListener('input',e=>seekFrame(Number(e.target.value)));
-  $('#download-json').addEventListener('click',()=>downloadPose('json'));
-  $('#download-csv').addEventListener('click',()=>downloadPose('csv'));
+  panel.querySelectorAll('.motion-downloads button').forEach(button=>button.addEventListener('click',()=>downloadPose(button.dataset.format,Number(button.dataset.dimension))));
+  const posePath=c.poseRefined||c.pose;
+  if(posePath){
+    try{
+      const response=await fetch(url(posePath));if(!response.ok)throw Error(posePath);
+      const pose=await response.json();if(app.selected?.id!==c.id||app.video!==video)return;
+      app.pose=pose;app.poses={2:pose};app.poseUrl=posePath;
+      await window.MotionViewer.mount({clip:c,panel,lang:app.lang,url,pose2d:pose,clock:video,onPoses:poses=>{app.poses=poses;app.pose=poses[2]}});
+    }catch(e){
+      if(app.selected?.id!==c.id||app.video!==video)return;
+      showToast(tr('missingPose'));app.pose=null;app.poses={};
+      panel.querySelectorAll('.motion-placeholder').forEach(el=>{el.textContent=tr('missingPose')});
+    }
+  }else{showToast(tr('missingPose'))}
+}
 
-  if(c.pose){try{const response=await fetch(url(c.pose));if(!response.ok)throw Error();const pose=await response.json();if(app.selected?.id!==c.id||app.video!==video)return;app.pose=pose;app.poseUrl=c.pose;window.MotionViewer?.mount({clip:c,panel,lang:app.lang,url,raw:pose,clock:video,onPose:p=>{app.pose=p}});drawPose()}catch(e){if(app.selected?.id!==c.id||app.video!==video)return;showToast(tr('missingPose'));app.pose=null}}else if(c.example){try{const r=await fetch(url(c.pose));const pose=await r.json();if(app.selected?.id!==c.id||app.video!==video)return;app.pose=pose;app.poseUrl=c.pose;window.MotionViewer?.mount({clip:c,panel,lang:app.lang,url,raw:pose,clock:video,onPose:p=>{app.pose=p}});drawPose()}catch(e){}}else{showToast(tr('missingPose'))}}
 function showEmptyDetail(){window.MotionViewer?.dispose();app.video?.pause();app.video=null;const p=$('#detail-panel');p.innerHTML=`<div class="detail-empty"><div class="empty-visual"><div class="empty-video-icon">▶</div><div class="empty-cross cross-a"></div><div class="empty-cross cross-b"></div><span class="empty-coordinate">FRAME 0000</span></div><span class="detail-kicker">${escapeHtml(tr('yourWorkspace'))}</span><h3>${tr('selectClip')}</h3><p>${escapeHtml(tr('detailHint'))}</p></div>`}
 function togglePlayback(){if(!app.video)return;if(app.video.paused)app.video.play().catch(()=>showToast(tr('missingVideo')));else app.video.pause()}
 function currentFps(){return Number(app.selected?.fps)||30}function localFrame(){return Math.round((app.video?.currentTime||0)*currentFps())}function stepFrame(n){if(!app.video)return;const v=app.video,fps=currentFps();if(Number.isFinite(v.duration)&&v.duration>0)v.currentTime=Math.max(0,Math.min(v.duration,Math.min(((app.selected?.frames||1)-1)/fps,v.currentTime+n/fps)));else seekFrame(localFrame()+n)}function seekFrame(n){const v=app.video;if(!v)return;const fps=currentFps();if(Number.isFinite(v.duration)&&v.duration>0)v.currentTime=Math.max(0,Math.min(v.duration,Math.min(((app.selected?.frames||1)-1)/fps,n/fps)));$('#frame-range').value=String(n);updateFrameUi();drawPose()}function updateFrameUi(){if(!app.video)return;const n=Math.min(localFrame(),Math.max(0,(app.selected?.frames||1)-1));const range=$('#frame-range');if(range&&document.activeElement!==range)range.value=String(n);const t=app.video.currentTime||0;if($('#time-code'))$('#time-code').textContent=`${String(Math.floor(t/60)).padStart(2,'0')}:${(t%60).toFixed(2).padStart(5,'0')} · F${String(n).padStart(4,'0')}`}
 const BONES=[[0,1],[0,2],[1,3],[2,4],[5,6],[5,7],[7,9],[6,8],[8,10],[5,11],[6,12],[11,12],[11,13],[13,15],[12,14],[14,16]];function drawPose(){window.MotionViewer?.draw()}
-async function downloadPose(kind){
-  if(!app.pose){showToast(tr('filesMissing'));return}
+async function downloadPose(kind,dimension=2){
+  const pose=app.poses[dimension];
+  if(!pose){showToast(tr('filesMissing'));return}
   let blob,name;
   if(kind==='json'){
-    blob=new Blob([JSON.stringify(app.pose,null,2)],{type:'application/json'});
-    name=`${app.selected.id}-${app.pose.dimension===3?'3d':'2d'}-pose.json`;
+    blob=new Blob([JSON.stringify(pose,null,2)],{type:'application/json'});
+    name=`${app.selected.id}-${pose.dimension===3?'3d':'2d'}-final-pose.json`;
   }else{
-    const dim=app.pose.dimension===3?3:2;
+    const dim=pose.dimension===3?3:2;
     const lines=[dim===3?'clip_id,frame,source_frame,time_seconds,source_time,joint,x_model_m,y_model_m,z_model_m,visibility,interpolated,outlier':'clip_id,frame,source_frame,time_seconds,source_time,joint,x_pixels,y_pixels,confidence,interpolated,outlier'];
-    for(const f of app.pose.frames||[])(f.keypoints||[]).forEach((p,i)=>{
-      if(p&&p[0]!=null)lines.push([csv(app.selected.id),f.frame,f.source_frame??'',f.time,f.source_time??'',app.pose.joints?.[i]||`joint_${i}`,...p.slice(0,dim),p[dim]??'',f.interpolated?.[i]??false,f.outlier?.[i]??false].join(','))
+    for(const f of pose.frames||[])(f.keypoints||[]).forEach((p,i)=>{
+      if(p&&p[0]!=null)lines.push([csv(app.selected.id),f.frame,f.source_frame??'',f.time,f.source_time??'',pose.joints?.[i]||`joint_${i}`,...p.slice(0,dim),p[dim]??'',f.interpolated?.[i]??false,f.outlier?.[i]??false].join(','))
     });
     blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
-    name=`${app.selected.id}-${dim}d-pose.csv`;
+    name=`${app.selected.id}-${dim}d-final-pose.csv`;
   }
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)
 }function csv(s){return `"${String(s).replaceAll('"','""')}"`}
 function showToast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(app.toastTimer);app.toastTimer=setTimeout(()=>el.classList.remove('show'),2400)}
 Object.assign(I18N.en,{
-  heroDesc:'Explore KBO pitching motion in 2D and estimated 3D. Compare original and refined joints, adjust the correction, and download the data.',
+  heroDesc:'Watch final 2D and estimated 3D pitching motion side by side. Play, inspect and download both results.',
   collectionDesc:'Search the archive. Compare 2D motion and rotate the estimated 3D skeleton.',
-  detailHint:'Choose a clip to compare original and refined motion in 2D and 3D.',
-  guideDesc:'Each clip offers original 2D, refined 2D, and learned monocular 3D estimates. Use the correction slider to compare them. Timestamped YouTube links open the source footage.',
+  final2d:'Final 2D',final3d:'Final 3D',detailHint:'Choose a clip to watch final 2D and 3D motion together.',
+  guideDesc:'Final 2D and 3D share playback, seeking and frame stepping. Rotate the 3D view and download either result. Timestamped YouTube links open the source footage.',
   guideDisclaimer:'3D coordinates are hip-relative model estimates. Pitching accuracy, camera calibration and forces have not been validated. Missing observations remain visible as gaps.',
-  formatDesc:'JSON and CSV export the selected 2D or 3D view with source timing and interpolation flags. The MP4 download contains the original 2D skeleton.',
-  contextDesc:'Each view names its actual model and coordinate layout. Completed WHAM results use RTMPose Halpe-26 input; earlier baseline results retain their original model labels.'
+  formatDesc:'Each panel provides its final coordinates as JSON and CSV, including source timing and interpolation flags.',
+  contextDesc:'Final 2D uses RTMPose Halpe-26. Final 3D uses WHAM with hip-relative coordinates in model-estimated meters.'
 });
 Object.assign(I18N.ko,{
-  heroDesc:'KBO 투구 동작을 2D와 추정 3D로 살펴보세요. 원본과 보정 관절을 비교하고 보정 비율을 조절한 뒤 데이터를 내려받을 수 있습니다.',
+  heroDesc:'최종 2D와 추정 3D 투구 동작을 나란히 살펴보세요. 함께 재생하고 각 결과의 데이터를 내려받을 수 있습니다.',
   collectionDesc:'자료를 검색하고 2D 동작을 비교하거나 추정 3D 관절을 회전해 보세요.',
-  detailHint:'클립을 선택하면 원본과 보정 동작을 2D·3D로 비교할 수 있습니다.',
-  guideDesc:'원본 2D, 보정 2D와 단안 3D 추정치를 제공합니다. 보정 슬라이더로 적용 비율을 비교하세요. YouTube 링크에서 원본 장면도 확인할 수 있습니다.',
+  final2d:'최종 2D',final3d:'최종 3D',detailHint:'클립을 선택하면 최종 2D와 3D 동작을 동시에 볼 수 있습니다.',
+  guideDesc:'최종 2D·3D를 함께 재생·탐색하고 프레임을 이동하세요. 3D는 회전할 수 있고 각 결과를 따로 내려받을 수 있습니다. YouTube 링크에서 원본 장면도 확인할 수 있습니다.',
   guideDisclaimer:'3D는 골반 중심 상대 좌표의 모델 추정치입니다. 투구 정확도·카메라 보정·힘은 검증되지 않았습니다. 긴 관측 누락은 빈 구간으로 남깁니다.',
-  formatDesc:'JSON·CSV에는 선택한 2D·3D 좌표와 원본 시각·보간 표시가 담깁니다. MP4 다운로드는 원본 2D 관절 영상입니다.',
-  contextDesc:'각 보기에서 실제 모델과 관절 구성을 확인할 수 있습니다. WHAM 처리 결과는 RTMPose Halpe-26을 입력으로 사용하며, 이전 결과에는 기존 모델명을 표시합니다.'
+  formatDesc:'각 화면에서 최종 좌표를 JSON·CSV로 내려받을 수 있습니다. 원본 프레임·시각과 보간 표시도 포함합니다.',
+  contextDesc:'최종 2D는 RTMPose Halpe-26, 최종 3D는 WHAM을 사용합니다. 3D는 골반 중심 상대 좌표의 모델 추정 미터 단위입니다.'
 });
 bind();applyLanguage();init();
