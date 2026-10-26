@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "source": "KBO official player profiles",
+  "players": {
+    "77446": {
+      "name": "백정현",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/77446.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=77446",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "69367": {
+      "name": "김인범",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/69367.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=69367",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "51516": {
+      "name": "김진욱",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/51516.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51516",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "68902": {
+      "name": "신민혁",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/68902.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=68902",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "53996": {
+      "name": "이준호",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/53996.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=53996",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "54134": {
+      "name": "엔스",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/54134.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54134",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "65320": {
+      "name": "최원태",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/65320.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=65320",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "77637": {
+      "name": "양현종",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/77637.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=77637",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "54640": {
+      "name": "네일",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/54640.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54640",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "65056": {
+      "name": "엄상백",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/65056.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=65056",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "54664": {
+      "name": "알드레드",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/54664.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54664",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "54833": {
+      "name": "앤더슨",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/54833.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54833",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "54666": {
+      "name": "라우어",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/54666.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=54666",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "50430": {
+      "name": "홍원표",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/50430.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50430",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "50812": {
+      "name": "박시후",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/50812.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50812",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "50904": {
+      "name": "이종준",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/50904.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50904",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "51897": {
+      "name": "조병현",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/51897.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=51897",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "52060": {
+      "name": "박영현",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/52060.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52060",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "52641": {
+      "name": "황동하",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/52641.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52641",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "52701": {
+      "name": "문동주",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/52701.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52701",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    },
+    "52868": {
+      "name": "이기순",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/52868.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52868",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "verifiedAt": "2026-10-26"
+    }
+  }
+}

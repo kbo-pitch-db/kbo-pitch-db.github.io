@@ -31,3 +31,9 @@ Each pose JSON contains FPS, coordinate system, the COCO-17 joint order, and fra
 Previous packaged broadcast assets were moved outside this site to the local workspace's `videos/site_media_archive/`. Dataset originals remain local. Deploy only the current site files and `data/`; do not upload this archive or the repository's `.git` directory.
 
 These local changes do not remove media from an already published deployment or from previous Git commits. Existing public hosting and repository history must be removed separately when retiring the GitHub repository.
+
+## Player portraits
+
+The pitcher group headers use KBO's externally hosted 2024 profile portraits, matching the source clips' season. `data/player_profiles.json` maps the Naver/KBO player code to a name, portrait URL, KBO profile-page URL, image year, and verification date. The current 21 names and codes were checked against KBO player pages, and all image URLs were fetched and decoded successfully. The browser uses a portrait only when the clip's recorded name matches the entry for its player code. This confirms the profile mapping, not the automatic assignment of that identity to broadcast footage.
+
+Photos are requested directly from KBO's image CDN without copying them into the repository; the clip detail includes a KBO photo-source link. Unknown pitchers and failed image requests show a generic person icon. Individual pitch cards and the pose player retain their skeleton previews. An unavailable portrait manifest also falls back to icons. The data builder replaces only `data/assets/` and `data/clips.json`, so it preserves the portrait manifest.
