@@ -19,9 +19,24 @@ from wham_pipeline import (HALPE26,HALPE_EDGES,COCO17,coco_input,camera_coordina
     build_tracking,refine_clip,paths_for,write_index)
 from package_motion import export_pose,package
 from setup_wham import extract_body_assets
+from wham_runtime import runtime_environment
 
 
 class WhamTests(unittest.TestCase):
+    def test_bundled_cudnn_precedes_old_system_cuda(self):
+        with tempfile.TemporaryDirectory() as temp:
+            prefix=Path(temp)
+            torch_lib=prefix/'lib/python3.9/site-packages/torch/lib'
+            torch_lib.mkdir(parents=True)
+            environment=runtime_environment(prefix,{'LD_LIBRARY_PATH':'/usr/local/cuda-11.6/lib64:'})
+            self.assertEqual(environment['LD_LIBRARY_PATH'].split(':')[0],str(torch_lib))
+            self.assertIn('/usr/local/cuda-11.6/lib64',environment['LD_LIBRARY_PATH'])
+            self.assertEqual(runtime_environment(prefix,environment),environment)
+
+    def test_runtime_leaves_non_torch_environments_unchanged(self):
+        with tempfile.TemporaryDirectory() as temp:
+            self.assertEqual(runtime_environment(Path(temp),{'OTHER':'value'}),{'OTHER':'value'})
+
     def test_runtime_joint_validation_accepts_symbolic_onnx_metadata(self):
         class Pose:
             model_input_size=(192,256)

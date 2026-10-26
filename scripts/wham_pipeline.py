@@ -113,6 +113,12 @@ def check(args):
         # Actually allocate and execute on the requested GPU.
         report['cuda_smoke_sum'] = float(torch.ones(16,device=args.device).sum().item())
         report['gpu'] = torch.cuda.get_device_name(torch.device(args.device))
+        report['cudnn_version'] = torch.backends.cudnn.version()
+        # Allocation alone does not exercise cuDNN. WHAM's LSTMs do.
+        with torch.no_grad():
+            recurrent = torch.nn.LSTM(4,4,batch_first=True).to(args.device)
+            result,_ = recurrent(torch.ones(1,3,4,device=args.device))
+            report['cuda_lstm_shape'] = list(result.shape)
     except Exception as error:
         report['errors'].append('CUDA: '+str(error))
     for module in ['rtmlib','onnxruntime','smplx','joblib','yacs','einops','timm','cv2','scipy','progress','loguru']:
@@ -248,6 +254,50 @@ def load_wham(args):
     return cfg,network,extractor,model_hash,{'revision':revision,'asset_sha256':hashes}
 
 
+def batched_features(extractor,video,tracks,batch_size):
+    """Batch independent HMR2A images in float32; retain upstream crop/flip/init rules."""
+    import cv2,torch
+    from lib.models.preproc.backbone.utils import process_image
+    from lib.utils.imutils import flip_kp,flip_bbox
+    capture=cv2.VideoCapture(video)
+    width,height=int(capture.get(cv2.CAP_PROP_FRAME_WIDTH)),int(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    lookup=defaultdict(list)
+    for track_id,track in tracks.items():
+        for offset,frame in enumerate(track['frame_id']):
+            lookup[int(frame)].append((track_id,offset))
+    images=[];owners=[]
+    def flush():
+        if not images:return
+        batch=torch.from_numpy(np.stack(images)).to(extractor.device)
+        features=extractor.model(batch,encode=True).cpu()
+        for index,(track_id,offset,flipped) in enumerate(owners):
+            prefix='flipped_' if flipped else ''
+            tracks[track_id][prefix+'features'].append(features[index:index+1])
+            if offset==0:
+                extractor.predict_init(batch[index:index+1],tracks,track_id,flip_eval=flipped)
+        images.clear();owners.clear()
+    try:
+        frame=0
+        while True:
+            ok,image=capture.read()
+            if not ok:break
+            for track_id,offset in lookup.get(frame,[]):
+                track=tracks[track_id];cx,cy,scale=track['bbox'][offset]
+                patch,_=process_image(image[...,::-1],[cx,cy],scale,256,256)
+                images.append(patch);owners.append((track_id,offset,False))
+                if extractor.flip_eval:
+                    track['flipped_bbox'].append(flip_bbox(track['bbox'][offset],width,height))
+                    track['flipped_keypoints'].append(flip_kp(track['keypoints'][offset],width))
+                    images.append(np.ascontiguousarray(patch[:,:,::-1]))
+                    owners.append((track_id,offset,True))
+                if len(images)>=batch_size:flush()
+            frame+=1
+        flush()
+    finally:
+        capture.release()
+    return extractor.process(tracks)
+
+
 def infer_wham(args,row,halpe,cfg,network,extractor,model_hash,provenance):
     import torch
     import cv2
@@ -275,7 +325,10 @@ def infer_wham(args,row,halpe,cfg,network,extractor,model_hash,provenance):
         tracks = build_tracking(halpe,origin)
         if not tracks:
             raise ValueError('No supported continuous RTMPose track for WHAM: '+row['dataset_clip_id'])
-        tracks = extractor.run(video,tracks)
+        if getattr(args,'feature_batch_size',1)>1:
+            tracks = batched_features(extractor,video,tracks,args.feature_batch_size)
+        else:
+            tracks = extractor.run(video,tracks)
         for track_id,track in tracks.items():
             frame_ids = np.asarray(track['frame_id'],dtype=int)
             # Identity camera angular velocity is only a local-coordinate convention.
@@ -306,6 +359,7 @@ def infer_wham(args,row,halpe,cfg,network,extractor,model_hash,provenance):
         smpl_body_pose=body_pose,smpl_global_orient=root_pose,smpl_betas=shape,
         score_semantics='2D RTMPose confidence; not a calibrated 3D confidence',
         provenance=json.dumps(provenance,sort_keys=True),method=VERSION,
+        inference_device=args.device,feature_batch_size=getattr(args,'feature_batch_size',1),
         coordinate_system='hip-relative model meters; x right, y up, z toward camera')
     atomic_npz(target,**values)
     return values
@@ -343,8 +397,8 @@ def refine_clip(args,row,halpe,prior):
         input_signature=str(prior['input_signature'])+f':{args.strength}:{args.max_gap}')
 
 
-def write_index(dataset,record):
-    index = dataset/'motion_wham.csv'
+def write_index(dataset,record,index_name='motion_wham.csv'):
+    index = dataset/index_name
     records = {}
     if index.exists():
         with index.open() as stream:
@@ -370,6 +424,11 @@ def main():
     parser.add_argument('--check',action='store_true')
     parser.add_argument('--publish',action='store_true')
     parser.add_argument('--deploy',action='store_true')
+    parser.add_argument('--num-shards',type=int,default=1)
+    parser.add_argument('--shard-index',type=int,default=0)
+    parser.add_argument('--continue-on-error',action='store_true')
+    parser.add_argument('--threads',type=int,default=4)
+    parser.add_argument('--feature-batch-size',type=int,default=1)
     args = parser.parse_args()
     for key in ['dataset','wham_root','pose_model']:
         setattr(args,key,getattr(args,key).resolve())
@@ -379,8 +438,18 @@ def main():
         parser.error('this pipeline requires a CUDA device, e.g. cuda:0')
     if args.deploy and not args.publish:
         parser.error('--deploy requires --publish')
+    if args.num_shards<1 or not 0<=args.shard_index<args.num_shards:
+        parser.error('invalid shard index/count')
+    if args.feature_batch_size<1:
+        parser.error('feature batch size must be positive')
+    if args.num_shards>1 and (args.publish or args.deploy):
+        parser.error('sharded workers write private indexes; the parent publishes')
+    import torch,cv2
+    torch.set_num_threads(args.threads)
+    cv2.setNumThreads(1)
     report = check(args)
-    atomic_json(args.dataset/'wham_preflight.json',report)
+    suffix = f'.worker{args.shard_index}' if args.num_shards>1 else ''
+    atomic_json(args.dataset/f'wham_preflight{suffix}.json',report)
     print(json.dumps(report,indent=2),flush=True)
     if report['errors']:
         return 2
@@ -398,11 +467,24 @@ def main():
         rows = list(csv.DictReader(stream))
     if args.limit:
         rows = rows[:args.limit]
+    rows = [row for index,row in enumerate(rows) if index%args.num_shards==args.shard_index]
+    failures = []
     for i,row in enumerate(rows,1):
-        halpe = infer_halpe(args,row,pose_model,pose_hash)
-        prior = infer_wham(args,row,halpe,cfg,network,extractor,model_hash,provenance)
-        record = refine_clip(args,row,halpe,prior)
-        write_index(args.dataset,record)
+        try:
+            halpe = infer_halpe(args,row,pose_model,pose_hash)
+            prior = infer_wham(args,row,halpe,cfg,network,extractor,model_hash,provenance)
+            record = refine_clip(args,row,halpe,prior)
+            write_index(args.dataset,record,f'motion_wham{suffix}.csv')
+        except Exception as error:
+            if not args.continue_on_error:
+                raise
+            import traceback
+            failures.append({'dataset_clip_id':row['dataset_clip_id'],'error':str(error),
+                             'traceback':traceback.format_exc()})
+            atomic_json(args.dataset/f'wham_failures{suffix}.json',failures)
+            print(f'WHAM FAILED {i}/{len(rows)} {row["dataset_clip_id"]}: {error}',flush=True)
+            torch.cuda.empty_cache()
+            continue
         print(f'WHAM {i}/{len(rows)} {row["dataset_clip_id"]} {record["pose_3d_status"]}',flush=True)
         if args.publish and (i%10==0 or i==len(rows)):
             from package_motion import package
@@ -416,8 +498,10 @@ def main():
         if changes.returncode:
             subprocess.run(['git','commit','-q','-m','Publish WHAM and RTMPose Halpe-26 motion results'],cwd=repository,check=True)
         subprocess.run(['git','push','origin','main'],cwd=repository,check=True)
-    return 0
+    return int(bool(failures))
 
 
 if __name__=='__main__':
+    from wham_runtime import ensure_runtime
+    ensure_runtime()
     raise SystemExit(main())
