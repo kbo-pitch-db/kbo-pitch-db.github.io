@@ -81,6 +81,7 @@ def package_wham(dataset, output):
                 if str(halpe['source_pose_sha256'])!=raw_hash:
                     raise ValueError('Stale Halpe inputs; rerun WHAM pipeline: '+clip['id'])
         expected_pose = str(Path('assets')/clip['id']/'pose_halpe26.json')
+        clip['poseFile'] = 'pose_halpe26.json'
         if (clip.get('whamSignature') == item['input_signature'] and clip.get('pose')==expected_pose
                 and clip.get('pose3dBackend')=='wham'
                 and all((output/clip[field]).is_file() for field in ['pose','poseRefined','pose3d','pose3dRaw'])):

@@ -30,7 +30,9 @@ The adapter follows the official WHAM inference and flip-merging interfaces and 
 
 ## 2D / 3D motion comparison
 
-The archive contains 813 source clips / 135,741 frames. `data/wham_progress.json` records completed WHAM migration, and `data/motion_summary.json` describes the active public models and tracking/reprojection status. All remain unreviewed. `data/wham_audit.json`, when present, contains the final numerical audit.
+The full migration completed on 2026-10-27: all 813 source clips / 135,741 frames use RTMPose-m Halpe-26 and WHAM. Both RTX 3090 workers exited successfully, with no failed or incomplete clips. `data/wham_progress.json` records 813 completed and zero remaining baseline clips; `data/motion_summary.json` describes the active models and tracking/reprojection status. All remain unreviewed.
+
+`data/wham_audit.json` records the final input-hash, frame/time, joint-layout, confidence and provenance checks, including all 3,252 public numerical payloads and links to 48 optional Halpe-26 MP4s. Median refined/raw 3D acceleration is 0.360 across clips; this measures stability, not pitching accuracy. `data/wham_batch_report.json` records worker exit codes and completion counts.
 
 The 813 packaged clips include original/refined 2D and learned/refined monocular 3D. Switch views, adjust the correction percentage, and rotate 3D by dragging or using rotation/tilt sliders. Playback speed, seeking and frame stepping use a browser clock for numerical motion views. Optional MP4 files remain available as downloads. JSON/CSV export the selected coordinates and current correction blend; the MP4 download remains the original 2D skeleton. Amber joints mark short-gap interpolation; long gaps remain absent. Rendering uses fixed clip-wide bounds.
 
@@ -38,7 +40,7 @@ Inspired by [OpenCap Monocular](https://github.com/utahmobl/opencap-monocular), 
 
 ```bash
 # Validate actual WHAM assets against original source frames, times and hashes.
-../.wham-env/bin/python scripts/audit_wham.py --dataset ../dataset --require-complete
+../.wham-env/bin/python scripts/audit_wham.py --dataset ../dataset --public data --require-complete
 # Package completed WHAM clips, or add optional skeleton MP4 downloads.
 ../.venv/bin/python scripts/package_motion.py --dataset ../dataset --output data --backend wham
 ../.venv/bin/python scripts/render_motion_videos.py --output data --limit 48

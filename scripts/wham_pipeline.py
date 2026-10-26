@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """RTMPose Halpe-26 -> official WHAM -> temporal refinement -> numeric publication.
 
-Run in a CUDA-enabled server shell using setup_wham.sh. Never falls back to a
+Run in a CUDA-enabled server shell using setup_wham.py. Never falls back to a
 different 3D model. WHAM source/weights and licensed SMPL assets stay outside
 the public repository. Camera-relative output is used; SLAM is not assumed.
 """

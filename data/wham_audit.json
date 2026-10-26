@@ -1,0 +1,38 @@
+{
+  "completed_clips": 813,
+  "total_clips": 813,
+  "frames": 135741,
+  "status_counts": {
+    "available": 813
+  },
+  "inference_devices": {
+    "GPU smoke/early run": 124,
+    "cuda:1": 345,
+    "cuda:0": 344
+  },
+  "median_supported_3d_joint_ratio": 1.0,
+  "median_3d_acceleration_ratio_refined_to_raw": 0.3599103408546025,
+  "median_root_relative_reprojection_px": 13.399650573730469,
+  "checks": [
+    "raw input hashes",
+    "26-joint 2D / 17-joint 3D shapes",
+    "source frame/time equality",
+    "finite supported joints",
+    "unchanged detector confidence",
+    "hip-centered 3D",
+    "WHAM provenance"
+  ],
+  "interpretation": "Tracking/stability diagnostics only; no pitching ground-truth accuracy validation.",
+  "public": {
+    "clips": 813,
+    "numerical_payloads": 3252,
+    "optional_mp4s": 48,
+    "checks": [
+      "asset links",
+      "model/layout metadata",
+      "source frame/time equality",
+      "finite supported JSON joints",
+      "progress counts"
+    ]
+  }
+}

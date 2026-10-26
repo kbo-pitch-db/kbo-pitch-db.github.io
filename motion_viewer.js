@@ -1,4 +1,4 @@
-/* Numeric-only 2D/3D viewer. The existing MP4 supplies the shared playback clock. */
+/* Numeric-only 2D/3D viewer with a shared browser clock and optional media clock. */
 window.MotionViewer = (() => {
   let state = null, animation = 0, generation = 0;
   const edges = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,6],[5,6],[5,7],[7,9],[6,8],[8,10],[5,11],[6,12],[11,12],[11,13],[13,15],[12,14],[14,16]];

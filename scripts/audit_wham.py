@@ -9,7 +9,51 @@ from pathlib import Path
 import numpy as np
 
 
-def audit(dataset, require_complete=False):
+def audit_public(output, dataset, clips, ids, require_complete):
+    index=json.loads((output/'clips.json').read_text())
+    packaged={c['id']:c for c in index['clips']}
+    if set(packaged)!=set(clips):
+        raise ValueError('Public and dataset clip IDs differ')
+    published={c['id'] for c in index['clips'] if c.get('pose3dBackend')=='wham'}
+    if not published<=ids or (require_complete and published!=ids):
+        raise ValueError('Public WHAM migration differs from dataset')
+    payloads=0;videos=0
+    for cid in sorted(published):
+        clip=packaged[cid]
+        if clip['mediaPolicy']!='pose-only' or clip['model3d']!='WHAM':
+            raise ValueError('Incorrect public model/media metadata: '+cid)
+        for field in ('poseThumbnail','motionQuality','poseVideo'):
+            if clip.get(field) and not (output/clip[field]).is_file():
+                raise ValueError('Missing public file: '+clip[field])
+        videos+=bool(clip.get('poseVideo'))
+        with np.load(dataset/clips[cid]['pose_2d'],allow_pickle=False) as raw:
+            source_frames=raw['frame_index'].copy();source_times=raw['source_time'].copy()
+        if clip['frames']!=len(source_frames):
+            raise ValueError('Public clip frame count differs: '+cid)
+        for field,dimension,joints in [('pose',2,26),('poseRefined',2,26),('pose3dRaw',3,17),('pose3d',3,17)]:
+            data=json.loads((output/clip[field]).read_text())
+            if data['dimension']!=dimension or len(data['joints'])!=joints or len(data['frames'])!=clip['frames']:
+                raise ValueError('Public payload layout differs: '+cid)
+            np.testing.assert_array_equal([f['source_frame'] for f in data['frames']],source_frames)
+            np.testing.assert_allclose([f['source_time'] for f in data['frames']],source_times,rtol=0,atol=5.1e-7)
+            for f in data['frames']:
+                if len(f['keypoints'])!=joints or len(f['interpolated'])!=joints or len(f['outlier'])!=joints:
+                    raise ValueError('Public frame layout differs: '+cid)
+                if any(p is not None and (len(p)!=dimension+1 or not all(v is not None and np.isfinite(v) for v in p))
+                       for p in f['keypoints']):
+                    raise ValueError('Invalid supported public joint: '+cid)
+            expected='WHAM' if dimension==3 else 'RTMPose-m Halpe-26'
+            if not data['model'].startswith(expected):
+                raise ValueError('Incorrect public model: '+cid)
+            payloads+=1
+    progress=json.loads((output/'wham_progress.json').read_text())
+    if progress['completed_wham']!=len(published) or progress['remaining_baseline']!=len(packaged)-len(published):
+        raise ValueError('Public progress counts differ')
+    return {'clips':len(published),'numerical_payloads':payloads,'optional_mp4s':videos,
+            'checks':['asset links','model/layout metadata','source frame/time equality','finite supported JSON joints','progress counts']}
+
+
+def audit(dataset, require_complete=False, public=None):
     with (dataset/'clips.csv').open() as stream:
         clips={r['dataset_clip_id']:r for r in csv.DictReader(stream)}
     with (dataset/'motion_wham.csv').open() as stream:
@@ -67,6 +111,8 @@ def audit(dataset, require_complete=False):
         'checks':['raw input hashes','26-joint 2D / 17-joint 3D shapes','source frame/time equality',
                   'finite supported joints','unchanged detector confidence','hip-centered 3D','WHAM provenance'],
         'interpretation':'Tracking/stability diagnostics only; no pitching ground-truth accuracy validation.'}
+    if public is not None:
+        report['public']=audit_public(public,dataset,clips,ids,require_complete)
     temporary=dataset/'wham_audit.tmp.json'
     temporary.write_text(json.dumps(report,indent=2,allow_nan=False))
     temporary.replace(dataset/'wham_audit.json')
@@ -78,5 +124,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--dataset',type=Path,default=Path('../dataset'))
     parser.add_argument('--require-complete',action='store_true')
+    parser.add_argument('--public',type=Path,help='Also audit the generated public data directory')
     args=parser.parse_args()
-    audit(args.dataset,args.require_complete)
+    audit(args.dataset,args.require_complete,args.public)
