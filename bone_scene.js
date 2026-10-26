@@ -1,7 +1,7 @@
 /* Procedural bone illustration driven by inferred SMPL joint centers.
  * Geometry is illustrative; it adds no measured anatomy or OpenSim simulation.
  */
-import * as THREE from './vendor/three.module.min.js';
+import * as THREE from './third_party/three.module.min.js';
 
 const V=(p)=>new THREE.Vector3(...p);
 const up=new THREE.Vector3(0,1,0);

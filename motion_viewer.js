@@ -85,7 +85,7 @@ window.MotionViewer = (() => {
       }
       const view3={data:pose3d,canvas:panel.querySelector('.motion-canvas[data-dimension="3"]')};
       try{
-        const module=window.BoneScene || await import('./bone_scene.js?v=20261027-scene1');
+        const module=window.BoneScene || await import('./bone_scene.js?v=20261027-scene2');
         if(generation!==ticket || !panel.isConnected)return;
         view3.mesh=module.createBoneScene(view3.canvas,pose3d);
       }catch(error){
