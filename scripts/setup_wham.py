@@ -12,6 +12,9 @@ import urllib.request
 import zipfile
 
 POSE_URL = 'https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-m_simcc-body7_pt-body7-halpe26_700e-256x192-4d3e73dd_20230605.zip'
+# WHAM uses Python 3.9 here. RTMLib 0.0.16 requires Python >=3.10;
+# 0.0.15 supports Python >=3.7 and the same RTMPose/Halpe-26 API.
+RTMLIB_VERSION = '0.0.15'
 
 
 def run(arguments, **kwargs):
@@ -72,8 +75,9 @@ def main():
             'matplotlib==3.7.5','munkres','tensorboard','omegaconf==2.3.0',
             'pytorch-lightning==2.1.3','torchmetrics==1.3.2'])
         # RTMLib can use onnxruntime-gpu; avoid installing a competing CPU ORT/OpenCV wheel.
-        run([python,'-m','pip','install','rtmlib==0.0.16','--no-deps'])
-        marker.write_text(json.dumps({'python':'3.9','torch':'2.1.2+cu118','version':1}))
+        run([python,'-m','pip','install','rtmlib=='+RTMLIB_VERSION,'--no-deps'])
+        run([python,'-c','from rtmlib import RTMPose; print("RTMLib RTMPose import OK")'])
+        marker.write_text(json.dumps({'python':'3.9','torch':'2.1.2+cu118','rtmlib':RTMLIB_VERSION,'version':1}))
     # The CUDA 11 libraries installed above must be visible to ONNX Runtime as well as torch.
     libraries = list((environment/'lib/python3.9/site-packages/nvidia').glob('*/lib'))
     os.environ['LD_LIBRARY_PATH'] = ':'.join(map(str,libraries))+':'+os.environ.get('LD_LIBRARY_PATH','')
