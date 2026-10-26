@@ -43,7 +43,7 @@ async function renderDetail(c){const panel=$('#detail-panel');app.video?.pause()
     box.querySelectorAll('.related-clip').forEach(button=>button.addEventListener('click',()=>selectClip(button.dataset.relatedId)));
   }
   const video=$('#clip-video');app.video=video;
-  video.addEventListener('loadedmetadata',()=>{if(video.videoWidth&&video.videoHeight)video.closest('.player-wrap').style.setProperty('--media-ratio',`${video.videoWidth} / ${video.videoHeight}`);updateFrameUi()});
+  video.addEventListener('loadedmetadata',()=>{if(video.videoWidth&&video.videoHeight)video.closest('.player-wrap').style.setProperty('--media-aspect',String(video.videoWidth/video.videoHeight));updateFrameUi()});
   video.addEventListener('timeupdate',updateFrameUi);
   video.addEventListener('play',()=>{$('#play-btn').textContent='Ⅱ'});
   const paused=()=>{$('#play-btn').textContent='▶'};

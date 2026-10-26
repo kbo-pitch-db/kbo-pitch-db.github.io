@@ -7,11 +7,11 @@
 .video-pair{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:10px;background:#f6f8f4}
 .video-label{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:0 0 6px;color:#3e4c42;font:600 10px var(--sans)}
 .video-label i{color:#98a39b;font:7px var(--mono);font-style:normal;letter-spacing:.06em}
-/* Bound the stage by viewport height; contain keeps every source ratio intact. */
-.player-wrap{aspect-ratio:auto;width:100%;height:clamp(180px,42vh,360px);height:clamp(180px,42svh,360px);max-height:none;background:#14201b;position:relative;overflow:hidden}
-.player-wrap video{width:100%;height:100%;object-fit:contain;display:block;background:#14201b}
+/* Scale both dimensions together; the media cannot expand its grid track. */
+.player-wrap{--player-max-height:min(42vh,360px);--player-max-height:min(42svh,360px);aspect-ratio:var(--media-aspect,1);width:min(100%,calc(var(--player-max-height) * var(--media-aspect,1)));height:auto;max-height:none;min-width:0;min-height:0;margin-inline:auto;background:#14201b;position:relative;overflow:hidden}
+.player-wrap video{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;display:block;background:#14201b}
 .video-cell.hidden{display:none}
-@media(max-width:760px){.video-pair{gap:6px;padding:7px}.video-label{font-size:9px}.video-label i{font-size:6px}.player-wrap{height:min(calc(100vw - 56px),48vh,340px);height:min(calc(100vw - 56px),48svh,340px);max-height:none}}
+@media(max-width:760px){.video-pair{gap:6px;padding:7px}.video-label{font-size:9px}.video-label i{font-size:6px}.player-wrap{--player-max-height:min(48vh,340px);--player-max-height:min(48svh,340px)}}
 
 /* The library keeps player histories inside a bounded, independently scrolling pane. */
 .clip-list-wrap{max-height:min(72vh,760px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding-right:5px;scrollbar-color:#bfd5ad #f0f4eb}
