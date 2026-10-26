@@ -1,5 +1,27 @@
 # KBO Pitch Lab
 
+## Run WHAM + RTMPose Halpe-26 on the server
+
+Run these commands in the server's normal SSH terminal, where `nvidia-smi` and outbound downloads work. The restricted agent execution session cannot access the NVIDIA device nodes or external downloads. The runner requires actual CUDA execution and WHAM checkpoints; it does not substitute another 3D model.
+
+```bash
+cd /home/eis/Workspace/Kichang/kbo-pitchers
+# Install a separate .wham-env, download official models, then process one clip.
+bash kbo-pitch-db.github.io/scripts/run_wham.sh --limit 1
+# Resume and process the complete dataset, then commit numeric assets and push main.
+bash kbo-pitch-db.github.io/scripts/run_wham.sh --deploy
+```
+
+The script clones the official [WHAM repository](https://github.com/yohanshin/WHAM) into `external/WHAM`, downloads its BEDLAM/3DPW checkpoint and HMR2A image-feature checkpoint, and obtains the official RTMPose-m Halpe-26 ONNX model. It reuses the existing licensed neutral SMPL file at `~/.cache/4DHumans/data/smpl/SMPL_NEUTRAL.pkl`. Pass `--smpl-neutral /path/to/SMPL_NEUTRAL.pkl` if the existing model is elsewhere. Models, environments and meshes stay outside this public repository.
+
+The first run installs dependencies; subsequent runs resume cached results. Logs are in `dataset/wham_run.log`, preflight diagnostics in `dataset/wham_preflight.json`, and completed clip records in `dataset/motion_wham.csv`. `--prepare-only` installs and checks the environment without processing clips. `--device cuda:1` selects the second GPU. The processing is sequential on the selected GPU; run one owner of `motion_wham.csv` at a time.
+
+The 2D model really predicts all 26 landmarks, including head, neck, hip, toes and heels. Existing pitcher boxes select the same person. Its first 17 joints feed the official WHAM feature encoder and recurrent/SMPL network, with flip evaluation. WHAM state resets at identity changes and frame gaps. Only camera-relative joints are exported; zero camera angular velocity does not establish a calibrated world trajectory. The learned WHAM 3D joints and SMPL pose/shape parameters are cached separately from the older baseline. The displayed 3D confidence is inherited 2D RTMPose confidence, not a calibrated 3D score.
+
+Only successfully inferred, aligned clips are switched to Halpe-26 2D and WHAM 3D in the public index. Unprocessed clips retain their actual previous model labels. `data/wham_progress.json` counts the real completed migration, and `data/motion_summary.json` describes active public models. Superseded public numerical copies/MP4s are removed after switching a clip; baseline dataset NPZs and Git history remain intact. This avoids doubling the deployment tree. The new 26-joint playback uses the browser clock instead of the old 17-joint MP4. Per-view JSON/CSV exports preserve the actual 26-joint or 17-joint layout.
+
+The adapter follows the official WHAM inference and flip-merging interfaces and validates checkpoint parameter coverage, so missing weights cannot silently produce randomly initialized results. Unit tests use explicitly synthetic temporary fixtures to check mapping, tracking boundaries and publication; they are not a substitute for the first real GPU smoke run above.
+
 ## 2D / 3D motion comparison
 
 All 813 clips / 135,741 frames completed inference and alignment checks. Tracking/reprojection heuristics mark 702 clips `available` and 111 `limited`; all remain unreviewed. Aggregate diagnostics are in `data/motion_summary.json`.

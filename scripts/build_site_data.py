@@ -88,7 +88,7 @@ def render_thumbnail(pose, target):
     frame = pose['frames'][min(len(pose['frames'])-1,round(.8*pose['fps']))]
     points = [tuple(np.rint((np.array(p[:2])-center)*scale+90).astype(int)) if valid(p) else None for p in frame['keypoints']]
     picture = np.full((180,180,3),(27,32,20),np.uint8)
-    for a,b in BONES:
+    for a,b in pose.get('edges',BONES):
         if points[a] and points[b]:cv2.line(picture,points[a],points[b],(104,240,180),2,cv2.LINE_AA)
     for point in points:
         if point:cv2.circle(picture,point,2,(230,250,230),-1,cv2.LINE_AA)

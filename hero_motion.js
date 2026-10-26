@@ -32,6 +32,9 @@
     const poseResponse = await fetch(poseUrl);
     if (!poseResponse.ok) return;
     const pose = await poseResponse.json();
+    const skeletonEdges = pose.edges || edges;
+    const jointCount = document.querySelector('.art-tag.tag-left span');
+    if (jointCount) jointCount.textContent = String((pose.joints || []).length || 17);
     const frames = (pose.frames || []).slice(0, 240);
     const points = frames.flatMap(frame => (frame.keypoints || []).filter(valid));
     if (frames.length < 2 || points.length < 30) return;
@@ -50,7 +53,7 @@
       const frame = frames[index];
       const keypoints = frame.keypoints || [];
       const mapped = keypoints.map(point => valid(point) ? map(point) : null);
-      bones.innerHTML = edges.filter(([a, b]) => mapped[a] && mapped[b]).map(([a, b]) =>
+      bones.innerHTML = skeletonEdges.filter(([a, b]) => mapped[a] && mapped[b]).map(([a, b]) =>
         `<path d="M${mapped[a][0].toFixed(1)} ${mapped[a][1].toFixed(1)}L${mapped[b][0].toFixed(1)} ${mapped[b][1].toFixed(1)}"/>`).join('');
       joints.innerHTML = mapped.filter(Boolean).map(([x, y]) =>
         `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5"/>`).join('');

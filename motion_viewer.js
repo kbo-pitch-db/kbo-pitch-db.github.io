@@ -166,7 +166,8 @@ window.MotionViewer = (() => {
         const p=project(axis);ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(...origin.slice(0,2));ctx.lineTo(...p.slice(0,2));ctx.stroke();ctx.fillStyle=color;ctx.font='16px sans-serif';ctx.fillText(name,p[0]+6,p[1]);
       }
     }
-    const ordered=edges.filter(([a,b])=>points[a]&&points[b]).sort(([a,b],[c,d])=>(points[a][2]+points[b][2])-(points[c][2]+points[d][2]));
+    const skeleton=s.active.edges || edges;
+    const ordered=skeleton.filter(([a,b])=>points[a]&&points[b]).sort(([a,b],[c,d])=>(points[a][2]+points[b][2])-(points[c][2]+points[d][2]));
     ctx.lineWidth=5;ctx.lineCap='round';
     for(const [a,b] of ordered){
       ctx.strokeStyle=a%2===1&&a>=5?'#b4f068':'#77cde0';

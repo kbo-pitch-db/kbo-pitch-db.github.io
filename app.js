@@ -139,7 +139,7 @@ Object.assign(I18N.en,{
   guideDesc:'Each clip offers original 2D, refined 2D, and learned monocular 3D estimates. Use the correction slider to compare them. Timestamped YouTube links open the source footage.',
   guideDisclaimer:'3D coordinates are hip-relative model estimates. Pitching accuracy, camera calibration and forces have not been validated. Missing observations remain visible as gaps.',
   formatDesc:'JSON and CSV export the selected 2D or 3D view with source timing and interpolation flags. The MP4 download contains the original 2D skeleton.',
-  contextDesc:'The 3D model is MediaPipe BlazePose GHUM. Refinement uses confidence, temporal continuity, 2D observations and segment lengths, inspired by the OpenCap Monocular workflow.'
+  contextDesc:'Each view names its actual model and coordinate layout. Completed WHAM results use RTMPose Halpe-26 input; earlier baseline results retain their original model labels.'
 });
 Object.assign(I18N.ko,{
   heroDesc:'KBO 투구 동작을 2D와 추정 3D로 살펴보세요. 원본과 보정 관절을 비교하고 보정 비율을 조절한 뒤 데이터를 내려받을 수 있습니다.',
@@ -148,6 +148,6 @@ Object.assign(I18N.ko,{
   guideDesc:'원본 2D, 보정 2D와 단안 3D 추정치를 제공합니다. 보정 슬라이더로 적용 비율을 비교하세요. YouTube 링크에서 원본 장면도 확인할 수 있습니다.',
   guideDisclaimer:'3D는 골반 중심 상대 좌표의 모델 추정치입니다. 투구 정확도·카메라 보정·힘은 검증되지 않았습니다. 긴 관측 누락은 빈 구간으로 남깁니다.',
   formatDesc:'JSON·CSV에는 선택한 2D·3D 좌표와 원본 시각·보간 표시가 담깁니다. MP4 다운로드는 원본 2D 관절 영상입니다.',
-  contextDesc:'3D 모델은 MediaPipe BlazePose GHUM입니다. OpenCap Monocular 접근을 참고해 신뢰도·시간 연속성·2D 관측·관절 길이로 보정합니다.'
+  contextDesc:'각 보기에서 실제 모델과 관절 구성을 확인할 수 있습니다. WHAM 처리 결과는 RTMPose Halpe-26을 입력으로 사용하며, 이전 결과에는 기존 모델명을 표시합니다.'
 });
 bind();applyLanguage();init();

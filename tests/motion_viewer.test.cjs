@@ -69,5 +69,19 @@ vm.runInContext(fs.readFileSync(path.join(root,'motion_viewer.js'),'utf8'),conte
   controls[before].querySelector('.motion-mode').event('change','raw2');
   assert.equal(controls[before+1].hidden,false,'numeric-only original 2D renders on canvas');
   context.window.MotionViewer.dispose();
+  const halpeNames=['head','neck','hip','left_big_toe','right_big_toe','left_small_toe','right_small_toe','left_heel','right_heel'];
+  const halpe={...raw,model:'RTMPose Halpe-26 synthetic UI fixture',joints:[...raw.joints,...halpeNames],
+    edges:[[5,7],[7,9],[15,20],[15,22],[15,24],[16,21],[16,23],[16,25]],
+    frames:raw.frames.map(f=>({...f,keypoints:[...f.keypoints,...halpeNames.map((_,i)=>[100+i,300+i,.9])]}))};
+  context.fetch=async()=>({ok:true,json:async()=>halpe});
+  const halpeClip={...clip,poseVideo:'',pose3d:undefined,pose3dRaw:undefined,poseRefined:'synthetic-halpe-fixture'};
+  const halpeBefore=controls.length;
+  await context.window.MotionViewer.mount({clip:halpeClip,panel,lang:'en',url:p=>p,raw:halpe,clock,onPose:p=>{active=p;}});
+  assert.equal(active.joints.length,26);
+  assert.equal(active.frames[0].keypoints.length,26);
+  assert.equal(active.edges.at(-1)[1],25);
+  controls[halpeBefore].querySelector('.motion-mode').event('change','raw2');
+  context.window.MotionViewer.draw();
+  context.window.MotionViewer.dispose();
   console.log('PASS: view modes, shared frames, 3D export, correction endpoints, rotation and numeric playback clock');
 })().catch(e=>{console.error(e);process.exitCode=1});
