@@ -91,6 +91,8 @@ def package_wham(dataset, output):
             ('pose3d',item['pose_3d'],'pose_wham.json',3,False),
             ('pose3dRaw',item['prior_3d'],'pose_wham_raw.json',3,True)]
         # Validate all numerical payloads before switching this clip in the public index.
+        clip.pop('sceneFrame',None)
+        clip.pop('sceneSignature',None)
         payloads = []
         for field,source,name,dimension,raw in fields:
             data = export_pose(dataset/source,row,dimension,clip['fps'],raw)
@@ -156,6 +158,9 @@ def package_wham(dataset, output):
         'status_counts':dict(Counter(c.get('pose3dStatus','unknown') for c in index['clips'])),
         'interpretation':'Active public clip models. All are unreviewed monocular estimates; no pitching ground-truth accuracy validation.'},indent=2))
     print('Packaged WHAM:',index['packageStats']['clipsWithWham'],'/',len(index['clips']))
+    if (dataset/'motion_wham_scene.csv').exists():
+        from package_scene import package_scene
+        package_scene(dataset,output)
 
 
 def package(dataset, output, backend='auto'):

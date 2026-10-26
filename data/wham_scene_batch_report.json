@@ -1,0 +1,38 @@
+{
+  "completed": 813,
+  "total": 813,
+  "worker_exit_codes": [
+    0,
+    0
+  ],
+  "uncompleted_ids": [],
+  "joint_fit_accepted": 813,
+  "reused_successful_fits": 493,
+  "retried_ids": [
+    "0b70417b94ab_c0013",
+    "3ef5720dccec_c0021",
+    "4e09dd724a8c_c0016",
+    "dd2c4908dfa7_c0024"
+  ],
+  "retry_steps": 360,
+  "retry_exit_code": 0,
+  "retry_history": [
+    {
+      "steps": 360,
+      "ids": [
+        "0b70417b94ab_c0013",
+        "3ef5720dccec_c0021",
+        "4e09dd724a8c_c0016",
+        "dd2c4908dfa7_c0024"
+      ],
+      "exit_code": 0
+    },
+    {
+      "steps": 720,
+      "ids": [
+        "3ef5720dccec_c0021"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

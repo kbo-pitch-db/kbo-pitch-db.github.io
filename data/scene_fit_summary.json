@@ -1,0 +1,10 @@
+{
+  "completed_clips": 813,
+  "total_clips": 813,
+  "joint_fit_accepted": 813,
+  "status_counts": {
+    "available": 813
+  },
+  "coordinate_system": "One inferred support frame per clip; no per-frame recentering",
+  "interpretation": "Camera, ground and contacts are inferred. No measured stride accuracy or surveyed world coordinates."
+}

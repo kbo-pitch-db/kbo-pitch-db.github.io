@@ -5,15 +5,17 @@ window.MotionViewer = (() => {
   const copy = {
     en: {view2:'Final 2D',view3:'Final 3D',yaw:'3D rotation',pitch:'Tilt',reset:'Reset view',
       note:'3D depth and scale are monocular estimates. Hip-relative coordinates; pitching accuracy has not been validated.',
-      gap:'No supported joints in this frame',limited:'Limited tracking',ready:'3D estimate available',
+      gap:'No supported joints in this frame',limited:'Limited tracking',ready:'3D estimate available',scene:'Fixed clip frame · inferred floor',
       load:'Motion data could not be loaded.', unavailable:'3D data unavailable',method:'Method & quality',interpolated:'Amber = interpolated joint'},
     ko: {view2:'최종 2D',view3:'최종 3D',yaw:'3D 회전',pitch:'기울기',reset:'시점 초기화',
       note:'3D 깊이와 크기는 단안 추정치입니다. 골반 중심 상대 좌표이며 투구 정확도는 검증되지 않았습니다.',
-      gap:'이 프레임에 표시할 관절이 없습니다',limited:'추적 제한 있음',ready:'3D 추정 결과 있음',
+      gap:'이 프레임에 표시할 관절이 없습니다',limited:'추적 제한 있음',ready:'3D 추정 결과 있음',scene:'클립 고정 좌표 · 추정 바닥',
       load:'동작 데이터를 불러오지 못했습니다.',unavailable:'3D 데이터 없음',method:'추정 방식·품질',interpolated:'주황색 = 보간된 관절'}
   };
   function dispose() {
-    generation++; cancelAnimationFrame(animation); state = null;
+    generation++; cancelAnimationFrame(animation);
+    for(const view of state?.views||[])view.mesh?.dispose();
+    state = null;
   }
   function createClock(element, frames, fps) {
     const events = new EventTarget();
@@ -51,7 +53,10 @@ window.MotionViewer = (() => {
       const {data,canvas} = view, dim = data.dimension === 3 ? 3 : 2;
       const points = data.frames.flatMap(f=>f.keypoints.filter((p,j)=>p && ((p[dim]??1)>=.2 || f.interpolated?.[j])));
       if (dim === 3) {
-        view.radius = points.reduce((r,p)=>Math.max(r,Math.hypot(p[0],p[1],p[2])),.9)*1.12;
+        const low=[Infinity,Infinity,Infinity],high=[-Infinity,-Infinity,-Infinity];
+        for(const p of points)for(let k=0;k<3;k++){low[k]=Math.min(low[k],p[k]);high[k]=Math.max(high[k],p[k]);}
+        view.center3=points.length?low.map((v,k)=>(v+high[k])/2):[0,.8,0];
+        view.radius=points.reduce((r,p)=>Math.max(r,Math.hypot(...view.center3.map((v,k)=>p[k]-v))),1)*1.08;
       } else {
         const low=[Infinity,Infinity], high=[-Infinity,-Infinity];
         for (const p of points) for(let k=0;k<2;k++){low[k]=Math.min(low[k],p[k]);high[k]=Math.max(high[k],p[k]);}
@@ -65,7 +70,7 @@ window.MotionViewer = (() => {
       draw();
     }
     ready(views[0]);
-    const tick = () => {if (state!==s) return; draw(); animation=requestAnimationFrame(tick);}; tick();
+    const tick = () => {if (state!==s) return;if(s.video.currentTime!==s.lastTime||s.video.paused!==s.lastPaused)draw();animation=requestAnimationFrame(tick);}; tick();
     if (!clip.pose3d) {
       panel.querySelector('.motion-placeholder[data-dimension="3"]').textContent=t.unavailable;
       return;
@@ -78,15 +83,28 @@ window.MotionViewer = (() => {
           pose3d.frames.some((f,i)=>f.source_frame!==pose2d.frames[i].source_frame || f.source_time!==pose2d.frames[i].source_time)) {
         throw Error('unaligned final motion');
       }
-      views.push({data:pose3d,canvas:panel.querySelector('.motion-canvas[data-dimension="3"]')});
+      const view3={data:pose3d,canvas:panel.querySelector('.motion-canvas[data-dimension="3"]')};
+      try{
+        const module=window.BoneScene || await import('./bone_scene.js?v=20261027-scene1');
+        if(generation!==ticket || !panel.isConnected)return;
+        view3.mesh=module.createBoneScene(view3.canvas,pose3d);
+      }catch(error){
+        // A separate canvas permits a 2D projection when WebGL is unavailable.
+        const fallback=view3.canvas.cloneNode(false);view3.canvas.replaceWith(fallback);view3.canvas=fallback;
+        view3.canvas.dataset.renderer='canvas-fallback';
+      }
+      views.push(view3);
       ready(views[1]);
       control.querySelector('.motion-orbit').hidden=false;
-      control.querySelector('.motion-status').textContent=t[clip.pose3dStatus==='available'?'ready':'limited'];
+      control.querySelector('.motion-status').textContent=pose3d.scene?t.scene+(clip.pose3dStatus==='limited'?' · '+t.limited:''):t[clip.pose3dStatus==='available'?'ready':'limited'];
+      const coordinates=panel.querySelector('[data-meta="coords"] .meta-value');
+      if(coordinates)coordinates.title=coordinates.textContent='2D: crop pixels · 3D: '+pose3d.coordinate_system;
       for (const axis of ['yaw','pitch']) control.querySelector('.motion-'+axis).addEventListener('input', e => {
         s[axis] = Number(e.target.value)*Math.PI/180; draw();
       });
       control.querySelector('.motion-reset').addEventListener('click', () => {
         s.yaw = s.pitch = 0;
+        view3.mesh?.resetZoom();
         for (const axis of ['yaw','pitch']) control.querySelector('.motion-'+axis).value = '0';
         draw();
       });
@@ -112,23 +130,27 @@ window.MotionViewer = (() => {
   }
   function draw() {
     const s=state; if(!s) return;
+    s.lastTime=s.video.currentTime;s.lastPaused=s.video.paused;
     for (const view of s.views) drawView(s,view);
   }
   function drawView(s,view) {
     const {data,canvas}=view;
     if(canvas.hidden) return;
-    const ctx = canvas.getContext('2d'), w=canvas.width, h=canvas.height;
-    ctx.fillStyle='#14201b'; ctx.fillRect(0,0,w,h);
     const is3d=data.dimension===3, dim=is3d?3:2;
     const position=Math.min(data.frames.length-1,Math.max(0,s.video.currentTime*data.fps));
     const frame=s.video.paused?Math.round(position):Math.floor(position), fraction=s.video.paused?0:position-frame;
     const current=data.frames[frame], next=data.frames[Math.min(frame+1,data.frames.length-1)];
     canvas.dataset.frame=String(frame);
     if (!current) return;
+    if(view.mesh){view.mesh.render(current,next,fraction,s.yaw,s.pitch);return;}
+    const ctx = canvas.getContext('2d'), w=canvas.width, h=canvas.height;
+    if(!ctx)return;
+    ctx.fillStyle='#14201b'; ctx.fillRect(0,0,w,h);
     const project = p => {
       if (!is3d) return [(p[0]-view.center[0])*w/view.extent+w/2,(p[1]-view.center[1])*h/view.extent+h/2,0];
-      const x=p[0]*Math.cos(s.yaw)+p[2]*Math.sin(s.yaw), z=-p[0]*Math.sin(s.yaw)+p[2]*Math.cos(s.yaw);
-      const y=p[1]*Math.cos(s.pitch)-z*Math.sin(s.pitch), depth=p[1]*Math.sin(s.pitch)+z*Math.cos(s.pitch);
+      const a=p.map((v,k)=>v-view.center3[k]);
+      const x=a[0]*Math.cos(s.yaw)+a[2]*Math.sin(s.yaw), z=-a[0]*Math.sin(s.yaw)+a[2]*Math.cos(s.yaw);
+      const y=a[1]*Math.cos(s.pitch)-z*Math.sin(s.pitch), depth=a[1]*Math.sin(s.pitch)+z*Math.cos(s.pitch);
       return [w/2+x*w/(2*view.radius),h/2-y*h/(2*view.radius),depth];
     };
     const points=current.keypoints.map((p,j)=>{
@@ -139,6 +161,13 @@ window.MotionViewer = (() => {
       return project(value);
     });
     if(is3d){
+      if(data.scene){
+        ctx.strokeStyle='#395847';ctx.lineWidth=1;
+        const floor=data.scene.floor.height;
+        for(let q=-2;q<=2;q+=.25)for(const pair of [[[q,floor,-2],[q,floor,2]],[[-2,floor,q],[2,floor,q]]]){
+          const a=project(pair[0]),b=project(pair[1]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();
+        }
+      }
       const origin=project([0,0,0]);
       for(const [axis,color,name] of [[[.25,0,0],'#e9a49b','X'],[[0,.25,0],'#b4f068','Y'],[[0,0,.25],'#86b8e5','Z']]){
         const p=project(axis);ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(...origin.slice(0,2));ctx.lineTo(...p.slice(0,2));ctx.stroke();ctx.fillStyle=color;ctx.font='16px sans-serif';ctx.fillText(name,p[0]+6,p[1]);

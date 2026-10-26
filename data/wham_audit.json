@@ -34,5 +34,7 @@
       "finite supported JSON joints",
       "progress counts"
     ]
-  }
+  },
+  "scope": "Initial hip-relative WHAM migration; current clip-fixed scene results are audited in wham_scene_audit.json",
+  "current_scene_audit": "wham_scene_audit.json"
 }

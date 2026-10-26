@@ -1,0 +1,26 @@
+{
+  "completed_clips": 813,
+  "total_clips": 813,
+  "frames": 135741,
+  "public_scene_clips": 813,
+  "joint_fit_accepted": 813,
+  "initialization_fallback": 0,
+  "interpolated_pose_frames": 81,
+  "maximum_anatomical_bone_length_std_model_m": 2.158748202418792e-06,
+  "median_image_objective_ratio_after_to_initial": 0.40957979974511466,
+  "median_soft_contact_velocity_squared_ratio_after_to_initial": 0.0035871979890486814,
+  "median_reprojection_px_accepted": 6.377577781677246,
+  "median_floor_reference_shift_model_m": 0.07059813022613526,
+  "checks": [
+    "current implementation and input signatures",
+    "source frame/time identity",
+    "one rigid frame per clip",
+    "camera-to-scene root transform",
+    "one shared SMPL shape per clip",
+    "constant anatomical lengths",
+    "bounded pose interpolation",
+    "fixed floor below modeled feet",
+    "published coordinates match NPZ"
+  ],
+  "interpretation": "Numerical/fit diagnostics only. Floor, camera and scale are inferred; no measured stride accuracy, surveyed world coordinates or OpenSim IK."
+}

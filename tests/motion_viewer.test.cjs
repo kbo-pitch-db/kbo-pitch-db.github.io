@@ -20,7 +20,11 @@ const pose2d=load(clip.poseRefined),pose3d=load(clip.pose3d);
 const controls=[],requests=[];
 let now=0,nextTimer=0;
 const timers=new Map();
-const context={window:{},console,Math,Object,fetch:async p=>{requests.push(p);return {ok:true,json:async()=>load(p)};},
+let disposedScenes=0;
+const context={window:{BoneScene:{createBoneScene(canvas){return {
+ render(current,next,fraction,yaw,pitch){canvas.calls.push(['bone-render',current.frame,fraction,yaw,pitch]);},
+ resetZoom(){},dispose(){disposedScenes++;}
+};}}},console,Math,Object,fetch:async p=>{requests.push(p);return {ok:true,json:async()=>load(p)};},
  EventTarget,Event,performance:{now:()=>now},document:{createElement:()=>{const e=new Element();controls.push(e);return e;}},
  cancelAnimationFrame(id){timers.delete(id);},requestAnimationFrame(fn){timers.set(++nextTimer,fn);return nextTimer;}};
 vm.createContext(context);
@@ -51,6 +55,7 @@ const canvas=(panel,dim)=>panel.querySelector(`.motion-canvas[data-dimension="${
  await clock.play();now=200;[...timers.values()].forEach(fn=>fn(now));
  assert.equal(canvas(panel,2).dataset.frame,canvas(panel,3).dataset.frame,'playback shares the same clock');
  clock.pause();viewer.dispose();
+ assert.equal(disposedScenes,1,'clip disposal releases its 3D scene');
  const plain=viewer.createClock(new Element(),90,30);
  assert.equal(plain.duration,3);plain.currentTime=1;plain.playbackRate=.5;await plain.play();
  now=1200;[...timers.values()].at(-1)(now);assert.equal(plain.currentTime,1.5);

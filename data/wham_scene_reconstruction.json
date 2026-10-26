@@ -1,0 +1,29 @@
+[
+  {
+    "id": "02dad52fd781_c0004",
+    "frames": 88,
+    "maximum_reconstruction_error_model_m": {
+      "keypoints": 4.917383193969727e-07,
+      "anatomical_keypoints": 4.917383193969727e-07,
+      "foot_keypoints": 4.76837158203125e-07
+    }
+  },
+  {
+    "id": "1e24233962b6_c0025",
+    "frames": 258,
+    "maximum_reconstruction_error_model_m": {
+      "keypoints": 5.066394805908203e-07,
+      "anatomical_keypoints": 5.364418029785156e-07,
+      "foot_keypoints": 4.917383193969727e-07
+    }
+  },
+  {
+    "id": "7a71e8034846_c0030",
+    "frames": 190,
+    "maximum_reconstruction_error_model_m": {
+      "keypoints": 5.364418029785156e-07,
+      "anatomical_keypoints": 5.364418029785156e-07,
+      "foot_keypoints": 5.066394805908203e-07
+    }
+  }
+]
