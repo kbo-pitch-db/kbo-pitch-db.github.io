@@ -15,13 +15,29 @@ import unittest
 import numpy as np
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from wham_pipeline import (HALPE26,HALPE_EDGES,COCO17,coco_input,camera_coordinates,
+from wham_pipeline import (HALPE26,HALPE_EDGES,COCO17,coco_input,camera_coordinates,validate_halpe_model,
     build_tracking,refine_clip,paths_for,write_index)
 from package_motion import export_pose,package
 from setup_wham import extract_body_assets
 
 
 class WhamTests(unittest.TestCase):
+    def test_runtime_joint_validation_accepts_symbolic_onnx_metadata(self):
+        class Pose:
+            model_input_size=(192,256)
+            session=SimpleNamespace(get_outputs=lambda:[SimpleNamespace(shape=['batch','symbolic_joint_count',384])])
+            def __call__(self,image,bboxes):
+                return np.zeros((1,26,2)),np.zeros((1,26))
+        validate_halpe_model(Pose())
+
+    def test_runtime_joint_validation_rejects_actual_coco17_output(self):
+        class Pose:
+            model_input_size=(192,256)
+            def __call__(self,image,bboxes):
+                return np.zeros((1,17,2)),np.zeros((1,17))
+        with self.assertRaisesRegex(ValueError,'decoded Halpe-26'):
+            validate_halpe_model(Pose())
+
     def halpe(self, count=12):
         points = np.zeros((count,26,2),np.float32)
         points[:,:,0] = np.linspace(100,220,26)

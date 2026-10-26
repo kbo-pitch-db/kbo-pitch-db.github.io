@@ -86,6 +86,17 @@ def required_assets(root):
           ['J_regressor_wham.npy','J_regressor_h36m.npy','J_regressor_feet.npy','smpl_mean_params.npz']]]
 
 
+def validate_halpe_model(pose_model):
+    """ONNX keypoint dimensions may be symbolic; check the decoded runtime output."""
+    width,height = pose_model.model_input_size
+    keypoints,scores = pose_model(np.zeros((height,width,3),np.uint8),
+        bboxes=np.array([[0,0,width,height]],np.float32))
+    if np.asarray(keypoints).shape!=(1,26,2) or np.asarray(scores).shape!=(1,26):
+        raise ValueError('Expected decoded Halpe-26 outputs (1,26,2)/(1,26); got '+
+                         str(np.asarray(keypoints).shape)+'/'+str(np.asarray(scores).shape))
+    print('HALPE26 runtime output verified:',keypoints.shape,scores.shape,flush=True)
+
+
 def check(args):
     report = {'backend_2d':'RTMPose Halpe-26','backend_3d':'WHAM', 'errors':[]}
     required = [args.wham_root/'lib/models/wham.py', args.pose_model, *required_assets(args.wham_root)]
@@ -201,16 +212,26 @@ def load_wham(args):
     os.chdir(args.wham_root)
     sys.path.insert(0,str(args.wham_root))
     from configs.config import get_cfg_defaults
-    from lib.models import build_body_model, build_network
+    from lib.models import build_body_model
+    from lib.models.wham import Network
+    from configs import constants
+    import yaml
     from lib.models.preproc.extractor import FeatureExtractor
     cfg = get_cfg_defaults()
     cfg.merge_from_file('configs/yamls/demo.yaml')
     cfg.DEVICE = args.device
     cfg.FLIP_EVAL = True
     body = build_body_model(args.device,1)
-    network = build_network(cfg,body).eval()
-    # Upstream permits absent/incomplete checkpoints. Reject uninitialized learned parameters.
+    # Follow upstream build_network, explicitly mapping checkpoint storage to CPU.
+    # A checkpoint saved on cuda:0 must also load on cuda:1 or in CPU diagnostics.
+    with open(cfg.MODEL_CONFIG) as stream:
+        model_config = yaml.safe_load(stream)
+    model_config['d_feat'] = constants.IMG_FEAT_DIM[cfg.MODEL.BACKBONE]
+    network = Network(body,**model_config).to(args.device).eval()
     checkpoint = torch.load(cfg.TRAIN.CHECKPOINT,map_location='cpu')['model']
+    ignored = {'smpl.body_pose','smpl.betas','smpl.global_orient','smpl.J_regressor_extra','smpl.J_regressor_eval'}
+    network.load_state_dict({k:v for k,v in checkpoint.items() if k not in ignored},strict=False)
+    # Upstream permits absent/incomplete checkpoints. Reject uninitialized learned parameters.
     missing = [k for k,_ in network.named_parameters() if not k.startswith('smpl.') and k not in checkpoint]
     if missing:
         raise ValueError('WHAM checkpoint missing learned parameters: '+str(missing[:8]))
@@ -370,8 +391,7 @@ def main():
         backend='onnxruntime',device=args.device,to_openpose=False)
     if 'CUDAExecutionProvider' not in pose_model.session.get_providers():
         raise RuntimeError('RTMPose silently selected CPU; CUDA is required for this run')
-    if any(output.shape[1]!=26 for output in pose_model.session.get_outputs()):
-        raise ValueError('Expected a 26-joint Halpe ONNX model')
+    validate_halpe_model(pose_model)
     pose_hash = digest(args.pose_model)
     cfg,network,extractor,model_hash,provenance = load_wham(args)
     with (args.dataset/'clips.csv').open() as stream:
