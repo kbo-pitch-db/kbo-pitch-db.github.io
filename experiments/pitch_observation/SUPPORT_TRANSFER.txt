@@ -1,0 +1,55 @@
+Root-only support-transfer pilot (2026-10-28)
+
+Purpose: retain the existing GVHMR f4 articulation, fixed body shape and
+same-frame interankle separation while comparing (1) original root,
+(2) temporal-only root fitting, (3) temporal + support-transfer root fitting.
+The latter has independent lead arrival/rear departure, marker-specific heel/toe
+confidence, possible overlap, no hard XYZ anchor and one fixed plane per
+candidate. Three uncalibrated plane-normal hypotheses survive in metadata.
+No contact is applied when landing/side is unknown. This estimates kinematic
+support hypotheses, not measured weight transfer, force or center of pressure.
+
+The existing f4 camera is held fixed as a controlled root-only experiment.
+This does not resolve camera/depth ambiguity. Joint orientations and per-frame
+ankle spacing remain unchanged; cross-time displacement and absolute pitch
+stride are not validated by that invariant. Plane/slip/smoothness costs are
+part of fitting and cannot independently establish greater 3D accuracy.
+
+Six existing tuning clips were piloted; the same setting then ran on the
+remaining six of the already examined tuning12 subset. The original final
+test24 and the other twelve tuning records were not used by this pilot.
+This confirmation is not a new untouched final evaluation.
+
+From the preserved research worktree (inputs remain outside the public repo):
+  ../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort pilot
+  ../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort confirmation
+  ../env/bin/python experiments/pitch_observation/view_support_transfer.py
+
+Results are ../support_transfer_root_v1/. The same commands resume cached fits;
+changed configs/input hashes are rejected and require a new versioned output
+directory. The local numerical-only viewer is comparison/index.html.
+No public Explorer models, final Halpe-26 files or canonical index are changed.
+
+Observed over tuning12 (clip medians):
+                            original f4   temporal root   + support transfer
+  root accel p95, leg/s^2        109.08          18.68              20.19
+  assumed-contact speed leg/s      1.64           1.13               0.47
+  source reprojection p50 px       2.57           2.72               3.05
+  wrist reprojection p95 px        4.50           4.91               4.75
+Contact metrics use only the ten clips with contact hypotheses. Same-frame
+interankle changes are below 6e-16 model leg units; poses are unchanged.
+The preset +2px source-median/wrist-p95 regression screen passes 12/12, but is
+an experiment screen, not a source visual review or a 3D accuracy claim.
+
+Interpretation: most root stability comes from temporal regularization;
+support transfer further reduces assumed-contact motion. Source fitting gets
+slightly worse. All ten contact cases choose the boundary plane-normal seed
+(camera-Y-up); ground geometry and camera sensitivity need further checks.
+Do not deploy as validated global motion or expand merely because these
+objective-linked consistency metrics improved.
+
+Why the public archive has only 36 new results:
+fixed48 = tune24 + test24; executed GVHMR = tune12 + test24; NLF = tune12 +
+test12. The exporter iterates the 36-record viewer catalog. The full813
+reconstruction runner has not been run; 777 clips still use preserved WHAM.
+36 is the executed experiment coverage, not a count of validated successes.
