@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>NLF + MotionBERT / GVHMR 비교</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f6f1;color:#20362a;font:15px/1.6 system-ui,sans-serif}main{max-width:1600px;margin:auto;padding:24px}h1{font-size:25px;margin:0 0 6px}p{margin:6px 0 16px;color:#526557}.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:14px 0}button,select{font:inherit;min-height:40px;padding:6px 12px;border:1px solid #bac9b9;border-radius:6px;background:white;color:inherit}button{cursor:pointer}button[aria-pressed=true]{background:#244c36;color:white}button:disabled,select:disabled{opacity:.5;cursor:default}#seek{flex:1;min-width:150px;accent-color:#467d44}#time{font-variant-numeric:tabular-nums;min-width:155px}.views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}article{min-width:0;background:white;border:1px solid #d7e0d2;border-radius:8px;overflow:hidden}h2{font-size:16px;margin:0;padding:12px 14px}canvas{display:block;width:100%;height:auto;aspect-ratio:1;background:#1b3028}a{color:#286243}small{display:block;padding:10px 14px;color:#60705f}.note{font-size:13px;color:#60705f;max-width:1150px}#status{min-height:24px}#error{color:#a32e25}details{margin:18px 0}summary{cursor:pointer}details p{margin:10px 0}.links{display:flex;gap:18px;flex-wrap:wrap}button:focus-visible,select:focus-visible{outline:3px solid #7ab86e}@media(max-width:700px){main{padding:12px}h1{font-size:21px}.views{grid-template-columns:1fr}#time{min-width:130px}canvas{max-height:72vh}label{max-width:100%}select{max-width:100%}}
+</style></head>
+<body><main>
+<h1>NLF + MotionBERT ↔ GVHMR</h1>
+<p>동일 투구 · 같은 프레임 · 같은 3D 카메라와 화면 범위</p>
+<div class="toolbar"><label>선수 / 클립 <select id="clip" aria-label="비교 클립" disabled></select></label><span id="status" role="status">불러오는 중…</span></div>
+<div class="views">
+<article><h2>최종 2D · RTMPose Halpe-26</h2><canvas id="two" width="720" height="720" aria-label="최종 2D 동작"></canvas><small>기존 최종 2D를 그대로 표시</small></article>
+<article><h2>NLF + MotionBERT · 팔 보정</h2><canvas id="nlf" width="720" height="720" aria-label="NLF MotionBERT 3D 동작"></canvas><small>저장된 팔 교체 + temporal fitting 결과</small></article>
+<article><h2>GVHMR · 최신 접지 보정</h2><canvas id="gv" width="720" height="720" aria-label="GVHMR 최신 3D 동작"></canvas><small>뒷발 지지와 무릎 제약을 포함한 v14</small></article>
+</div>
+<div class="toolbar"><button id="prev" disabled aria-label="이전 프레임">◀ 1</button><button id="play" disabled>재생</button><button id="next" disabled aria-label="다음 프레임">1 ▶</button><input id="seek" type="range" min="0" max="0" value="0" step="1" aria-label="동기 프레임" disabled><span id="time"></span><label>속도 <select id="speed"><option value="0.25">0.25×</option><option value="0.5" selected>0.5×</option><option value="1">1×</option></select></label></div>
+<div class="toolbar" id="views"><span>두 3D 시점</span><button data-view="oblique" aria-pressed="true">사선</button><button data-view="front" aria-pressed="false">정면</button><button data-view="side" aria-pressed="false">측면</button><button data-view="top" aria-pressed="false">위에서</button></div>
+<p id="error" role="alert"></p>
+<p class="links"><a id="source" target="_blank" rel="noopener">원본 YouTube</a><a id="explorer">현재 GVHMR을 Explorer에서 보기</a></p>
+<p class="note">각 모델의 고정된 다리 길이를 1로 맞추고, 초기 축발 발끝에 원점을 한 번만 맞췄습니다. 이후 원점·배율·지면은 고정됩니다. 지면은 초기 발끝 높이의 비교용 평면이며 실측 바닥이 아닙니다. 시점은 카메라 기준입니다.</p>
+<details><summary>비교 범위와 주의점</summary><p class="note">왼쪽 3D는 기존 NLF 몸통·하체와 MotionBERT 팔 회전을 결합한 자체 hybrid fitting, 오른쪽은 접지·하체 fitting을 개선한 최신 GVHMR입니다. 초기 모델과 후처리가 모두 다르므로 모델 하나만 교체한 ablation은 아닙니다. NLF에 새 접지 보정을 적용하거나 두 결과를 평균하지 않았습니다. 추가 학습·추론·fitting 없이 실제 저장 결과를 불러옵니다. 절대 보폭과 3D 정확도는 검증되지 않았습니다. 원본 영상·모델 가중치·SMPL mesh는 포함하지 않습니다. 직접 링크 전용이며 홈페이지 메뉴에는 노출하지 않습니다. 접근 통제된 비공개 페이지는 아닙니다.</p><a href="provenance.json">데이터 provenance</a></details>
+</main><script src="../../reconstruction_registry.js"></script><script type="module" src="comparison.js"></script></body></html>

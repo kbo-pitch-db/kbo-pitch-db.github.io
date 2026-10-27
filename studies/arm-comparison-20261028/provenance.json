@@ -1,0 +1,9 @@
+{
+  "packager_sha256": "70e982e9bbe7a08e177ffa7deaab17f0eb9fe49b938096963a6829180b172c03",
+  "clips": 6,
+  "published_default_changed": false,
+  "original_broadcast_media_included": false,
+  "new_inference_or_fitting": false,
+  "models": "Actual cached NLF+MotionBERT custom arm-transplant fitting and GVHMR rear-pivot-v14",
+  "canonical_index_sha256": "8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16"
+}

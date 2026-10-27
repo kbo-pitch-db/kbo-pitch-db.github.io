@@ -1,0 +1,50 @@
+[
+  {
+    "id": "e1cae96b4d83_c0027",
+    "player": "더거",
+    "date": "2024-04-06",
+    "file": "e1cae96b4d83_c0027.json.gz",
+    "frames": 78,
+    "sha256_gzip": "921f0d318e4d5a12d9679147fdd42d04b7d184c2a68eb4792106eed1f6e5fbf7"
+  },
+  {
+    "id": "d30b22cfc0b0_c0036",
+    "player": "벤자민",
+    "date": "2024-06-15",
+    "file": "d30b22cfc0b0_c0036.json.gz",
+    "frames": 134,
+    "sha256_gzip": "15d5d2342925716e8a1ae8c8bf4403f2226a9730c773e4995b26cf6b6a6c821f"
+  },
+  {
+    "id": "3fdcd2dbaf58_c0014",
+    "player": "장민재",
+    "date": "2024-09-11",
+    "file": "3fdcd2dbaf58_c0014.json.gz",
+    "frames": 141,
+    "sha256_gzip": "a6b78b7c73b81289016511ec0465fcaf3ee2552085fe537692859a39230c6bf5"
+  },
+  {
+    "id": "0b70417b94ab_c0013",
+    "player": "이승현",
+    "date": "2024-08-17",
+    "file": "0b70417b94ab_c0013.json.gz",
+    "frames": 62,
+    "sha256_gzip": "89b24d5f5d1537f6a0af144554c6d9a466d0e41607d113f9446f0003097ccd39"
+  },
+  {
+    "id": "e56945a0fd80_c0028",
+    "player": "양현종",
+    "date": "2024-06-06",
+    "file": "e56945a0fd80_c0028.json.gz",
+    "frames": 193,
+    "sha256_gzip": "a417a1ddef4014f5f2183aa82086710d6e34c8143e5b1e25c78b3730eafa9d17"
+  },
+  {
+    "id": "99f1a527c09b_c0013",
+    "player": "크로우",
+    "date": "2024-03-23",
+    "file": "99f1a527c09b_c0013.json.gz",
+    "frames": 66,
+    "sha256_gzip": "9b763d241b79cd6c65f6c95f8141bd3d1f323cecb9ffe6f5bbbc0a11ce149fcc"
+  }
+]
