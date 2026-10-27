@@ -1,0 +1,108 @@
+Public numerical comparison: original broadcast media is not included.
+
+KBO 3D reconstruction study, local-only reproduction
+
+Workspace:
+  <workspace>
+Branch/worktree:
+  research/pitch-reconstruction-20261027
+  research/pitch_reconstruction_20261027/code
+Results:
+  research/pitch_reconstruction_20261027
+
+Run from the workspace above. These commands do not package, push or deploy.
+Do not serve the workspace root: it contains unrelated private data.
+
+1. Environment / provenance
+   nvidia-smi
+   .wham-env/bin/python -V
+   .wham-env/bin/python -m pip freeze
+   git -C external/WHAM rev-parse HEAD
+   git -C external/MotionBERT rev-parse HEAD
+   git -C external/GVHMR rev-parse HEAD
+
+   Existing torch 2.1.2+cu118 / Python 3.9.25 + genuine WHAM/SMPL assets were reused.
+   requirements-observed.txt is the exact observed environment. The only small added
+   packages were ipdb (MotionBERT official reader import) and ultralytics==8.2.42
+   with --no-deps. No system PyTorch/CUDA replacement was performed.
+   GPU0 was idle at start; GPU1 belonged to another process and was never used.
+   Recommended sequential execution avoids competing CUDA graph allocators.
+
+2. Recreate frozen audit / sample (deterministic; intentionally overwrites study audit only)
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/audit.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/geometry_audit.py
+
+   sample.json contains 48 fixed IDs, tune/test=24/24, source/known-player-disjoint.
+   selection_policy.json was frozen after tuning and before test. Do not retune it
+   using test results. Preserve the existing file when resuming this experiment.
+
+3. Official independent MotionBERT (48 fixed samples; caches preserved)
+   Official repository commit: 705d3a95354db8bdb696b3492e47a3b5537174ff
+   Weight location: models/motionbert_h36m.bin
+   Official-author download:
+   https://huggingface.co/walterzhu/MotionBERT/resolve/main/checkpoint/pose3d/FT_MB_release_MB_ft_h36m/best_epoch.bin
+   SHA256: 597c708bd585646cc6961df057ef73634edb83a4d5c1155d98a4cc0c04e81b98
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/motionbert.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/baselines.py
+
+4. All matched ablations, sequential; same IDs and 180 steps per candidate
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/run.py --configs A_hard,A1_corrected,B_none,C_soft,D_phase,E_camera,F_temporal,G_motionbert,H_local_temporal --steps 180 --split tune --device cuda:0
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/run.py --configs A_hard,A1_corrected,B_none,C_soft,D_phase,E_camera,F_temporal,G_motionbert,H_local_temporal --steps 180 --split test --device cuda:0
+
+   A-F had no numerical changes after their original run; adding configs/graph-safe
+   indexing may change dependency signatures and recompute old caches once. That is
+   intentional cache invalidation. Saved results contain exact code signatures.
+   Four E/F/G hypotheses are saved individually. They are never coordinate-averaged.
+   Former graph capture failures and successful retry logs are retained.
+
+5. Original-frame background and shared-shape experiments
+   models/yolov8n.pt was downloaded from official Ultralytics v8.2.0 assets.
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/background.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/run.py --configs I_fullframe,J_shared_shape --steps 180 --split tune
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/run.py --configs I_fullframe,J_shared_shape --steps 180 --split test
+
+   I rejects insufficient background / possible cuts. J runs only for a repeated
+   automatically linked player inside the same split. SMPL shape is sequence-fixed;
+   sharing does not force two pitches to follow the same trajectory.
+
+6. Full 813 candidate articulation generation / interruption and resume
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/frozen_inputs.py
+
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/run.py --configs H_local_temporal --steps 180 --all --device cuda:0 > research/pitch_reconstruction_20261027/logs/full_resume.log 2>&1
+
+   Re-run the exact command after interruption. A clip with matching motion.npz and
+   result.json signature is cached; incomplete clip processing restarts at that clip.
+   Each result.json is written atomically last. --limit N / --ids id1,id2 support a
+   targeted smoke test. Do not run two workers on the same clip/config directory.
+   All new fits stay under fits/H_local_temporal/<id>/; originals are never overwritten.
+   This command generates private candidates, not approved replacement public results.
+
+7. Evaluate frozen selection guard, aggregate, build report and source comparison
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/final_status.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/summarize.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/visualize.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/report.py
+   .wham-env/bin/python research/pitch_reconstruction_20261027/code/experiments/pitch20261027/test_study.py
+
+   Note: current_all_metrics.json is a frozen baseline metric cache. If you deliberately
+   change evaluator formulas, archive this study and create a new results directory,
+   or remove ONLY that study cache and recompute both old/new metrics consistently.
+
+8. View local static diagnostics (contains original media; never push these artifacts)
+   .venv/bin/python -m http.server 8771 --bind 127.0.0.1 --directory research/pitch_reconstruction_20261027
+   http://127.0.0.1:8771/REPORT_KO.html
+   http://127.0.0.1:8771/comparison.html
+
+   Browser check, if Chrome CDP is available on localhost:9223:
+   /home/eis/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node research/pitch_reconstruction_20261027/code/experiments/pitch20261027/browser_qa.cjs <workspace>/research/pitch_reconstruction_20261027
+
+GVHMR:
+   Code cloned at external/GVHMR, commit ee960bb6e2ea2d381aa97f08e9b71ef320b624b1.
+   Import failures: logs/gvhmr_smoke.log and gvhmr_import.log. Mandatory licensed
+   SMPL-X assets were absent. No inference results or weights are claimed.
+   The schema adapter is gvhmr_adapter.py, explicitly approximate and unexecuted.
+   Obtain properly licensed SMPL-X and official checkpoints before using it; no
+   credentials are embedded, requested overnight, or bypassed.
+CameraHMR:
+   Official fetch script requires registered username/password for HumanFoV weights;
+   see logs/camerahmr_probe.log. No CameraHMR inference is claimed.

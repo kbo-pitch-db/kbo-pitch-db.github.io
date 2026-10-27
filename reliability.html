@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3D 품질 검토 · KBO Pitch Lab</title><link rel="stylesheet" href="styles.css?v=20261027-anchor3"><style>body{background:#f5f7f2;color:#17271f}main{max-width:1000px;margin:48px auto;padding:0 24px}h1{font-size:32px;margin:28px 0 20px}h2{font-size:21px;margin:30px 0 12px}p{line-height:1.8;margin:14px 0}a{text-decoration:underline}table{width:100%;border-collapse:collapse;background:white;margin:24px 0}th,td{text-align:left;padding:13px;border-bottom:1px solid #dce3da}video{width:100%;background:#1e2e26}article{padding:24px 0;border-top:1px solid #cfd8cd}.label{font-size:14px;color:#526252}code{overflow-wrap:anywhere}footer{padding:28px 0;font-size:14px}</style></head>
 <body><main><a href="./">← KBO Pitch Lab</a><h1>3D 품질 검토</h1>
+<p><a href="studies/pitch-20261027/"><strong>새 복원 개선 실험 보고서 →</strong></a> · <a href="studies/pitch-20261027/comparison.html">48개 표본의 기존·개선 후보·MotionBERT 비교 →</a></p>
 <p>기존 3D는 2D 재투영에 잘 맞아도 골반이 순간 이동하거나 발이 공중에 뜨는 문제가 있었습니다. 전체 813개 v1 진단에서 115개는 프레임 사이 골반 이동이 모델 다리 길이의 0.2배를 넘었고, 286개는 큰 바닥 간격이 여러 프레임에서 관측됐습니다. 이는 실측 3D 오차가 아닌 내부 진단입니다.</p>
 <p>WHAM 초기 자세에 고정 체형·관절 길이, 시간 제약, 하나의 바닥·카메라 좌표계를 적용했습니다. 공개 후보에는 접지발 앞부분의 위치를 고정하는 추가 보정을 적용합니다. 착지 시점과 투구 단계, 바닥 관통, 순간 이동, 초기값에 따른 보폭 변화를 검사하고 원본 장면과 시각 대조합니다. 기존 RTMPose Halpe-26 최종 2D 수치는 유지합니다.</p>
 <table><tbody id="counts"><tr><td>처리 현황을 불러오는 중…</td></tr></tbody></table>

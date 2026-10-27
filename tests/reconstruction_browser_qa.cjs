@@ -1,0 +1,39 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+(async()=>{
+ const base=process.argv[2]||'http://127.0.0.1:8773/';
+ const target=await(await fetch('http://127.0.0.1:9223/json/new?about:blank',{method:'PUT'})).json();
+ const ws=new WebSocket(target.webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));let seq=0;const pending=new Map(),errors=[],requests=[];
+ ws.addEventListener('message',e=>{const x=JSON.parse(e.data);if(x.id){const p=pending.get(x.id);pending.delete(x.id);x.error?p.reject(x.error):p.resolve(x.result)}else if(x.method==='Runtime.exceptionThrown')errors.push(x.params);else if(x.method==='Network.requestWillBeSent')requests.push(x.params.request.url)});
+ const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
+ const ev=async expression=>{const x=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(x.exceptionDetails)throw Error(JSON.stringify(x.exceptionDetails));return x.result.value};
+ const wait=async expression=>{for(let i=0;i<160;i++){if(await ev(expression))return;await sleep(200)}throw Error('Timeout: '+expression)};
+ await send('Runtime.enable');await send('Page.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
+ await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+ await send('Page.navigate',{url:base+'studies/pitch-20261027/comparison.html'});await wait("typeof data!=='undefined' && !!data && !document.querySelector('#loading').textContent");
+ assert.equal(await ev('manifest.length'),48);assert.equal(await ev("Object.keys(data.models).length"),4);assert.equal(await ev("document.querySelectorAll('canvas').length"),7);
+ await ev("document.querySelector('#frame').value=30;document.querySelector('#frame').oninput()");
+ assert.equal(await ev("[...document.querySelectorAll('canvas')].every(c=>c.dataset.frame==='30')"),true);
+ const bounds=await ev('JSON.stringify(data.bounds)');
+ await ev("document.querySelector('#model').value='MotionBERT_articulation';document.querySelector('#model').onchange()");
+ assert.equal(await ev('JSON.stringify(data.bounds)'),bounds);assert.match(await ev("document.querySelector('#newlabel').textContent"),/MotionBERT/);
+ await ev("document.querySelector('#play').click()");await sleep(350);assert.ok(await ev("+document.querySelector('#frame').value>30"));await ev("document.querySelector('#play').click()");
+ await ev("document.querySelector('#clip').value=manifest.at(-1).id;document.querySelector('#clip').onchange()");await wait('data.id===manifest.at(-1).id');
+ assert.equal(await ev("document.querySelector('#model').value"),'MotionBERT_articulation');assert.equal(await ev('data.status.new_validation'),false);
+ for(const width of [1440,390,320]){
+  await send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<500});
+  assert.ok(await ev('document.documentElement.scrollWidth<=innerWidth+1'),'comparison horizontal overflow '+width);
+ }
+ assert.equal(requests.some(url=>/source_frames|source_clips|\.mp4|\.jpg|\.png/.test(url)),false,'public comparison must not request original media');
+ await send('Page.navigate',{url:base+'studies/pitch-20261027/'});await wait("document.title.includes('복원 개선')");
+ assert.ok(await ev("document.body.textContent.includes('813') && document.body.textContent.includes('660')"));
+ assert.ok(await ev("document.querySelector('a[href=\"comparison.html\"]')!==null"));
+ await send('Page.navigate',{url:base});await wait("typeof app!=='undefined' && app.clips?.length===813");
+ assert.equal(await ev("app.clips.filter(c=>c.pose3dStatus==='screened_estimate').length"),44);
+ assert.equal(await ev("document.querySelector('a.nav-link[href=\"studies/pitch-20261027/\"]')!==null"),true);
+ await ev("document.querySelector('#menu-btn').click()");
+ assert.ok(await ev('document.documentElement.scrollWidth<=innerWidth+1'),'mobile menu overflow');
+ assert.equal(errors.length,0,JSON.stringify(errors));
+ console.log(JSON.stringify({base,clips:48,models:4,canvases:7,synchronized:true,model_switch:true,clip_switch:true,mobile:true,production_clips:813,screened:44,errors:0},null,2));
+ ws.close();
+})().catch(e=>{console.error(e);process.exit(1)});

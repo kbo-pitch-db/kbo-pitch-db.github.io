@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>투구 3D 개선 실험 비교 · KBO Pitch Lab</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f4f6f2;color:#192b24;font:16px/1.65 system-ui,sans-serif}main{max-width:1160px;margin:auto;padding:28px 20px}a{color:#24604c}h1{font-size:clamp(24px,4vw,36px);line-height:1.3}p{margin:12px 0}.notice{padding:16px;border-left:4px solid #a77829;background:#fff7e7}.controls{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0;align-items:end}label{display:grid;gap:4px;max-width:100%}select,button,input{font:inherit}select,button{padding:9px;border:1px solid #bccbc2;border-radius:5px;max-width:100%;background:white;color:inherit}button{cursor:pointer}.seek{display:flex;gap:12px;align-items:center;margin-bottom:12px}.seek input{min-width:0;flex:1}.overlay{display:block;width:100%;height:auto;max-width:960px;background:#fff;border:1px solid #d4dfd7}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.grid canvas{display:block;width:100%;height:auto;background:white;border:1px solid #d4dfd7}.row-label{margin:20px 0 7px;font-weight:700}.metrics{white-space:pre-wrap;background:#eaf0e9;padding:14px;overflow-wrap:anywhere;font-size:14px}.muted{color:#596b60}.legend span{display:inline-block;margin-right:16px}.error{color:#aa3020}footer{padding:24px 0;font-size:14px}@media(max-width:480px){main{padding:18px 12px}.grid{gap:4px}select{font-size:14px}.seek{flex-wrap:wrap}.seek input{flex-basis:100%}}
+</style><script src="comparison.js" defer></script></head><body><main>
+<nav><a href="../../">← KBO Pitch Lab</a> · <a href="./">실험 보고서</a> · <a href="../../reliability.html">기존 품질 보고서</a></nav>
+<h1>투구 3D 개선 실험 비교</h1>
+<p>고정 표본 48개 · 튜닝 24 / 최종 비교 24 · 기존 결과와 개선 후보, WHAM raw, MotionBERT 비교</p>
+<p class="notice">개선 후보는 별도 실험 결과입니다. 기존 813개 결과와 판정은 유지했습니다. 재투영이 좋아져도 실제 깊이·접지·보폭 정확도가 검증된 것은 아닙니다. 원본 중계 영상·음성은 포함하지 않습니다.</p>
+<div class="controls"><label>클립<select id="clip" aria-label="비교 클립"></select></label><label>비교할 추정<select id="model" aria-label="비교할 추정"></select></label><button id="play" type="button">재생</button><a id="source" target="_blank" rel="noopener noreferrer">YouTube 원본 장면 ↗</a></div>
+<div class="seek"><input id="frame" aria-label="프레임 이동" type="range" min="0" value="0"><output id="time"></output></div>
+<p id="loading" role="status">클립을 불러오는 중…</p>
+<canvas class="overlay" id="overlay" width="960" height="540" aria-label="최종 2D와 기존·신규 3D 재투영 수치 비교"></canvas>
+<p class="legend"><span style="color:#273d32">● 최종 RTMPose 2D</span><span style="color:#1676cf">● 기존 3D 재투영</span><span style="color:#bd5424">● 비교 후보 재투영</span></p>
+<p class="muted">빈 배경의 동일 영상 좌표에 관측·재투영 수치만 표시합니다. 원본 영상은 위 출처 링크에서 확인할 수 있습니다. WHAM raw·MotionBERT 상대 자세에는 전역 재투영을 제공하지 않습니다.</p>
+<p class="row-label">기존 최종 fitting — 정면 / 측면 / 상단</p><div class="grid" id="before"></div>
+<p class="row-label" id="newlabel">비교 후보</p><div class="grid" id="after"></div>
+<p class="muted">모든 모델·프레임은 클립 전체의 같은 축·같은 화면 범위를 사용합니다. 시퀀스당 한 번 원점을 정렬하며, 프레임마다 재중심화하거나 확대하지 않습니다. raw·MotionBERT는 상대 자세만 표시하며, MotionBERT에는 한 번의 모델 다리 길이 정규화를 사용했습니다.</p>
+<h2>클립별 판단</h2><div id="status" class="metrics"></div>
+<footer><a id="download" download>현재 비교 수치 JSON</a> · <a href="status_comparison.csv" download>813개 상태 CSV</a> · <a href="ablation.csv" download>전체 ablation CSV</a> · <a href="publication.json">공개 자료 명세</a></footer>
+</main></body></html>
