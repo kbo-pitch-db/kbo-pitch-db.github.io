@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /studies/
+Disallow: /reliability.html
+Disallow: /*preview=
+Disallow: /data/preview_registry.json
+Disallow: /data/reconstructions/support-v4/

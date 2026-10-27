@@ -1,0 +1,187 @@
+{
+  "version": "support-v4-ground-20261028",
+  "clips": {
+    "e1cae96b4d83_c0027": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/e1cae96b4d83_c0027.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "b9d354f151f3928ea984b0203f33fb1f8111b169016aefb49f8c2322742c54e2",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "1fc19ae6605fded0ed828bf766f1fabc9c400ed5758bd6c07cf6eb64c7744c70",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "d30b22cfc0b0_c0036": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/d30b22cfc0b0_c0036.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "43a3e1964715e5470d4594d93efe0d996a339a9ba047b18a351d56f877c7b6e9",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "94fb2204c55714e61175562349c127841dcc88b28b79faeb8cdbe78749192124",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "3fdcd2dbaf58_c0014": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/3fdcd2dbaf58_c0014.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "6b99429a74674c5a74d67f6faec6d98275c539445d15dfd8e12bd056a058805b",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "4f5e20b8ab0ce384d6879c8e1dc455fbf4b7b2a20fcb3ce9310ca7d3588a6c51",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "e72b3a782760_c0038": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/e72b3a782760_c0038.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "8a63ff1892fd917ae2a182ee8179c5a334e904e7cbe3460929185589d25e1279",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "f264059288dee93a25588301b0b36356e96449ec151c04519a60a1827fc75916",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "4e09dd724a8c_c0031": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/4e09dd724a8c_c0031.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "b5a4e4e8e3b236f2f835c1ce4dbc7f9c028093366fd5dbb9af9d01fedfed523c",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "cdcbc86c3f36ba55c17b11d4dd3c28c8ae367e00344ce60a8e3333afccf9992d",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "d644482ee06d_c0015": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/d644482ee06d_c0015.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "b528cc44401ade721cd5032b0660679eae50c6abf128a2cd3f3b7231e3e04c48",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "6dab1a542011f01c3fb242c52e5d979aa86c728c853c9dcf5fb9e32be7228f34",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "0b70417b94ab_c0013": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/0b70417b94ab_c0013.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "92d8dfe3482b7cd76734fa588c492f81b592c0e27db648b05ccfffdc320de5a0",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "1f422f1e205d711aa1f6cc86345732091c7c47134d106d50ec9408c8bc0300ee",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "e56945a0fd80_c0028": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/e56945a0fd80_c0028.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "2e742aea631933819a8c8650089ecc7fdb24df00b369a1800b1681802deb6c1a",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "cba0114a2d9c4d297fead267d56cb00970cf49505b52da0cec19866aee400828",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "e72b3a782760_c0022": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/e72b3a782760_c0022.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "51162da668ee83a3064a2a90dad745354d8cd5a561fc1c388ef516c069976198",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "23affd8c10e47940fe11953775a480259b44a26bfeb0f9a32d6c9318bc98244f",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "99f1a527c09b_c0013": {
+      "preferred": "support_v4",
+      "variants": {
+        "support_v4": {
+          "id": "support_v4",
+          "label": "GVHMR + support trajectory",
+          "pose3d": "reconstructions/support-v4/99f1a527c09b_c0013.json.gz",
+          "model3d": "GVHMR + support trajectory",
+          "method": "gvhmr-support-v4",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "46b2222d7e3854331e8f50b70671d777fb1ee143497c19578409fc3f0b9b325c",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "78399dac17dd36f5873fd84aec32429f04300d68907f5e4b3cb3af73c9140950",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    }
+  },
+  "role": "unlisted_research_preview",
+  "published_release_changed": false
+}

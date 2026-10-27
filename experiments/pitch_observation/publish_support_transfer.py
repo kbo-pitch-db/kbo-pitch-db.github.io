@@ -23,6 +23,7 @@ def main():
  html=html.replace('<button id="prev">','<button id="plant">추정 착지 구간으로</button><button id="prev">')
  html=html.replace('<h2>최종 Halpe-26', '<details id="source-video"><summary>원본 영상 펼치기 · YouTube</summary><p class="small">원본은 기록된 방송 시각에서 재생됩니다. 아래 3D 재생과는 별도로 조작합니다. 재생이 제한되면 위 원본 링크를 여세요.</p><div id="source-player"></div></details><h2>최종 Halpe-26')
  html=html.replace('<script src="comparison.js"></script>', '<script src="../../reconstruction_registry.js?v=20261028-explorer"></script><script src="comparison.js?v=support-transfer-v1"></script>')
+ if 'name="robots"' not in html:html=html.replace('<meta charset="utf-8">','<meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive">',1)
  (dest/'index.html').write_text(html)
  js=(source/'comparison/comparison.js').read_text()
  js=js.replace('return r.json();','return window.ReconstructionRegistry.decode(r,url);')
@@ -45,6 +46,7 @@ $('plant').onclick=()=>{const plant=data?.phase.plant_interval;if(plant)step(Mat
  (dest/'comparison.js').write_text(js)
  report=(source/'REPORT_KO.html').read_text().replace('href="comparison/"','href="./"')
  report=report.replace('기존 main·공개 데이터·최종 Halpe-26은 변경하지 않았습니다.','Explorer 기본 결과와 최종 Halpe-26은 유지하며 이 비교 페이지만 별도로 공개합니다.')
+ if 'name="robots"' not in report:report=report.replace('<meta charset="utf-8">','<meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive">',1)
  (dest/'report.html').write_text(report)
  (dest/'REPRODUCE.txt').write_text('From the preserved research worktree:\n../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort pilot\n../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort confirmation\n../env/bin/python experiments/pitch_observation/view_support_transfer.py\n../env/bin/python experiments/pitch_observation/publish_support_transfer.py\nCached fits resume; original Halpe-26 and canonical Explorer registry are unchanged.\nOnly numerical outputs and external YouTube references are published. No source broadcast pixels, videos, checkpoints or licensed meshes are included.\n')
  files={str(p.relative_to(dest)):sha(p) for p in dest.rglob('*') if p.is_file() and p.name!='publication.json'}

@@ -31,7 +31,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
  await send('Page.navigate',{url:base});await wait("typeof app!=='undefined' && app.clips?.length===813");
  assert.equal(await ev("app.clips.filter(c=>c.pose3dStatus==='screened_estimate').length"),44);
  assert.equal(await ev('app.selected===null'),true,'Explorer must not auto-select a pitcher');
- assert.equal(await ev("document.querySelector('a.nav-link[href=\"studies/stride-20261028/\"]')!==null"),true);
+ assert.equal(await ev("document.querySelector('a.nav-link[href*=\"studies/\"]')===null"),true);
  await ev("document.querySelector('#menu-btn').click()");
  assert.ok(await ev('document.documentElement.scrollWidth<=innerWidth+1'),'mobile menu overflow');
  assert.equal(errors.length,0,JSON.stringify(errors));

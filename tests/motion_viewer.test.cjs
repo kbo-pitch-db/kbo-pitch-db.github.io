@@ -91,7 +91,8 @@ const canvas=(panel,dim)=>panel.querySelector(`.motion-canvas[data-dimension="${
  assert.equal(supported[3],pose3d,'review-required results are available as previews');
  assert.equal(canvas(previewPanel,3).hidden,false);
  const previewStatus=controls.at(-1).querySelector('.motion-status').textContent;
- assert.ok(previewStatus.includes('미리보기')&&previewStatus.includes('깊이 차이'));
+ assert.ok(previewStatus.includes('단안 3D 추정')&&previewStatus.includes('미검증'));
+ assert.ok(!controls.at(-1).innerHTML.includes('motion-quality'),'research reports are not in the public player');
  assert.ok(!previewStatus.includes('검사 통과'),'a failed preview cannot be labeled screened');
  assert.equal(previewPanel.querySelectorAll('.motion-downloads [data-dimension="3"]')[0].disabled,false);
  viewer.dispose();

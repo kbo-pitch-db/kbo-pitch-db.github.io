@@ -45,10 +45,8 @@ window.MotionViewer = (() => {
     dispose();
     const ticket = generation, t = copy[lang] || copy.en;
     const control = document.createElement('section'); control.className = 'motion-controls';
-    control.innerHTML = `<div class="motion-orbit" hidden><label>${t.yaw}<input class="motion-yaw" type="range" min="-180" max="180" value="0" aria-label="${t.yaw}"></label><label>${t.pitch}<input class="motion-pitch" type="range" min="-60" max="60" value="0" aria-label="${t.pitch}"></label><button class="download-btn motion-reset" type="button">${t.reset}</button></div><p class="motion-note">${t.interpolated}</p><a class="motion-quality" target="_blank" rel="noopener">${t.method} ↗</a><p class="motion-status" role="status"></p>`;
+    control.innerHTML = `<div class="motion-orbit" hidden><label>${t.yaw}<input class="motion-yaw" type="range" min="-180" max="180" value="0" aria-label="${t.yaw}"></label><label>${t.pitch}<input class="motion-pitch" type="range" min="-60" max="60" value="0" aria-label="${t.pitch}"></label><button class="download-btn motion-reset" type="button">${t.reset}</button></div><p class="motion-note">${t.interpolated}</p><p class="motion-status" role="status"></p>`;
     panel.querySelector('.player-bar').after(control);
-    control.querySelector('.motion-quality').href = url(clip.motionQuality);
-    control.querySelector('.motion-quality').hidden = !clip.motionQuality;
     const views = [{data:pose2d,canvas:panel.querySelector('.motion-canvas[data-dimension="2"]')}];
     const s = state = {clip,panel,control,views,video:clock,yaw:0,pitch:0,t};
     function ready(view) {
@@ -88,7 +86,7 @@ window.MotionViewer = (() => {
       }
       const view3={data:pose3d,canvas:panel.querySelector('.motion-canvas[data-dimension="3"]')};
       try{
-        const module=window.BoneScene || await import('./bone_scene.js?v=20261028-explorer');
+        const module=window.BoneScene || await import('./bone_scene.js?v=20261028-dataset');
         if(generation!==ticket || !panel.isConnected)return;
         view3.interpolateAnatomy=module.interpolateAnatomy;
         view3.mesh=module.createBoneScene(view3.canvas,pose3d);
@@ -100,10 +98,7 @@ window.MotionViewer = (() => {
       views.push(view3);
       ready(views[1]);
       control.querySelector('.motion-orbit').hidden=false;
-      const needsReview=clip.pose3dStatus==='review_required_preview';
-      const details=[...new Set((clip.pose3dReasons||[]).map(reason=>t.reviewReasons[reason]||reason))].join(' · ');
-      control.querySelector('.motion-status').textContent=clip.reconstructionId&&clip.reconstructionId!=='legacy'?clip.reconstructionLabel+' · '+(lang==='ko'?'신규 연구 후보 · 전역 이동·접지·절대 보폭 미검증':'New research candidate · global motion/contact/stride unvalidated'):needsReview?t.preview+(details?' — '+details:''):pose3d.scene?t.scene+' · '+t.ready:t[clip.pose3dStatus==='available'?'ready':'limited'];
-      control.querySelector('.motion-status').classList.toggle('review-required',needsReview);
+      control.querySelector('.motion-status').textContent=lang==='ko'?'단안 3D 추정 · 고정 장면 · 지면과 크기 미검증':'Monocular 3D estimate · fixed scene · ground and scale unvalidated';
       const coordinates=panel.querySelector('[data-meta="coords"] .meta-value');
       if(coordinates)coordinates.title=coordinates.textContent='2D: crop pixels · 3D: '+pose3d.coordinate_system;
       for (const axis of ['yaw','pitch']) control.querySelector('.motion-'+axis).addEventListener('input', e => {
