@@ -1,0 +1,13 @@
+{
+  "id": "99f1a527c09b_c0009",
+  "valid_frames": 76,
+  "source_clip_frames": 78,
+  "cut_indices": [
+    76
+  ],
+  "confirmed_source_cut": true,
+  "review": "Agent inspected original and original crop before/at cut; full/crop frame boundaries matched",
+  "human_review_complete": false,
+  "final_2d_sha256": "34a67a788f7fdf13a9669b479bc026de9e7e1744fca9627519d9bbae70327687",
+  "background_observation_sha256": "34d943ef8079ab7e341e0e5c40ec07cc69f938161ad7f4b57050e4bd07a4df7d"
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "3fdcd2dbaf58_c0014",
+    "seconds": 18.333581506012706,
+    "previous_seconds": 40.81197089300258,
+    "max_geometry_differences_model": {
+      "all_keypoints": 0.0002625212073326111,
+      "all_anatomical_keypoints": 0.00026481226086616516,
+      "root_hypotheses_translation": 0.0007190704345703125,
+      "all_smpl_rotations": 0.004216432571411133
+    },
+    "source_p50_difference_max_px": 0.0013400349036620796,
+    "objective_and_steps_unchanged": true
+  },
+  {
+    "id": "d30b22cfc0b0_c0036",
+    "seconds": 12.466298733008443,
+    "previous_seconds": 41.43990074300382,
+    "max_geometry_differences_model": {
+      "all_keypoints": 0.0002695918083190918,
+      "all_anatomical_keypoints": 0.0002689063549041748,
+      "root_hypotheses_translation": 0.00081634521484375,
+      "all_smpl_rotations": 0.001666039228439331
+    },
+    "source_p50_difference_max_px": 0.0035839758010953737,
+    "objective_and_steps_unchanged": true
+  }
+]

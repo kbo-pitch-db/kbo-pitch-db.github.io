@@ -1,0 +1,814 @@
+id,player,status,selected,quality_reasons,contact_available,reused_frozen_v14
+02dad52fd781_c0004,최원태,review_required_preview,0,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0005,송영진,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0006,박시후,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0008,최원태,review_required_preview,0,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0010,장지훈,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0011,장지훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0012,송영진,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0013,이로운,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0014,최원태,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0015,박시후,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0016,최원태,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0018,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0019,박시후,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0020,박시후,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0021,박시후,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0022,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0023,이로운,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+02dad52fd781_c0024,송영진,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0025,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0026,송영진,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0027,최원태,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0028,송영진,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0029,장지훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0030,송영진,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0031,장지훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0032,최원태,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0033,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0034,이종준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0036,장지훈,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0037,송영진,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0038,이종준,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+02dad52fd781_c0045,서진용,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+02dad52fd781_c0049,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0001,이준호,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0002,이호성,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0003,이호성,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0007,신민혁,review_required_preview,2,"[""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0008,신민혁,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0009,김재윤,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0010,임정호,review_required_preview,5,"[""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0012,최채흥,review_required_preview,3,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0013,이승현,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,True
+0b70417b94ab_c0014,최채흥,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0015,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0016,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0017,김재윤,review_required_preview,3,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0018,신민혁,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0020,이호성,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0021,최채흥,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0b70417b94ab_c0022,이승현,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0023,최채흥,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0b70417b94ab_c0024,김재윤,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0002,최원태,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0004,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0005,앤더슨,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0007,앤더슨,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0008,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0009,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0010,최원태,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0011,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0012,최원태,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0013,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0014,김대현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0015,앤더슨,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0017,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0018,문승원,review_required_preview,1,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0019,최원태,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0020,앤더슨,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0021,김대현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0023,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0025,앤더슨,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0026,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0027,앤더슨,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0029,조병현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+0d84991ce9f6_c0030,김대현,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0031,앤더슨,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0032,김대현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0033,최원태,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0034,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0035,앤더슨,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0036,조병현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+0d84991ce9f6_c0037,김대현,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0d84991ce9f6_c0038,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0039,앤더슨,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0040,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0042,앤더슨,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0d84991ce9f6_c0043,앤더슨,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0001,류현진,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0003,류현진,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0005,이민우,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0006,이상규,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0007,류현진,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0008,오승환,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0009,류현진,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0010,류현진,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0011,류현진,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0012,백정현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0013,류현진,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0015,백정현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0016,백정현,review_required_preview,0,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0017,백정현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0018,류현진,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0020,류현진,review_required_preview,1,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0021,백정현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0022,이민우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0023,이상규,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0025,이상규,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0026,이민우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0027,백정현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0028,백정현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0029,백정현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0030,이상규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0031,이상규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0032,백정현,review_required_preview,1,"[""floor_penetration_max_leg"", ""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+0e1f00c192b9_c0033,오승환,review_required_preview,5,"[""floor_penetration_max_leg"", ""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+0e1f00c192b9_c0034,류현진,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0001,네일,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0002,이선우,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0003,주권,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0004,엄상백,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0005,주권,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0006,우규민,review_required_preview,5,"[""floor_penetration_max_leg"", ""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0007,엄상백,review_required_preview,0,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0008,네일,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0009,네일,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0010,엄상백,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0012,곽도규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0013,엄상백,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0014,주권,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0015,네일,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0016,전상현,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0017,네일,screened_consistency_preview,4,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0018,문용익,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0019,엄상백,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0022,이선우,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0023,곽도규,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0024,엄상백,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0026,이선우,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0028,엄상백,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0029,엄상백,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0030,네일,review_required_preview,4,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0031,주권,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0032,네일,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0033,네일,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0034,네일,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0035,이선우,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0038,전상현,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0039,엄상백,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0041,엄상백,review_required_preview,0,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0042,엄상백,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0043,곽도규,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0044,네일,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0045,네일,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0047,전상현,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0048,곽도규,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0049,곽도규,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0050,네일,review_required_preview,0,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0051,네일,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0052,네일,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0054,장현식,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0056,우규민,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0057,네일,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0059,네일,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0060,주권,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0061,네일,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1161553ed7d7_c0062,엄상백,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0063,네일,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0066,엄상백,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1161553ed7d7_c0067,문용익,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0003,문동주,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0005,주현상,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0008,신민혁,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1e24233962b6_c0009,문동주,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0010,문동주,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0011,이용찬,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1e24233962b6_c0012,문동주,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0013,문동주,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0014,신민혁,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1e24233962b6_c0015,이용찬,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0018,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0019,주현상,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0020,박상원,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0021,이용찬,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1e24233962b6_c0022,이용찬,review_required_preview,5,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0024,박상원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0025,박상원,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0026,박상원,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0027,문동주,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0028,문동주,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0029,박상원,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0030,문동주,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0031,문동주,review_required_preview,0,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+1e24233962b6_c0032,김규연,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+1e24233962b6_c0034,박상원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0003,박치국,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0006,레예스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0008,최준호,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0009,김호준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0010,최준호,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0011,홍원표,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0012,박치국,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0015,홍원표,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0016,최준호,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0019,레예스,review_required_preview,1,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0020,홍원표,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0022,레예스,review_required_preview,7,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0023,최준호,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0024,김호준,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0026,김호준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0027,박치국,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0028,이승현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0029,김호준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0030,박치국,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+210747e6a7e9_c0031,홍원표,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0032,김호준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0033,김호준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0034,이승현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+210747e6a7e9_c0036,김호준,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3ef5720dccec_c0004,김진욱,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0009,정현수,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3ef5720dccec_c0010,엄상백,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0012,박영현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0013,김진욱,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+3ef5720dccec_c0014,김진욱,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0016,김진욱,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0017,정현수,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0021,엄상백,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0022,김민수,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+3ef5720dccec_c0023,김민수,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0024,김상수,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0025,김진욱,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3ef5720dccec_c0026,엄상백,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0005,코너,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+3fdcd2dbaf58_c0008,송은범,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0011,바리아,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0012,이승현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0014,장민재,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,True
+3fdcd2dbaf58_c0015,황준서,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0016,장민재,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0017,이상규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0018,윤대경,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0019,코너,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0020,황준서,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0021,장민재,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0022,장민재,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0023,코너,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0024,코너,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0026,장민재,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+3fdcd2dbaf58_c0027,코너,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+3fdcd2dbaf58_c0028,윤대경,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0004,와이스,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+437c049ad9fc_c0005,와이스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0006,와이스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0008,와이스,review_required_preview,7,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0009,유영찬,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+437c049ad9fc_c0010,정지헌,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+437c049ad9fc_c0011,이민우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0013,정지헌,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+437c049ad9fc_c0014,조동욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0015,이민우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0016,켈리,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0017,와이스,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0018,켈리,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0019,켈리,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0022,와이스,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0023,와이스,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0024,켈리,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0025,와이스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0026,유영찬,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+437c049ad9fc_c0027,켈리,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0028,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0030,한승혁,review_required_preview,7,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0031,켈리,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+437c049ad9fc_c0035,유영찬,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+437c049ad9fc_c0037,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0001,한현희,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0002,백정현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0003,백정현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0006,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0009,구승민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0010,김진욱,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0011,오승환,review_required_preview,0,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0012,백정현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0013,이승현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0014,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0015,오승환,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0016,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0017,백정현,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0018,이승현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0021,김진욱,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0022,구승민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0023,구승민,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+4e09dd724a8c_c0024,임창민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0026,김진욱,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0027,이승현,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0030,한현희,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0031,임창민,review_required_preview,5,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0032,임창민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+4e09dd724a8c_c0033,구승민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+5153961e52fe_c0005,김원중,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0010,윌커슨,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+5153961e52fe_c0012,주현상,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+5153961e52fe_c0013,김원중,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0015,윌커슨,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0018,윌커슨,review_required_preview,3,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0019,윌커슨,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0020,바리아,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0021,윌커슨,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0022,구승민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+5153961e52fe_c0024,윌커슨,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+5153961e52fe_c0025,김기중,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0002,한두솔,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0003,한두솔,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0004,이로운,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0005,한두솔,review_required_preview,0,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0006,박명근,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0007,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0008,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0009,한두솔,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0010,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0011,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0012,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",False,False
+782c3ca51bd5_c0013,박종훈,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0014,송영진,review_required_preview,3,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0015,한두솔,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0016,한두솔,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0017,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0018,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0019,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0020,송영진,review_required_preview,0,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0021,송영진,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+782c3ca51bd5_c0022,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0023,이로운,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0024,유영찬,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0026,박종훈,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0027,이로운,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0029,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0030,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0031,최원태,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0032,박명근,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0033,송영진,review_required_preview,0,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0034,박종훈,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0035,박종훈,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0036,유영찬,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0037,이로운,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0038,유영찬,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0039,박명근,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0040,유영찬,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+782c3ca51bd5_c0042,유영찬,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+782c3ca51bd5_c0043,유영찬,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7a71e8034846_c0004,원태인,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0005,김선기,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0006,원태인,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0007,김선기,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7a71e8034846_c0008,김인범,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0009,김선기,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7a71e8034846_c0011,김인범,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0012,김인범,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0013,이승현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7a71e8034846_c0014,이승현,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0016,김선기,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0017,김인범,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0018,원태인,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0019,원태인,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0025,김윤하,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0026,이승현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0027,김윤하,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0028,김윤하,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0029,김윤하,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0030,이승현,review_required_preview,5,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0031,김윤하,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7a71e8034846_c0032,김윤하,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0033,이승현,review_required_preview,5,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7a71e8034846_c0034,김윤하,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7ef66f7a16b0_c0004,고효준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0005,고효준,review_required_preview,3,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0006,고효준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0007,이로운,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+7ef66f7a16b0_c0008,더거,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0010,이로운,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0011,김재윤,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0012,김재윤,screened_consistency_preview,4,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0014,백정현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7ef66f7a16b0_c0016,백정현,review_required_preview,5,"[""floor_penetration_max_leg"", ""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0018,백정현,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0022,백정현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0023,이로운,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7ef66f7a16b0_c0024,백정현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0027,오승환,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0031,최민준,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7ef66f7a16b0_c0032,백정현,review_required_preview,1,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0038,최민준,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7ef66f7a16b0_c0039,백정현,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+7ef66f7a16b0_c0040,백정현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+7ef66f7a16b0_c0043,이로운,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0001,양현종,review_required_preview,0,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0005,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0007,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0010,양현종,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0012,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0013,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""source_camera_cut_excluded""]",True,False
+8eeef70dce48_c0014,양현종,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0015,양현종,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0016,조이현,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0017,김민수,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""source_camera_cut_excluded""]",True,False
+8eeef70dce48_c0018,조이현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0019,이형범,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0020,이형범,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0021,양현종,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0023,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0025,김민수,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0026,김민수,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0028,이형범,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0030,이상동,review_required_preview,1,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0032,박영현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0034,양현종,review_required_preview,0,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""source_camera_cut_excluded""]",True,False
+8eeef70dce48_c0035,김민수,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0036,황동하,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0037,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0038,양현종,review_required_preview,3,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0039,조이현,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""source_camera_cut_excluded""]",True,False
+8eeef70dce48_c0040,양현종,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0041,김대유,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+8eeef70dce48_c0042,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0044,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""source_camera_cut_excluded""]",True,False
+8eeef70dce48_c0045,조이현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",False,False
+8eeef70dce48_c0046,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0047,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0048,황동하,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+8eeef70dce48_c0049,양현종,review_required_preview,4,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+8eeef70dce48_c0050,양현종,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",False,False
+98e127654749_c0004,엔스,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0005,엔스,review_required_preview,4,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0006,정해영,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0007,엔스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0008,알드레드,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0009,장현식,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0010,엔스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0011,전상현,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0012,알드레드,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0013,장현식,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0014,엔스,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+98e127654749_c0015,엔스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0016,전상현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0017,알드레드,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+98e127654749_c0018,정해영,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0019,김대유,review_required_preview,0,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",False,False
+98e127654749_c0020,알드레드,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0021,알드레드,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0022,장현식,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0023,김대유,screened_consistency_preview,6,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0024,알드레드,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0025,알드레드,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0026,엔스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0027,알드레드,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0028,알드레드,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0029,알드레드,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0030,엔스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+98e127654749_c0031,김진성,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0033,김대유,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0034,김대유,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+98e127654749_c0035,전상현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+98e127654749_c0037,알드레드,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0006,후라도,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",False,False
+99f1a527c09b_c0008,후라도,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0009,후라도,review_required_preview,4,"[""floor_penetration_max_leg"", ""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain"", ""source_camera_cut_excluded""]",True,False
+99f1a527c09b_c0010,후라도,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0011,후라도,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+99f1a527c09b_c0013,크로우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,True
+99f1a527c09b_c0014,후라도,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+99f1a527c09b_c0015,후라도,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0016,정해영,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0017,곽도규,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+99f1a527c09b_c0022,크로우,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0023,후라도,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0024,크로우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0025,정해영,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+99f1a527c09b_c0026,정해영,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0027,크로우,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+99f1a527c09b_c0028,크로우,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+99f1a527c09b_c0029,크로우,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0031,크로우,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+99f1a527c09b_c0034,정해영,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+99f1a527c09b_c0035,크로우,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+99f1a527c09b_c0036,크로우,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+99f1a527c09b_c0037,크로우,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+9e6eb12cf195_c0001,김영규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0004,김재열,review_required_preview,2,"[""floor_penetration_p95_leg"", ""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0009,하트,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0013,김영규,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0015,하트,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0016,하트,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0018,하트,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0024,하트,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0025,하트,screened_consistency_preview,4,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+9e6eb12cf195_c0027,하트,review_required_preview,2,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+9e6eb12cf195_c0028,장현식,review_required_preview,0,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0002,발라조빅,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0004,최지강,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0005,임창민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0006,원태인,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+ae75625b241c_c0007,발라조빅,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0009,원태인,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0010,김재윤,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0017,홍건희,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0018,발라조빅,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0019,이병헌,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0022,이병헌,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0024,발라조빅,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0025,박치국,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0026,발라조빅,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0027,발라조빅,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+ae75625b241c_c0028,발라조빅,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+ae75625b241c_c0029,박치국,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0001,최민준,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0003,최민준,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0004,최민준,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0005,문성현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0006,김재웅,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0007,앤더슨,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0008,문성현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0009,김재웅,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0010,문승원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0012,헤이수스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0013,헤이수스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0014,최민준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0015,이로운,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0016,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0019,조병현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0020,문성현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0021,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0022,이로운,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0023,김재웅,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0024,김재웅,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0025,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0026,문승원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0027,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0028,노경은,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0029,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0030,노경은,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0031,최민준,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0033,앤더슨,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0034,앤더슨,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0035,노경은,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0036,김재웅,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0037,문성현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0038,노경은,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0040,문승원,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0041,이기순,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0045,김재웅,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0046,최민준,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0048,최민준,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0049,헤이수스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0050,이로운,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b54e0e701d77_c0052,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0053,노경은,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0054,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0055,헤이수스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b54e0e701d77_c0056,문승원,review_required_preview,1,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0003,신민혁,review_required_preview,0,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0004,신민혁,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0005,이준호,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0006,이준호,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0008,이준호,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0009,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0011,알드레드,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b902a8ad2499_c0012,알드레드,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0013,이준호,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b902a8ad2499_c0014,알드레드,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0015,신민혁,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b902a8ad2499_c0016,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0018,알드레드,review_required_preview,0,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b902a8ad2499_c0019,알드레드,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0020,이준호,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b902a8ad2499_c0021,이준호,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b902a8ad2499_c0023,알드레드,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0003,주현상,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0004,김유성,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0005,김유성,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0007,한승혁,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0008,주현상,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0009,주현상,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0011,와이스,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0012,최원준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0013,주현상,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0017,박정수,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0018,와이스,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0019,김유성,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0020,박정수,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0021,최원준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0022,이민우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0023,최지강,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0024,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0025,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0026,박상원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0027,박정수,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0029,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0030,최지강,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0031,와이스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0032,와이스,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0033,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0034,와이스,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0035,박정수,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0036,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0038,최지강,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0039,최원준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0040,박상원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0041,주현상,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0044,와이스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0045,한승혁,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0046,와이스,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0047,와이스,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0048,김유성,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0049,와이스,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+b96e8ea44448_c0051,최원준,review_required_preview,5,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+b96e8ea44448_c0053,최원준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d30b22cfc0b0_c0005,정해영,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0006,정해영,review_required_preview,4,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+d30b22cfc0b0_c0007,최지민,review_required_preview,4,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0008,전상현,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0009,윤영철,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0010,벤자민,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0011,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0012,윤영철,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d30b22cfc0b0_c0014,윤영철,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0015,윤영철,review_required_preview,1,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0017,벤자민,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0019,벤자민,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0020,벤자민,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0021,윤영철,review_required_preview,1,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0022,벤자민,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0023,윤영철,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d30b22cfc0b0_c0024,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0025,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0026,윤영철,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d30b22cfc0b0_c0027,정해영,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0028,윤영철,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0029,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0030,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0032,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0033,최지민,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d30b22cfc0b0_c0034,윤영철,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d30b22cfc0b0_c0035,윤영철,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0036,벤자민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,True
+d30b22cfc0b0_c0038,벤자민,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0039,벤자민,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0040,벤자민,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0041,윤영철,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d30b22cfc0b0_c0042,윤영철,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0006,곽도규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d4ea211e62bd_c0013,김도현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0014,최원태,review_required_preview,1,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+d4ea211e62bd_c0015,곽도규,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0016,김도현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0019,김기훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d4ea211e62bd_c0020,김도현,review_required_preview,2,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0024,김도현,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0025,최원태,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0026,최원태,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d4ea211e62bd_c0027,김도현,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d4ea211e62bd_c0043,김도현,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d644482ee06d_c0001,신민혁,review_required_preview,4,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0005,신민혁,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0007,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0008,김영규,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0010,김재열,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0011,김영규,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0013,박윤성,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d644482ee06d_c0014,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0015,이용찬,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0016,신민혁,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d644482ee06d_c0017,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0019,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0020,하영민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0021,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0022,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0024,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0025,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0026,김영규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0029,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0031,신민혁,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0032,임정호,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0034,임정호,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0035,김재열,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0036,하영민,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0037,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0038,이용찬,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0039,신민혁,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0040,하영민,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d644482ee06d_c0041,박윤성,review_required_preview,2,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+d644482ee06d_c0042,박윤성,review_required_preview,1,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+d644482ee06d_c0043,하영민,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0009,김재열,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0010,송명기,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0012,김민,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0013,김시훈,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0015,김시훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0016,벤자민,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0020,벤자민,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0022,김재열,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0024,김시훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0025,김시훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0026,김민,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0028,이용찬,review_required_preview,5,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0029,벤자민,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0030,한재승,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0032,김시훈,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+dd2c4908dfa7_c0033,김재열,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0035,김민수,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0037,김민,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+dd2c4908dfa7_c0039,이용찬,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+e1cae96b4d83_c0003,더거,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e1cae96b4d83_c0009,서의태,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e1cae96b4d83_c0010,더거,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e1cae96b4d83_c0013,이로운,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e1cae96b4d83_c0016,카스타노,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e1cae96b4d83_c0018,카스타노,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e1cae96b4d83_c0021,이로운,screened_consistency_preview,4,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e1cae96b4d83_c0025,고효준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e1cae96b4d83_c0026,카스타노,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e1cae96b4d83_c0027,더거,screened_consistency_preview,2,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,True
+e1cae96b4d83_c0028,카스타노,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e1cae96b4d83_c0032,카스타노,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0001,정해영,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0002,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0003,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0004,최이준,review_required_preview,5,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0005,전미르,review_required_preview,5,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0006,전미르,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0007,양현종,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0008,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0010,곽도규,review_required_preview,2,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0012,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0013,양현종,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0016,양현종,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0017,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0018,전미르,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0019,전미르,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0020,최이준,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0021,전미르,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0022,양현종,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0023,양현종,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0024,최이준,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e56945a0fd80_c0025,양현종,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0026,양현종,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0027,정해영,review_required_preview,6,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0028,양현종,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,True
+e56945a0fd80_c0029,양현종,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e56945a0fd80_c0030,전미르,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e72b3a782760_c0001,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0002,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0004,김재웅,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0007,박종훈,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0009,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0010,김재웅,review_required_preview,1,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0011,전준표,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0012,이기순,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0016,김재웅,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0017,전준표,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0018,이기순,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0020,이기순,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0021,이기순,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0022,이기순,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0023,이기순,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated"", ""pitch_hand_contact_side_conflict""]",False,False
+e72b3a782760_c0024,문승원,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0025,문성현,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0026,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0027,조상우,review_required_preview,5,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0029,박종훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0031,조상우,review_required_preview,5,"[""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0033,전준표,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+e72b3a782760_c0034,조상우,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0035,전준표,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0036,이기순,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+e72b3a782760_c0038,조상우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+f4acaa32cd9a_c0005,스타우트,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+f4acaa32cd9a_c0007,후라도,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+f4acaa32cd9a_c0008,곽도규,review_required_preview,4,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+f4acaa32cd9a_c0013,스타우트,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+f4acaa32cd9a_c0019,스타우트,review_required_preview,5,"[""source_reprojection"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0006,라우어,review_required_preview,0,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0007,라우어,review_required_preview,3,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0011,라우어,review_required_preview,2,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""rear_point_extent_3d_leg"", ""rear_max_retracement_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0013,김기훈,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0014,라우어,review_required_preview,2,"[""floor_penetration_p95_leg"", ""floor_penetration_max_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0015,김진욱,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0016,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0017,박준우,screened_consistency_preview,5,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0018,김진욱,review_required_preview,1,"[""floor_penetration_max_leg"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0019,곽도규,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0022,김진욱,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0023,박준우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0025,김진욱,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0026,라우어,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0027,김기훈,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0028,김진욱,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0029,박준우,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0030,라우어,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0031,김기훈,review_required_preview,3,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0032,곽도규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0033,곽도규,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0035,김진욱,review_required_preview,1,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0036,한현희,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0037,진해수,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0038,박준우,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0040,김진욱,review_required_preview,1,"[""source_reprojection"", ""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0041,라우어,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0042,김진욱,screened_consistency_preview,0,"[""monocular_global_depth_and_absolute_stride_unvalidated"", ""background_stabilization_uncertain""]",True,False
+fa1febd5056f_c0044,라우어,review_required_preview,1,"[""floor_penetration_p95_leg"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0046,김진욱,screened_consistency_preview,1,"[""monocular_global_depth_and_absolute_stride_unvalidated""]",True,False
+fa1febd5056f_c0047,김진욱,review_required_preview,2,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0048,한현희,review_required_preview,1,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False
+fa1febd5056f_c0057,라우어,review_required_preview,0,"[""rear_contact_unknown"", ""monocular_global_depth_and_absolute_stride_unvalidated""]",False,False

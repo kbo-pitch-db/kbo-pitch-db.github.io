@@ -1,0 +1,10 @@
+{
+  "clip": "3fdcd2dbaf58_c0014",
+  "cpu_seconds": 73.32338114500453,
+  "gpu_seconds": 18.333581506012706,
+  "same_objective_steps": 1100,
+  "max_joint_delta_model": 0.0002656504511833191,
+  "max_root_delta_model": 0.000713348388671875,
+  "max_source_p50_delta_px": 0.001241172495243248,
+  "scope": "Execution backend check, not 3D accuracy"
+}

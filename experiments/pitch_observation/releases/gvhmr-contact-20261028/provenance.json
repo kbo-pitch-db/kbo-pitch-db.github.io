@@ -1,0 +1,60 @@
+{
+  "method": "Official GVHMR learned network + custom approximate SMPL adapter and confidence/contact sequence fitting",
+  "gvhmr_weight_sha256": "4fae7da2de388d5da3514cb27a2d003f364dacb280e9cf88972b710e589c6b91",
+  "hmr2a_weight_sha256": "2dcf79638109781d1ae5f5c44fee5f55bc83291c210653feead9b7f04fa6f20e",
+  "input_modifications": [
+    "Final RTMPose Halpe26 first17 instead of ViTPose",
+    "HMR2a pitcher-crop RGB features; observed bbox center translated by the original crop origin",
+    "30Hz network resampling; output original broadcast timestamps",
+    "Identity camera-angular-velocity hypotheses",
+    "Approximate SMPL-X22 shared rotations to SMPL24; separate WHAM-derived SMPL shape only, never SMPL-X beta transplanted"
+  ],
+  "absolute_scale": "Not calibrated; no measured height or camera",
+  "base_fit": {
+    "focal_input_hypotheses": [
+      1,
+      4,
+      12
+    ],
+    "chosen_input_family": 4,
+    "steps_camera_pose_temporal": [
+      60,
+      160,
+      80
+    ],
+    "depth_regularization": 2,
+    "shape": "Sequence-fixed",
+    "full_original_final2d": true
+  },
+  "contact_fit": {
+    "steps": 1100,
+    "hypotheses": 8,
+    "prior": "Native F4 ankle vector and distance, not population stride",
+    "rear_support": "First image-supported rear-toe episode, which may start late; heel/pivot/release allowed; not proof that initial support was observed",
+    "unknown_contact": "Zero weight; no invented full pitch/contact",
+    "selection": "Frozen source/joint/contact screens; failed/unknown screens retained for available previews"
+  },
+  "fixed48_sha256": "047f1552ec33a9c66a5b545680433bdc2c21f6ffb115858c21b9d3c772c460f7",
+  "original_public_index_sha256": "8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16",
+  "scripts_sha256": {
+    "rear_pivot_joint.py": "5da7825b880be46c88601fea7bfa2e3b41125ac9e1f997e11b83f0d693337fda",
+    "audit_all813_gvhmr.py": "1d1dfeeffabc25f90486740757b7bf950a2a61dd24425f385f3031ec182ddef8",
+    "rear_pivot_plane.py": "8188adc8b8a0c4a1df53029c3a8b07cbf7b061d594f50bd0b12109a3d95a7791",
+    "rear_pivot_rear_only.py": "d36d51b572aeb879dad788e606e69f96356b958a2e3e6157e879b5dd764c8f6a",
+    "package_all813_gvhmr.py": "3cf07853d2b8726df85f356b8b5118e7843b794399387c671ea4c72c0fc7359d",
+    "all813_fit.py": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "supervise_all813.py": "59389348db365134f8135306f5bd17cfc4e7a5dfe5de495d0090655dc35f3cee",
+    "gvhmr_network.py": "eb966f3897aea1bd37a2c1d46cb4c2210697e77e1a19be55523593f7756ed922",
+    "all813_background.py": "c240b0ddd7237e93f00f14d5cbd334c45c299729c4017efbd7c77232481574b0",
+    "all813_release.py": "51bb27636d3d1ae1e98b65c6871e459bf2ee8bb5a07e9f02992ce7be387a56c8",
+    "rear_pivot_strong.py": "e77ee15216f451589e98911e1e88dd2bb6a2bebda11403df8e4cd207fb1054af",
+    "rear_pivot_refine.py": "8a20182b7562940d1586d55aaaef2b17e28ed1eee776a23a523be7621a3510d8",
+    "rear_pivot_rigid.py": "53b7538399d15653139663bf770bc08e5124033285ca352711cee84436c3d37b",
+    "all813_select.py": "d6c0277343d48caa14a37c55da0173073e5879d8cf270bf1dd96be9da0d1e235",
+    "rear_pivot_bounded.py": "c403f7dea34e4617735172e855c87f8cf763d6607b3cf897ff37790e0c32ee7e",
+    "rear_pivot_consistent.py": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "common.py": "783adcca7c7170667aa88bec9702b27662180410563cb0c33728c84ff3826a84"
+  },
+  "human_review_complete": false,
+  "gt3d_available": false
+}

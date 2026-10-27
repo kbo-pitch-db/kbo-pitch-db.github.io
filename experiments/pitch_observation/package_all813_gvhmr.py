@@ -43,14 +43,17 @@ def pack(cid,clip,site):
  quality_relative=f'quality/{FOLDER}/{cid}.json';save(site/'data'/quality_relative,dict(id=cid,release_id=RELEASE,**pose['quality'],metrics=m,selected_fit_sha256=sha(path)))
  result=copy.deepcopy(clip)
  for key in ['pose3dRaw','whamSignature','legacyPose3d']:result.pop(key,None)
- result.update(pose3d=relative,pose3dBackend='gvhmr',motionMethod=pose['method'],model3d=pose['model'],pose3dStatus='review_required_preview',pose3dReasons=meta['quality_reasons'],sceneFrame=pose['scene']['frame'],sceneSignature=sha(path),motionQuality=quality_relative,strideValidated=False,reconstructionVersion=RELEASE)
+ result.update(pose3d=relative,pose3dBackend='gvhmr',pose3dPrimaryLayout='smpl24',pose3dSupplementaryLayout='coco17',motionMethod=pose['method'],model3d=pose['model'],pose3dStatus='review_required_preview',pose3dReasons=meta['quality_reasons'],sceneFrame=pose['scene']['frame'],sceneSignature=sha(path),motionQuality=quality_relative,strideValidated=False,reconstructionVersion=RELEASE)
  record=dict(id=cid,player=clip['player'],old_method=clip.get('motionMethod'),new_method=pose['method'],selected_fit_sha256=sha(path),gzip_sha256=sha(dest),final_2d_public_sha256=sha(CODE/'data'/clip['poseRefined']),frames=len(pose['frames']),valid_3d_frames=count,unavailable_3d_frames=len(two['frames'])-count,contact_available=meta['contact_available'],contact_hypotheses_available=meta.get('contact_hypotheses_available',meta['contact_available']),consistency_screen_passed=screen,human_review_complete=False,reused_frozen_v14=meta.get('reused_frozen_v14',False),quality_reasons=meta['quality_reasons'],metrics=m)
  return result,record
 
 def stage(limit=0):
  enable_primary_shot_policy()
  archive=ROOT/'original_public_index.json'
- if not archive.exists():shutil.copy2(CODE/'data/clips.json',archive)
+ if not archive.exists():
+  released_archive=CODE/'data/releases/wham-20261028/original_index.json.gz'
+  if released_archive.exists():archive.write_bytes(gzip.decompress(released_archive.read_bytes()))
+  else:shutil.copy2(CODE/'data/clips.json',archive)
  index=json.loads(archive.read_text());records=json.loads((ROOT/'input_manifest.json').read_text())['inputs'];by={r['id']:r for r in records}
  site=ROOT/'site_stage';site.mkdir(exist_ok=True);clips=[];report=[]
  selected_clips=index['clips']

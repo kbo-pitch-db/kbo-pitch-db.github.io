@@ -1,0 +1,15 @@
+{
+  "clips": 813,
+  "frames": 135727,
+  "original_final_2d_hashes_unchanged": true,
+  "sampled_fk_all_clips": true,
+  "fk_frames": 2439,
+  "fk_error_max_model": 4.76837158203125e-07,
+  "contact_available": 509,
+  "consistency_screen_passed": 377,
+  "source_feet_p95_worse_vs_base": 76,
+  "source_feet_max_worse_vs_base": 346,
+  "human_manually_reviewed": 0,
+  "actual_3d_accuracy_claim": false,
+  "semantics": "Source observations and model consistency; exact FK is numerical integrity, not KBO accuracy"
+}

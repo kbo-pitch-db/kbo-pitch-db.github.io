@@ -1,0 +1,1262 @@
+{
+  "protocol.gpu.pid1108159.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1104443.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "f80bbdd044e0c0bf671261ad39fcb6bb372868bd278937dad437bc6881a7b286",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1141165.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1137750.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1139122.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1108366.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1139123.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "8e5752e34c389094d4827e46862f1459c339d7f71eb409d5f3a9d276b8fe1663",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1140336.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1140374.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1136462.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1138468.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "8e5752e34c389094d4827e46862f1459c339d7f71eb409d5f3a9d276b8fe1663",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1108157.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1136494.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu.pid1137766.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1104288.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "f80bbdd044e0c0bf671261ad39fcb6bb372868bd278937dad437bc6881a7b286",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1105166.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "f80bbdd044e0c0bf671261ad39fcb6bb372868bd278937dad437bc6881a7b286",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu.pid1140375.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu.pid1108160.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu.pid1140391.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu.pid1108158.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1132977.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1108335.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1134219.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1136493.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1131833.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu0.pid1104367.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "f80bbdd044e0c0bf671261ad39fcb6bb372868bd278937dad437bc6881a7b286",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu1.pid1104289.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": true,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "e76454f68d11a10da363702066fbe50f028933abf655406bc04817f750241242",
+    "main_source_sha256": "f80bbdd044e0c0bf671261ad39fcb6bb372868bd278937dad437bc6881a7b286",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  },
+  "protocol.gpu.pid1108161.json": {
+    "config": {
+      "version": "rear-pivot-population-v15",
+      "steps": 1100,
+      "pivot_weights": [
+        10.0,
+        30.0
+      ],
+      "plane_angles": [
+        -0.2,
+        -0.1,
+        0.0,
+        0.1
+      ],
+      "stride_vector_weight": 0.1,
+      "pose_correction_weight": 0.002,
+      "upper_relative_weight": 0.3,
+      "arm_observation_weight": 2.0,
+      "max_source_p50_increase_px": 2.0,
+      "max_wrist_p95_increase_px": 2.0,
+      "shape": "fixed sequence shape",
+      "arm_local_rotations": "unchanged; no smoothing",
+      "contact": "single toe tangent closure per initial support, normal soft; release/heel lift allowed",
+      "foot_observation_weight": 2.0,
+      "pivot_normal_weight": 1.0,
+      "rear_pivot_only": true,
+      "max_feet_p95_increase_px": 2.0,
+      "max_rear_point_extent_3d_leg": 0.05,
+      "bounded_knees": true,
+      "stride_distance_weight": 4.0,
+      "knee_limits_radians": [
+        -0.08,
+        2.8
+      ],
+      "knee_side_limit_radians": 0.18,
+      "cuda_graph": false,
+      "allow_unknown_contact": true
+    },
+    "solver_sha256": "c21d482be0efef1b479416b4c64cf70164abd6e501914044fd87ab5b13bae373",
+    "main_source_sha256": "ef6c3700c08a7ee8f5dcd8d5c3b7fc876201cffd2d4a481a99d339f82d0f78b6",
+    "scope": "Production population inference, not new held-out accuracy validation"
+  }
+}
