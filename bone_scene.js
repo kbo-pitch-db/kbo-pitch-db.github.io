@@ -87,11 +87,15 @@ export function createBoneScene(canvas,data){
   const bounds=new THREE.Box3();
   for(const f of data.frames)for(const p of (f.anatomy||f.keypoints))if(p&&p.slice(0,3).every(Number.isFinite))bounds.expandByPoint(V(p.slice(0,3)));
   if(bounds.isEmpty())bounds.set(new THREE.Vector3(-1,0,-1),new THREE.Vector3(1,2,1));
-  const floorY=Number(data.scene?.floor?.height??bounds.min.y-.04);
-  const target=bounds.getCenter(new THREE.Vector3());target.y=(floorY+bounds.max.y)/2;
+  const comparisonBounds=data.scene?.comparison_bounds;
+  if(comparisonBounds)bounds.set(V(comparisonBounds.min),V(comparisonBounds.max));
+  const showFloor=data.scene?.show_floor!==false;
+  const floorY=showFloor?Number(data.scene?.floor?.height??bounds.min.y-.04):0;
+  const target=bounds.getCenter(new THREE.Vector3());if(showFloor)target.y=(floorY+bounds.max.y)/2;
   const size=bounds.getSize(new THREE.Vector3());
   let radius=.95;
   for(const f of data.frames)for(const p of (f.anatomy||f.keypoints))if(p&&p.slice(0,3).every(Number.isFinite))radius=Math.max(radius,V(p.slice(0,3)).distanceTo(target));
+  if(comparisonBounds)radius=Math.max(.95,size.length()/2);
   radius*=1.08;
   const camera=new THREE.OrthographicCamera(-radius,radius,radius,-radius,.01,100);
   const groundSize=Math.max(4,Math.ceil(Math.max(size.x,size.z)+2)*2);
@@ -101,6 +105,8 @@ export function createBoneScene(canvas,data){
   const axes=new THREE.AxesHelper(.4);axes.position.set(0,floorY+.008,0);scene.add(axes);
   const originDot=mesh(new THREE.RingGeometry(.035,.055,24),new THREE.MeshBasicMaterial({color:'#597767',side:THREE.DoubleSide}),scene);
   originDot.rotation.x=-Math.PI/2;originDot.position.y=floorY+.006;
+  ground.visible=grid.visible=originDot.visible=showFloor;
+  canvas.dataset.floorVisible=String(showFloor);
   scene.add(new THREE.HemisphereLight('#fffdf3','#8a9e92',1.7));
   const light=new THREE.DirectionalLight('#fff8e6',2.6);light.position.set(-3,6,4);light.castShadow=true;
   light.shadow.mapSize.set(1024,1024);light.shadow.camera.left=light.shadow.camera.bottom=-4;light.shadow.camera.right=light.shadow.camera.top=4;

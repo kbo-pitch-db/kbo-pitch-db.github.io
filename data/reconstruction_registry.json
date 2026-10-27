@@ -1,0 +1,950 @@
+{
+  "schema_version": 1,
+  "version": "20261028-explorer-gvhmr-f4-v1",
+  "preferred_method": "gvhmr_f4",
+  "coordinate_policy": "Fixed camera basis, first-valid pelvis origin; no inferred floor",
+  "coverage": {
+    "total": 813,
+    "latest": 36,
+    "nlf": 24,
+    "legacy_only": 777
+  },
+  "clips": {
+    "e1cae96b4d83_c0027": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/e1cae96b4d83_c0027/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "a7603ca944d0fe55b2f3e7ea4ede192498b730a699e63b84fc84bd3d53474842",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "4dd40db22b5be639e9789bcdc5ff42714a226e448e66546cf44edb59a2d256c7"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/e1cae96b4d83_c0027/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "c69a68a8fc7746c3e05340eb2d586948f8f787b7e3567fa1e4766781b2855127",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "b6e257d5c4a469724ffe9ae50dabd515f93cf79977e01157a5680ecddce0ede9"
+        }
+      },
+      "legacy_pose3d": "assets/e1cae96b4d83_c0027/pose_wham_scene.json"
+    },
+    "d30b22cfc0b0_c0036": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/d30b22cfc0b0_c0036/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "998ce0d97e3ba70d8a429dabd7011c703e235a4805026d4d706987f4854448aa",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "cce48ead87a311ded99fde4e7ca806d18fe946de4d8db032cc4e76988615942f"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/d30b22cfc0b0_c0036/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "2fee3362a389bf493b84550b0479d67ebd8d79e82d6a6884c8293e06a08d6dcc",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "98a972523c6eb0d3e0d68cc0673602d773b97807aafdad4daceed38eb9fe6b7c"
+        }
+      },
+      "legacy_pose3d": "assets/d30b22cfc0b0_c0036/pose_wham_scene.json"
+    },
+    "3fdcd2dbaf58_c0014": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/3fdcd2dbaf58_c0014/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "39ef531190f7f28ccdaf13d4b35e7b1bc048b13e042c2f4dce668f48b539eb12",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "1eb93f6fe9aa6b4979774699a762a844d78bfe1a4c010fee3ace76606a37b30b"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/3fdcd2dbaf58_c0014/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "621591bbb9f2ac8377fa6fc42badbdcb3b15ae8caca5b41e8746d1abd60c5e84",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "6d8f274aacbae34b9c51da6469cbef5d7bc14354d2083d995b04433442b52bac"
+        }
+      },
+      "legacy_pose3d": "assets/3fdcd2dbaf58_c0014/pose_wham_scene.json"
+    },
+    "e72b3a782760_c0038": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/e72b3a782760_c0038/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "72baf1fc201fe0adabd5136083ed39cff21b80d1e04bbf752bbdba1d0e12c428",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "f22da8eb7f2d64e6bd19de45efd533d83de1915917c02607be345363b47261b2"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/e72b3a782760_c0038/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "ae004e5d1892765b9053c037de13271712a7641ac57cd7925aabfb852a5ff700",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "feb318ea983c5ceafd0513ed5291a4dd9d57255a0c79742d770e0cc2ac323f22"
+        }
+      },
+      "legacy_pose3d": "assets/e72b3a782760_c0038/pose_wham_scene.json"
+    },
+    "fa1febd5056f_c0015": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/fa1febd5056f_c0015/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "05662d32d7a1dca34451b0a321027191e40caee737333bc8fb9de5fec5c1a84f",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "b05752d7f31b6c0f44f06137db87830a2089e2b859e1d32592d2263b587fc3fe"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/fa1febd5056f_c0015/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "2efa91a62d12e97d0f15e695a40b99b9f9a7bee94cd071401a5d20bd7a356425",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "95d2d289327cb3ac2b8545f6688966865c086df5c936ab9d011b98a432f211e4"
+        }
+      },
+      "legacy_pose3d": "assets/fa1febd5056f_c0015/pose_wham_scene.json"
+    },
+    "4e09dd724a8c_c0031": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/4e09dd724a8c_c0031/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "cf426ec91d7969681b04b976b2dc9484a166628c76f0fa13ec088695593a0521",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "5f4f566b66e34209f4995ae65dedd3343f03aa5effda1a57eab90ffbd5905cc6"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/4e09dd724a8c_c0031/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "953cba8ffb023f91482fc2d100b0de99e072457cfea05562c899ae3c8d824031",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "0fd9c0600bc7d04b2928ea54eae91de7743caa836a5584d11b0cad7c6891bcd7"
+        }
+      },
+      "legacy_pose3d": "assets/4e09dd724a8c_c0031/pose_wham_scene.json"
+    },
+    "d644482ee06d_c0015": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/d644482ee06d_c0015/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "8b024a4c018c6ca0e97988b94937db42372f6ffd8c2d5673352592e0acdd6b1a",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "8ddd22c6d620a9f81263940f1d520c16318abfa68e25a1b145e2390af0040307"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/d644482ee06d_c0015/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "5764d5406f39f6dc0c26de786880eb29d2368193530f8fcaad159ed033423600",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "4be085167ef7a93f1ca40f65c9f59e0e1c82753a834733309707935c136c2972"
+        }
+      },
+      "legacy_pose3d": "assets/d644482ee06d_c0015/pose_wham_scene.json"
+    },
+    "0b70417b94ab_c0013": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/0b70417b94ab_c0013/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "a7891dd90a66a3148f1996ad5fa70ac373e9e61b9689820edafbbe366f60d64a",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "3ef67dbccf123e5bcba2ce256b6dfd6ac83643d9325a53635d91889a60905e3f"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/0b70417b94ab_c0013/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "a27c8b2861d423332448093a7bcd08dc31f7106adb4ff294d1b01a697d5be7bc",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "c9b3e51647267c8269c6859a9d1df6b4572c5bc9c2d9c0340c0a19b3c797b855"
+        }
+      },
+      "legacy_pose3d": "assets/0b70417b94ab_c0013/pose_wham_scene.json"
+    },
+    "e56945a0fd80_c0028": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/e56945a0fd80_c0028/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "eda7d763a166b3bd63a5ffe3d390025ac035eb6523a64178ef97b4ee7a8d219e",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "169c8ea6bcaa3c4bb8b68451085dd465c167abb3fa4e28f25463feeb9b862af6"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/e56945a0fd80_c0028/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "76f1ee52ffed199567884783f54c64638a9fedef7999909feeedbf584efd0d06",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "95dae84c530ae98b94ae5098d6bd645a28ad8b653d47c534f6caca69539af350"
+        }
+      },
+      "legacy_pose3d": "assets/e56945a0fd80_c0028/pose_wham_scene.json"
+    },
+    "e72b3a782760_c0022": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/e72b3a782760_c0022/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "7ce016d8e7e92f2264eaaec62abc5c9938fe44a215c3258ccbf89599aee04a60",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "dc7a1e883957d94277fda333559beafd307eb23f33207a9b47e233002ee093c6"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/e72b3a782760_c0022/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "b795b4f99d2c44f681bcb77c7fae778aee4713b10b916234471f22e41046c462",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "ee3da2cd1b17c42b12415d805612c9433884c72ccc07e8897992b5a2303e0abc"
+        }
+      },
+      "legacy_pose3d": "assets/e72b3a782760_c0022/pose_wham_scene.json"
+    },
+    "99f1a527c09b_c0013": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/99f1a527c09b_c0013/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "0bead4f33836d73b1c71b9249a6ee3a6ba63386d548970f629d0b81c00262e8f",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "aa5af6c40b008780d2820e2d8d6d4daa44763b27a369fbc962ed34467e16addc"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/99f1a527c09b_c0013/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "5e9caad40386a43c9c8b141580f34d7daa6a2152f9892612846c8b9875188394",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "aee1baec243de93f64ebb9fa4f0c21687c86c22f135d9e00c670ff5cd1328ce5"
+        }
+      },
+      "legacy_pose3d": "assets/99f1a527c09b_c0013/pose_wham_scene.json"
+    },
+    "e1cae96b4d83_c0013": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/e1cae96b4d83_c0013/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "5e2584bedfec3c01aa26d19063f07f315a7dc1463f14dc654ce0d2bf53f87a57",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "0cb6be59bdb082a1f85d90b58ec0ca9aff267dd52f4f6da5ad3f383292943cbb"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/e1cae96b4d83_c0013/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "c54e5a9dacd3231050e969ac3fee30dc8469f0f23fc3479d51fac1533bce05e3",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "a93c380758435da96236ad3e5c1882277afa47e75f4c096f4936af8f984edd3e"
+        }
+      },
+      "legacy_pose3d": "assets/e1cae96b4d83_c0013/pose_wham_scene.json"
+    },
+    "98e127654749_c0029": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/98e127654749_c0029/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "ccb8c983a531dee62b716905138bca379667b98d6bcb3570e48700d293549607",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "8d0034d5ea394f707004ca5310c6f75213ed3e87511a3667b54de80edde07b00"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/98e127654749_c0029/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "bb3e241f75c28148fa03b0bfbaf1fb220786113445ae3aec802ca573189d66a9",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "883922657f6acdce8e8fe9363d38e8e0d53086309c5933670a8073d8e0efe377"
+        }
+      },
+      "legacy_pose3d": "assets/98e127654749_c0029/pose_wham_scene.json"
+    },
+    "b96e8ea44448_c0044": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/b96e8ea44448_c0044/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "951d7b7a472f1140a167986fb504b2d5083dd5213c1bc7617593f4b9ed3ada79",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "30b8256e7a8ad7b3fe62dd396293d56e7a5158acca11699720c6c8c64bf3a140"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/b96e8ea44448_c0044/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "25cce6eb9230429f8d3dbc208d05abed88a0b6d4e2053616b8cd93affbfaf76e",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "95dfc57f7d3487f2e54401e807472c89f101f36d8f89ff0bca8f30f022b607e7"
+        }
+      },
+      "legacy_pose3d": "assets/b96e8ea44448_c0044/pose_wham_scene.json"
+    },
+    "ae75625b241c_c0009": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/ae75625b241c_c0009/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "f895535a89066142181965e6f39c21c0a2c56a2db6881a8dcbf286903a9b03e6",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "b8b99d8abd4182b981ff1668ec4ba82b8ae2eecb6a8e10344d1156b84d1515fa"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/ae75625b241c_c0009/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "fceb2dc7d3f4c5524e5bd8104f3c78ab109a1a9cbe74051149d0c757674c0678",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "615c5b3596340c410d51104941af799ca44b726ac9c360cc52c725b0776dbae5"
+        }
+      },
+      "legacy_pose3d": "assets/ae75625b241c_c0009/pose_wham_scene.json"
+    },
+    "8eeef70dce48_c0018": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/8eeef70dce48_c0018/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "9c0790200ffd2714d73c736fe268201b647fa4fea7af636814fe54ef5423b6fc",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "20515652d5e51028726415bc3ea04a7bb178cdc34924eee19b1eaf8b6138cad7"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/8eeef70dce48_c0018/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "f6d8f98830622d9b0586451421f2a8b98b4244c8503d95f059f80b9864b61c63",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "7eb9bc5208198d2bf9de782477e0d9712525b645fbca52853bc7a8e358a5556d"
+        }
+      },
+      "legacy_pose3d": "assets/8eeef70dce48_c0018/pose_wham_scene.json"
+    },
+    "0d84991ce9f6_c0008": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/0d84991ce9f6_c0008/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "5f681eccfc3d007573734da563198bcd76771fca3ead8cedf4bbbfa6fbaec40d",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "5ec25f885e4f75046011378c469f94c5d50f876bf0a59efacee772000dd733f3"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/0d84991ce9f6_c0008/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "ac1f792ff925945b5654fea9d562bc0b30b023ab09fe807cea00c99da8e25b38",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "8f49504e370831ebca5dcff487a3299991ef7916cf513ecdf8563873fd467436"
+        }
+      },
+      "legacy_pose3d": "assets/0d84991ce9f6_c0008/pose_wham_scene.json"
+    },
+    "b54e0e701d77_c0001": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/b54e0e701d77_c0001/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "2509929e8b0b95ed9ac1a2abaeaebb379663c1ecb2aa4572395fc6ff24750300",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "000a0b824e6b179d912a60c443c4300aedcff6f368c6f1c62fcd83b9aa9fc1d3"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/b54e0e701d77_c0001/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "7e4ca4174b9bd66828fba1674470bf8d5b62ea7960158841f432184f80f9455c",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "4b5740d27199557f920aae939b188bafeab60d1982d4df0733f564d8f900ee87"
+        }
+      },
+      "legacy_pose3d": "assets/b54e0e701d77_c0001/pose_wham_scene.json"
+    },
+    "3ef5720dccec_c0024": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/3ef5720dccec_c0024/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "ae08d277a0155431fd2f36f5c6432a6fd1caa133b92f9964c114dc8c5085982b",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "8f8877d18e19e173f46014b98ddb4532af4277252b602e61e4c72c06623d1499"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/3ef5720dccec_c0024/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "f91b1f4b5a7519826895f1e2131beb186ba2decf75083cca9530bf46c7a3ccf5",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "f68369755ef75e20c722992fd66a32b30a25e4b393ba9a1d5eeb2b215e678874"
+        }
+      },
+      "legacy_pose3d": "assets/3ef5720dccec_c0024/pose_wham_scene.json"
+    },
+    "782c3ca51bd5_c0016": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/782c3ca51bd5_c0016/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "760fa29aa5f42d5821d483cc4e7538320c5ad06cde48ca2f6f7a008041a92aa0",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "34fb11d87a71a5884ef6efd9b7cbdea897e6493d3fb69f25c37c2409691a7650"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/782c3ca51bd5_c0016/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "ed75a126a4ffed85cd9f5be239b5f7209f1475ef45acde6077b38ddd82125dbe",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "d52047944853acd05881213d6886b14faa4c4b480a0cad27fdee47d0a4c0df43"
+        }
+      },
+      "legacy_pose3d": "assets/782c3ca51bd5_c0016/pose_wham_scene.json"
+    },
+    "02dad52fd781_c0005": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/02dad52fd781_c0005/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "770ec9a53b059312629727844a17001c5707ab6142fef0481622178ff10948c9",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "df3b4d1cc37d6b7761c8e5bff14b8aac74af13e877b1fa4e48b7d9d760617461"
+        }
+      },
+      "legacy_pose3d": "assets/02dad52fd781_c0005/pose_wham_scene.json"
+    },
+    "b902a8ad2499_c0023": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/b902a8ad2499_c0023/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "962280df4dd3514f9f496b93b106d24ec478f3e65f76bf454b397f3083b2413f",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "68ef13bd80f0031f713ffc29f8a70a8043fd6609c15984706a376e914f7787fa"
+        }
+      },
+      "legacy_pose3d": "assets/b902a8ad2499_c0023/pose_wham_scene.json"
+    },
+    "d4ea211e62bd_c0016": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/d4ea211e62bd_c0016/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "b7b307d8e2e2a14885ee7c373f494a4445f670b47dfb6434621e54d21eef4bcc",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "29b38aad80dcdbd4e3b37d269eb7effe2251a268709c8ffa5e28a361efab07b6"
+        }
+      },
+      "legacy_pose3d": "assets/d4ea211e62bd_c0016/pose_wham_scene.json"
+    },
+    "437c049ad9fc_c0009": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/437c049ad9fc_c0009/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "b4533fa8e6719109363a05994c9cf829f88bc96f7e6c4786c20ee8b24b7ef5e5",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "314309b37e6db2a5f6fc093b994dd021649079b2d5e04981666cbe1944a4c596"
+        }
+      },
+      "legacy_pose3d": "assets/437c049ad9fc_c0009/pose_wham_scene.json"
+    },
+    "98e127654749_c0020": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/98e127654749_c0020/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "ea377e09727882f8c156f342e3f1c8a77f15b098af2fcaeee3631a7273a73995",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "c8edb4355fd74f01af2aa5d8a486d3a9520c713a3e51947635839c0ded84d5d7"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/98e127654749_c0020/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "9dd72980b16b8828be3d65231f045b6070004f402e3e95d589eb3b867501bdec",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "46d919adc0e727dd1da7bea9a640cfb3e8513cd5e29b2fa10f7f2e77461d077b"
+        }
+      },
+      "legacy_pose3d": "assets/98e127654749_c0020/pose_wham_scene.json"
+    },
+    "0e1f00c192b9_c0007": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/0e1f00c192b9_c0007/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "71d8f686a2f1972e077d738535575ca93ac91b2aeeae1ae611dca6b25fc867e0",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "2e2d0a33bef60caf0879a98cb5d2ffced8e1b28e640d7adbc0558f8dc6707557"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/0e1f00c192b9_c0007/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "eb428d71bb5e55853f9df3223c3e8d2455f0656024a572bbc6fb72d37137533a",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "ca7ea7e70b9172dffb5612bbf7b3a7fa6455f77d44895c19959637605363e631"
+        }
+      },
+      "legacy_pose3d": "assets/0e1f00c192b9_c0007/pose_wham_scene.json"
+    },
+    "7ef66f7a16b0_c0005": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/7ef66f7a16b0_c0005/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "b5406c47fa74ff1eef02667c9e64b755f395e5ead80bbb199a398146a34c4459",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "6d22a8d43ee76ad13825fb67bbb20acb834c064278bcd7b821f6ee9eb6e52bad"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/7ef66f7a16b0_c0005/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "be534346b55a70f266783964cd3c3608afe67d7d63ebf36c4ff972f9d194edaf",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "dbf85f6187d345e1464a74cee9baf6de7e9d1b5b5d70e83a7698f9a384578f59"
+        }
+      },
+      "legacy_pose3d": "assets/7ef66f7a16b0_c0005/pose_wham_scene.json"
+    },
+    "210747e6a7e9_c0012": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/210747e6a7e9_c0012/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "fd18fd58d6d5ae31ac91c4a883aedd306dc38c3719ec0f4d834b55806e77d66e",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "be11c373ceab7631edf670a58ffdd8b2731fa8121bac44d1bedb622bf6e9b679"
+        },
+        "nlf_native": {
+          "id": "nlf_native",
+          "label": "NLF native shape + fitting",
+          "pose3d": "reconstructions/stride-20261028/210747e6a7e9_c0012/nlf_native.json.gz",
+          "model3d": "NLF native shape + fitting",
+          "method": "nlf_native",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "7ddd997d9f069dbccfed6c28d8023314831af4eda8624d3da85d557f6b34f2b2",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "comparison",
+          "sha256_gzip": "c8c1938366a6baad9299a0b5012591865ec7492cf0c8b5c7db01199417135db8"
+        }
+      },
+      "legacy_pose3d": "assets/210747e6a7e9_c0012/pose_wham_scene.json"
+    },
+    "0d84991ce9f6_c0029": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/0d84991ce9f6_c0029/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "9480e705744e72aeefc64b9b6c54e2876659c90ed79212cb638c9bcd8895da84",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "cd645ab0637e0f6b9ffb3165301eac33ea82782c760df462a53f3a550f0aa411"
+        }
+      },
+      "legacy_pose3d": "assets/0d84991ce9f6_c0029/pose_wham_scene.json"
+    },
+    "f4acaa32cd9a_c0005": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/f4acaa32cd9a_c0005/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "28f2d64afa0e30cd55de53d547ed5b93800bc86e506c0b96456b154459a8b8d6",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "5620f7eb728356289c5bab820c5a2996fc9154bf33710e263a66d0f614271d6f"
+        }
+      },
+      "legacy_pose3d": "assets/f4acaa32cd9a_c0005/pose_wham_scene.json"
+    },
+    "b54e0e701d77_c0007": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/b54e0e701d77_c0007/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "2e1c3281fe475f6537f5b785087c947ffcd3efeec725c70689060435edc2416f",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "84133395d5f4cbb956a6f6c831dfbc8a3c077c773be4dc1cbde392651d80afbc"
+        }
+      },
+      "legacy_pose3d": "assets/b54e0e701d77_c0007/pose_wham_scene.json"
+    },
+    "d4ea211e62bd_c0015": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/d4ea211e62bd_c0015/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "e9778358950ff8509d98e06ea8201156238d0019df381a1db094b340f4bff320",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "4c257be68ce43091d97babb68b8282905536b6e9698ab68502766ab6efa7816c"
+        }
+      },
+      "legacy_pose3d": "assets/d4ea211e62bd_c0015/pose_wham_scene.json"
+    },
+    "ae75625b241c_c0017": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/ae75625b241c_c0017/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "9fed26a7e4dc50d60d302de41fbbd56270734124f3feb38618e070c72faba997",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "dbd648e858516f24f7345b4f60d4b5b9f2ae60713fbbbf2fab1a413ce4cc3d18"
+        }
+      },
+      "legacy_pose3d": "assets/ae75625b241c_c0017/pose_wham_scene.json"
+    },
+    "02dad52fd781_c0032": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/02dad52fd781_c0032/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "fa06ccd320d2a56e6e38be8cc67fbc7f2dc655f5ef4aaf88d97a7122aa6ff94d",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "b5bb5423dab7c453e34127436b94d1f092664643c20513ac610c5224987fe33c"
+        }
+      },
+      "legacy_pose3d": "assets/02dad52fd781_c0032/pose_wham_scene.json"
+    },
+    "782c3ca51bd5_c0011": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/782c3ca51bd5_c0011/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "0546b33a8c7f6cd99957897f298a21000c8b3689e3a2a4c397a10d95b1b7c9fe",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "5cbc42f1cdee5181921d66a639c441947c4c8243de8ccf309564caa1e01f0c55"
+        }
+      },
+      "legacy_pose3d": "assets/782c3ca51bd5_c0011/pose_wham_scene.json"
+    },
+    "b96e8ea44448_c0038": {
+      "preferred": "gvhmr_f4",
+      "variants": {
+        "gvhmr_f4": {
+          "id": "gvhmr_f4",
+          "label": "GVHMR f4",
+          "pose3d": "reconstructions/stride-20261028/b96e8ea44448_c0038/gvhmr_f4.json.gz",
+          "model3d": "GVHMR f4",
+          "method": "gvhmr_f4",
+          "sceneFrame": "clip-fixed-camera-estimate",
+          "sourceFitSha256": "7f70bf1f1f036e7bc7cc160b0d8d9b5223e83695bc7b391e6e9f95fc7822c2f5",
+          "qualityUrl": "../studies/stride-20261028/report.html",
+          "role": "preferred",
+          "sha256_gzip": "231b2cbf1112c342c44727b02a8089d72ec5760580b8bac0fa5041ca558fd8ef"
+        }
+      },
+      "legacy_pose3d": "assets/b96e8ea44448_c0038/pose_wham_scene.json"
+    }
+  }
+}

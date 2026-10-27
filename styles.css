@@ -79,3 +79,13 @@
 @media(max-width:760px){.pose-filter{grid-column:1/-1;justify-self:start}}
 
 .motion-controls .motion-status.review-required{color:#87551b}
+
+/* Explorer exposes the selected reconstruction and untouched legacy source. */
+.reconstruction-choice{padding:12px 16px;border-bottom:1px solid var(--line);background:#f4f8ef;font-size:11px}
+.reconstruction-choice label{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-weight:600}
+.reconstruction-choice select{max-width:100%;padding:6px;border:1px solid #c5d3bc;background:white;font:inherit}
+.reconstruction-choice p{margin:8px 0;color:#526252;line-height:1.6}
+.reconstruction-choice a{display:inline-block;margin-right:14px;color:#365d27;text-decoration:underline}
+.video-label i{max-width:55%;white-space:normal;text-align:right;overflow-wrap:anywhere}
+
+.reconstruction-coverage{font-size:11px;color:#527046;line-height:1.6;margin:8px 0 12px}

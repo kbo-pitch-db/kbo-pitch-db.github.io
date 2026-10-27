@@ -59,6 +59,7 @@ window.MotionViewer = (() => {
         for(const p of points)for(let k=0;k<3;k++){low[k]=Math.min(low[k],p[k]);high[k]=Math.max(high[k],p[k]);}
         view.center3=points.length?low.map((v,k)=>(v+high[k])/2):[0,.8,0];
         view.radius=points.reduce((r,p)=>Math.max(r,Math.hypot(...view.center3.map((v,k)=>p[k]-v))),1)*1.08;
+        if(data.scene?.comparison_bounds){const b=data.scene.comparison_bounds;view.center3=b.min.map((v,k)=>(v+b.max[k])/2);view.radius=Math.max(.95,Math.hypot(...b.min.map((v,k)=>b.max[k]-v))/2)*1.08;}
       } else {
         const low=[Infinity,Infinity], high=[-Infinity,-Infinity];
         for (const p of points) for(let k=0;k<2;k++){low[k]=Math.min(low[k],p[k]);high[k]=Math.max(high[k],p[k]);}
@@ -79,7 +80,7 @@ window.MotionViewer = (() => {
     }
     try {
       const response=await fetch(url(clip.pose3d)); if(!response.ok) throw Error(clip.pose3d);
-      const pose3d=await response.json();
+      const pose3d=window.ReconstructionRegistry?await window.ReconstructionRegistry.decode(response,clip.pose3d):await response.json();
       if (generation!==ticket || !panel.isConnected) return;
       if (pose3d.dimension!==3 || pose3d.frames.length!==pose2d.frames.length || pose3d.fps!==pose2d.fps ||
           pose3d.frames.some((f,i)=>f.source_frame!==pose2d.frames[i].source_frame || f.source_time!==pose2d.frames[i].source_time)) {
@@ -87,7 +88,7 @@ window.MotionViewer = (() => {
       }
       const view3={data:pose3d,canvas:panel.querySelector('.motion-canvas[data-dimension="3"]')};
       try{
-        const module=window.BoneScene || await import('./bone_scene.js?v=20261027-anchor3');
+        const module=window.BoneScene || await import('./bone_scene.js?v=20261028-explorer');
         if(generation!==ticket || !panel.isConnected)return;
         view3.interpolateAnatomy=module.interpolateAnatomy;
         view3.mesh=module.createBoneScene(view3.canvas,pose3d);
@@ -101,7 +102,7 @@ window.MotionViewer = (() => {
       control.querySelector('.motion-orbit').hidden=false;
       const needsReview=clip.pose3dStatus==='review_required_preview';
       const details=[...new Set((clip.pose3dReasons||[]).map(reason=>t.reviewReasons[reason]||reason))].join(' · ');
-      control.querySelector('.motion-status').textContent=needsReview?t.preview+(details?' — '+details:''):pose3d.scene?t.scene+' · '+t.ready:t[clip.pose3dStatus==='available'?'ready':'limited'];
+      control.querySelector('.motion-status').textContent=clip.reconstructionId&&clip.reconstructionId!=='legacy'?clip.reconstructionLabel+' · '+(lang==='ko'?'신규 연구 후보 · 전역 이동·접지·절대 보폭 미검증':'New research candidate · global motion/contact/stride unvalidated'):needsReview?t.preview+(details?' — '+details:''):pose3d.scene?t.scene+' · '+t.ready:t[clip.pose3dStatus==='available'?'ready':'limited'];
       control.querySelector('.motion-status').classList.toggle('review-required',needsReview);
       const coordinates=panel.querySelector('[data-meta="coords"] .meta-value');
       if(coordinates)coordinates.title=coordinates.textContent='2D: crop pixels · 3D: '+pose3d.coordinate_system;
@@ -169,7 +170,7 @@ window.MotionViewer = (() => {
       return project(value);
     });
     if(is3d){
-      if(data.scene){
+      if(data.scene?.floor && data.scene.show_floor!==false){
         ctx.strokeStyle='#395847';ctx.lineWidth=1;
         const floor=data.scene.floor.height;
         for(let q=-2;q<=2;q+=.25)for(const pair of [[[q,floor,-2],[q,floor,2]],[[-2,floor,q],[2,floor,q]]]){
