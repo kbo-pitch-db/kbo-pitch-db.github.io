@@ -1,0 +1,45 @@
+{
+  "config": {
+    "version": "root-support-v1",
+    "steps": 500,
+    "spacing_seconds": 0.08,
+    "image_weight": 1.0,
+    "root_acc_weight": 0.01,
+    "root_prior_weight": 0.0001,
+    "contact_normal_weight": 0.03,
+    "contact_tangent_weight": 0.01,
+    "penetration_weight": 0.001,
+    "plane_pitch_candidates_radians": [
+      0.0,
+      0.1,
+      0.25
+    ],
+    "normal_tolerance_leg": 0.03,
+    "max_source_p50_increase_px": 2.0,
+    "max_wrist_p95_increase_px": 2.0,
+    "articulation_policy": "Exact unchanged camera-relative pose and body orientation",
+    "support_policy": "Independent rear departure and lead arrival, overlap allowed; marker confidence and image speed; no hard position anchors",
+    "camera_policy": "Each existing f4 estimated camera held constant to isolate root-only effects; not measured intrinsics",
+    "floor_policy": "One constant plane per candidate, three uncalibrated normal hypotheses; no per-frame floor or floor lift",
+    "timing": "Broadcast timestamps; slow-motion physical time is unknown"
+  },
+  "pilot": [
+    "e1cae96b4d83_c0027",
+    "d30b22cfc0b0_c0036",
+    "3fdcd2dbaf58_c0014",
+    "fa1febd5056f_c0015",
+    "4e09dd724a8c_c0031",
+    "0b70417b94ab_c0013"
+  ],
+  "confirmation": [
+    "e72b3a782760_c0038",
+    "d644482ee06d_c0015",
+    "e56945a0fd80_c0028",
+    "e72b3a782760_c0022",
+    "99f1a527c09b_c0013",
+    "e1cae96b4d83_c0013"
+  ],
+  "frozen_test24_used": false,
+  "created_utc": "2026-10-27T19:17:20Z",
+  "code_sha256": "524a751eb1e3b3c00259f58f8a945eefc17a0703fabc469f1e11e90268442015"
+}

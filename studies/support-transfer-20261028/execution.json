@@ -1,0 +1,33 @@
+{
+  "config": {
+    "version": "root-support-v1",
+    "steps": 500,
+    "spacing_seconds": 0.08,
+    "image_weight": 1.0,
+    "root_acc_weight": 0.01,
+    "root_prior_weight": 0.0001,
+    "contact_normal_weight": 0.03,
+    "contact_tangent_weight": 0.01,
+    "penetration_weight": 0.001,
+    "plane_pitch_candidates_radians": [
+      0.0,
+      0.1,
+      0.25
+    ],
+    "normal_tolerance_leg": 0.03,
+    "max_source_p50_increase_px": 2.0,
+    "max_wrist_p95_increase_px": 2.0,
+    "articulation_policy": "Exact unchanged camera-relative pose and body orientation",
+    "support_policy": "Independent rear departure and lead arrival, overlap allowed; marker confidence and image speed; no hard position anchors",
+    "camera_policy": "Each existing f4 estimated camera held constant to isolate root-only effects; not measured intrinsics",
+    "floor_policy": "One constant plane per candidate, three uncalibrated normal hypotheses; no per-frame floor or floor lift",
+    "timing": "Broadcast timestamps; slow-motion physical time is unknown"
+  },
+  "code_sha256": "88202083f3af8ec87eb65f163034c758d55bbda53d3527c7402c5abb39fdf0e5",
+  "cohort": "all",
+  "steps": 500,
+  "implementation_corrections": [
+    "Zero-weight missing 2D targets replaced by finite placeholders to prevent NaN times zero. Abort on any nonfinite loss."
+  ],
+  "protocol_sha256": "35e3ef36d30a79efce9f89029b6ad9a8b547333fd78c0ac0ebfd37c2b04060dc"
+}

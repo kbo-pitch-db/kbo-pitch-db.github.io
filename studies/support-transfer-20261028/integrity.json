@@ -1,0 +1,9 @@
+{
+  "candidate_files_checked": 24,
+  "articulation_shape_rotations_timestamps_bit_identical": true,
+  "projection_and_plane_metadata_consistent": true,
+  "production_index_unchanged": true,
+  "canonical_index_sha256": "8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16",
+  "root_geometry_finite": true,
+  "tests_are_integrity_not_accuracy": true
+}

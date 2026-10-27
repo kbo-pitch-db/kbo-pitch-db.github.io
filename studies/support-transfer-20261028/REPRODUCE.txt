@@ -1,0 +1,7 @@
+From the preserved research worktree:
+../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort pilot
+../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort confirmation
+../env/bin/python experiments/pitch_observation/view_support_transfer.py
+../env/bin/python experiments/pitch_observation/publish_support_transfer.py
+Cached fits resume; original Halpe-26 and canonical Explorer registry are unchanged.
+Only numerical outputs and external YouTube references are published. No source broadcast pixels, videos, checkpoints or licensed meshes are included.

@@ -1,0 +1,316 @@
+{
+  "summary": [
+    {
+      "cohort": "pilot",
+      "method": "root_temporal_only",
+      "clips": 6,
+      "source_gate_pass_count": 6,
+      "max_interankle_change_leg": 5.586033124112455e-16,
+      "source_p50_px": {
+        "baseline_clip_median": 2.6532385948785837,
+        "candidate_clip_median": 2.801766937555871,
+        "paired_delta_median": 0.16550130907589278,
+        "improved": 1,
+        "n": 6
+      },
+      "source_p95_px": {
+        "baseline_clip_median": 13.125172421471095,
+        "candidate_clip_median": 13.083581747396611,
+        "paired_delta_median": -0.01677773497806001,
+        "improved": 4,
+        "n": 6
+      },
+      "wrist_p95_px": {
+        "baseline_clip_median": 2.5248063296365184,
+        "candidate_clip_median": 3.131062263761452,
+        "paired_delta_median": 0.32915439261565393,
+        "improved": 1,
+        "n": 6
+      },
+      "feet_p95_px": {
+        "baseline_clip_median": 9.544986948631696,
+        "candidate_clip_median": 9.728314025159882,
+        "paired_delta_median": 0.14464389301291547,
+        "improved": 2,
+        "n": 6
+      },
+      "root_acc_p95_leg_s2": {
+        "baseline_clip_median": 95.31718533114802,
+        "candidate_clip_median": 17.08874721920011,
+        "paired_delta_median": -74.80093276128125,
+        "improved": 6,
+        "n": 6
+      },
+      "assumed_contact_speed_weighted_leg_s": {
+        "baseline_clip_median": 1.5872801296931092,
+        "candidate_clip_median": 1.181755639453426,
+        "paired_delta_median": -0.5284185040729754,
+        "improved": 5,
+        "n": 5
+      }
+    },
+    {
+      "cohort": "pilot",
+      "method": "root_support_transfer",
+      "clips": 6,
+      "source_gate_pass_count": 6,
+      "max_interankle_change_leg": 2.848098034263592e-16,
+      "source_p50_px": {
+        "baseline_clip_median": 2.6532385948785837,
+        "candidate_clip_median": 3.03287395385483,
+        "paired_delta_median": 0.319686069540444,
+        "improved": 0,
+        "n": 6
+      },
+      "source_p95_px": {
+        "baseline_clip_median": 13.125172421471095,
+        "candidate_clip_median": 13.39361933823362,
+        "paired_delta_median": 0.127510727269188,
+        "improved": 2,
+        "n": 6
+      },
+      "wrist_p95_px": {
+        "baseline_clip_median": 2.5248063296365184,
+        "candidate_clip_median": 3.170956301818351,
+        "paired_delta_median": 0.3550599996605912,
+        "improved": 1,
+        "n": 6
+      },
+      "feet_p95_px": {
+        "baseline_clip_median": 9.544986948631696,
+        "candidate_clip_median": 9.806764583723108,
+        "paired_delta_median": 0.14859439756564008,
+        "improved": 1,
+        "n": 6
+      },
+      "root_acc_p95_leg_s2": {
+        "baseline_clip_median": 95.31718533114802,
+        "candidate_clip_median": 19.34445308650097,
+        "paired_delta_median": -75.94239504542014,
+        "improved": 6,
+        "n": 6
+      },
+      "assumed_contact_speed_weighted_leg_s": {
+        "baseline_clip_median": 1.5872801296931092,
+        "candidate_clip_median": 0.4332862662120047,
+        "paired_delta_median": -1.1958615148610752,
+        "improved": 5,
+        "n": 5
+      }
+    },
+    {
+      "cohort": "confirmation",
+      "method": "root_temporal_only",
+      "clips": 6,
+      "source_gate_pass_count": 6,
+      "max_interankle_change_leg": 2.7909192724980676e-16,
+      "source_p50_px": {
+        "baseline_clip_median": 2.521243850385498,
+        "candidate_clip_median": 2.7217517641852256,
+        "paired_delta_median": 0.1321707119939608,
+        "improved": 0,
+        "n": 6
+      },
+      "source_p95_px": {
+        "baseline_clip_median": 14.488807725132041,
+        "candidate_clip_median": 14.586960581889638,
+        "paired_delta_median": -0.01766023706301123,
+        "improved": 4,
+        "n": 6
+      },
+      "wrist_p95_px": {
+        "baseline_clip_median": 5.310660231413624,
+        "candidate_clip_median": 5.558570477895165,
+        "paired_delta_median": 0.24791024648154147,
+        "improved": 1,
+        "n": 6
+      },
+      "feet_p95_px": {
+        "baseline_clip_median": 12.590525858103625,
+        "candidate_clip_median": 12.55259320321144,
+        "paired_delta_median": 0.13454647846681045,
+        "improved": 2,
+        "n": 6
+      },
+      "root_acc_p95_leg_s2": {
+        "baseline_clip_median": 121.84864170221582,
+        "candidate_clip_median": 20.425572080270904,
+        "paired_delta_median": -98.85048394420133,
+        "improved": 6,
+        "n": 6
+      },
+      "assumed_contact_speed_weighted_leg_s": {
+        "baseline_clip_median": 1.644719046659471,
+        "candidate_clip_median": 0.9856501391095035,
+        "paired_delta_median": -0.6590689075499675,
+        "improved": 5,
+        "n": 5
+      }
+    },
+    {
+      "cohort": "confirmation",
+      "method": "root_support_transfer",
+      "clips": 6,
+      "source_gate_pass_count": 6,
+      "max_interankle_change_leg": 2.8223764955815364e-16,
+      "source_p50_px": {
+        "baseline_clip_median": 2.521243850385498,
+        "candidate_clip_median": 3.0782408060834725,
+        "paired_delta_median": 0.4710861545310021,
+        "improved": 0,
+        "n": 6
+      },
+      "source_p95_px": {
+        "baseline_clip_median": 14.488807725132041,
+        "candidate_clip_median": 14.850552137682012,
+        "paired_delta_median": 0.16091720219911387,
+        "improved": 1,
+        "n": 6
+      },
+      "wrist_p95_px": {
+        "baseline_clip_median": 5.310660231413624,
+        "candidate_clip_median": 5.643429489055224,
+        "paired_delta_median": 0.11646886526409128,
+        "improved": 3,
+        "n": 6
+      },
+      "feet_p95_px": {
+        "baseline_clip_median": 12.590525858103625,
+        "candidate_clip_median": 12.852820208275755,
+        "paired_delta_median": 0.37573893422825577,
+        "improved": 1,
+        "n": 6
+      },
+      "root_acc_p95_leg_s2": {
+        "baseline_clip_median": 121.84864170221582,
+        "candidate_clip_median": 20.194793770148536,
+        "paired_delta_median": -98.92508435667105,
+        "improved": 6,
+        "n": 6
+      },
+      "assumed_contact_speed_weighted_leg_s": {
+        "baseline_clip_median": 1.644719046659471,
+        "candidate_clip_median": 0.49910871422697817,
+        "paired_delta_median": -1.1456103324324929,
+        "improved": 5,
+        "n": 5
+      }
+    },
+    {
+      "cohort": "all",
+      "method": "root_temporal_only",
+      "clips": 12,
+      "source_gate_pass_count": 12,
+      "max_interankle_change_leg": 5.586033124112455e-16,
+      "source_p50_px": {
+        "baseline_clip_median": 2.566449631204322,
+        "candidate_clip_median": 2.7217517641852256,
+        "paired_delta_median": 0.1414689474813784,
+        "improved": 1,
+        "n": 12
+      },
+      "source_p95_px": {
+        "baseline_clip_median": 13.873265982761257,
+        "candidate_clip_median": 13.978856058490972,
+        "paired_delta_median": -0.01677773497806001,
+        "improved": 8,
+        "n": 12
+      },
+      "wrist_p95_px": {
+        "baseline_clip_median": 4.495673642046144,
+        "candidate_clip_median": 4.914721489194961,
+        "paired_delta_median": 0.24791024648154147,
+        "improved": 2,
+        "n": 12
+      },
+      "feet_p95_px": {
+        "baseline_clip_median": 11.957474473840948,
+        "candidate_clip_median": 12.042730935913394,
+        "paired_delta_median": 0.14464389301291547,
+        "improved": 4,
+        "n": 12
+      },
+      "root_acc_p95_leg_s2": {
+        "baseline_clip_median": 109.08450073002766,
+        "candidate_clip_median": 18.679865355525198,
+        "paired_delta_median": -92.39260037250207,
+        "improved": 12,
+        "n": 12
+      },
+      "assumed_contact_speed_weighted_leg_s": {
+        "baseline_clip_median": 1.6359726413787883,
+        "candidate_clip_median": 1.1348853945991184,
+        "paired_delta_median": -0.5937437058114714,
+        "improved": 10,
+        "n": 10
+      }
+    },
+    {
+      "cohort": "all",
+      "method": "root_support_transfer",
+      "clips": 12,
+      "source_gate_pass_count": 12,
+      "max_interankle_change_leg": 2.848098034263592e-16,
+      "source_p50_px": {
+        "baseline_clip_median": 2.566449631204322,
+        "candidate_clip_median": 3.046333156197615,
+        "paired_delta_median": 0.3739680672925878,
+        "improved": 0,
+        "n": 12
+      },
+      "source_p95_px": {
+        "baseline_clip_median": 13.873265982761257,
+        "candidate_clip_median": 14.252138260724315,
+        "paired_delta_median": 0.16091720219911387,
+        "improved": 3,
+        "n": 12
+      },
+      "wrist_p95_px": {
+        "baseline_clip_median": 4.495673642046144,
+        "candidate_clip_median": 4.752373052682749,
+        "paired_delta_median": 0.21482945428807843,
+        "improved": 4,
+        "n": 12
+      },
+      "feet_p95_px": {
+        "baseline_clip_median": 11.957474473840948,
+        "candidate_clip_median": 12.141300280736067,
+        "paired_delta_median": 0.22820703468988945,
+        "improved": 2,
+        "n": 12
+      },
+      "root_acc_p95_leg_s2": {
+        "baseline_clip_median": 109.08450073002766,
+        "candidate_clip_median": 20.194793770148536,
+        "paired_delta_median": -91.03759749251836,
+        "improved": 12,
+        "n": 12
+      },
+      "assumed_contact_speed_weighted_leg_s": {
+        "baseline_clip_median": 1.6359726413787883,
+        "candidate_clip_median": 0.4661974902194914,
+        "paired_delta_median": -1.170735923646784,
+        "improved": 10,
+        "n": 10
+      }
+    }
+  ],
+  "main_site_changed": true,
+  "full813_processed": false,
+  "test24_used": false,
+  "scope": "Both six-clip cohorts are within the already examined tuning subset; same configuration. No new untouched final comparison or human source review. Contact metrics are objective-linked, not independent accuracy evidence. Exact same-frame ankle-spacing preservation does not validate cross-time or absolute stride.",
+  "source_code_commit": "ced8073d",
+  "source_branch": "research/support-transfer-root-v1",
+  "remote_branch_push": "succeeded",
+  "reproduce": [
+    "../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort pilot",
+    "../env/bin/python experiments/pitch_observation/support_transfer_root.py --cohort confirmation",
+    "../env/bin/python experiments/pitch_observation/view_support_transfer.py"
+  ],
+  "candidate_decision": "Promising research pilot; do not promote to main until source motion and camera/plane sensitivity are checked. Most root acceleration improvement is from temporal regularization; support adds reduced objective-linked foot motion.",
+  "next_priority": "Repeat unchanged root fitting on f1/f4/f12, preserve support hypotheses including unknown, check source-video contact correspondence and cross-time stride changes. Then compare on clips outside these tuning12 before batch813.",
+  "branch_url": "https://github.com/kbo-pitch-db/kbo-pitch-db.github.io/tree/research/support-transfer-root-v1",
+  "explorer_default_changed": false,
+  "experimental_comparison_published": true,
+  "publication_note": "Only this separate numerical comparison page was published; Explorer reconstruction selection is unchanged."
+}
