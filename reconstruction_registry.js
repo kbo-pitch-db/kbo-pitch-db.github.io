@@ -1,6 +1,6 @@
 /* Explicit model provenance; the immutable legacy index is never relabeled. */
 (function(root){
-  function published(base){return {...base,reconstructionId:'published',reconstructionState:'published',reconstructionVersion:'dataset-20261028'};}
+  function published(base){return {...base,reconstructionId:'published',reconstructionState:'published',reconstructionVersion:base.reconstructionVersion||'dataset-20261028'};}
   function preview(base,registry){
     if(registry?.clips?.[base.id])return resolve(base,registry);
     return {...base,pose3d:null,pose3dStatus:'preview_unavailable',reconstructionId:'preview_unavailable',model3d:'Preview unavailable'};
