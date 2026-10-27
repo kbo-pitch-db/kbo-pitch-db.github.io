@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "version": "rear-pivot-v14-20261028",
+  "clips": {
+    "e1cae96b4d83_c0027": {
+      "preferred": "rear_pivot_v14",
+      "variants": {
+        "rear_pivot_v14": {
+          "id": "rear_pivot_v14",
+          "label": "GVHMR + pivot-aware joint fitting",
+          "pose3d": "reconstructions/rear-pivot-v14/e1cae96b4d83_c0027.json.gz",
+          "model3d": "GVHMR + pivot-aware joint fitting",
+          "method": "gvhmr-rear-pivot-v14",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "e5e0521c38819523d11929a6d47fc566f75e5fe42caf4c577fdb6af4a7704599",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "d648f67fd3d2363a760888614e553a696ec512bffaae2a8e8288c7561f3a29cf",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "d30b22cfc0b0_c0036": {
+      "preferred": "rear_pivot_v14",
+      "variants": {
+        "rear_pivot_v14": {
+          "id": "rear_pivot_v14",
+          "label": "GVHMR + pivot-aware joint fitting",
+          "pose3d": "reconstructions/rear-pivot-v14/d30b22cfc0b0_c0036.json.gz",
+          "model3d": "GVHMR + pivot-aware joint fitting",
+          "method": "gvhmr-rear-pivot-v14",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "e8cbf4fc84c9125ccd0e876604f30207f97faf33e2caca60b1ed35d6a91b539e",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "fb86f8b039bab2fffc82d2317212625e3a9dec9b09548db0eb7e1f06cd113569",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "3fdcd2dbaf58_c0014": {
+      "preferred": "rear_pivot_v14",
+      "variants": {
+        "rear_pivot_v14": {
+          "id": "rear_pivot_v14",
+          "label": "GVHMR + pivot-aware joint fitting",
+          "pose3d": "reconstructions/rear-pivot-v14/3fdcd2dbaf58_c0014.json.gz",
+          "model3d": "GVHMR + pivot-aware joint fitting",
+          "method": "gvhmr-rear-pivot-v14",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "998cc3a6142f2e684d6f7aab24e230d90ec1b5657813e54e861a97de603c61c8",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "fe819312f0f688b0853ee7511ddb88a77d71003c8bdeb4b690d9dd4127251894",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "0b70417b94ab_c0013": {
+      "preferred": "rear_pivot_v14",
+      "variants": {
+        "rear_pivot_v14": {
+          "id": "rear_pivot_v14",
+          "label": "GVHMR + pivot-aware joint fitting",
+          "pose3d": "reconstructions/rear-pivot-v14/0b70417b94ab_c0013.json.gz",
+          "model3d": "GVHMR + pivot-aware joint fitting",
+          "method": "gvhmr-rear-pivot-v14",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "d399aad9c41d3bb0f0ea2b44edd40522cf58794fd2a2cda4191fa7f5987cb3a6",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "2d2bec74a7849f7644eb9002b0edbcf9b20150618c46d3f79f2a52391f08e3e5",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "e56945a0fd80_c0028": {
+      "preferred": "rear_pivot_v14",
+      "variants": {
+        "rear_pivot_v14": {
+          "id": "rear_pivot_v14",
+          "label": "GVHMR + pivot-aware joint fitting",
+          "pose3d": "reconstructions/rear-pivot-v14/e56945a0fd80_c0028.json.gz",
+          "model3d": "GVHMR + pivot-aware joint fitting",
+          "method": "gvhmr-rear-pivot-v14",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "ddd81715927319691ed102d3dde398833b35c59d1f80085c1c6a9dafb4662177",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "ccd635bed9bfa8429c16032637bedc6ab2f77f1a907c315b10e1d35fd7c00584",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    },
+    "99f1a527c09b_c0013": {
+      "preferred": "rear_pivot_v14",
+      "variants": {
+        "rear_pivot_v14": {
+          "id": "rear_pivot_v14",
+          "label": "GVHMR + pivot-aware joint fitting",
+          "pose3d": "reconstructions/rear-pivot-v14/99f1a527c09b_c0013.json.gz",
+          "model3d": "GVHMR + pivot-aware joint fitting",
+          "method": "gvhmr-rear-pivot-v14",
+          "sceneFrame": "clip-fixed-inferred-support",
+          "sourceFitSha256": "991ef5ffa0fe04af90067fed9a958c080dad04ec1085947fbc0a775c95e797d8",
+          "qualityUrl": null,
+          "role": "preview",
+          "sha256_gzip": "33bd7a98ff01d2ab1e138120d9b80e94afb584ed68b30d07d701dc554daadabc",
+          "coordinates": "Clip-fixed inferred support frame; Y normal to one estimated plane; uncalibrated model meters"
+        }
+      }
+    }
+  },
+  "role": "unlisted_research_preview",
+  "published_release_changed": false
+}

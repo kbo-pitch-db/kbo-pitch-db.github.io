@@ -4,3 +4,5 @@ Disallow: /reliability.html
 Disallow: /*preview=
 Disallow: /data/preview_registry.json
 Disallow: /data/reconstructions/support-v4/
+Disallow: /data/preview_rear_pivot_registry.json
+Disallow: /data/reconstructions/rear-pivot-v14/

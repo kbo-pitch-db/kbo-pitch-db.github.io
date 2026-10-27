@@ -4,6 +4,21 @@ The [Explorer](https://kbo-pitch-db.github.io/#explore) presents one published 3
 
 Public browsing uses the complete 813-clip WHAM scene release in `data/clips.json`. Experimental model mixtures have been removed from the public flow. Research pages remain accessible through their direct URLs, carry `noindex,nofollow` metadata, and are excluded from navigation and crawling; they are not access-controlled. A supported experimental preview requires an explicit `?preview=support-v4&clip=CLIP_ID` URL and uses the same Explorer renderer. It never substitutes the published release if that preview is unavailable. Research outputs and their original numerical provenance are preserved separately; a full new 813-clip reconstruction has not been run.
 
+The subsequent `?preview=rear-pivot&clip=CLIP_ID` preview contains six tuning clips with bounded-knee, rear-toe support fitting (`data/preview_rear_pivot_registry.json`). It jointly refines lower body, trunk, root and a shared focal estimate, while keeping sequence shape and local arm rotations fixed. It permits heel rise and front-foot pivot; no per-frame scene shift or stride stretching is used. Earlier v4 previews remain available. Contact stationarity is directly optimized, not independent proof of 3D accuracy. Worst-frame source-foot errors sometimes increase; the unlisted `studies/rear-pivot-20261028/` numerical report discloses them. No held-out accuracy claim or 813-clip replacement is made.
+
+Reproduce in the existing research worktree and prepared environment:
+
+```bash
+# Each command resumes cached clips after checking configuration/input hashes.
+../env/bin/python experiments/pitch_observation/rear_pivot_bounded.py --id CLIP_ID
+../env/bin/python experiments/pitch_observation/select_rear_pivot_bounded.py
+../env/bin/python experiments/pitch_observation/audit_rear_pivot.py --geometry --plots
+../env/bin/python experiments/pitch_observation/package_rear_pivot_preview.py
+python -m unittest discover -s tests
+```
+
+Omit `--id` only to extend the same settings to the remaining previously used tuning12, after checking their contact episodes. The final test24 remains untouched. Requires the original local dataset, cached GVHMR f4 fits, v4 support episodes, and separately licensed SMPL files; these are not distributed with Pages. Source-overlay PNGs stay outside the site in `../rear_pivot_selected_v14/`. Per-clip NPZ/JSON checkpoints and all eight joint/camera candidates are retained there and in `../rear_pivot_v13/`; an interrupted unfinished clip restarts, completed clips reuse their cache. No publication command is part of the experiment scripts.
+
 ## Run WHAM + RTMPose Halpe-26 on the server
 
 Run these commands in a server environment with NVIDIA devices exposed and outbound downloads enabled. The runner requires actual CUDA execution and WHAM checkpoints; it does not substitute another 3D model.
