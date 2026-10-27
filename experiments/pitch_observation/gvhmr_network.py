@@ -41,7 +41,8 @@ def main():
   confidence[outside]=0;obs=np.concatenate([2*(xy-box[:,None,:2])/box[:,None,2:],confidence[...,None]],-1)
   for factor in [1.,4.,12.]:
    tag=f'gvhmr_f{factor:g}';dest=OUT/'raw'/tag/f'{cid}.npz';start=time.monotonic()
-   if dest.exists():print('CACHE',tag,cid,flush=True);continue
+   adapter=OUT/'adapters'/tag/f'{cid}.npz'
+   if dest.exists() and adapter.exists() and dest.with_suffix('.json').exists():print('CACHE',tag,cid,flush=True);continue
    focal=np.hypot(float(s['width']),float(s['height']))*factor
    cliff=box.copy();cliff[:,:2]-=[float(s['width'])/2,float(s['height'])/2];cliff/=focal
    with torch.no_grad():

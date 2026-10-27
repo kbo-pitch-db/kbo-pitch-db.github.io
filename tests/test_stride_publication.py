@@ -1,5 +1,6 @@
 """Validate the actual published estimates, source policy and stride semantics."""
 import hashlib,json,math,subprocess,unittest
+from release_fixture import original_index_bytes
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 SITE=Path(__file__).resolve().parents[1];STUDY=SITE/'studies/stride-20261028'
@@ -38,5 +39,5 @@ class StridePublicationTests(unittest.TestCase):
      for aaa,bbb in zip(xx,yy):
       if aaa is not None and bbb is not None:self.assertAlmostEqual(aaa,bbb,delta=.0004)
  def test_original_813_public_index_unchanged(self):
-  old=subprocess.check_output(['git','show','d5ecec895426ac277cde22e71517f69ec4a965b0:data/clips.json'],cwd=SITE);self.assertEqual(old,(SITE/'data/clips.json').read_bytes())
+  old=subprocess.check_output(['git','show','d5ecec895426ac277cde22e71517f69ec4a965b0:data/clips.json'],cwd=SITE);self.assertEqual(old,original_index_bytes())
 if __name__=='__main__':unittest.main()

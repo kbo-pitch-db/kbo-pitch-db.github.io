@@ -28,9 +28,10 @@ def source_detail(z,h,cw):
   e=err[:,ids][(sc[:,ids]>.5)&np.isfinite(err[:,ids])]
   for p in [50,95,99,100]:m[f'{name}_p{p}_px']=float(np.percentile(e,p)) if len(e) else None
  foot_error=err[:,17:].copy();foot_error[sc[:,17:]<=.5]=np.nan
- i,j=np.unravel_index(np.nanargmax(foot_error),foot_error.shape)
- m['feet_worst_frame_index']=int(i);m['feet_worst_halpe_joint']=int(j+20)
- m['feet_worst_source_frame']=int(h['frame_index'][i])
+ if np.isfinite(foot_error).any():
+  i,j=np.unravel_index(np.nanargmax(foot_error),foot_error.shape)
+  m['feet_worst_frame_index']=int(i);m['feet_worst_halpe_joint']=int(j+20);m['feet_worst_source_frame']=int(h['frame_index'][i])
+ else:m.update(feet_worst_frame_index=None,feet_worst_halpe_joint=None,feet_worst_source_frame=None)
  return m,uv
 
 def audit(geometry=False,plots=False):

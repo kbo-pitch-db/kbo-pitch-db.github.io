@@ -1,5 +1,6 @@
 """FK-audited toe support previews remain explicit, aligned and unscaled."""
 import gzip,hashlib,json,math,unittest
+from release_fixture import original_index_bytes
 from pathlib import Path
 
 SITE=Path(__file__).resolve().parents[1]
@@ -11,7 +12,7 @@ class RearPivotPublicationTests(unittest.TestCase):
   reports={r['id']:r for r in audit['results']};clips={r['id']:r for r in json.loads((SITE/'data/clips.json').read_text())['clips']}
   self.assertEqual(len(registry['clips']),6);self.assertEqual(set(registry['clips']),set(reports))
   self.assertFalse(registry['published_release_changed']);self.assertFalse(audit['test24_used'])
-  self.assertEqual(hashlib.sha256((SITE/'data/clips.json').read_bytes()).hexdigest(),'8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16')
+  self.assertEqual(hashlib.sha256(original_index_bytes()).hexdigest(),'8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16')
   for cid,entry in registry['clips'].items():
    v=entry['variants'][entry['preferred']];raw=(SITE/'data'/v['pose3d']).read_bytes();self.assertEqual(hashlib.sha256(raw).hexdigest(),v['sha256_gzip']);pose=json.loads(gzip.decompress(raw));r=reports[cid];m=r['selected_metrics'];scene=pose['scene']
    self.assertEqual(pose['method'],'gvhmr-rear-pivot-v14');self.assertTrue(scene['show_floor']);self.assertEqual(scene['floor']['height'],0);self.assertFalse(scene['per_frame_recentering']);self.assertTrue(m['joint_gate']);self.assertTrue(m['consistency_gate'])

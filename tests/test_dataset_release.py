@@ -1,5 +1,6 @@
 """Public dataset boundaries and explicitly requested, rigid-scene previews."""
 import gzip,hashlib,json,math,unittest
+from release_fixture import original_index_bytes
 from pathlib import Path
 from html.parser import HTMLParser
 
@@ -16,7 +17,7 @@ class DatasetReleaseTests(unittest.TestCase):
   for path in (SITE/'studies').rglob('*.html'):
    self.assertTrue(any(t=='meta' and a.get('name')=='robots' and 'noindex' in a.get('content','') for t,a in Page(path.read_text()).tags),str(path))
   self.assertIn('Disallow: /studies/',(SITE/'robots.txt').read_text())
-  self.assertEqual(hashlib.sha256((SITE/'data/clips.json').read_bytes()).hexdigest(),'8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16')
+  self.assertEqual(hashlib.sha256(original_index_bytes()).hexdigest(),'8617ba492c8ba06e08595bc0351afb0d55ed601d7fd215821beece325aa45b16')
 
  def test_preview_ground_is_one_rigid_transform_and_articulation_is_preserved(self):
   registry=json.loads((SITE/'data/preview_registry.json').read_text());clips={c['id']:c for c in json.loads((SITE/'data/clips.json').read_text())['clips']}

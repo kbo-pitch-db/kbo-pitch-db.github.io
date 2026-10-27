@@ -24,7 +24,7 @@ def main():
  if a.limit:records=records[:a.limit]
  for record in records:
   cid=record['id'];path=OUT/'raw/hmr2a'/f'{cid}.npz';start=time.monotonic()
-  if path.exists():print('CACHE HMR2A',cid,flush=True);continue
+  if path.exists() and path.with_suffix('.json').exists():print('CACHE HMR2A',cid,flush=True);continue
   r,c,s,h,prior=init_inputs(cid);count=len(h['keypoints']);boxes=h['bbox'].copy();valid=np.isfinite(boxes).all(-1)
   for j in range(4):boxes[:,j]=np.interp(np.arange(count),np.flatnonzero(valid),boxes[valid,j])
   center=(boxes[:,:2]+boxes[:,2:])*.5;size=(boxes[:,2:]-boxes[:,:2]).max(1)*1.2

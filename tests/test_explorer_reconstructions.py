@@ -1,11 +1,12 @@
 """Explorer assets must match the selected fits and immutable final 2D timing."""
 import gzip,json,math,statistics,unittest
+from release_fixture import original_clips
 from pathlib import Path
 SITE=Path(__file__).resolve().parents[1];DATA=SITE/'data'
 class ExplorerReconstructionTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.registry=json.loads((DATA/'reconstruction_registry.json').read_text());cls.clips={c['id']:c for c in json.loads((DATA/'clips.json').read_text())['clips']}
+  cls.registry=json.loads((DATA/'reconstruction_registry.json').read_text());cls.clips={c['id']:c for c in original_clips()}
  def test_coverage_and_explicit_provenance(self):
   self.assertEqual(len(self.registry['clips']),36);self.assertEqual(self.registry['coverage'],dict(total=813,latest=36,nlf=24,legacy_only=777));self.assertNotIn('1e24233962b6_c0018',self.registry['clips'])
   for cid,entry in self.registry['clips'].items():

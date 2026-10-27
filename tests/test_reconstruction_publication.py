@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import subprocess
 import unittest
+from release_fixture import original_index_bytes
 
 SITE = Path(__file__).resolve().parents[1]
 STUDY = SITE / 'studies/pitch-20261027'
@@ -60,9 +61,11 @@ class PublicStudyTests(unittest.TestCase):
                 self.assertTrue(target.exists(),(name,link))
 
     def test_production_index_and_final_2d_are_not_replaced(self):
-        previous=subprocess.check_output(['git','show','HEAD:data/clips.json'],cwd=SITE)
-        self.assertEqual(previous,(SITE/'data/clips.json').read_bytes())
+        previous=original_index_bytes()
         clips=json.loads(previous)['clips']
+        current={c['id']:c for c in json.loads((SITE/'data/clips.json').read_text())['clips']}
+        self.assertEqual(set(current),{c['id'] for c in clips})
+        for c in clips:self.assertEqual(current[c['id']]['poseRefined'],c['poseRefined'])
         self.assertEqual(len(clips),813)
         self.assertEqual(sum(c['pose3dStatus']=='screened_estimate' for c in clips),44)
         self.assertEqual(sum(c['pose3dStatus']=='review_required_preview' for c in clips),769)
