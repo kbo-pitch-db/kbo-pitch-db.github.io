@@ -85,5 +85,15 @@ const canvas=(panel,dim)=>panel.querySelector(`.motion-canvas[data-dimension="${
  assert.equal(supported[3],undefined);assert.equal(canvas(withheldPanel,2).hidden,false);
  assert.ok(withheldPanel.querySelector('.motion-placeholder[data-dimension="3"]').textContent.includes('보류'));
  viewer.dispose();
+ context.fetch=async()=>({ok:true,json:async()=>pose3d});
+ const previewPanel=new Element();
+ await viewer.mount({clip:{...clip,pose3dStatus:'review_required_preview',pose3dReasons:['depth_initialization_sensitivity']},panel:previewPanel,lang:'ko',url:p=>p,pose2d,clock:plain,onPoses:p=>{supported=p;}});
+ assert.equal(supported[3],pose3d,'review-required results are available as previews');
+ assert.equal(canvas(previewPanel,3).hidden,false);
+ const previewStatus=controls.at(-1).querySelector('.motion-status').textContent;
+ assert.ok(previewStatus.includes('미리보기')&&previewStatus.includes('깊이 차이'));
+ assert.ok(!previewStatus.includes('검사 통과'),'a failed preview cannot be labeled screened');
+ assert.equal(previewPanel.querySelectorAll('.motion-downloads [data-dimension="3"]')[0].disabled,false);
+ viewer.dispose();
  console.log('PASS: final 2D/3D, synchronized playback and seeking, independent 3D rotation, exact exports, loading failure and clip-switch races');
 })().catch(e=>{console.error(e);process.exitCode=1});

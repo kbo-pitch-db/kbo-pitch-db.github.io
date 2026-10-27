@@ -77,3 +77,5 @@
 .pose-filter{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;font-size:10px;color:#425e3b;padding:4px}
 .pose-filter input{accent-color:#447746}
 @media(max-width:760px){.pose-filter{grid-column:1/-1;justify-self:start}}
+
+.motion-controls .motion-status.review-required{color:#87551b}

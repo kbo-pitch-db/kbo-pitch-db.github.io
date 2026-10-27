@@ -2,14 +2,16 @@
   "clips": 813,
   "frames": 135741,
   "model_counts": {
-    "WHAM": 44,
-    "withheld": 769
+    "WHAM": 813,
+    "withheld": 0
   },
   "status_counts": {
-    "review_required": 769,
+    "review_required_preview": 769,
     "screened_estimate": 44
   },
   "baseline_wham_inference_clips": 813,
-  "published_final_3d": 44,
-  "interpretation": "Final 3D availability after numerical, pitch-sequence and visual preview screening. All 2D remains available. No measured 3D/stride accuracy validation."
+  "published_final_3d": 813,
+  "screened_previews": 44,
+  "review_required_previews": 769,
+  "interpretation": "All completed 3D fits are public previews. Quality failures and review reasons are retained. All 2D remains available; no measured 3D/stride accuracy validation."
 }

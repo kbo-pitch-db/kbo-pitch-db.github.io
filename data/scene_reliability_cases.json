@@ -36,6 +36,7 @@
     },
     "method": "wham-pitch-contact-v2",
     "fit_accepted": false,
+    "preview_available": true,
     "publication_accepted": false,
     "scene_signature": "b857d54afc1e0311f6463e9f74a9f422b309394258418b4da92976e1f1e90b3d",
     "phase_hints": {
@@ -103,6 +104,7 @@
     },
     "method": "wham-pitch-anchor-v3",
     "fit_accepted": true,
+    "preview_available": true,
     "publication_accepted": false,
     "scene_signature": "370058af4e7214021cbfa3eccb4419169b67c39c3d180eaaf7c84ecfc01ec912",
     "phase_hints": {
@@ -170,6 +172,7 @@
     },
     "method": "wham-pitch-anchor-v3",
     "fit_accepted": false,
+    "preview_available": true,
     "publication_accepted": false,
     "scene_signature": "82ee7ecdfcde326fed35a17b19e6c10fd981565c22c3ce6dc9775fcdc4329784",
     "phase_hints": {
@@ -237,6 +240,7 @@
     },
     "method": "wham-pitch-anchor-v3",
     "fit_accepted": true,
+    "preview_available": true,
     "publication_accepted": true,
     "scene_signature": "86a916a11f98b16d9940bac6404dc7a3f6a782bb48fab096cf3935a5b912af2f",
     "phase_hints": {

@@ -31,7 +31,7 @@ def render(dataset,output):
             cv2.putText(frame,cid+' | numerical skeletons | 0.5x',(20,30),0,.62,(225,235,225),1)
             for side,p in enumerate(poses):
                 offset=side*512
-                cv2.putText(frame,'V1: previous scene fit' if side==0 else (('V3: fixed-stance preview' if public.get(cid,{}).get('pose3d') else 'V3: diagnostic / withheld') if q['method']=='wham-pitch-anchor-v3' else 'V2: diagnostic / withheld'),(offset+18,65),0,.58,(190,220,190),1)
+                cv2.putText(frame,'V1: previous scene fit' if side==0 else (('V3: screened preview' if public.get(cid,{}).get('pose3dStatus')=='screened_estimate' else 'V3: review-required preview') if q['method']=='wham-pitch-anchor-v3' else 'V2: review-required preview'),(offset+18,65),0,.58,(190,220,190),1)
                 def pixel(q):
                     x,y=project(q);return int(offset+256+(x-center)*scale),int(520-(y-lo[1])*scale)
                 floor=int(520+lo[1]*scale);cv2.line(frame,(offset+10,floor),(offset+502,floor),(95,150,95),2)
@@ -43,7 +43,7 @@ def render(dataset,output):
             for _ in range(2):proc.stdin.write(frame.tobytes())
         proc.stdin.close()
         if proc.wait()!=0:raise RuntimeError('Comparison encoding failed')
-        cases.append(dict(id=cid,video=str(path.relative_to(output)),before=old,after=new,method=q['method'],fit_accepted=q['fit_accepted'],publication_accepted=bool(public.get(cid,{}).get('pose3d')),scene_signature=q['scene_signature'],phase_hints=q['screening']['phase_hints'],camera_sensitivity=q['camera_sensitivity'],
+        cases.append(dict(id=cid,video=str(path.relative_to(output)),before=old,after=new,method=q['method'],fit_accepted=q['fit_accepted'],preview_available=bool(public.get(cid,{}).get('pose3d')),publication_accepted=public.get(cid,{}).get('pose3dStatus')=='screened_estimate',scene_signature=q['scene_signature'],phase_hints=q['screening']['phase_hints'],camera_sensitivity=q['camera_sensitivity'],
             interpretation='Selected known failure cases, not a held-out accuracy benchmark; no measured stride or calibrated common world frame'))
     (output/'scene_reliability_cases.json').write_text(json.dumps(cases,indent=2,allow_nan=False));print('Rendered numerical comparison cases:',len(cases))
 

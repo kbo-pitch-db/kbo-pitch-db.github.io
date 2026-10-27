@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish screened contact fits; never substitute an old failed 3D trajectory."""
+"""Publish every completed contact fit as a preview, preserving quality decisions."""
 import argparse,csv,hashlib,json
 from collections import Counter
 from datetime import datetime,timezone
@@ -74,7 +74,7 @@ def publication_decision(quality,review=None,post=None):
 
 def package_pitch_scene(dataset,output,require_complete=False):
     motion=scene_records(dataset);base=records(dataset/'motion_wham.csv');previous=records(dataset/'motion_wham_scene.csv')
-    index_path=output/'clips.json';index=json.loads(index_path.read_text());qualities=[];published_qualities=[];publication_rows=[]
+    index_path=output/'clips.json';index=json.loads(index_path.read_text());qualities=[];published_qualities=[];screened_qualities=[];publication_rows=[]
     review_path=dataset/'scene_review.json';reviews=json.loads(review_path.read_text()) if review_path.exists() else {}
     if require_complete and set(motion)!=set(base):raise ValueError('Incomplete contact-fit dataset')
     # Validate the complete batch before changing public files.
@@ -85,30 +85,33 @@ def package_pitch_scene(dataset,output,require_complete=False):
             z,q=checked_record(dataset,cid,record,base[cid],previous[cid]);qualities.append(q)
             post=publication_review(dataset,base[cid],z,q)
             publishable,reasons,review=publication_decision(q,reviews.get(cid),post)
-            q={**q,'publication_screening':post,'publication_accepted':bool(publishable)}
+            status='screened_estimate' if publishable else 'review_required_preview'
+            q={**q,'publication_screening':post,'publication_accepted':bool(publishable),'preview_available':True,'publication_policy':'all_completed_previews'}
             if review:q={**q,'manual_visual_review':review}
             if publishable:q={**q,'review_status':'visual_preview_only'}
             local_quality=dataset/'quality/motion_wham_publication'/(cid+'.json');local_quality.parent.mkdir(parents=True,exist_ok=True)
             local_payload=dict(dataset_clip_id=cid,scene_signature=record['scene_signature'],fit_accepted=q['fit_accepted'],
-                publication_accepted=bool(publishable),reasons=reasons,publication_screening=post,manual_visual_review=review)
+                publication_accepted=bool(publishable),preview_available=True,publication_policy='all_completed_previews',reasons=reasons,publication_screening=post,manual_visual_review=review)
             local_tmp=local_quality.with_suffix('.tmp.json');local_tmp.write_text(json.dumps(local_payload,indent=2,allow_nan=False));local_tmp.replace(local_quality)
-            publication_rows.append(dict(dataset_clip_id=cid,scene_signature=record['scene_signature'],publication_accepted=str(bool(publishable)).lower(),
+            publication_rows.append(dict(dataset_clip_id=cid,scene_signature=record['scene_signature'],publication_accepted=str(bool(publishable)).lower(),preview_available='true',
                 review_reasons=json.dumps(reasons,separators=(',',':')),publication_quality=str(local_quality.relative_to(dataset))))
             quality_path=folder/'motion_scene_quality.json';tmp=quality_path.with_suffix('.tmp.json');tmp.write_text(json.dumps(q,separators=(',',':'),allow_nan=False));tmp.replace(quality_path)
             clip.update(model3d=('WHAM + fixed-stance SMPL sequence fitting' if q['method']=='wham-pitch-anchor-v3' else 'WHAM + contact-constrained SMPL sequence fitting'),motionMethod=q['method'],
                 motionQuality=str(quality_path.relative_to(output)),sceneSignature=record['scene_signature'],
-                pose3dStatus='screened_estimate' if publishable else 'review_required',pose3dReasons=reasons,
+                pose3dStatus=status,pose3dReasons=reasons,
                 strideValidated=False)
-            if publishable:
-                published_qualities.append(q)
-                payload=export_scene(dataset/record['pose_3d_scene'],q)
-                payload['schema_version']=3
-                payload['quality']={'status':'screened_estimate','screening':q['screening'],'publication_screening':post,'manual_visual_review':review,'camera_sensitivity':q['camera_sensitivity'],
-                    'validation':'Visually reviewed preview; passing screening does not validate 3D accuracy or stride'}
-                payload['scene']['contacts_semantics']='2D pitch-phase and marker-specific support hypotheses; assumed at least one supporting foot, not measured contact'
-                destination=folder/'pose_wham_scene.json';tmp=destination.with_suffix('.tmp.json');tmp.write_text(json.dumps(payload,separators=(',',':'),allow_nan=False));tmp.replace(destination)
-                clip.update(pose3d=str(destination.relative_to(output)),sceneFrame='clip-fixed-inferred-support')
-                continue
+            published_qualities.append(q)
+            if publishable:screened_qualities.append(q)
+            payload=export_scene(dataset/record['pose_3d_scene'],q)
+            payload['schema_version']=3
+            payload['quality']={'status':status,'publication_accepted':bool(publishable),'preview_available':True,'review_reasons':reasons,
+                'screening':q['screening'],'publication_screening':post,'manual_visual_review':review,'camera_sensitivity':q['camera_sensitivity'],
+                'validation':('Visually reviewed preview; passing screening does not validate 3D accuracy or stride' if publishable else
+                    'Review-required preview published by request; quality failures and visual vetoes remain in effect. 3D accuracy and stride are unvalidated')}
+            payload['scene']['contacts_semantics']='2D pitch-phase and marker-specific support hypotheses; assumed at least one supporting foot, not measured contact'
+            destination=folder/'pose_wham_scene.json';tmp=destination.with_suffix('.tmp.json');tmp.write_text(json.dumps(payload,separators=(',',':'),allow_nan=False));tmp.replace(destination)
+            clip.update(pose3d=str(destination.relative_to(output)),sceneFrame='clip-fixed-inferred-support')
+            continue
         else:clip.update(pose3dStatus='review_required',pose3dReasons=['contact_fit_pending'],strideValidated=False,motionQuality=None,sceneSignature=None)
         clip.update(pose3d=None,sceneFrame=None)
         (folder/'pose_wham_scene.json').unlink(missing_ok=True)
@@ -122,28 +125,30 @@ def package_pitch_scene(dataset,output,require_complete=False):
     with tmp.open('w',newline='') as stream:
         writer=csv.DictWriter(stream,fieldnames=['dataset_clip_id','pose_3d_scene','scene_quality','scene_signature','method','fit_accepted']);writer.writeheader();writer.writerows(motion[k] for k in sorted(motion))
     tmp.replace(final_index)
-    passed=published_qualities
-    index['schemaVersion']=7;index['packageVersion']=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-    index['packageStats'].update(clipsWithContactFit=len(qualities),clipsWithSceneFit=len(passed),clipsWithScreened3d=len(passed),clipsWith3d=len(passed),clipsWithRawWham=len(base))
+    previews=published_qualities
+    index['schemaVersion']=8;index['packageVersion']=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+    index['packageStats'].update(clipsWithContactFit=len(qualities),clipsWithSceneFit=len(previews),clipsWithScreened3d=len(screened_qualities),clipsWith3d=len(previews),clipsWithRawWham=len(base))
     tmp=index_path.with_suffix('.tmp.json');tmp.write_text(json.dumps(index,ensure_ascii=False,indent=2));tmp.replace(index_path)
-    summary=dict(completed_clips=len(qualities),total_clips=len(index['clips']),screening_passed=sum(q['fit_accepted'] for q in qualities),anchor_refined_clips=sum(q['method']=='wham-pitch-anchor-v3' for q in qualities),published_3d=len(passed),
-        withheld_3d=len(index['clips'])-len(passed),pending_clips=len(index['clips'])-len(qualities),
-        completed_review_required=len(qualities)-len(passed),status_counts=dict(Counter(c['pose3dStatus'] for c in index['clips'])),
+    summary=dict(completed_clips=len(qualities),total_clips=len(index['clips']),screening_passed=sum(q['fit_accepted'] for q in qualities),anchor_refined_clips=sum(q['method']=='wham-pitch-anchor-v3' for q in qualities),published_3d=len(previews),screened_previews=len(screened_qualities),review_required_previews=len(previews)-len(screened_qualities),
+        withheld_3d=len(index['clips'])-len(previews),pending_clips=len(index['clips'])-len(qualities),
+        completed_review_required=len(qualities)-len(screened_qualities),status_counts=dict(Counter(c['pose3dStatus'] for c in index['clips'])),
         rejection_reasons=dict(Counter(reason for c in index['clips'] for reason in c.get('pose3dReasons',[]) if reason!='contact_fit_pending')),
         coordinate_system='One fixed inferred support frame per clip; one shared, fixed SMPL shape',
-        constraints=['2D-observed pitch contacts','fixed forefoot XYZ during inferred stance for published previews','smooth planar root spline outside anchored stance','joint-specific temporal limits',
+        constraints=['2D-observed pitch contacts','fixed forefoot XYZ during inferred stance for anchor-v3 previews','smooth planar root spline outside anchored stance','joint-specific temporal limits',
             'bounded knee hinge','lead foot / pelvis / rear foot ordering near plant','three tilt and two focal seed initializations','three fitted stance-anchor initializations'],
-        median_reprojection_px_published=float(np.median([q['median_reprojection_px'] for q in passed])) if passed else None,
-        interpretation='Conservative numerical, pitch-sequence and visual screening only. Support is a model assumption; depth, scale, measured stride and genuine airborne follow-through remain unvalidated.')
+        median_reprojection_px_published=float(np.median([q['median_reprojection_px'] for q in previews])) if previews else None,
+        publication_policy='all_completed_previews',
+        interpretation='Every completed fit is public as a preview, including review-required results; quality decisions remain unchanged. Conservative numerical, pitch-sequence and visual screening only. Support is a model assumption; depth, scale, measured stride and genuine airborne follow-through remain unvalidated.')
     for name in ['scene_fit_summary.json','scene_reliability_summary.json']:(output/name).write_text(json.dumps(summary,indent=2))
     motion_summary=dict(clips=len(index['clips']),frames=sum(c['frames'] for c in index['clips']),
-        model_counts={'WHAM':len(passed),'withheld':len(index['clips'])-len(passed)},status_counts=summary['status_counts'],
-        baseline_wham_inference_clips=len(base),published_final_3d=len(passed),
-        interpretation='Final 3D availability after numerical, pitch-sequence and visual preview screening. All 2D remains available. No measured 3D/stride accuracy validation.')
+        model_counts={'WHAM':len(previews),'withheld':len(index['clips'])-len(previews)},status_counts=summary['status_counts'],
+        baseline_wham_inference_clips=len(base),published_final_3d=len(previews),
+        screened_previews=len(screened_qualities),review_required_previews=len(previews)-len(screened_qualities),
+        interpretation='All completed 3D fits are public previews. Quality failures and review reasons are retained. All 2D remains available; no measured 3D/stride accuracy validation.')
     (output/'motion_summary.json').write_text(json.dumps(motion_summary,indent=2))
     progress_path=output/'wham_progress.json'
     if progress_path.exists():
-        progress=json.loads(progress_path.read_text());progress.update(scope='Baseline WHAM inference plus current final publication progress',contact_refinement_completed=len(qualities),public_final_3d=len(passed),contact_pending=summary['pending_clips'])
+        progress=json.loads(progress_path.read_text());progress.update(scope='Baseline WHAM inference plus current final publication progress',contact_refinement_completed=len(qualities),public_final_3d=len(previews),contact_pending=summary['pending_clips'])
         progress_path.write_text(json.dumps(progress,indent=2))
     historical=output/'wham_scene_audit.json'
     if historical.exists():

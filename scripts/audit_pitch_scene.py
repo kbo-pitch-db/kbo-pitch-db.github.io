@@ -34,28 +34,26 @@ def audit(dataset,public=None,unchanged_2d=None):
             np.testing.assert_array_equal(z['scores'],prior['scores'])
         if public:
             local=publication_index[cid]
-            if local['scene_signature']!=r['scene_signature'] or (local['publication_accepted']=='true')!=publishable:raise ValueError('Stale local publication index')
+            if local.get('preview_available')!='true' or local['scene_signature']!=r['scene_signature'] or (local['publication_accepted']=='true')!=publishable:raise ValueError('Stale local publication index')
             c=published[cid]
             public_quality=json.loads((public/c['motionQuality']).read_text())
-            if public_quality['scene_signature']!=r['scene_signature'] or public_quality['publication_accepted']!=publishable:raise ValueError('Stale public publication decision')
+            if not public_quality.get('preview_available') or public_quality['scene_signature']!=r['scene_signature'] or public_quality['publication_accepted']!=publishable:raise ValueError('Stale public publication decision')
             if public_quality['publication_screening']!=post:raise ValueError('Public pitch-sequence screening differs')
             if c['pose3dReasons']!=publication_decision(q,reviews.get(cid),post)[1]:raise ValueError('Public review reasons differ')
-            if publishable:
-                if c['pose3dStatus']!='screened_estimate' or not c.get('pose3d'):raise ValueError('Screened 3D not published')
-                data=json.loads((public/c['pose3d']).read_text())
-                if data['scene_signature']!=r['scene_signature'] or data['quality']['status']!='screened_estimate':raise ValueError('Wrong public 3D version')
-                if data.get('primary_representation',{}).get('frame_field')!='anatomy':raise ValueError('Native joint-center representation not declared')
-                if 'pose-dependent' not in data.get('keypoints_semantics',''):raise ValueError('Surface landmark semantics missing')
-                np.testing.assert_array_equal([f['source_frame'] for f in data['frames']],z['frame_index'])
-                np.testing.assert_allclose([f['source_time'] for f in data['frames']],z['source_time'],atol=5.1e-7,rtol=0)
-                for field,key in [('anatomy','anatomical_keypoints'),('feet','foot_keypoints')]:
-                    p=np.array([[p if p is not None else [np.nan]*3 for p in f[field]] for f in data['frames']])
-                    np.testing.assert_allclose(p,z[key],atol=5.1e-6,rtol=0,equal_nan=True)
-            else:
-                if c.get('pose3d') or c['pose3dStatus']!='review_required':raise ValueError('Failed 3D remains available')
-                if (public/'assets'/cid/'pose_wham_scene.json').exists():raise ValueError('Superseded failed scene still public')
+            status='screened_estimate' if publishable else 'review_required_preview'
+            if c['pose3dStatus']!=status or not c.get('pose3d'):raise ValueError('Completed 3D preview not published')
+            data=json.loads((public/c['pose3d']).read_text())
+            if data['scene_signature']!=r['scene_signature'] or data['quality']['status']!=status:raise ValueError('Wrong public 3D version')
+            if data['quality'].get('publication_accepted')!=publishable or data['quality'].get('review_reasons')!=c['pose3dReasons']:raise ValueError('Preview quality decision changed')
+            if data.get('primary_representation',{}).get('frame_field')!='anatomy':raise ValueError('Native joint-center representation not declared')
+            if 'pose-dependent' not in data.get('keypoints_semantics',''):raise ValueError('Surface landmark semantics missing')
+            np.testing.assert_array_equal([f['source_frame'] for f in data['frames']],z['frame_index'])
+            np.testing.assert_allclose([f['source_time'] for f in data['frames']],z['source_time'],atol=5.1e-7,rtol=0)
+            for field,key in [('anatomy','anatomical_keypoints'),('feet','foot_keypoints')]:
+                points=np.array([[p if p is not None else [np.nan]*3 for p in f[field]] for f in data['frames']])
+                np.testing.assert_allclose(points,z[key],atol=5.1e-6,rtol=0,equal_nan=True)
             if c.get('strideValidated') is not False:raise ValueError('Uncalibrated stride labeled validated')
-        rows.append(dict(id=cid,passed=q['fit_accepted'],published=publishable,manual_review=review,publication_screening=post,reasons=q['screening']['reasons'],metrics=q['screening']['metrics'],
+        rows.append(dict(id=cid,passed=q['fit_accepted'],published=True,quality_accepted=publishable,manual_review=review,publication_screening=post,reasons=q['screening']['reasons'],metrics=q['screening']['metrics'],
             median_reprojection_px=q['median_reprojection_px'],phase_hints=q['screening']['phase_hints'],camera_sensitivity=q['camera_sensitivity']))
     unchanged=0
     if unchanged_2d:
@@ -63,7 +61,7 @@ def audit(dataset,public=None,unchanged_2d=None):
             if hashlib.sha256(Path(name).read_bytes()).hexdigest()!=digest:raise ValueError('2D data changed: '+name)
             unchanged+=1
     accepted=[r for r in rows if r['passed']]
-    summary=dict(clips=len(rows),frames=count,screening_passed=len(accepted),anchor_refined_clips=sum(r['method']=='wham-pitch-anchor-v3' for r in motion.values()),published_3d=sum(r['published'] for r in rows),withheld_3d=sum(not r['published'] for r in rows),
+    summary=dict(clips=len(rows),frames=count,screening_passed=len(accepted),anchor_refined_clips=sum(r['method']=='wham-pitch-anchor-v3' for r in motion.values()),published_3d=sum(r['published'] for r in rows),screened_previews=sum(r['quality_accepted'] for r in rows),review_required_previews=sum(not r['quality_accepted'] for r in rows),withheld_3d=sum(not r['published'] for r in rows),
         root_step_over_0_2_leg_all=sum(r['metrics']['root_step_max_leg']>.2 for r in rows),
         floating_over_10pct_frames_all=sum(r['metrics']['floating_ratio']>.1 for r in rows),
         max_native_bone_length_std_model_m=max_bone_std,max_knee_offaxis_radians=maximum_knee_offaxis,

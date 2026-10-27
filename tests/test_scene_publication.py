@@ -51,6 +51,34 @@ class ScenePublicationTests(unittest.TestCase):
         self.assertFalse(publication_decision(q,post={'passed':True,'reasons':[]})[0])
         self.assertTrue(publication_decision(q,{'scene_signature':'current','decision':'preview_only'},post={'passed':True,'reasons':[]})[0])
 
+    def test_failed_quality_and_visual_veto_remain_visible_in_public_preview(self):
+        from unittest.mock import patch
+        from package_pitch_scene import package_pitch_scene
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);dataset=root/'dataset';output=root/'public';dataset.mkdir();output.mkdir()
+            for name in ['motion_wham.csv','motion_wham_scene.csv']:
+                (dataset/name).write_text('dataset_clip_id\nfailed\n')
+            (dataset/'scene_review.json').write_text(json.dumps({'failed':{'scene_signature':'current','decision':'withhold'}}))
+            (output/'clips.json').write_text(json.dumps({'clips':[{'id':'failed','frames':2}], 'packageStats':{}}))
+            row=dict(dataset_clip_id='failed',scene_signature='current',pose_3d_scene='failed.npz',scene_quality='failed.json',method='wham-pitch-contact-v2',fit_accepted='false')
+            quality=dict(scene_signature='current',fit_accepted=False,method=row['method'],screening={'reasons':['floor_penetration']},median_reprojection_px=3.,camera_sensitivity={})
+            coordinates={'scene':{'fit_accepted':False},'frames':[{'anatomy':[[1,2,3]]}]}
+            with patch('package_pitch_scene.scene_records',return_value={'failed':row}),patch('package_pitch_scene.checked_record',return_value=({},quality)),patch('package_pitch_scene.publication_review',return_value={'passed':False,'reasons':[]}),patch('package_pitch_scene.export_scene',return_value=coordinates):
+                summary=package_pitch_scene(dataset,output,True)
+            clip=json.loads((output/'clips.json').read_text())['clips'][0]
+            self.assertEqual(clip['pose3dStatus'],'review_required_preview')
+            self.assertEqual(clip['pose3dReasons'],['floor_penetration','visual_review_failed'])
+            payload=json.loads((output/clip['pose3d']).read_text())
+            self.assertEqual(payload['frames'][0]['anatomy'],[[1,2,3]])
+            self.assertFalse(payload['quality']['publication_accepted'])
+            self.assertFalse(payload['scene']['fit_accepted'])
+            self.assertTrue(payload['quality']['preview_available'])
+            self.assertEqual(payload['quality']['status'],'review_required_preview')
+            local=list(csv.DictReader((dataset/'motion_wham_publication.csv').open()))[0]
+            self.assertEqual(local['publication_accepted'],'false');self.assertEqual(local['preview_available'],'true')
+            self.assertEqual(summary['published_3d'],1);self.assertEqual(summary['screened_previews'],0);self.assertEqual(summary['withheld_3d'],0)
+            self.assertFalse(quality['fit_accepted']);self.assertEqual(quality['screening']['reasons'],['floor_penetration'])
+
     def test_legacy_scene_packager_routes_through_current_publication_gate(self):
         from unittest.mock import patch
         from package_scene import package_scene
