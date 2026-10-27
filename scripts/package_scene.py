@@ -35,6 +35,8 @@ def export_scene(path,quality):
                 'contacts':[round(float(v),3) for v in z['contact_weights'][i]],
                 'interpolated':[bool(z['interpolated_frames'][i])]*17,'outlier':[False]*17})
         return {'schema_version':2,'dimension':3,'fps':float(z['fps']),'joints':z['joints'].tolist(),
+            'primary_representation':{'frame_field':'anatomy','joints_field':'anatomy_joints','parents_field':'anatomy_parents','layout':'SMPL-24 kinematic joint centers'},
+            'keypoints_semantics':'Supplementary WHAM-regressed COCO-17 surface landmarks; their pairwise distances are pose-dependent, not constant native bone lengths',
             'anatomy_joints':z['anatomical_joints'].tolist(),'anatomy_parents':z['anatomical_parents'].tolist(),
             'foot_joints':z['foot_joints'].tolist(),'coordinate_system':str(z['coordinate_system']),
             'model':str(z['model']),'model_sha256':str(z['model_sha256']),'method':str(z['method']),
@@ -50,6 +52,9 @@ def export_scene(path,quality):
 
 
 def package_scene(dataset,output):
+    if (dataset/'motion_wham_pitch_scene.csv').exists():
+        from package_pitch_scene import package_pitch_scene
+        return package_pitch_scene(dataset,output)
     motion=records(dataset/'motion_wham_scene.csv')
     if not motion:return
     base=records(dataset/'motion_wham.csv')

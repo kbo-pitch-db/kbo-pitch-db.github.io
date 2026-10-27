@@ -2,11 +2,14 @@
   "clips": 813,
   "frames": 135741,
   "model_counts": {
-    "WHAM": 813,
-    "legacy_baseline": 0
+    "WHAM": 44,
+    "withheld": 769
   },
   "status_counts": {
-    "available": 813
+    "review_required": 769,
+    "screened_estimate": 44
   },
-  "interpretation": "Active public clip models. All are unreviewed monocular estimates; no pitching ground-truth accuracy validation."
+  "baseline_wham_inference_clips": 813,
+  "published_final_3d": 44,
+  "interpretation": "Final 3D availability after numerical, pitch-sequence and visual preview screening. All 2D remains available. No measured 3D/stride accuracy validation."
 }

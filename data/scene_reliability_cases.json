@@ -1,0 +1,267 @@
+[
+  {
+    "id": "7ef66f7a16b0_c0007",
+    "video": "reliability/7ef66f7a16b0_c0007.mp4",
+    "before": {
+      "leg_model_m": 0.8053114414215088,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 54.189749385089875,
+      "root_speed_p95_leg_s": 31.155448725821962,
+      "root_step_max_leg": 0.9040656685829163,
+      "lower_body_relative_speed_max_leg_s": 35.81151646000781,
+      "joint_relative_speed_max_leg_s": 66.18046335358845,
+      "foot_clearance_p95_leg": 0.10642552301287651,
+      "floating_ratio": 0.01639344262295082,
+      "minimum_foot_height_leg": 0.006208663806319237,
+      "contact_slide_p95_leg_s": 0.5137418968348842,
+      "contact_link_count": 99,
+      "native_bone_length_std_model_m": 8.581386055084295e-07,
+      "peak_interankle_separation_leg": 1.7861871719360352
+    },
+    "after": {
+      "leg_model_m": 0.7874038815498352,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 4.208165539266138,
+      "root_speed_p95_leg_s": 2.6824278437492084,
+      "root_step_max_leg": 0.07020623236894608,
+      "lower_body_relative_speed_max_leg_s": 14.78046904752853,
+      "joint_relative_speed_max_leg_s": 55.682027035756406,
+      "foot_clearance_p95_leg": 0.022526336647570134,
+      "floating_ratio": 0.0,
+      "minimum_foot_height_leg": 0.006486992351710796,
+      "contact_slide_p95_leg_s": 0.3367045356061986,
+      "contact_link_count": 467,
+      "native_bone_length_std_model_m": 7.653202942492499e-07,
+      "peak_interankle_separation_leg": 1.699872374534607
+    },
+    "method": "wham-pitch-contact-v2",
+    "fit_accepted": false,
+    "publication_accepted": false,
+    "scene_signature": "b857d54afc1e0311f6463e9f74a9f422b309394258418b4da92976e1f1e90b3d",
+    "phase_hints": {
+      "status": "observed phase hypothesis",
+      "lead_side_hint": "left",
+      "leg_lift_frame_hint": 86,
+      "foot_plant_frame_hint": 115,
+      "stable_landing_evidence_frame": 134,
+      "velocity_interpolated_frames": 2,
+      "foot_plant_frame_interval": [
+        113,
+        117
+      ],
+      "interpretation": "Automatic 2D event/contact hypotheses; not manual pitch labels or contact probabilities",
+      "stride_at_plant_leg": 0.5453789785279755,
+      "plant_order_violation_leg": 0.0,
+      "stride_validation": "Uncalibrated depth; not a measured stride"
+    },
+    "camera_sensitivity": {
+      "stride_at_plant_leg_range": [
+        0.5035902653991039,
+        0.5671109387895807
+      ],
+      "interpretation": "Initialization sensitivity among numerically screened fits, not an uncertainty confidence interval or stride validation"
+    },
+    "interpretation": "Selected known failure cases, not a held-out accuracy benchmark; no measured stride or calibrated common world frame"
+  },
+  {
+    "id": "98e127654749_c0026",
+    "video": "reliability/98e127654749_c0026.mp4",
+    "before": {
+      "leg_model_m": 0.8017129898071289,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 40.59302633975245,
+      "root_speed_p95_leg_s": 34.69785499123505,
+      "root_step_max_leg": 0.6765504479408264,
+      "lower_body_relative_speed_max_leg_s": 17.350533199034597,
+      "joint_relative_speed_max_leg_s": 22.407065991243837,
+      "foot_clearance_p95_leg": 1.46840660572052,
+      "floating_ratio": 0.7870370370370371,
+      "minimum_foot_height_leg": 0.006236265413463116,
+      "contact_slide_p95_leg_s": 1.390000516337301,
+      "contact_link_count": 25,
+      "native_bone_length_std_model_m": 6.9136194724706e-07,
+      "peak_interankle_separation_leg": 1.5642865896224976
+    },
+    "after": {
+      "leg_model_m": 0.7955201864242554,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 2.293585604607208,
+      "root_speed_p95_leg_s": 2.095656677153574,
+      "root_step_max_leg": 0.038226425647735596,
+      "lower_body_relative_speed_max_leg_s": 14.125299495438373,
+      "joint_relative_speed_max_leg_s": 14.125299495438373,
+      "foot_clearance_p95_leg": 0.017010619770735497,
+      "floating_ratio": 0.0,
+      "minimum_foot_height_leg": -0.023263033479452133,
+      "contact_slide_p95_leg_s": 0.3985343363586678,
+      "contact_link_count": 280,
+      "native_bone_length_std_model_m": 6.08841958182893e-07,
+      "peak_interankle_separation_leg": 1.6036479473114014,
+      "stance_links": 77,
+      "stance_midpoint_speed_max_model_m_s": 0.00011807137070719125,
+      "stance_midpoint_height_max_model_m": 2.100132405757904e-07
+    },
+    "method": "wham-pitch-anchor-v3",
+    "fit_accepted": true,
+    "publication_accepted": false,
+    "scene_signature": "370058af4e7214021cbfa3eccb4419169b67c39c3d180eaaf7c84ecfc01ec912",
+    "phase_hints": {
+      "status": "observed phase hypothesis",
+      "lead_side_hint": "right",
+      "leg_lift_frame_hint": 0,
+      "foot_plant_frame_hint": 34,
+      "stable_landing_evidence_frame": 43,
+      "velocity_interpolated_frames": 0,
+      "foot_plant_frame_interval": [
+        32,
+        37
+      ],
+      "interpretation": "Automatic 2D event/contact hypotheses; not manual pitch labels or contact probabilities",
+      "stride_at_plant_leg": 0.8303249798038663,
+      "plant_order_violation_leg": 0.0,
+      "stride_validation": "Uncalibrated depth; not a measured stride"
+    },
+    "camera_sensitivity": {
+      "stride_at_plant_leg_range": [
+        0.5726295448418602,
+        0.8303249798038663
+      ],
+      "interpretation": "Spread among screened anchor initializations, not a confidence interval; camera spread also checked from the six-candidate seed fit"
+    },
+    "interpretation": "Selected known failure cases, not a held-out accuracy benchmark; no measured stride or calibrated common world frame"
+  },
+  {
+    "id": "ae75625b241c_c0002",
+    "video": "reliability/ae75625b241c_c0002.mp4",
+    "before": {
+      "leg_model_m": 0.7935773730278015,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 37.87684933470524,
+      "root_speed_p95_leg_s": 34.00982611892039,
+      "root_step_max_leg": 1.263824224472046,
+      "lower_body_relative_speed_max_leg_s": 11.612405481229288,
+      "joint_relative_speed_max_leg_s": 19.48621150456495,
+      "foot_clearance_p95_leg": 3.6373453855514524,
+      "floating_ratio": 0.8387096774193549,
+      "minimum_foot_height_leg": 0.006299830507487059,
+      "contact_slide_p95_leg_s": 0.41851378325643773,
+      "contact_link_count": 8,
+      "native_bone_length_std_model_m": 6.715309268656711e-07,
+      "peak_interankle_separation_leg": 1.574854850769043
+    },
+    "after": {
+      "leg_model_m": 0.797815203666687,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 2.377363517539686,
+      "root_speed_p95_leg_s": 2.126908605910934,
+      "root_step_max_leg": 0.07932469248771667,
+      "lower_body_relative_speed_max_leg_s": 9.77675892943753,
+      "joint_relative_speed_max_leg_s": 27.76638455233211,
+      "foot_clearance_p95_leg": 0.02162087997421622,
+      "floating_ratio": 0.0,
+      "minimum_foot_height_leg": -0.021807072684168816,
+      "contact_slide_p95_leg_s": 0.3197602788922305,
+      "contact_link_count": 128,
+      "native_bone_length_std_model_m": 2.524912360968301e-06,
+      "peak_interankle_separation_leg": 1.607643485069275,
+      "stance_links": 33,
+      "stance_midpoint_speed_max_model_m_s": 0.00022868109452022365,
+      "stance_midpoint_height_max_model_m": 3.641471266746521e-07
+    },
+    "method": "wham-pitch-anchor-v3",
+    "fit_accepted": false,
+    "publication_accepted": false,
+    "scene_signature": "82ee7ecdfcde326fed35a17b19e6c10fd981565c22c3ce6dc9775fcdc4329784",
+    "phase_hints": {
+      "status": "observed phase hypothesis",
+      "lead_side_hint": "left",
+      "leg_lift_frame_hint": 0,
+      "foot_plant_frame_hint": 13,
+      "stable_landing_evidence_frame": 23,
+      "velocity_interpolated_frames": 0,
+      "foot_plant_frame_interval": [
+        12,
+        15
+      ],
+      "interpretation": "Automatic 2D event/contact hypotheses; not manual pitch labels or contact probabilities",
+      "stride_at_plant_leg": 0.7431995743332259,
+      "plant_order_violation_leg": 0.005079559253792159,
+      "stride_validation": "Uncalibrated depth; not a measured stride"
+    },
+    "camera_sensitivity": {
+      "stride_at_plant_leg_range": [
+        0.7431995743332259,
+        0.7431995743332259
+      ],
+      "interpretation": "Spread among screened anchor initializations, not a confidence interval; camera spread also checked from the six-candidate seed fit"
+    },
+    "interpretation": "Selected known failure cases, not a held-out accuracy benchmark; no measured stride or calibrated common world frame"
+  },
+  {
+    "id": "210747e6a7e9_c0034",
+    "video": "reliability/210747e6a7e9_c0034.mp4",
+    "before": {
+      "leg_model_m": 0.793258547782898,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 3.5864676135657105,
+      "root_speed_p95_leg_s": 2.1709916571720194,
+      "root_step_max_leg": 0.05983423441648483,
+      "lower_body_relative_speed_max_leg_s": 15.136552159086426,
+      "joint_relative_speed_max_leg_s": 19.18952554522271,
+      "foot_clearance_p95_leg": 0.09691876918077469,
+      "floating_ratio": 0.0,
+      "minimum_foot_height_leg": 0.006303079426288605,
+      "contact_slide_p95_leg_s": 0.6336187145367519,
+      "contact_link_count": 279,
+      "native_bone_length_std_model_m": 4.0321953065358684e-07,
+      "peak_interankle_separation_leg": 1.5086545944213867
+    },
+    "after": {
+      "leg_model_m": 0.7861151695251465,
+      "supported_ratio": 1.0,
+      "root_speed_max_leg_s": 2.4113352711338516,
+      "root_speed_p95_leg_s": 1.8441487611329939,
+      "root_step_max_leg": 0.040229108184576035,
+      "lower_body_relative_speed_max_leg_s": 14.44308966680601,
+      "joint_relative_speed_max_leg_s": 14.44308966680601,
+      "foot_clearance_p95_leg": 0.019313787296414375,
+      "floating_ratio": 0.0,
+      "minimum_foot_height_leg": -0.01732974499464035,
+      "contact_slide_p95_leg_s": 0.30725085075715153,
+      "contact_link_count": 607,
+      "native_bone_length_std_model_m": 2.8464075967349345e-06,
+      "peak_interankle_separation_leg": 1.4454536437988281,
+      "stance_links": 110,
+      "stance_midpoint_speed_max_model_m_s": 0.0006859618924187676,
+      "stance_midpoint_height_max_model_m": 2.1746382117271423e-07
+    },
+    "method": "wham-pitch-anchor-v3",
+    "fit_accepted": true,
+    "publication_accepted": true,
+    "scene_signature": "86a916a11f98b16d9940bac6404dc7a3f6a782bb48fab096cf3935a5b912af2f",
+    "phase_hints": {
+      "status": "observed phase hypothesis",
+      "lead_side_hint": "left",
+      "leg_lift_frame_hint": 55,
+      "foot_plant_frame_hint": 87,
+      "stable_landing_evidence_frame": 92,
+      "velocity_interpolated_frames": 0,
+      "foot_plant_frame_interval": [
+        85,
+        89
+      ],
+      "interpretation": "Automatic 2D event/contact hypotheses; not manual pitch labels or contact probabilities",
+      "stride_at_plant_leg": 0.8493879363315486,
+      "plant_order_violation_leg": 0.0,
+      "stride_validation": "Uncalibrated depth; not a measured stride"
+    },
+    "camera_sensitivity": {
+      "stride_at_plant_leg_range": [
+        0.8493879363315486,
+        1.0427167003454365
+      ],
+      "interpretation": "Spread among screened anchor initializations, not a confidence interval; camera spread also checked from the six-candidate seed fit"
+    },
+    "interpretation": "Selected known failure cases, not a held-out accuracy benchmark; no measured stride or calibrated common world frame"
+  }
+]

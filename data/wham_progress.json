@@ -3,5 +3,9 @@
   "total_clips": 813,
   "remaining_baseline": 0,
   "target_2d": "RTMPose Halpe-26",
-  "target_3d": "WHAM"
+  "target_3d": "WHAM",
+  "scope": "Baseline WHAM inference plus current final publication progress",
+  "contact_refinement_completed": 813,
+  "public_final_3d": 44,
+  "contact_pending": 0
 }

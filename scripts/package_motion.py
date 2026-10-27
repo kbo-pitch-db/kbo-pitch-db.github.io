@@ -158,7 +158,10 @@ def package_wham(dataset, output):
         'status_counts':dict(Counter(c.get('pose3dStatus','unknown') for c in index['clips'])),
         'interpretation':'Active public clip models. All are unreviewed monocular estimates; no pitching ground-truth accuracy validation.'},indent=2))
     print('Packaged WHAM:',index['packageStats']['clipsWithWham'],'/',len(index['clips']))
-    if (dataset/'motion_wham_scene.csv').exists():
+    if (dataset/'motion_wham_pitch_scene.csv').exists():
+        from package_pitch_scene import package_pitch_scene
+        package_pitch_scene(dataset,output)
+    elif (dataset/'motion_wham_scene.csv').exists():
         from package_scene import package_scene
         package_scene(dataset,output)
 

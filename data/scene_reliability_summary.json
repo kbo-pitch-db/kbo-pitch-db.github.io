@@ -1,0 +1,41 @@
+{
+  "completed_clips": 813,
+  "total_clips": 813,
+  "screening_passed": 90,
+  "anchor_refined_clips": 297,
+  "published_3d": 44,
+  "withheld_3d": 769,
+  "pending_clips": 0,
+  "completed_review_required": 769,
+  "status_counts": {
+    "review_required": 769,
+    "screened_estimate": 44
+  },
+  "rejection_reasons": {
+    "pitch_event_order_review": 33,
+    "stride_direction_depth_review": 21,
+    "stance_anchor_refinement_required": 37,
+    "floor_penetration": 81,
+    "short_stride_depth_review": 525,
+    "pitch_contact_phase_ambiguous": 113,
+    "depth_initialization_sensitivity": 197,
+    "insufficient_supported_frames": 13,
+    "poor_2d_alignment": 5,
+    "pitch_preparation_unresolved": 1,
+    "visual_review_failed": 10,
+    "arm_phase_unresolved": 3
+  },
+  "coordinate_system": "One fixed inferred support frame per clip; one shared, fixed SMPL shape",
+  "constraints": [
+    "2D-observed pitch contacts",
+    "fixed forefoot XYZ during inferred stance for published previews",
+    "smooth planar root spline outside anchored stance",
+    "joint-specific temporal limits",
+    "bounded knee hinge",
+    "lead foot / pelvis / rear foot ordering near plant",
+    "three tilt and two focal seed initializations",
+    "three fitted stance-anchor initializations"
+  ],
+  "median_reprojection_px_published": 2.8381933713445733,
+  "interpretation": "Conservative numerical, pitch-sequence and visual screening only. Support is a model assumption; depth, scale, measured stride and genuine airborne follow-through remain unvalidated."
+}

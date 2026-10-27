@@ -1,6 +1,8 @@
 /* Procedural bone illustration driven by inferred SMPL joint centers.
  * Geometry is illustrative; it adds no measured anatomy or OpenSim simulation.
  */
+import {interpolateAnatomy} from './bone_interpolation.js?v=20261027-anchor3';
+export {interpolateAnatomy};
 import * as THREE from './third_party/three.module.min.js';
 
 const V=(p)=>new THREE.Vector3(...p);
@@ -117,7 +119,7 @@ export function createBoneScene(canvas,data){
   }
   function render(current,next,fraction,yaw,pitch){
     material.color.set(current.interpolated?.some(Boolean)?'#efbd78':'#eee5cc');
-    const points=interpolate(current.anatomy||fallbackAnatomy(current.keypoints),next?.anatomy||fallbackAnatomy(next?.keypoints||current.keypoints),fraction);
+    const points=interpolateAnatomy(current.anatomy||fallbackAnatomy(current.keypoints),next?.anatomy||fallbackAnatomy(next?.keypoints||current.keypoints),fraction,parents);
     const visible=points.filter(Boolean).length>12;rig.visible=visible;
     if(visible){
       const q=basis(points),personScale=Math.max(.7,Math.min(1.4,points[4]&&points[1]?V(points[4]).distanceTo(V(points[1]))/.42:1));

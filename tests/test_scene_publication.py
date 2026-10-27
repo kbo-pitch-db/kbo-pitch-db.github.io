@@ -8,6 +8,7 @@ import unittest
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from package_scene import export_scene
+from package_pitch_scene import publication_decision
 from scene_parallel import reusable
 from scene_geometry import SMPL_JOINTS,SMPL_PARENTS,FOOT_NAMES
 
@@ -34,6 +35,30 @@ class ScenePublicationTests(unittest.TestCase):
             self.assertEqual(data['frames'][2]['keypoints'][0][3],0)
             self.assertTrue(data['frames'][2]['interpolated'][0])
             self.assertEqual(len(data['frames'][0]['anatomy']),24)
+            self.assertEqual(data['primary_representation']['frame_field'],'anatomy')
+            self.assertIn('pose-dependent',data['keypoints_semantics'])
+
+    def test_visual_veto_is_bound_to_the_reviewed_scene_signature(self):
+        q={'fit_accepted':True,'scene_signature':'current','screening':{'reasons':[]}}
+        review={'scene_signature':'current','decision':'withhold','reason':'visible contact failure'}
+        allowed,reasons,_=publication_decision(q,review)
+        self.assertFalse(allowed);self.assertIn('visual_review_failed',reasons)
+        review['scene_signature']='older'
+        self.assertTrue(publication_decision(q,review)[0])
+        q['fit_accepted']=False;q['screening']['reasons']=['depth_initialization_sensitivity']
+        self.assertFalse(publication_decision(q,{'scene_signature':'current','decision':'approve'})[0])
+        q['fit_accepted']=True;q['screening']['reasons']=[]
+        self.assertFalse(publication_decision(q,post={'passed':True,'reasons':[]})[0])
+        self.assertTrue(publication_decision(q,{'scene_signature':'current','decision':'preview_only'},post={'passed':True,'reasons':[]})[0])
+
+    def test_legacy_scene_packager_routes_through_current_publication_gate(self):
+        from unittest.mock import patch
+        from package_scene import package_scene
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);(root/'motion_wham_pitch_scene.csv').write_text('dataset_clip_id\n')
+            with patch('package_pitch_scene.package_pitch_scene',return_value='current gate') as current:
+                self.assertEqual(package_scene(root,root/'public'),'current gate')
+                current.assert_called_once_with(root,root/'public')
 
     def test_successful_higher_iteration_cache_is_reused_and_stale_quality_is_rejected(self):
         with tempfile.TemporaryDirectory() as folder:

@@ -5,12 +5,12 @@ window.MotionViewer = (() => {
   const copy = {
     en: {view2:'Final 2D',view3:'Final 3D',yaw:'3D rotation',pitch:'Tilt',reset:'Reset view',
       note:'3D depth and scale are monocular estimates. Hip-relative coordinates; pitching accuracy has not been validated.',
-      gap:'No supported joints in this frame',limited:'Limited tracking',ready:'3D estimate available',scene:'Fixed clip frame · inferred floor',
-      load:'Motion data could not be loaded.', unavailable:'3D data unavailable',method:'Method & quality',interpolated:'Amber = interpolated joint'},
+      gap:'No supported joints in this frame',limited:'Limited tracking',ready:'Stability screened · depth and stride unvalidated',scene:'Fixed clip frame · inferred floor',
+      load:'Motion data could not be loaded.', unavailable:'3D data unavailable',depthheld:'3D withheld: stride depth needs review.',sequenceheld:'3D withheld: pitch-event order needs review.',contactheld:'3D withheld: landing timing is uncertain.',visualpending:'3D is awaiting visual review.',pending:'3D refitting and quality checks in progress.',withheld:'3D withheld: motion, support or depth needs review.',method:'Method & quality',interpolated:'Amber = interpolated joint'},
     ko: {view2:'최종 2D',view3:'최종 3D',yaw:'3D 회전',pitch:'기울기',reset:'시점 초기화',
       note:'3D 깊이와 크기는 단안 추정치입니다. 골반 중심 상대 좌표이며 투구 정확도는 검증되지 않았습니다.',
-      gap:'이 프레임에 표시할 관절이 없습니다',limited:'추적 제한 있음',ready:'3D 추정 결과 있음',scene:'클립 고정 좌표 · 추정 바닥',
-      load:'동작 데이터를 불러오지 못했습니다.',unavailable:'3D 데이터 없음',method:'추정 방식·품질',interpolated:'주황색 = 보간된 관절'}
+      gap:'이 프레임에 표시할 관절이 없습니다',limited:'추적 제한 있음',ready:'움직임 검사 통과 · 깊이·스트라이드 미검증',scene:'클립 고정 좌표 · 추정 바닥',
+      load:'동작 데이터를 불러오지 못했습니다.',unavailable:'3D 데이터 없음',depthheld:'보폭 깊이를 신뢰하기 어려워 3D를 보류했습니다.',sequenceheld:'투구 단계의 연결을 확인하지 못해 3D를 보류했습니다.',contactheld:'착지 시점을 확정하지 못해 3D를 보류했습니다.',visualpending:'3D 시각 검토를 기다리고 있습니다.',pending:'3D 재처리와 품질 확인 중입니다.',withheld:'3D 품질 검사를 통과하지 못해 3D 표시를 보류했습니다.',method:'추정 방식·품질',interpolated:'주황색 = 보간된 관절'}
   };
   function dispose() {
     generation++; cancelAnimationFrame(animation);
@@ -51,7 +51,7 @@ window.MotionViewer = (() => {
     const s = state = {clip,panel,control,views,video:clock,yaw:0,pitch:0,t};
     function ready(view) {
       const {data,canvas} = view, dim = data.dimension === 3 ? 3 : 2;
-      const points = data.frames.flatMap(f=>f.keypoints.filter((p,j)=>p && ((p[dim]??1)>=.2 || f.interpolated?.[j])));
+      const points = data.frames.flatMap(f=>dim===3&&f.anatomy?f.anatomy.filter(Boolean):f.keypoints.filter((p,j)=>p && ((p[dim]??1)>=.2 || f.interpolated?.[j])));
       if (dim === 3) {
         const low=[Infinity,Infinity,Infinity],high=[-Infinity,-Infinity,-Infinity];
         for(const p of points)for(let k=0;k<3;k++){low[k]=Math.min(low[k],p[k]);high[k]=Math.max(high[k],p[k]);}
@@ -71,8 +71,8 @@ window.MotionViewer = (() => {
     }
     ready(views[0]);
     const tick = () => {if (state!==s) return;if(s.video.currentTime!==s.lastTime||s.video.paused!==s.lastPaused)draw();animation=requestAnimationFrame(tick);}; tick();
-    if (!clip.pose3d) {
-      panel.querySelector('.motion-placeholder[data-dimension="3"]').textContent=t.unavailable;
+    if (!clip.pose3d || clip.pose3dStatus==='review_required') {
+      panel.querySelector('.motion-placeholder[data-dimension="3"]').textContent=clip.pose3dReasons?.includes('contact_fit_pending')?t.pending:clip.pose3dReasons?.includes('visual_review_pending')?t.visualpending:clip.pose3dReasons?.some(reason=>['short_stride_depth_review','depth_initialization_sensitivity','stride_direction_depth_review'].includes(reason))?t.depthheld:clip.pose3dReasons?.some(reason=>['pitch_event_order_review','pitch_preparation_unresolved','arm_phase_unresolved'].includes(reason))?t.sequenceheld:clip.pose3dReasons?.includes('pitch_contact_phase_ambiguous')?t.contactheld:clip.pose3dStatus==='review_required'?t.withheld:t.unavailable;
       return;
     }
     try {
@@ -85,8 +85,9 @@ window.MotionViewer = (() => {
       }
       const view3={data:pose3d,canvas:panel.querySelector('.motion-canvas[data-dimension="3"]')};
       try{
-        const module=window.BoneScene || await import('./bone_scene.js?v=20261027-scene2');
+        const module=window.BoneScene || await import('./bone_scene.js?v=20261027-anchor3');
         if(generation!==ticket || !panel.isConnected)return;
+        view3.interpolateAnatomy=module.interpolateAnatomy;
         view3.mesh=module.createBoneScene(view3.canvas,pose3d);
       }catch(error){
         // A separate canvas permits a 2D projection when WebGL is unavailable.
@@ -96,7 +97,7 @@ window.MotionViewer = (() => {
       views.push(view3);
       ready(views[1]);
       control.querySelector('.motion-orbit').hidden=false;
-      control.querySelector('.motion-status').textContent=pose3d.scene?t.scene+(clip.pose3dStatus==='limited'?' · '+t.limited:''):t[clip.pose3dStatus==='available'?'ready':'limited'];
+      control.querySelector('.motion-status').textContent=pose3d.scene?t.scene+' · '+t.ready:t[clip.pose3dStatus==='available'?'ready':'limited'];
       const coordinates=panel.querySelector('[data-meta="coords"] .meta-value');
       if(coordinates)coordinates.title=coordinates.textContent='2D: crop pixels · 3D: '+pose3d.coordinate_system;
       for (const axis of ['yaw','pitch']) control.querySelector('.motion-'+axis).addEventListener('input', e => {
@@ -153,7 +154,9 @@ window.MotionViewer = (() => {
       const y=a[1]*Math.cos(s.pitch)-z*Math.sin(s.pitch), depth=a[1]*Math.sin(s.pitch)+z*Math.cos(s.pitch);
       return [w/2+x*w/(2*view.radius),h/2-y*h/(2*view.radius),depth];
     };
-    const points=current.keypoints.map((p,j)=>{
+    const native=is3d&&current.anatomy&&data.anatomy_parents;
+    canvas.dataset.jointLayout=native?'SMPL-24':data.joints.length.toString();
+    const points=native?(view.interpolateAnatomy?view.interpolateAnatomy(current.anatomy,next.anatomy,fraction,data.anatomy_parents):current.anatomy).map(p=>p?project(p):null):current.keypoints.map((p,j)=>{
       if(!p || ((p[dim]??1)<.2 && !current.interpolated?.[j]))return null;
       const candidate=next.keypoints[j];
       const q=candidate && ((candidate[dim]??1)>=.2 || next.interpolated?.[j]) ? candidate : null;
@@ -173,11 +176,11 @@ window.MotionViewer = (() => {
         const p=project(axis);ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(...origin.slice(0,2));ctx.lineTo(...p.slice(0,2));ctx.stroke();ctx.fillStyle=color;ctx.font='16px sans-serif';ctx.fillText(name,p[0]+6,p[1]);
       }
     }
-    const skeleton=data.edges || edges;
+    const skeleton=native?data.anatomy_parents.map((parent,j)=>[parent,j]).filter(([parent])=>parent>=0):data.edges || edges;
     const ordered=skeleton.filter(([a,b])=>points[a]&&points[b]).sort(([a,b],[c,d])=>(points[a][2]+points[b][2])-(points[c][2]+points[d][2]));
     ctx.lineWidth=5;ctx.lineCap='round';
     for(const [a,b] of ordered){
-      ctx.strokeStyle=a%2===1&&a>=5?'#b4f068':'#77cde0';
+      ctx.strokeStyle=native?({1:1,4:1,7:1,10:1,13:1,16:1,18:1,20:1,22:1}[b]?'#77cde0':'#e99d65'):a%2===1&&a>=5?'#b4f068':'#77cde0';
       ctx.beginPath();ctx.moveTo(points[a][0],points[a][1]);ctx.lineTo(points[b][0],points[b][1]);ctx.stroke();
     }
     for(let j=0;j<points.length;j++)if(points[j]){

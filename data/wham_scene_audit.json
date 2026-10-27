@@ -22,5 +22,7 @@
     "fixed floor below modeled feet",
     "published coordinates match NPZ"
   ],
-  "interpretation": "Numerical/fit diagnostics only. Floor, camera and scale are inferred; no measured stride accuracy, surveyed world coordinates or OpenSim IK."
+  "interpretation": "Numerical/fit diagnostics only. Floor, camera and scale are inferred; no measured stride accuracy, surveyed world coordinates or OpenSim IK.",
+  "historical_scope": "Superseded v1 structural checks; acceptance did not establish motion reliability",
+  "current_report": "scene_reliability_summary.json"
 }

@@ -79,5 +79,11 @@ const canvas=(panel,dim)=>panel.querySelector(`.motion-canvas[data-dimension="${
  resolveOld({ok:true,json:async()=>pose3d});await pending;
  assert.equal(oldUpdates,1,'a stale request cannot replace the newly selected clip');
  assert.equal(supported[3],pose3d);viewer.dispose();
+ const requestCount=requests.length,withheldPanel=new Element();
+ await viewer.mount({clip:{...clip,pose3dStatus:'review_required'},panel:withheldPanel,lang:'ko',url:p=>p,pose2d,clock:plain,onPoses:p=>{supported=p;}});
+ assert.equal(requests.length,requestCount,'a rejected clip cannot fetch a stale final 3D URL');
+ assert.equal(supported[3],undefined);assert.equal(canvas(withheldPanel,2).hidden,false);
+ assert.ok(withheldPanel.querySelector('.motion-placeholder[data-dimension="3"]').textContent.includes('보류'));
+ viewer.dispose();
  console.log('PASS: final 2D/3D, synchronized playback and seeking, independent 3D rotation, exact exports, loading failure and clip-switch races');
 })().catch(e=>{console.error(e);process.exitCode=1});
