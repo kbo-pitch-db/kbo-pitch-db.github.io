@@ -1,0 +1,43 @@
+{
+  "tune": [
+    "3fdcd2dbaf58_c0014",
+    "d30b22cfc0b0_c0036",
+    "e1cae96b4d83_c0027",
+    "0b70417b94ab_c0013",
+    "99f1a527c09b_c0013",
+    "e56945a0fd80_c0028"
+  ],
+  "confirmation": [
+    "98e127654749_c0029",
+    "b96e8ea44448_c0044",
+    "ae75625b241c_c0009",
+    "8eeef70dce48_c0018",
+    "0d84991ce9f6_c0008",
+    "b54e0e701d77_c0001"
+  ],
+  "selection": "Metadata/source-player disjoint selection only, no new arm performance examined before seal",
+  "fixed48_modified": false,
+  "prior_research_scope": "Previously studied KBO clips, not fresh measured-3D GT or newly untouched data",
+  "execution_order": "Run experiments only after all813 production release processed, audited and deployed",
+  "main_homepage_changes": false,
+  "body_root_contact_frozen": true,
+  "arm_hypotheses": [
+    "current_GVHMR",
+    "MotionBERT_global_arm_transplant",
+    "arm_only_confidence_robust_refit",
+    "phase_gated_MotionBERT_depth_prior",
+    "MotionBERT_forearm_global_transplant",
+    "humeral_axial_twist_with_small_elbow_hinge",
+    "Matched GVHMR-start image-only controls for full arm, forearm-only and humeral axial fitting; not used as MotionBERT candidate selection",
+    "Direct native H36M17 upper-arm/forearm direction initialization, bypassing whole-body SMPL IK; single/flip kept separate"
+  ],
+  "ball_release": "unknown without ball observations",
+  "absolute_accuracy_claim": false,
+  "prepared_utc": "2026-10-27T23:02:57Z",
+  "candidate_variants": 16,
+  "experiment_execution_started_when_protocol_prepared": false,
+  "experiment_version": "source-ray-depth-v3",
+  "design_data": "V1/V2 tune6 only; no confirmation outcomes evaluated or visually inspected before V3 seal",
+  "prepared_v3_utc": "2026-10-27T23:25:59Z",
+  "new_observation_model": "2D source residuals + two bone-length/ray intersections, 4 retained depth states; MB only depth branch prior; rigid arm markers; frozen lower body"
+}

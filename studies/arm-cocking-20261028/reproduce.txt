@@ -1,0 +1,56 @@
+Run in the existing prepared research worktree; all original dataset/video,
+licensed neutral SMPL and pretrained models remain outside the website.
+Final RTMPose Halpe26 files must retain the saved input hashes.
+
+PY=../env/bin/python
+EXP=experiments/pitch_observation
+
+The verified full813 main deployment is recorded in
+../all813_gvhmr_v1/deployment.json. The arm scripts refuse to run without it.
+Do not fabricate a verification record. The original full813 commands and
+live verification are in the repository README and its release provenance.
+
+# Existing independent MotionBERT cached predictions are reused, not relabeled
+# as newly trained or newly inferred KBO ground truth. Their exact official
+# base and public last-block adaptation hashes are in provenance.json.
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_observations.py --cohort all
+
+# Original arm-graft ablation, all other body/root/camera native state frozen:
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_refine.py --cohort tune
+$PY $EXP/arm_cocking_evaluate.py --cohort tune
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_refine.py --cohort confirmation
+$PY $EXP/arm_cocking_evaluate.py --cohort confirmation
+
+# Local marker and temporal-correction iteration; all checkpoints preserved:
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_v2.py --cohort tune
+$PY $EXP/evaluate_arm_cocking_v2.py --cohort tune
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_v2.py --cohort confirmation
+$PY $EXP/evaluate_arm_cocking_v2.py --cohort confirmation
+
+# Source-ray depth hypotheses: the candidate/rule was frozen on tune6 before
+# reading any confirmation performance. Do not reselect from confirmation.
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_v3.py --cohort tune
+$PY $EXP/evaluate_arm_cocking_v3.py --cohort tune
+CUDA_VISIBLE_DEVICES=1 $PY $EXP/arm_cocking_v3.py --cohort confirmation
+$PY $EXP/evaluate_arm_cocking_v3.py --cohort confirmation
+
+# --worker 0 --workers 2 and --worker 1 --workers 2 split clips disjointly.
+# Completed clips check source/config/code hashes and resume unchanged.
+# A changed configuration/code requires a new version, not cache overwrites.
+
+$PY $EXP/audit_arm_native_fk.py --version v3
+$PY $EXP/audit_arm_observations.py
+$PY $EXP/package_arm_cocking.py --version v3
+$PY $EXP/arm_cocking_report.py --version v3
+$PY $EXP/audit_arm_cocking.py --version v3
+$PY $EXP/summarize_arm_iterations.py
+
+# Original-pixel diagnostics stay private/outside the site:
+$PY $EXP/inspect_arm_cocking.py --version v3 --ids CLIP_ID
+
+# Static site preview; no broadcast pixels, no main-homepage experiment link.
+# Serve CODE only; never serve the parent workspace containing original media.
+python -m http.server 8776 --bind 127.0.0.1
+
+# Main data are never promoted by any arm experiment or packager.
+# Publishing is a separately verified git/Pages step, not part of fitting.

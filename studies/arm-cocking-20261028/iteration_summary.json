@@ -1,0 +1,74 @@
+[
+  {
+    "version": "v1",
+    "split": "tune",
+    "selected_variant": "mb_axial_source_refit",
+    "clips": 6,
+    "source_and_preservation_pass": 4,
+    "median_all_pitch_wrist_p95_px": 4.231199817827267,
+    "median_all_pitch_elbow_p95_px": 8.36759361211265,
+    "median_holdout_pitch_wrist_p95_px": 5.814841020105238,
+    "median_separate_rtmw_pitch_wrist_p95_px": 57.41792162069397,
+    "median_arm_change_p95_leg": 0.005044289223859778
+  },
+  {
+    "version": "v1",
+    "split": "confirmation",
+    "selected_variant": "mb_axial_source_refit",
+    "clips": 6,
+    "source_and_preservation_pass": 4,
+    "median_all_pitch_wrist_p95_px": 4.714088509862501,
+    "median_all_pitch_elbow_p95_px": 8.099541867715342,
+    "median_holdout_pitch_wrist_p95_px": 5.169233356747565,
+    "median_separate_rtmw_pitch_wrist_p95_px": 58.20964446388983,
+    "median_arm_change_p95_leg": 0.0031585853431781163
+  },
+  {
+    "version": "v2",
+    "split": "tune",
+    "selected_variant": "mb_adapter_local_perframe",
+    "clips": 6,
+    "source_and_preservation_pass": 3,
+    "median_all_pitch_wrist_p95_px": 4.08934861790896,
+    "median_all_pitch_elbow_p95_px": 6.123150977773424,
+    "median_holdout_pitch_wrist_p95_px": 8.37649116575293,
+    "median_separate_rtmw_pitch_wrist_p95_px": 57.586460218448536,
+    "median_arm_change_p95_leg": 0.3741508013158851
+  },
+  {
+    "version": "v2",
+    "split": "confirmation",
+    "selected_variant": "mb_adapter_local_perframe",
+    "clips": 6,
+    "source_and_preservation_pass": 4,
+    "median_all_pitch_wrist_p95_px": 1.906158672334561,
+    "median_all_pitch_elbow_p95_px": 5.15120890921696,
+    "median_holdout_pitch_wrist_p95_px": 5.904959273443957,
+    "median_separate_rtmw_pitch_wrist_p95_px": 56.84307598516615,
+    "median_arm_change_p95_leg": 0.4071010508152274
+  },
+  {
+    "version": "v3",
+    "split": "tune",
+    "selected_variant": "raw_ray_flip",
+    "clips": 6,
+    "source_and_preservation_pass": 5,
+    "median_all_pitch_wrist_p95_px": 1.1407052095135737,
+    "median_all_pitch_elbow_p95_px": 3.918090907444577,
+    "median_holdout_pitch_wrist_p95_px": 1.7536268893843325,
+    "median_separate_rtmw_pitch_wrist_p95_px": 58.246937175398855,
+    "median_arm_change_p95_leg": 0.15413584373571082
+  },
+  {
+    "version": "v3",
+    "split": "confirmation",
+    "selected_variant": "raw_ray_flip",
+    "clips": 6,
+    "source_and_preservation_pass": 6,
+    "median_all_pitch_wrist_p95_px": 1.6179191471614773,
+    "median_all_pitch_elbow_p95_px": 1.7621010007639555,
+    "median_holdout_pitch_wrist_p95_px": 2.8218132545700665,
+    "median_separate_rtmw_pitch_wrist_p95_px": 58.18622700186689,
+    "median_arm_change_p95_leg": 0.12957810907343942
+  }
+]

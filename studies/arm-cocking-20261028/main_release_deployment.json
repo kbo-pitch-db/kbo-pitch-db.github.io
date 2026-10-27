@@ -1,0 +1,36 @@
+{
+  "clips": 813,
+  "players": 123,
+  "verified_live": true,
+  "commit": "02dc61ed798b1fc570e95b034d3dea831f3aeb29",
+  "release_id": "gvhmr-contact-20261028-v1",
+  "index_sha256": "e47d07a246c154a87011a36d66f14c2e5d2e0171a95a38a18d67dfc15a7e7656",
+  "all_813_gzip_hashes_verified": true,
+  "browser": {
+    "base": "https://kbo-pitch-db.github.io/",
+    "public_clips": 813,
+    "public_single_release": true,
+    "actual_gvhmr_clips": 813,
+    "camera_cut_gap_and_seek_restore": true,
+    "no_research_filters_or_links": true,
+    "no_auto_selection": true,
+    "public_floor": true,
+    "explicit_preview": true,
+    "preview_fixed_ground_and_camera": true,
+    "no_framewise_recentering": true,
+    "playback_stops_at_final_frame": true,
+    "preview_root_not_reset": true,
+    "unavailable_preview_never_substitutes_old_pose": true,
+    "exact_download": true,
+    "mobile_widths": [
+      1440,
+      390,
+      320
+    ],
+    "errors": 0
+  },
+  "pages_workflow_run": 40599341937,
+  "pages_workflow_url": "https://github.com/kbo-pitch-db/kbo-pitch-db.github.io/actions/runs/40599341937",
+  "workflow_build_and_deploy_jobs_verified_success": true,
+  "verified_utc": "2026-10-27T23:06:56Z"
+}

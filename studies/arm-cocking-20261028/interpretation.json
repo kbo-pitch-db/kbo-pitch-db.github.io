@@ -1,0 +1,14 @@
+{
+  "confirmation": {
+    "wrist_p95_median_before": 5.541428522866935,
+    "wrist_p95_median_after": 1.6179191471614773,
+    "holdout_wrist_p95_before": 4.963253553226091,
+    "holdout_wrist_p95_after": 2.8218132545700665,
+    "gv_depth_control_wrist_p95": 1.1825529930591467,
+    "rtmw_wrist_p95_before": 58.37816756789073,
+    "rtmw_wrist_p95_after": 58.18622700186689
+  },
+  "actual_3d_accuracy_validated": false,
+  "unique_depth_identified": false,
+  "main_arm_experiment_applied": false
+}

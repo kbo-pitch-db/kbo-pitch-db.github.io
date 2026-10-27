@@ -1,0 +1,122 @@
+{
+  "rule": {
+    "version": "arm-local-marker-selection-v2",
+    "wrist_p95_increase_px": 2.0,
+    "elbow_p95_increase_px": 2.0,
+    "holdout_wrist_p95_increase_px": 2.0,
+    "lower_body_max_change_model": 2e-05,
+    "foot_marker_max_change_leg": 0.003,
+    "projected_speed_ratio_range": [
+      0.65,
+      1.5
+    ],
+    "separate_rtmw_wrist_p95_increase_px": 2.0,
+    "separate_detector": "RTMW384 observations, never used for arm fitting; same RGB, not independent sensor or GT",
+    "ranking": "Among MB settings only; GVHMR-only controls remain separate comparisons. Tune mean wrist+0.5 elbow held-out p95 change plus observed peak-delay/speed disagreement. Never rank by largest 3D hand-behind depth.",
+    "minimum_source_nonregression_tune_clips": 4,
+    "isolated_return_step_radians": 0.9,
+    "isolated_return_net_ratio": 0.4,
+    "allow_new_source_unsupported_forearm_returns": 0,
+    "validation": "Withheld from arm refinement only. GVHMR and initializers saw all frames; no measured 3D GT.",
+    "foot_marker_scope": "Frozen by model definition, not independent contact evidence",
+    "correction_spline_seconds": 0.06
+  },
+  "selected_variant": "mb_adapter_local_perframe",
+  "observationally_similar_variants": [],
+  "unique_3d_solution_identified": false,
+  "tune_summary": [
+    {
+      "variant": "gv_local_perframe",
+      "clips": 6,
+      "source_and_preservation_pass": 3,
+      "score": 2.491339783283672,
+      "spline": false,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "mb_adapter_local_perframe",
+      "clips": 6,
+      "source_and_preservation_pass": 3,
+      "score": 3.6829791817938893,
+      "spline": false,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "mb_native_local_perframe",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 7.533555313536513,
+      "spline": false,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "gv_local_spline",
+      "clips": 6,
+      "source_and_preservation_pass": 1,
+      "score": 5.630931692970852,
+      "spline": true,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "mb_adapter_local_spline",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 21.521322845178812,
+      "spline": true,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "mb_native_local_spline",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 33.45298721441335,
+      "spline": true,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "mb_flip_native_local_spline",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 28.908334207522433,
+      "spline": true,
+      "depth_weight": 0.0
+    },
+    {
+      "variant": "mb_adapter_spline_d002",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 22.810796948479133,
+      "spline": true,
+      "depth_weight": 0.002
+    },
+    {
+      "variant": "mb_native_spline_d002",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 33.26021702078518,
+      "spline": true,
+      "depth_weight": 0.002
+    },
+    {
+      "variant": "mb_flip_native_spline_d002",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 28.721901753197226,
+      "spline": true,
+      "depth_weight": 0.002
+    },
+    {
+      "variant": "mb_native_spline_d020",
+      "clips": 6,
+      "source_and_preservation_pass": 0,
+      "score": 33.24357528798215,
+      "spline": true,
+      "depth_weight": 0.02
+    }
+  ],
+  "adopted_for_main": false,
+  "source_nonregression_supported": false,
+  "confirmation_not_used_for_selection": true,
+  "v2_design_used_v1_tune_only": true,
+  "selection_sha256": "e4a4690be8ae8bca79ddc71458eef8a938a6d7746a751424e2b5f6e920c648c0"
+}

@@ -1,0 +1,189 @@
+{
+  "rule": {
+    "version": "arm-selection-v1",
+    "wrist_p95_increase_px": 2.0,
+    "elbow_p95_increase_px": 2.0,
+    "holdout_wrist_p95_increase_px": 2.0,
+    "lower_body_max_change_model": 2e-05,
+    "foot_marker_max_change_leg": 0.003,
+    "projected_speed_ratio_range": [
+      0.65,
+      1.5
+    ],
+    "separate_rtmw_wrist_p95_increase_px": 2.0,
+    "separate_detector": "RTMW384 observations, never used for arm fitting; same RGB, not independent sensor or GT",
+    "ranking": "Among MB settings only; GVHMR-only controls remain separate comparisons. Tune mean wrist+0.5 elbow held-out p95 change plus observed peak-delay/speed disagreement. Never rank by largest 3D hand-behind depth.",
+    "minimum_source_nonregression_tune_clips": 4,
+    "isolated_return_step_radians": 0.9,
+    "isolated_return_net_ratio": 0.4,
+    "allow_new_source_unsupported_forearm_returns": 0,
+    "validation": "Withheld from arm refinement only. GVHMR and initializers saw all frames; no measured 3D GT."
+  },
+  "selected_variant": "mb_axial_source_refit",
+  "observationally_similar_variants": [
+    "mb_axial_source_refit"
+  ],
+  "unique_3d_solution_identified": false,
+  "tune_summary": [
+    {
+      "variant": "raw_graft_single",
+      "source_and_preservation_pass": 0,
+      "score": 63.27226217601418,
+      "clips": 6
+    },
+    {
+      "variant": "raw_graft_flip",
+      "source_and_preservation_pass": 0,
+      "score": 48.48178584501585,
+      "clips": 6
+    },
+    {
+      "variant": "raw_graft_native_single",
+      "source_and_preservation_pass": 0,
+      "score": 70.66882123994048,
+      "clips": 6
+    },
+    {
+      "variant": "raw_graft_native_flip",
+      "source_and_preservation_pass": 0,
+      "score": 54.40598592671363,
+      "clips": 6
+    },
+    {
+      "variant": "raw_forearm_single",
+      "source_and_preservation_pass": 0,
+      "score": 50.822237026880636,
+      "clips": 6
+    },
+    {
+      "variant": "raw_forearm_flip",
+      "source_and_preservation_pass": 0,
+      "score": 35.24378708350469,
+      "clips": 6
+    },
+    {
+      "variant": "raw_axial_single",
+      "source_and_preservation_pass": 0,
+      "score": 13.14550223785197,
+      "clips": 6
+    },
+    {
+      "variant": "raw_axial_flip",
+      "source_and_preservation_pass": 0,
+      "score": 18.658293904682314,
+      "clips": 6
+    },
+    {
+      "variant": "mb_single_source_refit",
+      "source_and_preservation_pass": 0,
+      "score": 4.316916004082931,
+      "clips": 6
+    },
+    {
+      "variant": "mb_single_phase_002",
+      "source_and_preservation_pass": 0,
+      "score": 4.3997206660273624,
+      "clips": 6
+    },
+    {
+      "variant": "mb_single_phase_010",
+      "source_and_preservation_pass": 0,
+      "score": 5.901566313207275,
+      "clips": 6
+    },
+    {
+      "variant": "mb_flip_phase_002",
+      "source_and_preservation_pass": 0,
+      "score": 2.506600109200859,
+      "clips": 6
+    },
+    {
+      "variant": "mb_flip_phase_010",
+      "source_and_preservation_pass": 0,
+      "score": 6.005475752976053,
+      "clips": 6
+    },
+    {
+      "variant": "mb_forearm_source_refit",
+      "source_and_preservation_pass": 3,
+      "score": 2.922396320283573,
+      "clips": 6
+    },
+    {
+      "variant": "mb_forearm_phase_002",
+      "source_and_preservation_pass": 3,
+      "score": 3.8841518636398855,
+      "clips": 6
+    },
+    {
+      "variant": "mb_forearm_phase_010",
+      "source_and_preservation_pass": 2,
+      "score": 5.185409572505632,
+      "clips": 6
+    },
+    {
+      "variant": "mb_flip_forearm_phase_002",
+      "source_and_preservation_pass": 2,
+      "score": 7.32210953621182,
+      "clips": 6
+    },
+    {
+      "variant": "gv_source_refit",
+      "source_and_preservation_pass": 3,
+      "score": 1.7368582684543465,
+      "clips": 6
+    },
+    {
+      "variant": "gv_forearm_source_refit",
+      "source_and_preservation_pass": 4,
+      "score": 1.5044412043837474,
+      "clips": 6
+    },
+    {
+      "variant": "mb_native_phase_002",
+      "source_and_preservation_pass": 0,
+      "score": 5.561375558638793,
+      "clips": 6
+    },
+    {
+      "variant": "mb_native_flip_phase_002",
+      "source_and_preservation_pass": 0,
+      "score": 3.3340911573365766,
+      "clips": 6
+    },
+    {
+      "variant": "mb_axial_source_refit",
+      "source_and_preservation_pass": 4,
+      "score": 2.5008059891772807,
+      "clips": 6
+    },
+    {
+      "variant": "mb_axial_phase_002",
+      "source_and_preservation_pass": 0,
+      "score": 15.8339244257903,
+      "clips": 6
+    },
+    {
+      "variant": "mb_axial_phase_010",
+      "source_and_preservation_pass": 0,
+      "score": 17.269953841863487,
+      "clips": 6
+    },
+    {
+      "variant": "mb_flip_axial_phase_002",
+      "source_and_preservation_pass": 0,
+      "score": 19.867980770419003,
+      "clips": 6
+    },
+    {
+      "variant": "gv_axial_source_refit",
+      "source_and_preservation_pass": 3,
+      "score": 2.759563561426479,
+      "clips": 6
+    }
+  ],
+  "adopted_for_main": false,
+  "source_nonregression_supported": true,
+  "selection_sha256": "2bedd30fb6ed26165a50a490ebbac50868aa1077c17ea639399b68ad779f51aa",
+  "confirmation_not_used_for_selection": true
+}

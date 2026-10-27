@@ -1,0 +1,109 @@
+{
+  "clips": 12,
+  "variants": 16,
+  "clip_variant_payloads": 192,
+  "exact_source_timing": true,
+  "main_index_unchanged": true,
+  "all_lower_body_preserved": true,
+  "shared_fixed_scene": true,
+  "original_pixels_published": false,
+  "actual_3d_accuracy_claim": false,
+  "results": [
+    {
+      "id": "3fdcd2dbaf58_c0014",
+      "models": 16,
+      "frames": 141,
+      "baseline_vs_main_error_max_leg": 1.1286039885982646e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.6468404971165612
+    },
+    {
+      "id": "d30b22cfc0b0_c0036",
+      "models": 16,
+      "frames": 134,
+      "baseline_vs_main_error_max_leg": 1.116647825580297e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.4638531327877392
+    },
+    {
+      "id": "e1cae96b4d83_c0027",
+      "models": 16,
+      "frames": 78,
+      "baseline_vs_main_error_max_leg": 1.1212360929713228e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.8962345841513816
+    },
+    {
+      "id": "0b70417b94ab_c0013",
+      "models": 16,
+      "frames": 62,
+      "baseline_vs_main_error_max_leg": 1.1307808922556006e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.6090755694361745
+    },
+    {
+      "id": "99f1a527c09b_c0013",
+      "models": 16,
+      "frames": 66,
+      "baseline_vs_main_error_max_leg": 1.0949908457735802e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 1.0833483803107844
+    },
+    {
+      "id": "e56945a0fd80_c0028",
+      "models": 16,
+      "frames": 193,
+      "baseline_vs_main_error_max_leg": 1.1107127666498684e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.5263935903789102
+    },
+    {
+      "id": "98e127654749_c0029",
+      "models": 16,
+      "frames": 129,
+      "baseline_vs_main_error_max_leg": 1.1118159877199218e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.1416621362467756
+    },
+    {
+      "id": "b96e8ea44448_c0044",
+      "models": 16,
+      "frames": 249,
+      "baseline_vs_main_error_max_leg": 1.119532779703114e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.33486932831479205
+    },
+    {
+      "id": "ae75625b241c_c0009",
+      "models": 16,
+      "frames": 126,
+      "baseline_vs_main_error_max_leg": 1.1058366718996737e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.6166722541812629
+    },
+    {
+      "id": "8eeef70dce48_c0018",
+      "models": 16,
+      "frames": 156,
+      "baseline_vs_main_error_max_leg": 1.1227671590230415e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.24570135518144773
+    },
+    {
+      "id": "0d84991ce9f6_c0008",
+      "models": 16,
+      "frames": 233,
+      "baseline_vs_main_error_max_leg": 1.1179853717582788e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.5225991973022921
+    },
+    {
+      "id": "b54e0e701d77_c0001",
+      "models": 16,
+      "frames": 121,
+      "baseline_vs_main_error_max_leg": 1.1249911492372533e-06,
+      "lower_body_change_max_leg": 0.0,
+      "distinct_raw_arm_change_max_leg": 0.22834362488363893
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "3fdcd2dbaf58_c0014": {
+    "mb_block_single_smpl": {
+      "id": "3fdcd2dbaf58_c0014",
+      "source_model": "mb_block_single",
+      "source_sha256": "42c21656c0d099fdfcada4e9170a674574b20ab146337600a37d46ae1349d286",
+      "seconds": 1.9287085749965627,
+      "source_to_adapter_p50_leg": 0.017847266048192978,
+      "source_to_adapter_p95_leg": 0.06560211293399326,
+      "raw_wham_to_new_initial_p50_leg": 0.10727851092815399,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "3fdcd2dbaf58_c0014",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "9dc46fb177dbf5a18e3150e7a40fe176e796fdb2c97cc41fa35fcbed8ee8946b",
+      "seconds": 1.9438266350043705,
+      "source_to_adapter_p50_leg": 0.01630636863410473,
+      "source_to_adapter_p95_leg": 0.06262796372175214,
+      "raw_wham_to_new_initial_p50_leg": 0.10477189719676971,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "d30b22cfc0b0_c0036": {
+    "mb_block_single_smpl": {
+      "id": "d30b22cfc0b0_c0036",
+      "source_model": "mb_block_single",
+      "source_sha256": "e838f6ec2a9bb9ec8c05d7bfe7bb95aeb9be268d95dba94688ea421aa351ea53",
+      "seconds": 1.9277246730052866,
+      "source_to_adapter_p50_leg": 0.014837373048067093,
+      "source_to_adapter_p95_leg": 0.0530893538147211,
+      "raw_wham_to_new_initial_p50_leg": 0.11035678535699844,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "d30b22cfc0b0_c0036",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "f623e1f616c07ac4b25a3f46e7d318da7c107250e7e6d23a75fac5d62465066a",
+      "seconds": 1.9416955209890148,
+      "source_to_adapter_p50_leg": 0.01725124567747116,
+      "source_to_adapter_p95_leg": 0.056626816466450625,
+      "raw_wham_to_new_initial_p50_leg": 0.11460147798061371,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "e1cae96b4d83_c0027": {
+    "mb_block_single_smpl": {
+      "id": "e1cae96b4d83_c0027",
+      "source_model": "mb_block_single",
+      "source_sha256": "7f2a1f4bd4be528cdfba810211ae14000733f028992edfaaea675ef9a3e4e7b6",
+      "seconds": 2.027044232003391,
+      "source_to_adapter_p50_leg": 0.016460156068205833,
+      "source_to_adapter_p95_leg": 0.07340356335043907,
+      "raw_wham_to_new_initial_p50_leg": 0.10224393755197525,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "e1cae96b4d83_c0027",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "1ea3ee6ed1b8fafe9fe47590903322b051450317e394b56bff7a00e6d0deb4d1",
+      "seconds": 1.8779670209914912,
+      "source_to_adapter_p50_leg": 0.017404772341251373,
+      "source_to_adapter_p95_leg": 0.07121890038251877,
+      "raw_wham_to_new_initial_p50_leg": 0.09492534399032593,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "0b70417b94ab_c0013": {
+    "mb_block_single_smpl": {
+      "id": "0b70417b94ab_c0013",
+      "source_model": "mb_block_single",
+      "source_sha256": "3ea557ce74649d2e4451bd9cbc17545c2e661af6b7a95af3ad723af3de373d52",
+      "seconds": 1.9500586729991483,
+      "source_to_adapter_p50_leg": 0.021838895976543427,
+      "source_to_adapter_p95_leg": 0.08782467655837536,
+      "raw_wham_to_new_initial_p50_leg": 0.09452854096889496,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "0b70417b94ab_c0013",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "4496d602393929209b325e065d07a837ae626239d8e53b5d54e9a01233d3a475",
+      "seconds": 1.8816230789961992,
+      "source_to_adapter_p50_leg": 0.019132118672132492,
+      "source_to_adapter_p95_leg": 0.08816221915185452,
+      "raw_wham_to_new_initial_p50_leg": 0.0919986218214035,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "99f1a527c09b_c0013": {
+    "mb_block_single_smpl": {
+      "id": "99f1a527c09b_c0013",
+      "source_model": "mb_block_single",
+      "source_sha256": "55e1c5e8ccaa5a040080578e85c8255bda4ce6b0b7d5e50214086e4bf10e1d30",
+      "seconds": 1.940935353995883,
+      "source_to_adapter_p50_leg": 0.022706035524606705,
+      "source_to_adapter_p95_leg": 0.07282368130981921,
+      "raw_wham_to_new_initial_p50_leg": 0.13043183088302612,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "99f1a527c09b_c0013",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "08e7320aa179fad10fb201300c32253602750a0118fbd7481e1b7fab9009099c",
+      "seconds": 1.8848868669883814,
+      "source_to_adapter_p50_leg": 0.02141631208360195,
+      "source_to_adapter_p95_leg": 0.07170645892620076,
+      "raw_wham_to_new_initial_p50_leg": 0.1146775335073471,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "e56945a0fd80_c0028": {
+    "mb_block_single_smpl": {
+      "id": "e56945a0fd80_c0028",
+      "source_model": "mb_block_single",
+      "source_sha256": "2d5f2c0d838abd18c08ddd044c3ebf2e82b1b1e805e120ac2134c81a8d0b2d72",
+      "seconds": 1.893017205002252,
+      "source_to_adapter_p50_leg": 0.019459879025816917,
+      "source_to_adapter_p95_leg": 0.048163214698433876,
+      "raw_wham_to_new_initial_p50_leg": 0.0881858840584755,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "e56945a0fd80_c0028",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "ae6413dbc15279c56cc5ac516d54dc2753033fade571c2cab5a1bba340e7905a",
+      "seconds": 1.888925866005593,
+      "source_to_adapter_p50_leg": 0.01839704066514969,
+      "source_to_adapter_p95_leg": 0.05476874392479658,
+      "raw_wham_to_new_initial_p50_leg": 0.10045607388019562,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "98e127654749_c0029": {
+    "mb_block_single_smpl": {
+      "id": "98e127654749_c0029",
+      "source_model": "mb_block_single",
+      "source_sha256": "b25966558780ae45482dc10e70d7bd1c61967cefaddb942744c73f5382c1804a",
+      "seconds": 2.1095419930061325,
+      "source_to_adapter_p50_leg": 0.018413502722978592,
+      "source_to_adapter_p95_leg": 0.06361892484128474,
+      "raw_wham_to_new_initial_p50_leg": 0.11008448898792267,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "98e127654749_c0029",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "baa6b1dc0341145fe823205594d770e3ef66bf0143bd823a699860d300bbdeee",
+      "seconds": 2.1537738580082078,
+      "source_to_adapter_p50_leg": 0.02206489071249962,
+      "source_to_adapter_p95_leg": 0.0577785277739167,
+      "raw_wham_to_new_initial_p50_leg": 0.10965118557214737,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "b96e8ea44448_c0044": {
+    "mb_block_single_smpl": {
+      "id": "b96e8ea44448_c0044",
+      "source_model": "mb_block_single",
+      "source_sha256": "91c97499248aca4dd5cd3dd4fe8560d7e9f923bb9f9c6ed1c2396abd83812e16",
+      "seconds": 2.223840637001558,
+      "source_to_adapter_p50_leg": 0.01829574629664421,
+      "source_to_adapter_p95_leg": 0.044663903117179875,
+      "raw_wham_to_new_initial_p50_leg": 0.11413774639368057,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "b96e8ea44448_c0044",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "b513df050c0a7b724caa438c773babfb7a02e5bbb4df06cc356e10a25ec44ea4",
+      "seconds": 2.1107023500080686,
+      "source_to_adapter_p50_leg": 0.016349641606211662,
+      "source_to_adapter_p95_leg": 0.04214364401996137,
+      "raw_wham_to_new_initial_p50_leg": 0.11076097190380096,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "ae75625b241c_c0009": {
+    "mb_block_single_smpl": {
+      "id": "ae75625b241c_c0009",
+      "source_model": "mb_block_single",
+      "source_sha256": "c219d6d77d3783b99a4e8affef3bd82ca6a8ad13c5cbafd5e94773b4b06171eb",
+      "seconds": 2.179860672011273,
+      "source_to_adapter_p50_leg": 0.014796784147620201,
+      "source_to_adapter_p95_leg": 0.06026424989104279,
+      "raw_wham_to_new_initial_p50_leg": 0.13419950008392334,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "ae75625b241c_c0009",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "ccc353983dae6111c0e9577072dbce093de2949db0b92a929042422664220906",
+      "seconds": 2.164803171006497,
+      "source_to_adapter_p50_leg": 0.014430773444473743,
+      "source_to_adapter_p95_leg": 0.061835391819477094,
+      "raw_wham_to_new_initial_p50_leg": 0.10869374126195908,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "8eeef70dce48_c0018": {
+    "mb_block_single_smpl": {
+      "id": "8eeef70dce48_c0018",
+      "source_model": "mb_block_single",
+      "source_sha256": "f8dacead185fe20bccaf5ad2c5ea64db11a6be045a0ce60be77a41442a14f626",
+      "seconds": 2.172148413010291,
+      "source_to_adapter_p50_leg": 0.018723560497164726,
+      "source_to_adapter_p95_leg": 0.07594036087393753,
+      "raw_wham_to_new_initial_p50_leg": 0.10800828039646149,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "8eeef70dce48_c0018",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "d64825ef228852736430d9177b60208d93665ee06f6330bc751f3a057fa255a1",
+      "seconds": 2.0904640090011526,
+      "source_to_adapter_p50_leg": 0.017359670251607895,
+      "source_to_adapter_p95_leg": 0.07729953378438942,
+      "raw_wham_to_new_initial_p50_leg": 0.10176246613264084,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "0d84991ce9f6_c0008": {
+    "mb_block_single_smpl": {
+      "id": "0d84991ce9f6_c0008",
+      "source_model": "mb_block_single",
+      "source_sha256": "9c8446aca3f49582be7197f10bccea28f2bca3bb12969823235f8d0882013fd0",
+      "seconds": 2.069464792002691,
+      "source_to_adapter_p50_leg": 0.01809445396065712,
+      "source_to_adapter_p95_leg": 0.058965858072042465,
+      "raw_wham_to_new_initial_p50_leg": 0.10131222009658813,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "0d84991ce9f6_c0008",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "0eac245b6493fe5f19178c9b29d3365d5c54802ae93ce9a1cf7f12d4e4561d5e",
+      "seconds": 2.1477127090038266,
+      "source_to_adapter_p50_leg": 0.015617549419403076,
+      "source_to_adapter_p95_leg": 0.05643920414149761,
+      "raw_wham_to_new_initial_p50_leg": 0.09417589008808136,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  },
+  "b54e0e701d77_c0001": {
+    "mb_block_single_smpl": {
+      "id": "b54e0e701d77_c0001",
+      "source_model": "mb_block_single",
+      "source_sha256": "7166b63b2f5699a2b3f84170df5d4c053d4dfc134aed67df584fa965798a0d6c",
+      "seconds": 2.324301305998233,
+      "source_to_adapter_p50_leg": 0.02031976729631424,
+      "source_to_adapter_p95_leg": 0.05633855797350407,
+      "raw_wham_to_new_initial_p50_leg": 0.1421503722667694,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    },
+    "mb_block_flip_smpl": {
+      "id": "b54e0e701d77_c0001",
+      "source_model": "mb_block_flip_restored",
+      "source_sha256": "59b2f5c0d239f4fc999ee199bbec063264ea3ed50c27a4b72e48b9417d6bd430",
+      "seconds": 2.021546842996031,
+      "source_to_adapter_p50_leg": 0.02075262740254402,
+      "source_to_adapter_p95_leg": 0.06870281957089902,
+      "raw_wham_to_new_initial_p50_leg": 0.13528691232204437,
+      "pose_seed": "WHAM RAW only",
+      "target": "Full independent native MotionBERT relative 3D candidate, leg-normalized once per sequence",
+      "loss": "3D common12 coordinate loss + tiny rotation-change penalty; no image/contact/stride target",
+      "legacy_v2_used": false
+    }
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "3fdcd2dbaf58_c0014",
+    "player": "장민재",
+    "split": "tune",
+    "file": "3fdcd2dbaf58_c0014.json.gz",
+    "sha256_gzip": "6810326d0e2572d044f18a8aa8539ebdfb3e621ee6cdaf6e458696323af1889a"
+  },
+  {
+    "id": "d30b22cfc0b0_c0036",
+    "player": "벤자민",
+    "split": "tune",
+    "file": "d30b22cfc0b0_c0036.json.gz",
+    "sha256_gzip": "91271626f951fc3c06c8e7f3a3219d27f3a817a51fbfc61d0e17cec457118e5e"
+  },
+  {
+    "id": "e1cae96b4d83_c0027",
+    "player": "더거",
+    "split": "tune",
+    "file": "e1cae96b4d83_c0027.json.gz",
+    "sha256_gzip": "b7b7c1832d3a8006b99d7bd281ea9adcdbf107761d57ea34dbf793386ec1e77b"
+  },
+  {
+    "id": "0b70417b94ab_c0013",
+    "player": "이승현",
+    "split": "tune",
+    "file": "0b70417b94ab_c0013.json.gz",
+    "sha256_gzip": "46df6b861fe50fb359eb5c55a48b379579c848dde7d746690789492cb2e01733"
+  },
+  {
+    "id": "99f1a527c09b_c0013",
+    "player": "크로우",
+    "split": "tune",
+    "file": "99f1a527c09b_c0013.json.gz",
+    "sha256_gzip": "f7317b4adca813f6bda9de9d24147ea976432be4ab3e3c61d605c104884043ac"
+  },
+  {
+    "id": "e56945a0fd80_c0028",
+    "player": "양현종",
+    "split": "tune",
+    "file": "e56945a0fd80_c0028.json.gz",
+    "sha256_gzip": "9fb6c09d30b9c78f9eb8f5712cb51ac81bc0013928958c2f7ef6df6a05d2c617"
+  },
+  {
+    "id": "98e127654749_c0029",
+    "player": "알드레드",
+    "split": "confirmation",
+    "file": "98e127654749_c0029.json.gz",
+    "sha256_gzip": "ea957371e9dbaa7d0f138c0dd92f33e5bc35e1455a4ccf68a5455e10d2571b17"
+  },
+  {
+    "id": "b96e8ea44448_c0044",
+    "player": "와이스",
+    "split": "confirmation",
+    "file": "b96e8ea44448_c0044.json.gz",
+    "sha256_gzip": "a243f5d206f49cf195d439a121540ff9e72c9207763d9ccebdb1e3e436aad5b5"
+  },
+  {
+    "id": "ae75625b241c_c0009",
+    "player": "원태인",
+    "split": "confirmation",
+    "file": "ae75625b241c_c0009.json.gz",
+    "sha256_gzip": "97a9af13f9c73dc595ebfb4be9278b1a77c328771163c011bffbee8e5dfeb0e6"
+  },
+  {
+    "id": "8eeef70dce48_c0018",
+    "player": "조이현",
+    "split": "confirmation",
+    "file": "8eeef70dce48_c0018.json.gz",
+    "sha256_gzip": "ccbc7b75c577f6144fefc5fe5e24e1fa2335390224a0b88e66f3d667cd0a828a"
+  },
+  {
+    "id": "0d84991ce9f6_c0008",
+    "player": "최원태",
+    "split": "confirmation",
+    "file": "0d84991ce9f6_c0008.json.gz",
+    "sha256_gzip": "3ca34984204272265a0ec3bd3d49a07332aa4652b27b2a55d4177cfa1e64b827"
+  },
+  {
+    "id": "b54e0e701d77_c0001",
+    "player": "최민준",
+    "split": "confirmation",
+    "file": "b54e0e701d77_c0001.json.gz",
+    "sha256_gzip": "d78f45fa388e342bebfbbb92761f4b76c12db8fe6a1db7f50ce97561f8438dcf"
+  }
+]

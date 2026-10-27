@@ -1,0 +1,74 @@
+[
+  {
+    "id": "3fdcd2dbaf58_c0014",
+    "source_gated_candidates": 13,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6250109236128993,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "d30b22cfc0b0_c0036",
+    "source_gated_candidates": 16,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6164902155311778,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "e1cae96b4d83_c0027",
+    "source_gated_candidates": 14,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6071797624012649,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "0b70417b94ab_c0013",
+    "source_gated_candidates": 8,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6197013231718417,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "99f1a527c09b_c0013",
+    "source_gated_candidates": 13,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6362120367895019,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "e56945a0fd80_c0028",
+    "source_gated_candidates": 9,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.5768173350041338,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "98e127654749_c0029",
+    "source_gated_candidates": 15,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.5040015945014514,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "b96e8ea44448_c0044",
+    "source_gated_candidates": 15,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6354327618512092,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "ae75625b241c_c0009",
+    "source_gated_candidates": 15,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6335659900639745,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "8eeef70dce48_c0018",
+    "source_gated_candidates": 15,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.5593904638951804,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "0d84991ce9f6_c0008",
+    "source_gated_candidates": 15,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6387782266886939,
+    "not_actual_3d_error": true
+  },
+  {
+    "id": "b54e0e701d77_c0001",
+    "source_gated_candidates": 16,
+    "max_forearm_camera_depth_span_same_frame_leg": 0.6375843573072028,
+    "not_actual_3d_error": true
+  }
+]

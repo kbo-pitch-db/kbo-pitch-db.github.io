@@ -1,0 +1,44 @@
+{
+  "experiment_version": "v3",
+  "full_smpl_surface_pose_correctives": false,
+  "native_joint_fk_preserved": true,
+  "foot_markers_frozen_by_design": true,
+  "main_release_commit": "02dc61ed798b1fc570e95b034d3dea831f3aeb29",
+  "packager_sha256": "f6a90243606baa1ee69a77608faa0f38f87fba81584a7cdd109136b0ef6a6527",
+  "main_release_changed": false,
+  "main_index_sha256": "e47d07a246c154a87011a36d66f14c2e5d2e0171a95a38a18d67dfc15a7e7656",
+  "clips": 12,
+  "original_broadcast_media_included": false,
+  "body_root_contact_from_release": true,
+  "wrist_flexion_angle_not_observed": true,
+  "motionbert": {
+    "base_checkpoint_sha256": "597c708bd585646cc6961df057ef73634edb83a4d5c1155d98a4cc0c04e81b98",
+    "public_last_block_checkpoint_sha256": "67ca2dbb4abb80561823257e6724d33237bb3d3078b53aad492a57b63e75dfab",
+    "public_last_block_training_provenance": {
+      "train_athletes": 24,
+      "val_athletes": 8,
+      "confirmation_athletes": 16,
+      "trainable_parameters": 8678405,
+      "epochs": 24,
+      "seconds": 64.44383183200262,
+      "kbo_data_used": false,
+      "confirmation_evaluated": false,
+      "learning": "Actual public joint-center supervision, random 24/30/60Hz camera views, 2D noise and dropout; not RGB fine-tuning or PitcherNet reproduction"
+    },
+    "training_used_kbo_labels": false,
+    "new_training_this_experiment": false,
+    "independent_lifting_cache_reused": true,
+    "adapter": "Two distinct paths: whole-body strong 3D IK to SMPL (WHAM RAW solver seed and fixed shape; conversion errors per clip), or direct native H36M17 upper-arm/forearm directions on the released GVHMR body, without that whole-body IK",
+    "hypotheses": "Single and flip-restored predictions kept distinct; no coordinate averaging"
+  },
+  "solver_files_sha256": {
+    "arm_cocking_refine.py": "ca1e10324b2d823e1b340353d44b3009cac7c02d09949130092e5d7622ee655c",
+    "arm_cocking_axial.py": "b61ac18e3fead0c919a1ac3bfbfacbdf2fd3f5866653ad6d7d9bf4c34f46f1e8",
+    "arm_cocking_native.py": "c474332c2a23534df0d9b2cb90ec440689706f9aeea5624736f393d60bf0ade4",
+    "arm_cocking_evaluate.py": "2bedd30fb6ed26165a50a490ebbac50868aa1077c17ea639399b68ad779f51aa",
+    "arm_cocking_observations.py": "a7cc57ec652475742db9d49537aa4d8acb076894dc8b120718bef24f28cab794",
+    "arm_cocking_v3.py": "b7be9361d0740c07504c5caac11866e49ecb53ba2e8140ab0afd91ee583278cb",
+    "evaluate_arm_cocking_v3.py": "0b5f9b41ddf0e750db83447f2fa6263910b60efa4d45ca049914b0608b3a4501",
+    "arm_depth_rays.py": "db10807f889a901f0c78155e67265d05b0218af6251de3bc0216c299a608bd2e"
+  }
+}

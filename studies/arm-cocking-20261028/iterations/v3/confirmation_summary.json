@@ -1,0 +1,9 @@
+{
+  "selected_variant": "raw_ray_flip",
+  "clips": 6,
+  "source_and_preservation_pass": 6,
+  "absolute_3d_accuracy_claim": false,
+  "main_release_changed": false,
+  "foot_marker_scope": "Imposed invariant; not contact accuracy evidence",
+  "observational_not_GT": true
+}
