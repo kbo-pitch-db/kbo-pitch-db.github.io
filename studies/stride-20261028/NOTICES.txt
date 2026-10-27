@@ -1,0 +1,5 @@
+Research estimates, not measured KBO 3D GT or validated biomechanics.
+GVHMR, WHAM, MotionBERT and NLF retain their official model licenses.
+Custom MotionBERT adaptation used public OpenBiomechanics joint centers; its CC BY-NC-SA 4.0 plus professional-sports/financial-firm exclusions remain relevant.
+No model weights, licensed SMPL assets, raw public mocap or original broadcast pixels are included here.
+Source video is linked externally, not self-hosted.

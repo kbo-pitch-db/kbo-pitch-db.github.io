@@ -1,5 +1,7 @@
 # KBO Pitch Lab
 
+The [stride-focused 3D comparison](https://kbo-pitch-db.github.io/studies/stride-20261028/) defaults to GVHMR f4 and retains NLF alternatives on the processed 36-clip study subset. It exposes raw-adapter, camera-only and fitted stages and keeps native interankle separation separate from inferred landing and cross-time displacement. This is a post-hoc research-model choice; measured KBO stride/depth accuracy is not established. The previous 813 poses, quality labels and final Halpe-26 remain unchanged. Only numerical assets and external source links are published. Code is in `experiments/pitch_observation/`; local inference requires its documented research worktree, pretrained assets and license terms.
+
 ## Run WHAM + RTMPose Halpe-26 on the server
 
 Run these commands in a server environment with NVIDIA devices exposed and outbound downloads enabled. The runner requires actual CUDA execution and WHAM checkpoints; it does not substitute another 3D model.

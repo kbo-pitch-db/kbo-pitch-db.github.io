@@ -1,0 +1,13 @@
+Run from the preserved research worktree, whose source files are committed in this repository.
+cd /home/eis/Workspace/Kichang/kbo-pitchers
+STUDY=research/pitch_observation_20261028
+PY=$STUDY/env/bin/python
+EXP=$STUDY/code/experiments/pitch_observation
+$PY $EXP/stride_review.py
+$PY $EXP/publish_stride.py --site $STUDY/code
+
+Raw inference/fitting and fixed-split provenance: experiments/pitch_observation/README.txt and the local study REPRODUCE.txt.
+GVHMR network uses RTMPose/HMR2a inputs and an approximate SMPL shared-rotation adapter, followed by custom fitting. Full official SMPL-X postprocessing was not run.
+Default focal seed f4 = 4 times full-frame image diagonal; final focal is optimized, not calibrated.
+No stride stretching, population target, framewise floor correction or clipping-based recovery.
+Only numerical poses/observations and source YouTube links are published. Original source media, pseudo-depth/masks, model weights and body-model assets remain local.
