@@ -8,6 +8,12 @@ import argparse,importlib,traceback,gc
 
 ROOT=OUT/'all813_gvhmr_v1'
 
+def enable_primary_shot_policy():os.environ['KBO_GVHMR_PRIMARY_SHOT_ROOT']=str(ROOT)
+
+def expected_primary_frames(cid):
+ path=ROOT/'shot_validity'/f'{cid}.json'
+ return int(json.loads(path.read_text())['valid_frames']) if path.exists() else None
+
 def population():
  old={r['id']:r for r in json.loads((PREVIOUS/'audit_all.json').read_text())}
  index=json.loads((CODE/'data/clips.json').read_text())
@@ -19,10 +25,17 @@ def feature_complete(cid):
  return p.exists() and p.with_suffix('.json').exists()
 
 def network_complete(cid):
- return all((OUT/'raw'/f'gvhmr_f{f}'/f'{cid}.npz').exists() and (OUT/'raw'/f'gvhmr_f{f}'/f'{cid}.json').exists() and (OUT/'adapters'/f'gvhmr_f{f}'/f'{cid}.npz').exists() for f in [1,4,12])
+ exists=all((OUT/'raw'/f'gvhmr_f{f}'/f'{cid}.npz').exists() and (OUT/'raw'/f'gvhmr_f{f}'/f'{cid}.json').exists() and (OUT/'adapters'/f'gvhmr_f{f}'/f'{cid}.npz').exists() for f in [1,4,12])
+ n=expected_primary_frames(cid)
+ if exists and n:
+  for f in [1,4,12]:
+   with np.load(OUT/'adapters'/f'gvhmr_f{f}'/f'{cid}.npz',allow_pickle=False) as z:
+    if len(z['frame_index'])!=n:return False
+ return exists
 
 def run_upstream(stage,records,worker):
  import common,torch
+ if stage=='network':enable_primary_shot_policy()
  torch.set_num_threads(1);torch.cuda.set_per_process_memory_fraction(.38,0)
  complete=feature_complete if stage=='features' else network_complete
  module=importlib.import_module('rgb_initializers' if stage=='features' else 'gvhmr_network')

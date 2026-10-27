@@ -1,6 +1,6 @@
 """Durable stage supervisor; resumes own workers, never publishes anything."""
 from common import *
-from all813_release import ROOT,population,feature_complete,network_complete
+from all813_release import ROOT,population,feature_complete,network_complete,expected_primary_frames
 from all813_fit import base_complete
 import subprocess
 
@@ -20,8 +20,10 @@ def running(script,stage,worker):
 
 def start(script,stage,worker):
  log=OUT/'logs'/f'all813_supervised_{script[:-3]}_{stage or "background"}_gpu{worker}.log'
- environment={**os.environ,'CUDA_VISIBLE_DEVICES':str(worker)}
- args=[str(PY),str(EXP/script)]+([stage] if stage else [])+['--worker',str(worker)]
+ override=ROOT/'worker_device_overrides.json';devices=json.loads(override.read_text()) if override.exists() else {};device=devices.get(f'{stage or "background"}:{worker}',worker)
+ environment={**os.environ,'CUDA_VISIBLE_DEVICES':str(device)}
+ options=ROOT/'worker_options.json';extra=json.loads(options.read_text()).get(f'{stage or "background"}:{worker}',[]) if options.exists() else []
+ args=[str(PY),str(EXP/script)]+([stage] if stage else [])+['--worker',str(worker)]+extra
  with log.open('a') as handle:p=subprocess.Popen(args,cwd=CODE,env=environment,stdout=handle,stderr=subprocess.STDOUT,start_new_session=True)
  return p.pid
 
@@ -31,7 +33,10 @@ def frozen(cid):
 
 def contact_complete(cid):
  p=ROOT/'contact'/f'{cid}.npz'
- return frozen(cid) or p.exists() and p.with_suffix('.json').exists()
+ complete=frozen(cid) or p.exists() and p.with_suffix('.json').exists();n=expected_primary_frames(cid)
+ if complete and n:
+  with np.load(p,allow_pickle=False) as z:return len(z['frame_index'])==n
+ return complete
 
 def background_complete(cid):
  return (PREVIOUS/'background'/f'{cid}.npz').exists() or any((ROOT/f'background_worker{w}/background'/f'{cid}.json').exists() for w in [0,1])
@@ -48,7 +53,12 @@ def main():
     if pending and not pids:pids=[start(script,stage,worker)]
     state['processes'][stage or 'background']=pids
    rows_.append(state);ready=ready and state['contact']==len(rr) and state['base']==len(rr) and state['network']==len(rr) and state['features']==len(rr)
-  report=dict(updated_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),ready_for_validation=ready,workers=rows_,auto_publish=False)
+  helper_file=ROOT/'helper_workers.json';helper_workers=json.loads(helper_file.read_text()) if helper_file.exists() else [];helper_processes={}
+  for helper in helper_workers:
+   pids=running('all813_fit.py','contact',helper)
+   if not ready and not pids:pids=[start('all813_fit.py','contact',helper)]
+   helper_processes[str(helper)]=pids
+  report=dict(contact_helpers=helper_processes,updated_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),ready_for_validation=ready,workers=rows_,auto_publish=False)
   save(ROOT/'pipeline_progress.json',report);print(json.dumps(report),flush=True)
   if ready:
    subprocess.run([str(PY),str(EXP/'all813_select.py')],cwd=CODE,check=True)

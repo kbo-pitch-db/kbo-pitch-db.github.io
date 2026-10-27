@@ -15,7 +15,7 @@ class Element {
 const root=path.resolve(__dirname,'..');
 const index=JSON.parse(fs.readFileSync(path.join(root,'data/clips.json')));
 const clip=index.clips.find(c=>c.pose3d && c.poseRefined);
-const load=p=>JSON.parse(fs.readFileSync(path.join(root,'data',p)));
+const load=p=>{const raw=fs.readFileSync(path.join(root,'data',p));return JSON.parse(p.endsWith('.gz')?require('node:zlib').gunzipSync(raw):raw);};
 const pose2d=load(clip.poseRefined),pose3d=load(clip.pose3d);
 const controls=[],requests=[];
 let now=0,nextTimer=0;
@@ -96,5 +96,11 @@ const canvas=(panel,dim)=>panel.querySelector(`.motion-canvas[data-dimension="${
  assert.ok(!previewStatus.includes('검사 통과'),'a failed preview cannot be labeled screened');
  assert.equal(previewPanel.querySelectorAll('.motion-downloads [data-dimension="3"]')[0].disabled,false);
  viewer.dispose();
- console.log('PASS: final 2D/3D, synchronized playback and seeking, independent 3D rotation, exact exports, loading failure and clip-switch races');
+ const partial=JSON.parse(JSON.stringify(pose3d)),cut=partial.frames.length-2;
+ for(const f of partial.frames.slice(cut)){f.available=false;f.unavailable_reason='source_camera_change';f.anatomy=Array(24).fill(null);f.feet=Array(6).fill(null);f.keypoints=Array(17).fill(null);}
+ context.fetch=async()=>({ok:true,json:async()=>partial});const partialPanel=new Element(),partialClock=viewer.createClock(new Element(),clip.frames,clip.fps);
+ await viewer.mount({clip,panel:partialPanel,lang:'ko',url:p=>p,pose2d,clock:partialClock,onPoses:()=>{}});partialClock.currentTime=cut/clip.fps;viewer.draw();
+ const unavailable=partialPanel.querySelector('.motion-placeholder[data-dimension="3"]');assert.equal(unavailable.hidden,false);assert.ok(unavailable.textContent.includes('카메라'));assert.equal(canvas(partialPanel,2).dataset.frame,canvas(partialPanel,3).dataset.frame);
+ partialClock.currentTime=1/clip.fps;viewer.draw();assert.equal(unavailable.hidden,true,'seeking back restores the valid shot');viewer.dispose();
+ console.log('PASS: final 2D/3D, synchronized playback and seeking, independent rotation, exact exports, load/switch races and explicit camera-cut gaps');
 })().catch(e=>{console.error(e);process.exitCode=1});

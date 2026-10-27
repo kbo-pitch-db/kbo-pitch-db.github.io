@@ -38,7 +38,8 @@ def fit(rec,body,steps):
  source=SOURCE_FOLDER/f'{cid}.npz'
  if dest.exists() and dest.with_suffix('.json').exists():
   cached=json.loads(dest.with_suffix('.json').read_text())
-  if cached['config']!=CONFIG or cached['source_fit_sha256']!=sha(source):raise ValueError('New version required for changed inputs/config')
+  semantic=lambda c:{k:v for k,v in c.items() if k!='cuda_graph'}
+  if semantic(cached['config'])!=semantic(CONFIG) or cached['source_fit_sha256']!=sha(source):raise ValueError('New version required for changed inputs/objective config')
   return cached
  z=load(source);_,_,_,h,_=init_inputs(cid);bg=z['background_transforms'];phase,_=phase_info(rec,h,bg);cw_e,seeds,notes=contact_state(h,phase,bg);markers=np.array([q['marker'] for q in notes],int);N=len(h['keypoints']);cw=np.zeros((N,6))
  rp=REFERENCE_FOLDER/f'{cid}.npz';mp=rp.with_suffix('.json')
@@ -46,9 +47,9 @@ def fit(rec,body,steps):
  oldmeta=json.loads(mp.read_text()) if rp.exists() and mp.exists() else dict(phase=phase,marker_states=notes)
  for e,j in enumerate(markers):cw[:,j]=np.maximum(cw[:,j],cw_e[:,e])
  if not len(markers) and not CONFIG.get('allow_unknown_contact',False):return dict(id=cid,status='contact_unknown')
- T=lambda x:torch.as_tensor(x,dtype=torch.float32,device='cuda:0');beta=z['smpl_betas'];beta=np.median(beta,0) if beta.ndim==2 else beta;body.prepare_shape(beta)
+ T=lambda x:torch.as_tensor(x,dtype=torch.float32,device=body.device);beta=z['smpl_betas'];beta=np.median(beta,0) if beta.ndim==2 else beta;body.prepare_shape(beta)
  leg=native_leg(z['anatomical_keypoints']);r0=T(z['smpl_rotations']);hypotheses=[(w,a) for w in CONFIG['pivot_weights'] for a in CONFIG['plane_angles']];H=len(hypotheses)
- basis=T(spline_basis(N,float(h['fps']),spacing=.08));initial=z['translation']/leg;controls=torch.nn.Parameter(T(np.repeat(np.linalg.lstsq(basis.cpu().numpy(),initial,rcond=None)[0][None],H,0)));delta=torch.nn.Parameter(torch.zeros((H,N,24,3),device='cuda:0'))
+ basis=T(spline_basis(N,float(h['fps']),spacing=.08));initial=z['translation']/leg;controls=torch.nn.Parameter(T(np.repeat(np.linalg.lstsq(basis.cpu().numpy(),initial,rcond=None)[0][None],H,0)));delta=torch.nn.Parameter(torch.zeros((H,N,24,3),device=body.device))
  betas=T(np.repeat(beta[None],H*N,0));normal=T([[0,-np.cos(a),-np.sin(a)] for w,a in hypotheses]);pivot_strength=T([w for w,a in hypotheses])
  initfeet=z['foot_keypoints']/leg+initial[:,None];anchor0=np.array([np.median(initfeet[max(0,i-1):min(N,i+2),j],0) for j,i in zip(markers,seeds)]).reshape(-1,3);anchors=torch.nn.Parameter(T(np.repeat(anchor0[None],H,0)))
  contact=T(cw_e);grip=np.zeros_like(cw_e);rear=1 if phase['lead_side']=='left' else 0 if phase['lead_side']=='right' else None;pivot_notes=[]
@@ -61,19 +62,19 @@ def fit(rec,body,steps):
  for n in normal.cpu().numpy():
   signed=(initfeet*n).sum(-1);floor0.append(-float(np.median(signed[good])) if good.any() else -float(np.quantile(signed,.1)))
  knee_raw=Rotation.from_matrix(z['smpl_rotations'][:,[4,5]].reshape(-1,3,3)).as_rotvec().reshape(N,2,3);initflex=np.clip(knee_raw[:,:,0],.02,2.7);prob=np.clip((initflex+.08)/2.88,1e-4,1-1e-4);knee_flex=torch.nn.Parameter(T(np.repeat(np.log(prob/(1-prob))[None],H,0)));knee_side=torch.nn.Parameter(T(np.repeat(np.arctanh(np.clip(knee_raw[:,:,1:]/.18,-.95,.95))[None],H,0)))
- floor=torch.nn.Parameter(T(floor0));logf=torch.nn.Parameter(torch.zeros(H,device='cuda:0'))
+ floor=torch.nn.Parameter(T(floor0));logf=torch.nn.Parameter(torch.zeros(H,device=body.device))
  # Local upper limbs stay exactly unchanged. Corrections are deliberately small
  # and knees get little off-hinge freedom; no target lower-limb configuration.
  limits=np.zeros((24,3),np.float32);limits[0]=.20;limits[[1,2]]=.40;limits[[3,6,9,12]]=.15;limits[[4,5]]=[.40,.06,.06];limits[[7,8,10,11]]=.40;limit=T(limits)
  graph_mode=CONFIG.get('cuda_graph',False)
- learning_rates=[torch.tensor(lr,device='cuda:0') if graph_mode else lr for lr in [.012,.012,.002]]
+ learning_rates=[torch.tensor(lr,device=body.device) if graph_mode else lr for lr in [.012,.012,.002]]
  optimizer=torch.optim.Adam([{'params':[controls,anchors,floor],'lr':learning_rates[0]},{'params':[delta,knee_flex,knee_side],'lr':learning_rates[1]},{'params':[logf],'lr':learning_rates[2]}],capturable=graph_mode,foreach=False if graph_mode else None)
  xy=np.einsum('tij,tkj->tki',bg,np.concatenate([h['keypoints'],np.ones((*h['keypoints'].shape[:2],1))],-1))[...,:2];target=T(np.nan_to_num(np.concatenate([xy[:,:17],xy[:,20:26]],1)));sc=scores(h);weight=np.concatenate([sc[:,:17]**2,sc[:,20:26]**2*CONFIG.get('foot_observation_weight',.35)],1);weight[:,:5]*=.2;weight[:,7:11]*=2;weight=T(weight)
  height=max(100.,float(np.median(h['bbox'][:,3]-h['bbox'][:,1])));dt=T(np.diff(h['source_time']));links=(dt>0)&(dt<.1)&T(np.diff(h['frame_index'])==1).bool();triple=links[1:]&links[:-1];mid=(dt[1:]+dt[:-1])/2
  base_p=T(z['keypoints']/leg);base_a=T(z['anatomical_keypoints']/leg);base_stride=base_a[:,7]-base_a[:,8]
  principal_tensor=T(z['principal']);knee_raw_tensor=T(knee_raw)
- triple_indices=torch.as_tensor(np.flatnonzero(triple.cpu().numpy()),dtype=torch.long,device='cuda:0');marker_indices=torch.as_tensor(markers,dtype=torch.long,device='cuda:0')
- upper_indices=torch.as_tensor([5,6,7,8,9,10],device='cuda:0');shoulder_indices=torch.as_tensor([5,6],device='cuda:0');base_upper=base_p[:,[5,6,7,8,9,10]]-base_p[:,[5,6]].mean(1,keepdim=True)
+ triple_indices=torch.as_tensor(np.flatnonzero(triple.cpu().numpy()),dtype=torch.long,device=body.device);marker_indices=torch.as_tensor(markers,dtype=torch.long,device=body.device)
+ upper_indices=torch.as_tensor([5,6,7,8,9,10],device=body.device);shoulder_indices=torch.as_tensor([5,6],device=body.device);base_upper=base_p[:,[5,6,7,8,9,10]]-base_p[:,[5,6]].mean(1,keepdim=True)
  def evaluate():
   angles=limit[None,None]*torch.tanh(delta);rot=r0[None]@stable_rotation(angles);
   if CONFIG.get('bounded_knees',False):

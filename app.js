@@ -152,9 +152,9 @@ async function downloadPose(kind,dimension=2){
     const dim=pose.dimension===3?3:2;
     const native=dim===3&&Array.isArray(pose.anatomy_joints);
     const names=native?pose.anatomy_joints:pose.joints;
-    const lines=[dim===3?'clip_id,frame,source_frame,time_seconds,source_time,joint,x_model_m,y_model_m,z_model_m,visibility,interpolated,outlier,coordinate_frame':'clip_id,frame,source_frame,time_seconds,source_time,joint,x_pixels,y_pixels,confidence,interpolated,outlier,coordinate_frame'];
+    const lines=[dim===3?'clip_id,frame,source_frame,time_seconds,source_time,joint,x_model_m,y_model_m,z_model_m,visibility,interpolated,outlier,coordinate_frame,available,unavailable_reason':'clip_id,frame,source_frame,time_seconds,source_time,joint,x_pixels,y_pixels,confidence,interpolated,outlier,coordinate_frame'];
     for(const f of pose.frames||[])(native?f.anatomy||[]:f.keypoints||[]).forEach((p,i)=>{
-      if(p&&p[0]!=null)lines.push([csv(app.selected.id),f.frame,f.source_frame??'',f.time,f.source_time??'',names?.[i]||`joint_${i}`,...p.slice(0,dim),native?'':p[dim]??'',native?(f.interpolated||[]).some(Boolean):f.interpolated?.[i]??false,native?'':f.outlier?.[i]??false,csv(pose.scene?.frame||(dim===3?'hip-relative':'crop-pixels'))].join(','))
+      if((p&&p[0]!=null)||dim===3&&f.available===false)lines.push([csv(app.selected.id),f.frame,f.source_frame??'',f.time,f.source_time??'',names?.[i]||`joint_${i}`,...(p?p.slice(0,dim):Array(dim).fill('')),native?'':p?.[dim]??'',native?(f.interpolated||[]).some(Boolean):f.interpolated?.[i]??false,native?'':f.outlier?.[i]??false,csv(pose.scene?.frame||(dim===3?'hip-relative':'crop-pixels')),...(dim===3?[f.available!==false,csv(f.unavailable_reason||'')]:[])].join(','))
     });
     blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
     name=dim===3?`${app.selected.id}-3d-${app.selected.reconstructionId||'legacy'}-pose.csv`:`${app.selected.id}-2d-final-pose.csv`;

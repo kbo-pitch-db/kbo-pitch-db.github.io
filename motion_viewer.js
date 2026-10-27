@@ -144,7 +144,18 @@ window.MotionViewer = (() => {
     const current=data.frames[frame], next=data.frames[Math.min(frame+1,data.frames.length-1)];
     canvas.dataset.frame=String(frame);
     if (!current) return;
-    if(view.mesh){view.mesh.render(current,next,fraction,s.yaw,s.pitch);return;}
+    if(is3d){
+      const placeholder=s.panel.querySelector('.motion-placeholder[data-dimension="3"]');
+      if(current.available===false){
+        placeholder.textContent=current.unavailable_reason==='source_camera_change'?(s.t===copy.ko?'카메라가 전환된 구간은 3D를 제공하지 않습니다.':'3D is unavailable after the source camera changes.'):s.t.unavailable;
+        placeholder.hidden=false;view.frameUnavailable=true;
+        if(view.mesh)view.mesh.render(current,current,0,s.yaw,s.pitch);
+        else{const context=canvas.getContext('2d');context.fillStyle='#14201b';context.fillRect(0,0,canvas.width,canvas.height);}
+        return;
+      }
+      if(view.frameUnavailable){placeholder.hidden=true;view.frameUnavailable=false;}
+    }
+    if(view.mesh){view.mesh.render(current,next?.available===false?current:next,next?.available===false?0:fraction,s.yaw,s.pitch);return;}
     const ctx = canvas.getContext('2d'), w=canvas.width, h=canvas.height;
     if(!ctx)return;
     ctx.fillStyle='#14201b'; ctx.fillRect(0,0,w,h);

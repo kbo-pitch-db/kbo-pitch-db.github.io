@@ -21,9 +21,12 @@ class GvhmrPopulationReleaseTests(unittest.TestCase):
    raw=(SITE/'data'/c['poseRefined']).read_bytes();blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest();self.assertEqual(blob,self.blobs['data/'+c['poseRefined']]);two=json.loads(raw)
    pose=json.loads(gzip.decompress((SITE/'data'/c['pose3d']).read_bytes()));self.assertEqual(pose['method'],c['motionMethod']);self.assertEqual(pose['source_fit_sha256'],c['sceneSignature']);self.assertEqual(len(pose['frames']),len(two['frames']));self.assertEqual(pose['fps'],two['fps']);self.assertFalse(pose['scene']['per_frame_recentering']);self.assertTrue(pose['scene']['show_floor']);self.assertEqual(pose['scene']['floor']['height'],0)
    for field in ['human_review_complete','stride_validated','global_trajectory_validated','contact_validated']:self.assertFalse(pose['quality'][field])
-   for a,b in zip(pose['frames'],two['frames']):
+   valid=pose['quality']['valid_3d_frames'];self.assertGreaterEqual(valid,8)
+   for i,(a,b) in enumerate(zip(pose['frames'],two['frames'])):
     self.assertEqual([a[k] for k in ['source_frame','source_time','time']],[b[k] for k in ['source_frame','source_time','time']]);self.assertEqual(len(a['anatomy']),24);self.assertEqual(len(a['feet']),6)
-    self.assertTrue(all(math.isfinite(v) for p in a['anatomy']+a['feet'] for v in p))
+    if i<valid:self.assertTrue(a['available']);self.assertTrue(all(math.isfinite(v) for p in a['anatomy']+a['feet'] for v in p))
+    else:
+     self.assertTrue(pose['shot_validity']['confirmed_source_cut']);self.assertFalse(a['available']);self.assertEqual(a['unavailable_reason'],'source_camera_change');self.assertTrue(all(p is None for p in a['anatomy']+a['feet']))
    count+=len(pose['frames'])
   self.assertEqual(count,self.summary['frames'])
 

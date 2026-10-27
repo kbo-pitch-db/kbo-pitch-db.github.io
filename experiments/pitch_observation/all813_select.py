@@ -4,7 +4,7 @@ Every finite published preview identifies its actual failed/unknown checks.
 No threshold relaxation, WHAM fallback, manual-review transfer, or floor lift.
 """
 from common import *
-from all813_release import ROOT,population
+from all813_release import ROOT,population,enable_primary_shot_policy
 from select_rear_pivot import RULE as ORIGINAL_RULE
 from support_transfer_root import save_geometry,metrics
 from scipy.spatial.transform import Rotation
@@ -17,10 +17,13 @@ def background_assessment(cid):
  paths=[PREVIOUS/'background'/f'{cid}.json']+[ROOT/f'background_worker{w}/background'/f'{cid}.json' for w in [0,1]]
  for path in paths:
   if path.exists():
-   r=json.loads(path.read_text());return {k:r.get(k) for k in ['status','success_ratio','cut_candidates','semantics']}
+   r=json.loads(path.read_text());result={k:r.get(k) for k in ['status','success_ratio','cut_candidates','semantics']}
+   if (ROOT/'shot_validity'/f'{cid}.json').exists() and (r.get('success_ratio') or 0)>.7:result.update(source_full_clip_status=r['status'],status='usable_primary_shot_image_stabilization')
+   return result
  return dict(status='unknown',success_ratio=None,cut_candidates=[],semantics='No metric camera calibration')
 
 def select(cid):
+ enable_primary_shot_policy()
  folder=ROOT/'selected';dest=folder/f'{cid}.npz';report_path=dest.with_suffix('.json');folder.mkdir(exist_ok=True)
  preserved=OUT/'rear_pivot_selected_v14'/f'{cid}.npz';preserved_meta=preserved.with_suffix('.json')
  if preserved.exists() and preserved_meta.exists():
@@ -67,8 +70,8 @@ def select(cid):
  assert np.array_equal(candidate['frame_index'],h['frame_index']) and np.array_equal(candidate['source_time'],h['source_time'])
  _,uv=metrics(candidate,h,source['background_transforms'],candidate['translation'],z['contact_weight']);save_geometry(dest,candidate,candidate['translation'],uv,z['contact_weight'],z['all_plane_normals'][i],float(z['all_plane_offsets'][i]))
  bg=background_assessment(cid);reasons=chosen['failed_checks']+['monocular_global_depth_and_absolute_stride_unvalidated']
- if bg['status']!='usable_image_stabilization':reasons.append('background_stabilization_uncertain')
- if bg.get('cut_candidates'):reasons.append('possible_camera_cut')
+ if bg['status'] not in ['usable_image_stabilization','usable_primary_shot_image_stabilization']:reasons.append('background_stabilization_uncertain')
+ if bg.get('cut_candidates'):reasons.append('source_camera_cut_excluded' if (ROOT/'shot_validity'/f'{cid}.json').exists() else 'possible_camera_cut')
  if meta['phase']['phase_side_conflict']:reasons.append('pitch_hand_contact_side_conflict')
  report=dict(id=cid,player=meta['player'],status='screened_consistency_preview' if eligible else 'review_required_preview',selected=i,selected_metrics=chosen,candidates=candidates,rule=RULE,release_selector_version=RULE['version'],selection_code_sha256=sha(__file__),fit_parent_sha256=parent_sha,source_fit_sha256=meta['source_fit_sha256'],selected_pose_sha256=sha(dest),phase=meta['phase'],marker_states=meta['marker_states'],contact_available=bool(chosen['rear_interval'] is not None),contact_hypotheses_available=bool(meta['marker_states']),background_assessment=bg,human_review_complete=False,quality_reasons=reasons,reused_frozen_v14=False)
  save(report_path,report);return report

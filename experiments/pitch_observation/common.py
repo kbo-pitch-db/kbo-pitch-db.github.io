@@ -42,4 +42,15 @@ def sample(split='tune',small=True):
 def init_inputs(cid):
  r=rows('motion_wham.csv')[cid];c=rows('clips.csv')[cid]
  source=next(s for s in csv.DictReader((DATA/'sources.csv').open()) if s['source_id']==c['source_id'])
- return r,c,source,load(DATA/r['pose_2d_refined']),load(DATA/r['prior_3d'])
+ h=load(DATA/r['pose_2d_refined']);w=load(DATA/r['prior_3d']);policy_root=os.environ.get('KBO_GVHMR_PRIMARY_SHOT_ROOT')
+ if policy_root:
+  policy_path=Path(policy_root)/'shot_validity'/f'{cid}.json'
+  if policy_path.exists():
+   policy=json.loads(policy_path.read_text());count=len(h['frame_index']);n=int(policy['valid_frames']);assert policy['confirmed_source_cut'] and 8<=n<count
+   assert policy['source_clip_frames']==count and policy['final_2d_sha256']==sha(DATA/r['pose_2d_refined'])
+   for key in ['bbox','frame_index','pts','source_time','track_id','keypoints','scores','missing','interpolated','outlier']:
+    if key in h:h[key]=h[key][:n].copy()
+   for key in ['frame_index','source_time','keypoints','keypoints_2d','scores','missing','smpl_body_pose','smpl_global_orient','smpl_betas']:
+    if key in w and w[key].ndim and len(w[key])==count:w[key]=w[key][:n].copy()
+   h.update(source_clip_frames=np.array(count),primary_shot_frames=np.array(n),primary_shot_policy_sha256=np.array(sha(policy_path)))
+ return r,c,source,h,w

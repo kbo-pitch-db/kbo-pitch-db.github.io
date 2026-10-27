@@ -36,13 +36,13 @@ def main():
  if a.limit:records=records[:a.limit]
  for rec in records:
   cid=rec['id'];r,c,s,h,wham=init_inputs(cid);input_path=OUT/'raw/hmr2a'/f'{cid}.npz';image=load(input_path);t=h['source_time']-h['source_time'][0]
-  newt=np.linspace(0,t[-1],max(2,int(round(t[-1]*30))+1));interp=lambda x:interp1d(t,x,axis=0,bounds_error=False,fill_value='extrapolate')(newt).astype(np.float32)
+  newt=np.linspace(0,t[-1],max(2,int(round(t[-1]*30))+1));interp=lambda x:interp1d(t,x[:len(t)],axis=0,bounds_error=False,fill_value='extrapolate')(newt).astype(np.float32)
   box=interp(image['bbx_xys']);feat=interp(image['features']);xy=interp(np.nan_to_num(h['keypoints'][:,:17]));confidence=interp(scores(h)[:,:17]);outside=((xy<box[:,:2,None].transpose(0,2,1)-box[:,None,2:]*.5)|(xy>box[:,:2,None].transpose(0,2,1)+box[:,None,2:]*.5)).any(-1)
   confidence[outside]=0;obs=np.concatenate([2*(xy-box[:,None,:2])/box[:,None,2:],confidence[...,None]],-1)
   for factor in [1.,4.,12.]:
    tag=f'gvhmr_f{factor:g}';dest=OUT/'raw'/tag/f'{cid}.npz';start=time.monotonic()
    adapter=OUT/'adapters'/tag/f'{cid}.npz'
-   if dest.exists() and adapter.exists() and dest.with_suffix('.json').exists():print('CACHE',tag,cid,flush=True);continue
+   if dest.exists() and adapter.exists() and dest.with_suffix('.json').exists() and len(load(adapter)['frame_index'])==len(t):print('CACHE',tag,cid,flush=True);continue
    focal=np.hypot(float(s['width']),float(s['height']))*factor
    cliff=box.copy();cliff[:,:2]-=[float(s['width'])/2,float(s['height'])/2];cliff/=focal
    with torch.no_grad():
@@ -69,7 +69,7 @@ def main():
     coordinate_system='Camera x right, y down, z away; hip-relative',representation='Approximate SMPL-X shared-rotation-to-SMPL adapter, not native GVHMR mesh')
    save(dest.with_suffix('.json'),dict(id=cid,seconds=time.monotonic()-start,strict_network_weights=True,raw_parameters=True,native_mesh_evaluated=False,licensed_smplx_available=False,postprocessing=False,
     modifications=['Final RTMPose input instead of ViTPose','HMR2.0a feature cache','30 Hz resampling preserving original output timestamps','Identity camera-angular-velocity hypothesis','No SMPL-X-dependent FK, IK or contact postprocess'],
-    focal_factor=factor,weight_sha256=sha(weight),input_feature_sha256=sha(input_path),adapter=str(adapter.relative_to(OUT)),v2_used=False))
+    focal_factor=factor,weight_sha256=sha(weight),input_feature_sha256=sha(input_path),adapter=str(adapter.relative_to(OUT)),source_frames=len(t),source_clip_frames=int(h.get('source_clip_frames',len(t))),primary_shot_policy_sha256=str(h.get('primary_shot_policy_sha256','')),v2_used=False))
    print('RAW GVHMR NETWORK',cid,tag,round(time.monotonic()-start,2),flush=True)
 
 if __name__=='__main__':
