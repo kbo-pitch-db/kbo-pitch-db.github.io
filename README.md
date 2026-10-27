@@ -119,6 +119,29 @@ These local changes do not remove media from an already published deployment or 
 
 ## Player portraits
 
-The pitcher group headers use KBO's externally hosted 2024 profile portraits, matching the source clips' season. `data/player_profiles.json` maps the Naver/KBO player code to a name, portrait URL, KBO profile-page URL, image year, and verification date. The current 21 names and codes were checked against KBO player pages, and all image URLs were fetched and decoded successfully. The browser uses a portrait only when the clip's recorded name matches the entry for its player code. This confirms the profile mapping, not the automatic assignment of that identity to broadcast footage.
+The pitcher group headers use KBO's 2024 profile portraits, matching the source clips' season. `data/player_profiles.json` contains 155 verified pitcher profiles from the source-game rosters, including all 123 pitchers represented by the 813 clips. Each profile records the Naver/KBO player code, season name, image URL, local image path, KBO profile-page URL, dimensions, SHA-256 and verification date. The two players whose KBO names have changed retain their 2024 names and also record their current names. The browser requires a matching name and player code before displaying a portrait.
 
-Photos are requested directly from KBO's image CDN without copying them into the repository; the clip detail includes a KBO photo-source link. Unknown pitchers and failed image requests show a generic person icon. Individual pitch cards and the pose player retain their skeleton previews. An unavailable portrait manifest also falls back to icons. The data builder replaces only `data/assets/` and `data/clips.json`, so it preserves the portrait manifest.
+Verified JPEGs are cached in `data/portraits/2024/`, outside the builder's replaceable `data/assets/` directory. The browser loads these local files first, retries the original KBO image URL on failure, then shows the person icon if both fail. The detail view retains the KBO attribution link. All 123 displayed portraits load without a request to KBO's CDN.
+
+## Player identity evidence
+
+Player identity is resolved separately from an exact clip-to-pitch link. The existing 390 automatically accepted Naver links remain unchanged. An additional 318 clips have exact pitcher-name agreement in at least two distinct in-clip scoreboard frames. Another 105 were checked by Codex reading broadcast text: 63 scoreboard names, 17 scoreboard inning/half/pitch-count states with a unique pitcher identity in the game records, and 25 uniform names/numbers checked against the original game lineup. These are automated and agent visual reviews, **not human ground-truth annotations**. No new pitch links, pitch types, speeds or pitch numbers are inferred from player identity alone.
+
+All 813 clips now have names and player codes; no `Unknown pitcher` entries remain. `data/player_identity_summary.json` records coverage and missing portraits. `data/player_identity_evidence.json` preserves the 423 supplemental records with source-video timestamps, OCR readings or review notes and lineup references. The local dataset retains full evidence in `player_identity.json`, `player_identity_review.json`, and `naver_sports/evidence/identities/`. Broadcast screenshots are not copied into the public site.
+
+`scripts/player_identity.py` validates clip/source/game IDs, clip intervals, the unique game-roster name/code pair and the evidence method. Uniform-number reviews also recheck the cached original lineup, including the home/away side. Both the full builder and metadata-only updater use this resolver. The portable evidence manifest preserves these corrections when the local OCR/review files are absent. Metadata-only updates preserve every pose, scene, media, source and pitch-statistics field.
+
+Run from the workspace root:
+
+```bash
+# Reuse existing identities; update only names, evidence and coverage reports.
+.venv/bin/python kbo-pitch-db.github.io/scripts/player_identity.py
+# Recheck missing names using Korean OCR, including the two TVING score bugs.
+.venv/bin/python kbo-pitch-db.github.io/scripts/recover_player_identity.py
+# Verify the source-game roster against KBO and refresh local season portraits.
+.venv/bin/python kbo-pitch-db.github.io/scripts/sync_player_profiles.py
+python3 -m unittest discover -s kbo-pitch-db.github.io/tests -p test_player_identity.py
+node kbo-pitch-db.github.io/tests/player_identity.test.cjs
+```
+
+Run the metadata-only updater after refreshing OCR or profiles. Unreadable or conflicting future observations remain unresolved and appear in the coverage report; fuzzy OCR names are not accepted.

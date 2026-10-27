@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-10-27T13:36:19.980267+00:00",
+  "clips": 813,
+  "identifiedClips": 813,
+  "unidentifiedClips": 0,
+  "players": 123,
+  "identityMethods": {
+    "naver_auto_accepted": 390,
+    "scoreboard_repeated_exact": 318,
+    "broadcast_text_review": 105
+  },
+  "reviewKinds": {
+    "uniform_text": 25,
+    "scoreboard_name": 63,
+    "scoreboard_state": 17
+  },
+  "missingPortraitCodes": [],
+  "unidentified": []
+}

@@ -10,6 +10,7 @@ import subprocess
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from player_identity import PlayerIdentities
 
 JOINTS = ["nose", "left_eye", "right_eye", "left_ear", "right_ear", "left_shoulder", "right_shoulder", "left_elbow", "right_elbow", "left_wrist", "right_wrist", "left_hip", "right_hip", "left_knee", "right_knee", "left_ankle", "right_ankle"]
 
@@ -136,12 +137,10 @@ def main():
     source_rows = rows(dataset / "sources.csv")
     sources = {r["source_id"]: r for r in source_rows}
     accepted = {r["dataset_clip_id"]: r for r in rows(dataset / "naver_sports/auto_accepted.csv")}
-    pitches = {r["naver_pitch_id"]: r for r in rows(dataset / "naver_sports/pitches.csv")}
+    identities = PlayerIdentities(dataset)
     def player_identity(clip):
-        match = accepted.get(clip["dataset_clip_id"], {})
-        name = match.get("pitcher_name", "").strip()
-        code = pitches.get(match.get("naver_pitch_id", ""), {}).get("pitcher_code", "").strip()
-        return ("naver:" + code if code else "name:" + name if name else "unknown:" + clip["dataset_clip_id"], code)
+        identity = identities.resolve(clip)
+        return identity['playerKey'], identity['playerCode']
     selected_ids = set(args.clip_ids.split(",")) if args.clip_ids else None
     result = []
     copied_bytes = 0
@@ -155,8 +154,7 @@ def main():
         buckets = defaultdict(list)
         unknown = []
         for clip in clips:
-            pitch = accepted.get(clip["dataset_clip_id"], {})
-            if pitch.get("pitcher_name"):
+            if identities.resolve(clip)['playerKnown']:
                 buckets[player_identity(clip)[0]].append(clip)
             else:
                 unknown.append(clip)
@@ -184,7 +182,7 @@ def main():
         for source_id in recent_ids:
             candidates = [clip for clip in clips if clip["source_id"] == source_id]
             candidates.sort(key=lambda clip: (
-                not bool(accepted.get(clip["dataset_clip_id"], {}).get("pitcher_name")),
+                not identities.resolve(clip)['playerKnown'],
                 (dataset / clip["crop_video"]).stat().st_size if (dataset / clip["crop_video"]).is_file() else float("inf"),
                 clip["dataset_clip_id"]))
             if candidates:
@@ -198,8 +196,8 @@ def main():
     for clip in clips:
         cid = clip["dataset_clip_id"]
         pitch = accepted.get(cid, {})
-        player = pitch.get("pitcher_name", "")
-        player_key, player_code = player_identity(clip)
+        identity = identities.resolve(clip)
+        player = identity['player'] if identity['playerKnown'] else ''
         if selected_ids and cid not in selected_ids:
             continue
         if args.pitcher and player != args.pitcher:
@@ -253,13 +251,14 @@ def main():
         with (target / pose_name).open("w", encoding="utf-8") as f:
             json.dump({"fps": fps, "coordinate_system": "crop pixels", "joints": JOINTS, "frames": frames}, f, ensure_ascii=False, separators=(",", ":"))
         duration = float(clip["end_time"]) - float(clip["start_time"])
-        result.append({"id": cid, "player": player or "Unknown pitcher", "playerKnown": bool(player), "playerKey": player_key, "playerCode": player_code, "playerNameSource": "naver_auto_accepted" if player else "unknown", "team": src.get("teams_text", "Unknown"), "hand": "", "pitch": pitch.get("pitch_type_raw", ""), "speed": pitch.get("speed_kmh", ""), "date": src.get("game_date", ""), "matchup": src.get("teams_text", ""), "inning": pitch.get("inning", ""), "pitchNumber": pitch.get("pitcher_pitch_number", ""), "duration": round(duration, 2), "fps": fps, "frames": len(frames), "source": src.get("source_name", src.get("source_path", "")), **source_reference(src, clip), "model": "RTMPose", "coordinate": "17-joint COCO; crop pixels", "poseStatus": "missing frames present" if any(not any(p for p in fr["keypoints"]) for fr in frames) else "available", "confidence": "Per-joint confidence included in pose JSON", "mediaPolicy": "pose-only", "poseVideo": str(rel_folder / "pose.mp4") if (target/"pose.mp4").exists() else "", "poseThumbnail": str(rel_folder / "pose_thumbnail.jpg"), "pose": str(rel_folder / pose_name), "example": False, "review": clip.get("review_status", "unreviewed"), "poseFile": pose_name})
+        result.append({"id": cid, **identity, "team": src.get("teams_text", "Unknown"), "hand": "", "pitch": pitch.get("pitch_type_raw", ""), "speed": pitch.get("speed_kmh", ""), "date": src.get("game_date", ""), "matchup": src.get("teams_text", ""), "inning": pitch.get("inning", ""), "pitchNumber": pitch.get("pitcher_pitch_number", ""), "duration": round(duration, 2), "fps": fps, "frames": len(frames), "source": src.get("source_name", src.get("source_path", "")), **source_reference(src, clip), "model": "RTMPose", "coordinate": "17-joint COCO; crop pixels", "poseStatus": "missing frames present" if any(not any(p for p in fr["keypoints"]) for fr in frames) else "available", "confidence": "Per-joint confidence included in pose JSON", "mediaPolicy": "pose-only", "poseVideo": str(rel_folder / "pose.mp4") if (target/"pose.mp4").exists() else "", "poseThumbnail": str(rel_folder / "pose_thumbnail.jpg"), "pose": str(rel_folder / pose_name), "example": False, "review": clip.get("review_status", "unreviewed"), "poseFile": pose_name})
         if args.limit and len(result) >= args.limit:
             break
     index = {"schemaVersion": 3, "mediaPolicy": "pose-only", "generatedFrom": "dataset/clips.csv",
              "packageVersion": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
              "packageStats": {"videoBytes": copied_bytes, "videoMegabytes": round(copied_bytes / 1024 / 1024, 1)}, "clips": result}
     (out / "clips.json").write_text(json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8")
+    identities.export_evidence(out)
     if (dataset / 'motion.csv').is_file():
         from package_motion import package
         package(dataset, out)
