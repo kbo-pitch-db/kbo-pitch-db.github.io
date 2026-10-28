@@ -26,6 +26,11 @@ def main():
    assert audit['selected_pose_sha256']==c['sceneSignature']
    assert audit['status']=='support_consistency_passed'
    expected=audit['public_payload_sha256']
+  if c.get('subjectCorrection'):
+   correction=json.loads((CODE/'data'/c['subjectCorrection']).read_text())
+   assert correction['selected_fit_sha256']==c['sceneSignature']
+   assert correction['new_3d']==c['pose3d'] and correction['original_assets_preserved']
+   expected=correction['new_3d_sha256']
   data=fetch('data/'+c['pose3d']);actual=hashlib.sha256(data).hexdigest();assert actual==expected,c['id'];return dict(id=c['id'],sha256_gzip=actual,bytes=len(data),method=c['motionMethod'])
  results=[]
  with ThreadPoolExecutor(max_workers=8) as executor:

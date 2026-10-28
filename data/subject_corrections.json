@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "clips": {
+    "4e09dd724a8c_c0011": {
+      "manifest": "subject_corrections/4e09dd724a8c_c0011-v1.json",
+      "old_2d": "assets/4e09dd724a8c_c0011/pose_halpe26_refined.json",
+      "new_2d": "assets/4e09dd724a8c_c0011/subject-corrected-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/4e09dd724a8c_c0011.json.gz",
+      "new_3d": "reconstructions/gvhmr-release-v1/subject-corrected-v1/4e09dd724a8c_c0011.json.gz"
+    }
+  }
+}

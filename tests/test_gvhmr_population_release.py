@@ -17,8 +17,12 @@ class GvhmrPopulationReleaseTests(unittest.TestCase):
   self.assertEqual(len(self.index['clips']),813);self.assertEqual(self.summary['gvhmr_clips'],813);self.assertEqual(self.summary['legacy_fallback_clips'],0);self.assertEqual(self.summary['human_manually_reviewed'],0)
   count=0
   for c in self.index['clips']:
-   old=self.old[c['id']];self.assertEqual(c['playerKey'],old['playerKey']);self.assertEqual(c['poseRefined'],old['poseRefined']);self.assertEqual(c['pose3dBackend'],'gvhmr');self.assertEqual(c['motionMethod'],'gvhmr-phase-aware-contact');self.assertNotEqual(c['pose3d'],old['pose3d'])
-   raw=(SITE/'data'/c['poseRefined']).read_bytes();blob=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest();self.assertEqual(blob,self.blobs['data/'+c['poseRefined']]);two=json.loads(raw)
+   old=self.old[c['id']];self.assertEqual(c['playerKey'],old['playerKey']);self.assertEqual(c['pose3dBackend'],'gvhmr');self.assertEqual(c['motionMethod'],'gvhmr-phase-aware-contact');self.assertNotEqual(c['pose3d'],old['pose3d'])
+   original=(SITE/'data'/old['poseRefined']).read_bytes();blob=hashlib.sha1(b'blob '+str(len(original)).encode()+b'\0'+original).hexdigest();self.assertEqual(blob,self.blobs['data/'+old['poseRefined']])
+   raw=(SITE/'data'/c['poseRefined']).read_bytes();two=json.loads(raw)
+   if c.get('subjectCorrection'):
+    correction=json.loads((SITE/'data'/c['subjectCorrection']).read_text());self.assertEqual(correction['old_clip']['poseRefined'],old['poseRefined']);self.assertEqual(hashlib.sha256(original).hexdigest(),correction['original_2d_sha256']);self.assertEqual(correction['new_2d'],c['poseRefined']);self.assertEqual(hashlib.sha256(raw).hexdigest(),correction['new_2d_sha256']);self.assertTrue(correction['original_assets_preserved']);self.assertTrue(correction['frame_and_timestamp_preserved'])
+   else:self.assertEqual(c['poseRefined'],old['poseRefined'])
    pose=json.loads(gzip.decompress((SITE/'data'/c['pose3d']).read_bytes()));self.assertEqual(pose['method'],c['motionMethod']);self.assertEqual(pose['source_fit_sha256'],c['sceneSignature']);self.assertEqual(len(pose['frames']),len(two['frames']));self.assertEqual(pose['fps'],two['fps']);self.assertFalse(pose['scene']['per_frame_recentering']);self.assertTrue(pose['scene']['show_floor']);self.assertEqual(pose['scene']['floor']['height'],0)
    for field in ['human_review_complete','stride_validated','global_trajectory_validated','contact_validated']:self.assertFalse(pose['quality'][field])
    valid=pose['quality']['valid_3d_frames'];self.assertGreaterEqual(valid,8)

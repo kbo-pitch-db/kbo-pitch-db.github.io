@@ -65,7 +65,15 @@ class PublicStudyTests(unittest.TestCase):
         clips=json.loads(previous)['clips']
         current={c['id']:c for c in json.loads((SITE/'data/clips.json').read_text())['clips']}
         self.assertEqual(set(current),{c['id'] for c in clips})
-        for c in clips:self.assertEqual(current[c['id']]['poseRefined'],c['poseRefined'])
+        for c in clips:
+            active=current[c['id']]
+            if active.get('subjectCorrection'):
+                correction=json.loads((SITE/'data'/active['subjectCorrection']).read_text())
+                self.assertEqual(correction['old_clip']['poseRefined'],c['poseRefined'])
+                self.assertEqual(correction['new_2d'],active['poseRefined'])
+                self.assertEqual(hashlib.sha256((SITE/'data'/c['poseRefined']).read_bytes()).hexdigest(),correction['original_2d_sha256'])
+                self.assertNotEqual(active['poseRefined'],c['poseRefined'])
+            else:self.assertEqual(active['poseRefined'],c['poseRefined'])
         self.assertEqual(len(clips),813)
         self.assertEqual(sum(c['pose3dStatus']=='screened_estimate' for c in clips),44)
         self.assertEqual(sum(c['pose3dStatus']=='review_required_preview' for c in clips),769)

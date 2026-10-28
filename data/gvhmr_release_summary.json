@@ -25,5 +25,10 @@
   "support_repaired_clips": [
     "d4ea211e62bd_c0026"
   ],
-  "frozen_consistency_screen_counts_preserved": true
+  "frozen_consistency_screen_counts_preserved": true,
+  "subject_corrected_clips": [
+    "4e09dd724a8c_c0011"
+  ],
+  "original_final_2d_assets_preserved": true,
+  "subject_correction_semantics": "Versioned replacement of a confirmed batter input; original 2D/3D assets preserved, no 3D accuracy claim"
 }

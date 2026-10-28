@@ -57,7 +57,16 @@ class IndependentSupportTests(unittest.TestCase):
         clips = {c['id']: c for c in current['clips']}
         before = json.loads(subprocess.check_output(
             ['git', 'show', '2dfb149974bae3486e714cdc6b0999cc04a52c7d:data/clips.json'], cwd=site))
-        changed = [c['id'] for c in before['clips'] if c != clips[c['id']]]
+        # Compare the support release in its own scope; later independently
+        # audited subject corrections retain their full pre-correction record.
+        support_scope = dict(clips)
+        for c in clips.values():
+            if c.get('subjectCorrection'):
+                correction = json.loads((site / 'data' / c['subjectCorrection']).read_text())
+                self.assertTrue(correction['original_assets_preserved'])
+                self.assertEqual(correction['new_3d'], c['pose3d'])
+                support_scope[c['id']] = correction['old_clip']
+        changed = [c['id'] for c in before['clips'] if c != support_scope[c['id']]]
         self.assertEqual(changed, [cid])
         self.assertEqual(audit['status'], 'support_consistency_passed')
         self.assertEqual(audit['fk_checked_frames'], 62)

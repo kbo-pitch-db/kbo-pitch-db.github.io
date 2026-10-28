@@ -62,6 +62,10 @@ Completed per-clip NPZ/JSON and source hashes are cached. The supervisor never p
 
 The original WHAM index is losslessly archived in `data/releases/wham-20261028/original_index.json.gz`. `raw_pose_archive.json` maps old raw paths to lossless gzip files and records decoded SHA-256 and original Git blob IDs. Old final scene JSON and Git history remain intact. Final 2D files were not repackaged. The [archived README](docs/archive/README_wham_20261028.md) documents the earlier WHAM workflow and its historical 44/769 screening counts; those labels are not transferred to this new method.
 
+## Wrong-person input correction
+
+Oh Seung-hwan Delivery 3 (`4e09dd724a8c_c0011`) originally tracked the batter from the 2D bbox onward. Its active 2D and GVHMR reconstruction now use a separately versioned pitcher track on the same 75 source frames; all original final 2D and 3D files are preserved. The original batter's WHAM pose and shape do not initialize the replacement. Other clips keep their existing results. The interval starts after stride: leg lift/landing are outside the observation, contact stays unknown and no contact anchor is applied. This is a subject-selection correction, not validation of absolute stride or 3D accuracy. See the [recovery commands and evidence](docs/subject_corrections/oh-delivery3.md) and [versioned asset hashes](data/subject_corrections/4e09dd724a8c_c0011-v1.json).
+
 ## Separate arm-cocking experiment
 
 After verifying the full main release, three versioned arm experiments were executed on six tuning and six player/source-disjoint confirmation clips. The main release is unchanged. The unlisted `studies/arm-cocking-20261028/` contains synchronized fixed-axis comparisons, all 16 V3 candidates, the three-iteration report, CSV/JSON metrics, frozen selection, model provenance and `reproduce.txt`. It is absent from the homepage navigation and is not access-controlled.
