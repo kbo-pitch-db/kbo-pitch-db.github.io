@@ -40,6 +40,10 @@ Both modes use `acos((a−b)·(c−b)/(|a−b||c−b|))`, in degrees:
 
 Comparison uses actual 2D sequences with a shared normalized-progress slider and native 3D curves when both reconstructions exist; otherwise both curves use 2D image angles. Original source timing is retained separately for each clip. This is not foot-plant or release alignment. No landing/release duration, physical angular velocity, force-transfer grade, MVPI, HB/IVB or spin estimate is derived from these poses.
 
+The reading hierarchy keeps the existing main-title and player-name sizes. Body copy is 17–18px with 1.6 line spacing, metric names/tabs/controls 16px, chart labels/legends/sample counts 14–15px, auxiliary information at least 14px, and main card values 34px. Statistics cards always show a short definition and the actual numerator/denominator; disclosures contain formulas and further interpretation.
+
+Selecting a joint highlights that joint and both adjacent bones in amber on the 2D motion and three snapshots; the same selected joint name appears beside the current angle. The chart cursor shows the source-frame angle, including while playing or changing joint/source. The left canvas is explicitly labeled **2D motion**; the right heading states **angle calculated from the 3D model** or **angle calculated in the 2D image**. An inline note distinguishes 2D joint position from 3D angle calculation. Missing 2D observations are not fabricated for highlighting. The full explorer also highlights the selected joint in its 2D panel. Playback-speed controls have correctly localized accessible names.
+
 PTS x is `cross_plate_x_ft`; z evaluates the provider's quadratic trajectory at `cross_plate_y_ft`, both in feet. Density cells use `(z−bottom_sz)/(top_sz−bottom_sz)` with the central zone width 17 inches. Only supported PTS records and ordered finite zone bounds enter location statistics. Source-model consistency does not establish independent tracking accuracy; no target location is available, so location is not labeled command.
 
 ### Rebuild and verify
@@ -50,6 +54,7 @@ python3 -m unittest discover -s tests -p test_portal_data.py
 node tests/portal_math.test.cjs
 # With Playwright Python and Chromium installed, against a static local server:
 python3 tests/portal_browser_qa.py http://127.0.0.1:8000 /path/to/chrome
+python3 tests/readability_browser_qa.py http://127.0.0.1:8000 /path/to/chrome
 ```
 
 The generator reads cached inputs and writes deterministic schema-v2 metadata; it does not alter canonical clips, poses or audit decisions. `data/portal/summary.json` includes source hashes, all 155 profiles and reference-group definitions. Player JSON includes all that player's acquired records, joins, statistics, reference delivery and observation counts. Portal data URLs have their own version, independently of the pose release, preventing older cached summaries from breaking a new UI. Schema/release mismatches fail explicitly. The complete `data/portal/pitch_records.csv.gz` preserves the source CSV; `raw_file` entries refer to local cached provenance rather than hosted raw responses. [Example code](docs/portal-example.py) follows an accepted pitch link to a final 2D sequence. Broadcast footage, model files and private research inputs are not packaged by this workflow. Third-party source/model terms remain separate from the site's metadata.

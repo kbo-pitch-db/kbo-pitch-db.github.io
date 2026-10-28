@@ -31,3 +31,13 @@ const native=Array.from({length:24},()=>[0,0,0]);native[16]=[1,0,0];native[18]=[
 assert.equal(ctx.window.PitcherExperience.nativeAngle({anatomy:native},[16,18,20]),90);
 assert.equal(ctx.window.PitcherExperience.nativeAngle({anatomy:native,available:false},[16,18,20]),null);
 console.log('PASS: display bridges are bounded, raw observations stay immutable, bunt denominators are separate, native 3D angles respect unavailable frames');
+
+const emphasis=[];let from;
+const drawing={save(){},restore(){},beginPath(){},moveTo(x,y){from=[x,y]},lineTo(x,y){emphasis.push([from,[x,y]])},stroke(){},arc(){},fill(){}};
+const imagePoints=Array.from({length:26},(_,i)=>[i,100+i]);
+let emphasized=ctx.window.PitcherExperience.paintJointHighlight(drawing,imagePoints,'rightElbow',720);
+assert.equal(emphasized.bones,2);assert.equal(emphasized.visible,true);
+assert.deepEqual(emphasis,[[[6,106],[8,108]],[[8,108],[10,110]]]);
+imagePoints[8]=null;emphasized=ctx.window.PitcherExperience.paintJointHighlight(drawing,imagePoints,'rightElbow',720);
+assert.equal(emphasized.bones,0);assert.equal(emphasized.visible,false);
+console.log('PASS: right-elbow emphasis selects its two actual Halpe-26 bones; missing joints are not fabricated');

@@ -1,0 +1,509 @@
+/* Reading hierarchy: explanatory text is part of the data, not decoration. */
+:root {
+  --reading-ink: #223b34;
+  --reading-muted: #40594f;
+  --reading-secondary: #4e655b;
+  --reading-body: 18px;
+  --reading-label: 16px;
+  --reading-chart: 15px;
+  --reading-meta: 14px;
+  --joint-accent: #a4570d;
+  --joint-surface: #fff0d8;
+}
+/* Main titles and player names keep their existing sizes. */
+html[lang] .hero-description,
+.research-line p,
+.home-steps p,
+.section-head > p,
+.player-record-reading > p,
+.report-sample-note,
+.report-card > p,
+.card-heading p,
+.pane-intro p,
+.signature-card > p,
+.location-reading > p,
+.metric-purpose p,
+.metric-explanation p,
+.reading-help p,
+.empty-report-motion p,
+.method-card p,
+.citation-row p,
+.downloads-block p {
+  font-size: var(--reading-body);
+  line-height: 1.6;
+  color: var(--reading-muted);
+}
+.player-record-reading > p,
+.report-sample-note,
+.pane-intro p,
+.metric-purpose p,
+.metric-explanation p,
+.reading-help p,
+.style-rule p {
+  max-width: 66ch;
+}
+.report-card h3,
+.signature-card > h3,
+.pane-intro h3,
+.home-discover-heading h2,
+.home-steps h3,
+.method-card h3,
+.coverage-block h3,
+.downloads-block h3,
+.citation-row h3 {
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--reading-ink);
+}
+.main-nav .nav-link,
+html[lang=ko] .main-nav .nav-link,
+.report-tabs > button,
+.report-filters > label,
+.report-filters .checkbox-filter,
+.report-filters select,
+.form-selection > label,
+.form-selection select,
+.guided-select-row > label,
+.guided-select-row select,
+.delivery-controls select,
+.pitcher-toolbar input,
+.pitcher-toolbar select,
+.report-pitch-chips button,
+.segmented button,
+.guided-curve-heading .segmented button,
+.location-report .segmented button,
+.mechanics-dimension-switch button,
+.button-primary,
+.button-outline,
+.delivery-controls .button-primary,
+.delivery-source-actions .button-outline,
+.delivery-source-actions .text-link,
+.report-quick-stats summary,
+.reading-help summary,
+.metric-explanation summary,
+.report-advanced > summary,
+.form-selection summary,
+.report-advanced .observation-label,
+.report-advanced .observation-label select,
+.clip-research-head .text-btn,
+.clip-research-head .text-link,
+.signature-card > .button-primary,
+.signature-card > .text-btn {
+  font-size: var(--reading-label);
+  line-height: 1.6;
+  color: var(--reading-ink);
+}
+.button-primary,
+.delivery-controls .button-primary,
+.signature-card > .button-primary { color: #ffffff; }
+.report-tabs > button { padding: 16px 0; }
+.report-tabs > button[aria-selected=true] { color: #145c4b; }
+.report-tabs small,
+.sample-badge,
+.report-pitch-chips small { font-size: 14px; color: #354f42; }
+select,
+button { min-height: 44px; }
+.report-filters select,
+.guided-select-row select,
+.form-selection select { padding: 10px 12px; }
+.report-topline > button,
+.report-topline > a,
+.report-topline > span,
+.report-identity .micro-label,
+.report-identity h2 small,
+.report-coverage > span,
+.report-coverage > small,
+.style-rule,
+.style-rule > summary,
+.home-data-scope,
+.home-player small,
+.home-player b,
+.pitcher-card .micro-label,
+.pitcher-mini-stat,
+.footer-note,
+.footer-copy,
+.release-line,
+.player-record-reading > span,
+.pitcher-toolbar > .micro-label,
+.chart-title > span,
+.results-meta {
+  font-size: var(--reading-meta);
+  line-height: 1.6;
+  color: var(--reading-secondary);
+}
+.report-topline { gap: 18px; align-items: center; }
+.report-coverage > small { max-width: 350px; }
+.style-rule p { font-size: 17px; line-height: 1.6; color: var(--reading-muted); }
+.report-identity { gap: 26px; align-items: start; }
+.report-identity .player-style { font-size: 16px; line-height: 1.6; color: #285342; }
+.report-quick-stats { align-items: stretch; gap: 18px; }
+.report-quick-stats article {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+.report-quick-stats .metric-label {
+  font-size: var(--reading-label);
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--reading-ink);
+  min-height: 48px;
+}
+.report-quick-stats .metric-number {
+  font-size: 34px;
+  line-height: 1.25;
+  margin: 12px 0 16px;
+  color: #1d3d32;
+}
+.report-quick-stats .metric-number small {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #304a40;
+  letter-spacing: 0;
+  margin-left: 8px;
+}
+.report-quick-stats .stat-definition {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--reading-ink);
+  margin: 0 0 12px;
+}
+.report-quick-stats .stat-denominator {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #354e42;
+  margin: 0 0 18px;
+}
+.report-quick-stats details { margin-top: auto; }
+.report-quick-stats summary { font-size: 15px; color: #285a46; cursor: pointer; }
+.report-quick-stats details p,
+.report-quick-stats .stat-formula {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--reading-muted);
+  margin-top: 12px;
+}
+.percentile-row > div:first-child { align-items: start; }
+.percentile-row > div:first-child > span,
+.percentile-row strong,
+.signature-card .signature-usage,
+.velocity-row > div:first-child > span,
+.velocity-row strong,
+.simple-arsenal-table th button {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--reading-ink);
+}
+.percentile-row strong small,
+.percentile-row > small,
+.percentile-track > span,
+.percentile-track > b,
+.chart-reading-note,
+.feature-chart > .percentile-first-read,
+.radar-wrap > p,
+.range-legend,
+.velocity-axis,
+.velocity-row > div:first-child > small,
+.velocity-row strong small,
+.simple-arsenal-table thead th,
+.simple-arsenal-table td strong,
+.simple-arsenal-table td small,
+.zone-top-label,
+.density-wrap > p,
+.density-scale,
+.location-reading > .micro-label,
+.curve-reading-legend,
+.curve-reading-legend > small,
+.axis-caption,
+.delivery-sequence span,
+#profile-frame,
+.motion-note,
+.motion-status,
+.meta-key,
+.meta-value,
+.compare-foot,
+.compare-foot .text-btn,
+.compare-foot .text-link {
+  font-size: var(--reading-chart) !important;
+  line-height: 1.6;
+  color: var(--reading-muted) !important;
+}
+.percentile-track { height: 16px; margin: 10px 8px 13px; }
+.percentile-track > b {
+  color: #ffffff !important;
+  height: 28px;
+  min-width: 30px;
+  font-size: 14px !important;
+  padding: 3px 6px;
+  transform: translate(-50%, -6px);
+  background: #24644f;
+}
+.percentile-track > i { height: 28px; top: -6px; background: #607e6d; }
+.percentile-rows { gap: 25px; }
+.percentile-row > small { display: block; margin-top: 8px; }
+.characteristic-radar text { font-size: 17px; fill: #344f42; }
+.simple-arsenal-table { table-layout: fixed; min-width: 0; }
+.simple-arsenal-table th,
+.simple-arsenal-table td { overflow-wrap: anywhere; }
+.simple-arsenal-table td small { white-space: normal; }
+.simple-arsenal-table td strong { white-space: nowrap; }
+.velocity-row > div:first-child { flex-wrap: wrap; gap: 10px 16px; }
+.velocity-row > div:first-child > small { white-space: normal; }
+.range-legend { gap: 14px 20px; }
+.range-legend i { flex-shrink: 0; }
+.density-cell { min-height: 84px; aspect-ratio: auto; padding: 9px 3px; gap: 5px; }
+.density-cell strong { font-size: 17px; color: #1e4134; }
+.density-cell strong small { font-size: 14px; }
+.density-cell > span { font-size: 14px; line-height: 1.4; color: #294c3d; white-space: normal; }
+.arrival-points text,
+.compare-curves text { font-size: 15px; fill: #344f42; }
+.report-advanced > p,
+.selected-pitches details,
+.report-advanced .heatmap th,
+.report-advanced .heatmap td button,
+.matching-records > button,
+.human-record > div,
+.human-record > a { font-size: 16px; line-height: 1.6; color: var(--reading-muted); }
+.report-advanced .heatmap th small,
+.report-advanced .heatmap button small,
+.matching-records small { font-size: 14px; color: #435e4d; }
+.form-selection { align-items: start; flex-wrap: wrap; }
+.form-selection > label { flex-wrap: wrap; }
+.form-selection > details { max-width: 66ch; }
+.form-selection p { font-size: 17px; line-height: 1.6; color: var(--reading-muted); }
+.motion-demo-label { padding: 20px 22px; letter-spacing: 0; font-family: var(--sans); }
+.motion-demo-label h3,
+.curve-source-title {
+  font: 700 22px/1.45 var(--display);
+  letter-spacing: -.02em;
+  color: var(--reading-ink);
+  margin: 0 0 8px;
+}
+.motion-demo-label p { font-size: 14px; line-height: 1.6; color: var(--reading-muted); margin: 0; }
+.motion-selection-legend { padding: 17px 20px 0; display: flex; flex-direction: column; gap: 10px; }
+.selected-joint-name { font-size: 16px; line-height: 1.6; color: #6b3b0e; font-weight: 600; }
+.selected-joint-name::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #b46312; margin-right: 8px; }
+.motion-space-note { font-size: 15px; line-height: 1.6; color: #3c5148; }
+.delivery-controls { gap: 12px; padding: 20px; flex-wrap: wrap; }
+.delivery-controls input { flex: 1 1 90px; min-width: 70px; }
+.delivery-controls .button-primary { padding: 10px 14px; }
+.delivery-controls > label { margin-left: auto; }
+.delivery-sequence { padding: 0 20px 20px; gap: 10px; }
+.delivery-source-actions { padding: 0 20px 22px; align-items: start; gap: 18px; }
+.delivery-guide { padding: 24px; }
+.mechanics-dimension-switch { max-width: 100%; width: auto; display: inline-flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 14px; }
+.mechanics-dimension-note { font-size: 17px !important; line-height: 1.6 !important; color: #374f45 !important; margin-bottom: 24px !important; max-width: 66ch; }
+.guided-select-row { align-items: start; flex-wrap: wrap; gap: 20px; }
+.guided-select-row > label { flex: 1 1 180px; }
+.guided-select-row select { min-width: 0; max-width: none; font-size: 16px; }
+.guided-readout { flex: 1 1 190px; text-align: left; white-space: normal; }
+.guided-readout > span { font-size: 14px; line-height: 1.6; color: #40594d; }
+.guided-current-angle { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+.guided-joint-name { font-size: 16px; line-height: 1.5; font-weight: 600; color: #713a0d; }
+.guided-current-angle .guided-angle-value { font: 700 32px/1.3 var(--display); letter-spacing: -.02em; color: #713a0d; }
+.guided-readout > small { font: 14px/1.6 var(--mono); color: #3c5448; }
+.metric-purpose { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding: 24px 0; }
+.metric-purpose .micro-label { font-size: 14px; line-height: 1.6; color: #425e4c; }
+.metric-purpose h4,
+.guided-clip-research .metric-purpose h4 { font-size: 20px; line-height: 1.5; color: #304f3d; }
+.metric-purpose p,
+.guided-clip-research .metric-purpose p { font-size: 17px; line-height: 1.6; color: var(--reading-muted); }
+.joint-diagram .joint-explainer { display: block; width: 100%; height: auto; }
+.joint-diagram > span { display: block; text-align: center; margin-top: 9px; font-size: 14px; line-height: 1.5; color: #3c5145; }
+.joint-explainer text:last-child { font-size: 28px; fill: var(--joint-accent); }
+.joint-explainer .middle-joint { fill: var(--joint-accent); }
+.guided-curve-heading { flex-wrap: wrap; align-items: start; gap: 14px; }
+.guided-curve-heading h4 { font-size: 20px; line-height: 1.5; color: var(--reading-ink); }
+.guided-curve-heading .segmented { flex-wrap: wrap; gap: 4px; }
+.guided-angle-chart text { font-size: 15px; fill: #354d40; }
+.curve-observed { stroke: var(--joint-accent); stroke-width: 2.8; }
+.curve-estimated { stroke: #8c581e; stroke-width: 2.4; }
+.guided-cursor { stroke: var(--joint-accent); stroke-width: 1.5; }
+.curve-cursor-label rect { fill: #ffedce; stroke: #b47a32; stroke-width: 1; }
+.guided-angle-chart .cursor-value-text { fill: #65380b; font-size: 15px; font-weight: 600; }
+.curve-reading-legend { gap: 12px 20px; align-items: start; margin: 18px 0 12px; }
+.curve-reading-legend > span { align-items: center; }
+.curve-reading-legend i { background: var(--joint-accent); width: 24px; flex-shrink: 0; }
+.curve-reading-legend i.dashed { background: none; border-color: #8c581e; }
+.curve-reading-legend > small { flex-basis: 100%; margin-left: 0; }
+.metric-explanation { margin-top: 20px; padding-top: 17px; }
+.metric-explanation p { margin-top: 14px; }
+.clip-extra-details,
+.clip-extra-details > a,
+.clip-pitch-link,
+.clip-metadata { font-size: 15px !important; line-height: 1.6 !important; color: var(--reading-muted) !important; }
+.header-subtitle,
+.guide-section p,
+.method-card .micro-label,
+.dataset-facts > div > span,
+.dictionary-references a,
+.metric-table,
+.metric-table td,
+.metric-table small,
+#coverage-charts p,
+#coverage-charts h4,
+.coverage-bar,
+.coverage-bar b { font-size: 15px; line-height: 1.6; color: var(--reading-muted); }
+.metric-table tbody th { font-size: 16px; line-height: 1.6; color: var(--reading-ink); }
+.coverage-bar > span { width: 105px; }
+.dataset-facts strong { font-size: 16px; line-height: 1.6; }
+.download-links a { font-size: 16px; line-height: 1.6; color: #f1f5e7; }
+.downloads-block h3 { color: #ffffff; }
+.downloads-block p { color: #dfebd8; }
+.downloads-block .eyebrow { color: #daebc6; font-size: 14px; }
+#citation-text { font-size: 14px; line-height: 1.6; color: var(--reading-muted); }
+.hero .demo-caption .micro-label,
+.hero .visual-top,
+.hero .visual-bottom,
+.hero .art-tag small { font-size: 13px; }
+.demo-caption select { font-size: 16px; }
+.demo-speed,
+.demo-open { font-size: 14px; line-height: 1.5; }
+.hero .demo-pause { font-size: 14px; padding: 7px 9px; }
+footer { flex-wrap: wrap; gap: 15px 24px; }
+@media (max-width: 1200px) {
+  .report-quick-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .report-quick-stats .metric-label { min-height: 0; }
+  .report-overview-grid { grid-template-columns: minmax(0, 1fr); }
+  .characteristic-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .percentile-rows { grid-template-columns: minmax(0, 1fr); }
+  .signature-canvas-wrap canvas { height: 270px; }
+  .delivery-workspace { grid-template-columns: minmax(0, 1fr); }
+  .delivery-visual #profile-motion { max-height: 430px; }
+  .home-steps { gap: 26px; }
+  .hero-visual { height: 375px; }
+  .hero .visual-frame { bottom: 98px; }
+  .demo-caption { flex-wrap: wrap; }
+  .hero .demo-caption .demo-open { max-width: none; flex-basis: 100%; text-align: right; }
+}
+@media (max-width: 1100px) {
+  .topbar { height: 68px; }
+  .main-nav { display: none; position: absolute; top: 67px; left: 0; right: 0; margin: 0; background: #f7f9f4; padding: 16px 22px; border-bottom: 1px solid #ced9ce; flex-wrap: wrap; gap: 12px 24px; }
+  .main-nav.open { display: flex; }
+  .menu-btn { display: block; margin-left: 15px; padding: 4px 8px; font-size: 22px; }
+  .top-actions { margin-left: auto; }
+  .report-tabs { top: 67px; }
+  .form-selection { flex-direction: column; align-items: stretch; gap: 20px; }
+  .form-selection > details { max-width: 66ch; }
+  .report-filters { gap: 18px; }
+}
+@media (max-width: 800px) {
+  .home-steps { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+  .home-steps h3 { font-size: 22px; }
+  .characteristic-layout { grid-template-columns: minmax(0, 1fr); }
+  .radar-wrap { width: 100%; max-width: 360px; }
+  .report-identity { flex-wrap: wrap; }
+  .report-coverage { flex-basis: 100%; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; text-align: left; }
+  .report-coverage > small { flex-basis: 100%; max-width: none; }
+  .report-topline { flex-wrap: wrap; }
+  .report-topline > span { order: 3; flex-basis: 100%; }
+  .report-topline > a { margin-left: auto; }
+  .location-report-grid { grid-template-columns: minmax(0, 1fr); }
+  .metric-purpose { grid-template-columns: 110px minmax(0, 1fr); }
+  .delivery-source-actions { align-items: stretch; flex-direction: column; }
+}
+@media (max-width: 580px) {
+  :root { --reading-body: 17px; }
+  .report-quick-stats { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .report-quick-stats article { padding: 22px; }
+  .report-quick-stats .metric-label { min-height: 0; }
+  .report-quick-stats .metric-number { font-size: 34px; }
+  .report-quick-stats .stat-definition { font-size: 17px; }
+  .report-quick-stats summary { font-size: 16px; }
+  .report-card { padding: 22px 18px; }
+  .report-card h3,
+  .pane-intro h3 { font-size: 23px; }
+  .report-tabs { gap: 16px; flex-wrap: wrap; }
+  .report-tabs > button { font-size: 16px; gap: 5px; }
+  .report-tabs small { font-size: 13px; padding: 2px 4px; }
+  .report-topline > span { font-size: 14px; }
+  .report-identity { gap: 18px; }
+  .report-identity .micro-label { font-size: 14px; }
+  .report-identity h2 small { font-size: 14px; }
+  .report-coverage > span,
+  .report-coverage > small { font-size: 14px; }
+  .report-sample-note { font-size: 17px; }
+  .player-style { font-size: 16px; }
+  .style-rule { font-size: 14px; }
+  .style-rule p { font-size: 17px; }
+  .player-record-reading { padding: 18px; }
+  .characteristic-radar text { font-size: 19px; }
+  .radar-wrap { max-width: 320px; }
+  .percentile-rows { gap: 24px; }
+  .percentile-row > div:first-child > span { font-size: 16px; }
+  .percentile-row strong { font-size: 16px; }
+  .percentile-row strong small { font-size: 14px !important; }
+  .signature-card .signature-canvas-wrap canvas { height: 260px; }
+  .simple-arsenal-table { min-width: 0; table-layout: fixed; }
+  .simple-arsenal-table thead th,
+  .simple-arsenal-table tbody th,
+  .simple-arsenal-table td { padding-left: 4px; padding-right: 4px; }
+  .simple-arsenal-table th button { font-size: 15px; white-space: normal; }
+  .simple-arsenal-table td small { font-size: 14px !important; }
+  .velocity-row > div:first-child > small { flex-basis: 100%; }
+  .report-filters > label { font-size: 16px; }
+  .report-filters select { font-size: 16px; }
+  .report-filters .checkbox-filter { font-size: 16px; }
+  .report-pitch-chips button { font-size: 16px; }
+  .density-cell { min-height: 91px; }
+  .density-cell > span { font-size: 14px; }
+  .density-scale { max-width: none; }
+  .form-selection > label { font-size: 16px; gap: 12px; }
+  .form-selection select { font-size: 16px; }
+  .delivery-guide { padding: 22px 18px; }
+  .motion-demo-label { padding: 18px; }
+  .motion-selection-legend { padding-left: 18px; padding-right: 18px; }
+  .delivery-controls { padding: 18px; }
+  .delivery-controls .button-primary { font-size: 16px; }
+  .delivery-controls select { font-size: 16px; }
+  .delivery-sequence { gap: 8px; padding: 0 12px 18px; }
+  .delivery-sequence span { font-size: 14px !important; padding: 9px 3px; }
+  .delivery-source-actions .button-outline,
+  .delivery-source-actions .text-link { font-size: 16px; }
+  .guided-select-row > label { flex-basis: 100%; }
+  .guided-readout { flex-basis: 100%; }
+  .guided-readout > span { font-size: 14px; }
+  .guided-joint-name { font-size: 16px; }
+  .guided-readout > small { font-size: 14px; }
+  .guided-current-angle .guided-angle-value { font-size: 32px; }
+  .metric-purpose,
+  .guided-clip-research .metric-purpose { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .joint-diagram { width: 140px; margin: 0 auto; }
+  .joint-diagram > span { font-size: 14px; }
+  .metric-purpose h4 { font-size: 22px; }
+  .metric-purpose .micro-label { font-size: 14px; }
+  .metric-purpose p { font-size: 17px; }
+  .guided-curve-heading h4 { font-size: 20px; }
+  .guided-curve-heading .segmented button,
+  .mechanics-dimension-switch button { font-size: 16px; }
+  .curve-reading-legend { font-size: 14px !important; }
+  .metric-explanation summary { font-size: 16px; }
+  .metric-explanation p { font-size: 17px; }
+  .guided-angle-chart text { font-size: 15px; }
+  .clip-research-head > div { flex-wrap: wrap; gap: 12px 18px; }
+  .clip-research-head .text-btn,
+  .clip-research-head .text-link { font-size: 16px; }
+  .demo-caption { flex-wrap: wrap; }
+  .hero-visual { height: 375px; }
+  .hero .visual-frame { bottom: 98px; }
+  .hero .demo-caption .demo-open { flex-basis: 100%; text-align: right; }
+  .home-player small,
+  .home-player b { font-size: 14px; }
+  .home-data-scope { font-size: 14px; }
+}
+.skip-link { opacity: 0; pointer-events: none; }
+.skip-link:focus { opacity: 1; pointer-events: auto; }
+.motion-orbit label,
+.video-label,
+.youtube-source-head h4,
+.youtube-toggle,
+.youtube-source-head .download-btn { font-size: 16px; line-height: 1.6; color: var(--reading-ink); }
+.video-label { flex-wrap: wrap; gap: 6px; }
+.video-label i,
+.youtube-source-note,
+.source-time { font-size: 14px; line-height: 1.6; color: var(--reading-muted); }
+.player-bar { flex-wrap: wrap; gap: 10px; padding: 16px; }
+.player-bar .time-code { font-size: 14px; line-height: 1.6; color: var(--reading-muted); }
+.player-bar .frame-range { flex: 1 1 100px; min-width: 80px; }
+.player-bar .speed-select { font-size: 16px; min-height: 44px; }
+.player-bar .control-btn { min-height: 44px; min-width: 36px; font-size: 20px; }

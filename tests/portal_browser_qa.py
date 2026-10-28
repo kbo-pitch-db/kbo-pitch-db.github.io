@@ -58,6 +58,7 @@ with sync_playwright() as p:
     assert page.locator('html').get_attribute('lang')=='ko'
     assert page.locator('#report-tab-arsenal').get_attribute('aria-selected')=='true'
     assert page.locator('#report-batter').input_value()=='L'
+    assert page.locator('#report-batter option[value="L"]').text_content()=='좌타'
     page.locator('#report-clear').click()
     assert '356 / 356' in page.locator('.pane-intro').inner_text()
     page.locator('[data-report-pitch="슬라이더"]').first.click()

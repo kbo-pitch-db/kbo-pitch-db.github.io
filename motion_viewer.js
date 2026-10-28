@@ -199,7 +199,9 @@ window.MotionViewer = (() => {
       ctx.fillStyle=current.interpolated?.[j]?'#ffc47a':'#eafadc';
       ctx.beginPath();ctx.arc(points[j][0],points[j][1],6,0,2*Math.PI);ctx.fill();
     }
+    if(!is3d&&s.highlightKey){const result=window.PitcherExperience?.paintJointHighlight?.(ctx,points,s.highlightKey,w);canvas.dataset.selectedJoint=s.highlightKey;canvas.dataset.highlightVisible=String(result?.visible??false);canvas.dataset.highlightedBones=String(result?.bones??0)}
     if(!points.some(Boolean)){ctx.fillStyle='#c6d4c9';ctx.font='19px sans-serif';ctx.textAlign='center';ctx.fillText(s.t.gap,w/2,h/2);ctx.textAlign='start';}
   }
-  return {mount,dispose,draw,createClock};
+  function setHighlightedJoint(key){if(state){state.highlightKey=key;const note=state.control?.querySelector('.motion-note');if(note)note.textContent=state.t===copy.ko?'주황색 강조: 선택 관절·연결된 두 뼈 · 옅은 살구색 관절: 보간':'Orange emphasis: selected joint and its two bones · pale amber joints: interpolated';draw()}}
+  return {mount,dispose,draw,createClock,setHighlightedJoint};
 })();
