@@ -1,98 +1,31 @@
-/* Animate the hero with a real, packaged RTMPose sequence. */
-(() => {
-  const skeleton = document.querySelector('.hero-skeleton');
-  if (!skeleton) return;
-  const bones = document.querySelector('#hero-bones');
-  const joints = document.querySelector('#hero-joints');
-  const trail = document.querySelector('#hero-wrist-trail');
-  const timeLabel = document.querySelector('#hero-time');
-  const frameLabel = document.querySelector('#hero-frame');
-  const fpsLabel = document.querySelector('#hero-fps');
-  const countLabel = document.querySelector('#hero-visible-joints');
-  const progress = document.querySelector('#hero-progress');
-  const edges = [[5, 6], [5, 7], [7, 9], [6, 8], [8, 10], [5, 11],
-    [6, 12], [11, 12], [11, 13], [13, 15], [12, 14], [14, 16]];
-  const indexUrl = new URL('data/clips.json', document.currentScript.src);
-
-  const valid = point => Array.isArray(point) && Number.isFinite(point[0]) &&
-    Number.isFinite(point[1]) && (point[2] == null || point[2] >= .3);
-  const percentile = (values, fraction) => {
-    const sorted = values.sort((a, b) => a - b);
-    return sorted[Math.floor((sorted.length - 1) * fraction)];
-  };
-
-  async function start() {
-    const indexResponse = await fetch(indexUrl, { cache: 'no-store' });
-    if (!indexResponse.ok) return;
-    const index = await indexResponse.json();
-    const clip = (index.clips || []).find(item => item.pose && !item.example && item.frames >= 30);
-    if (!clip) return;
-    const poseUrl = new URL(clip.poseRefined || clip.pose, indexUrl);
-    if (index.packageVersion) poseUrl.searchParams.set('v', index.packageVersion);
-    const poseResponse = await fetch(poseUrl);
-    if (!poseResponse.ok) return;
-    const pose = await poseResponse.json();
-    const skeletonEdges = pose.edges || edges;
-    const jointCount = document.querySelector('.art-tag.tag-left span');
-    if (jointCount) jointCount.textContent = String((pose.joints || []).length || 17);
-    const frames = (pose.frames || []).slice(0, 240);
-    const points = frames.flatMap(frame => (frame.keypoints || []).filter(valid));
-    if (frames.length < 2 || points.length < 30) return;
-    const xs = points.map(point => point[0]);
-    const ys = points.map(point => point[1]);
-    const left = percentile(xs, .02), right = percentile(xs, .98);
-    const top = percentile(ys, .02), bottom = percentile(ys, .98);
-    const scale = Math.min(236 / Math.max(1, right - left), 300 / Math.max(1, bottom - top));
-    const map = point => [160 + (point[0] - (left + right) / 2) * scale,
-      195 + (point[1] - (top + bottom) / 2) * scale];
-    const fps = Number(pose.fps || clip.fps) || 30;
-    fpsLabel.textContent = String(Math.round(fps));
-    skeleton.setAttribute('aria-label', `Animated 2D pose from clip ${clip.id}`);
-
-    function draw(index) {
-      const frame = frames[index];
-      const keypoints = frame.keypoints || [];
-      const mapped = keypoints.map(point => valid(point) ? map(point) : null);
-      bones.innerHTML = skeletonEdges.filter(([a, b]) => mapped[a] && mapped[b]).map(([a, b]) =>
-        `<path d="M${mapped[a][0].toFixed(1)} ${mapped[a][1].toFixed(1)}L${mapped[b][0].toFixed(1)} ${mapped[b][1].toFixed(1)}"/>`).join('');
-      joints.innerHTML = mapped.filter(Boolean).map(([x, y]) =>
-        `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5"/>`).join('');
-      const wristHistory = [];
-      for (let offset = 14; offset >= 0; offset--) {
-        if (index - offset < 0) continue;
-        const candidate = frames[index - offset].keypoints || [];
-        const wrist = valid(candidate[10]) ? candidate[10] : valid(candidate[9]) ? candidate[9] : null;
-        if (wrist) wristHistory.push(map(wrist).map(value => value.toFixed(1)).join(','));
-      }
-      trail.setAttribute('points', wristHistory.join(' '));
-      const seconds = Number(frame.time) || index / fps;
-      timeLabel.textContent = `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${(seconds % 60).toFixed(2).padStart(5, '0')}`;
-      frameLabel.textContent = `F${String(frame.frame ?? index).padStart(4, '0')}`;
-      countLabel.textContent = String(mapped.filter(Boolean).length);
-      progress.style.width = `${Math.max(2, 100 * (index + 1) / frames.length)}%`;
-    }
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) { draw(Math.floor(frames.length / 3)); return; }
-    let visible = true;
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(entries => { visible = entries[0].isIntersecting; },
-        { threshold: .05 }).observe(skeleton);
-    }
-    let started = performance.now();
-    let previous = -1;
-    function tick(now) {
-      if (visible && !document.hidden) {
-        const index = Math.floor((now - started) * fps / 1000) % frames.length;
-        if (index !== previous) { draw(index); previous = index; }
-      } else {
-        started += now - (tick.lastTime || now);
-      }
-      tick.lastTime = now;
-      requestAnimationFrame(tick);
-    }
-    draw(0);
-    requestAnimationFrame(tick);
+/* A real linked pitch drives the overview demo, including pitch-type changes. */
+window.HeroMotion = (() => {
+  let current=null,ticket=0,frame=0,paused=window.matchMedia('(prefers-reduced-motion: reduce)').matches,last=0,visible=true;
+  const cache=new Map(),skeleton=document.querySelector('.hero-skeleton'),button=document.querySelector('#hero-pause');
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;last=0},{threshold:.05}).observe(skeleton);
+  const valid=p=>p&&p.length>=3&&p.slice(0,3).every(Number.isFinite)&&p[2]>=.3;
+  function updateButton(){button.textContent=typeof tr==='function'?tr(paused?'playDemo':'pauseDemo'):(paused?'Play demo':'Pause demo');button.setAttribute('aria-pressed',String(paused))}
+  button.addEventListener('click',()=>{paused=!paused;last=0;updateButton()});
+  async function show(clip){
+    updateButton();if(current?.clip.id===clip.id)return;
+    const request=++ticket;
+    try{
+      const path=clip.poseRefined||clip.pose;
+      if(!cache.has(path)){const response=await fetch(url(path));if(!response.ok)throw Error('pose');cache.set(path,await response.json())}
+      if(request!==ticket)return;const pose=cache.get(path),points=pose.frames.flatMap(f=>f.keypoints.filter(valid));if(!points.length)throw Error('empty');
+      const low=[Infinity,Infinity],high=[-Infinity,-Infinity];for(const p of points)for(let i=0;i<2;i++){low[i]=Math.min(low[i],p[i]);high[i]=Math.max(high[i],p[i])}
+      current={clip,pose,center:low.map((v,i)=>(v+high[i])/2),scale:Math.min(250/Math.max(1,high[0]-low[0]),300/Math.max(1,high[1]-low[1]))};frame=0;last=0;
+      document.querySelector('#hero-fps').textContent=Number(pose.fps).toFixed(2);
+      document.querySelector('.tag-left span').textContent=pose.joints.length;
+      skeleton.setAttribute('aria-label',`${clip.player} · ${clip.pitch} · ${clip.speed} km/h · ${clip.id}`);skeleton.dataset.clip=clip.id;draw();
+    }catch(error){if(request===ticket){current=null;document.querySelector('#hero-bones').replaceChildren();document.querySelector('#hero-joints').replaceChildren();document.querySelector('#hero-frame').textContent='—'}}
   }
-  start().catch(() => {});
+  function draw(){if(!current)return;const {pose,center,scale}=current,source=pose.frames[frame],map=p=>[160+(p[0]-center[0])*scale,195+(p[1]-center[1])*scale],mapped=source.keypoints.map(p=>valid(p)?map(p):null);
+    document.querySelector('#hero-bones').innerHTML=pose.edges.filter(([a,b])=>mapped[a]&&mapped[b]).map(([a,b])=>`<path d="M${mapped[a].join(' ')}L${mapped[b].join(' ')}"/>`).join('');
+    document.querySelector('#hero-joints').innerHTML=mapped.filter(Boolean).map(([x,y])=>`<circle cx="${x}" cy="${y}" r="4"/>`).join('');
+    const points=[];for(let i=Math.max(0,frame-12);i<=frame;i++){const f=pose.frames[i],p=f.keypoints[10];if(valid(p))points.push(map(p).join(','))}document.querySelector('#hero-wrist-trail').setAttribute('points',points.join(' '));
+    document.querySelector('#hero-frame').textContent=`F${String(frame).padStart(4,'0')}`;document.querySelector('#hero-time').textContent=`${Number(source.time).toFixed(2)} s`;document.querySelector('#hero-progress').style.width=`${100*(frame+1)/pose.frames.length}%`;
+  }
+  function tick(now){if(current&&!paused&&visible&&!document.hidden){if(!last)last=now;if(now-last>=1000/current.pose.fps){frame=(frame+Math.floor((now-last)*current.pose.fps/1000))%current.pose.frames.length;last=now;draw()}}else last=0;requestAnimationFrame(tick)}requestAnimationFrame(tick);
+  return {show};
 })();

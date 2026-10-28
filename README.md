@@ -6,6 +6,32 @@ Release: `gvhmr-ground-motionbert-20261028-v1`. All **813** clips use actual Mot
 
 All clips use the same viewer, one clip-wide camera/scale and one inferred ground frame. No framewise recentering, endpoint hold, population-stride target or display trajectory correction is applied. Playback stops at the last frame. JSON exports the saved coordinates; 3D CSV exports 24 native SMPL joint centers, source timing and availability. COCO-17 surface landmarks and six foot markers remain supplementary data. Rigid saved shoes also retain their shape between rendered frames; interpolation preserves a marker that is stationary in both saved frames.
 
+## Research portal (2026-10-28)
+
+The bilingual Overview / Pitchers / Explore / Compare / Dataset & Methods interface connects a player’s collected repertoire to actual pitch records and the existing synchronized 2D/3D viewer. Language preference persists in the browser. Official player names are preserved as recorded; interface and pitch labels support English and Korean.
+
+- **Profiles:** 123 players, historical 2024 team and throwing side from cached Naver game rosters, clip/game/date coverage, linked sample counts, and per-metric observation counts. `?pitcher=65320#pitchers` opens a profile directly. No player or explorer clip is selected by default; the overview demo alone uses an explicitly labeled actual delivery near its pitch type’s median observed speed.
+- **Two denominators:** collected highlight clips and acquired game records. The 32 cached games contain 9,754 deduplicated pitch records, including 8,948 by the 123 motion-sample players. Neither sample is a complete season. Unknown clip pitch labels remain visible.
+- **Record exploration:** pitch-wise speed distributions, provider PTS position normalized to the recorded batter zone, batter-side and inning filters, count composition, and consecutive within-at-bat pitch transitions. Each point has a keyboard-accessible observation selector; records without a motion link still link to the Naver source. Zone and heatmap selections expose matching actual records. Transition pairs cannot bridge games, at-bats or missing pitch numbers.
+- **Linkage:** 390 automatically accepted links / 33 held / 390 unresolved, with zero human-validated links. A join requires accepted audit evidence and agreement on game, player code/name and pitch ID with the canonical index. Identity evidence alone does not establish a pitch link. Multiple clips of the same pitch share its record denominator; the current accepted population has zero duplicate replay links.
+- **Mechanics:** left/right knee and elbow **2D included angles**, not clinical flexion, true 3D rotations or a ball arm-angle measurement. Each uses the final Halpe-26 crop x/y triplet, confidence ≥0.5, excluding interpolated/outlier joints and degenerate segments. Curves preserve gaps and seek the same source frame in the existing 2D/3D viewer. Availability counts mean at least ten eligible frames, not validated biomechanics. No new smoothing or differentiation is applied. Landing/release times, physical angular velocities, HB/IVB, spin and MVPI are not inferred or published.
+- **Comparison:** two actual final 2D clips and angle curves share normalized clip progress while preserving separate frame clocks. It is not foot-plant/release alignment. Original source links and the full explorer remain available for both clips. Compare playback is independent of explorer playback.
+- **Downloads:** `data/portal/summary.json`, lazy-loaded `data/portal/players/<code>.json`, the complete source-preserving `data/portal/pitch_records.csv.gz`, and [standard-library example code](docs/portal-example.py). Original/refined pose files and per-clip quality JSON are linked in the explorer. Source CSV hashes and the canonical clip-index hash are stored in the summary. Source `raw_file` entries reference cached local provenance, not public raw-response downloads.
+
+PTS x comes from `cross_plate_x_ft`; z is the provider’s quadratic trajectory evaluated at `cross_plate_y_ft`, both in feet. The chart uses `(z − bottom_sz)/(top_sz − bottom_sz)` per pitch. Only records with `tracking_status=derived_validated_x` and finite, ordered zone bounds enter the location chart. Consistency with the source trajectory is not independent tracking accuracy. No target location is available, so this chart is not labeled command.
+
+Rebuild only the portal metadata from the existing frozen inputs (does not modify poses, clips or link-audit decisions):
+
+```bash
+python3 scripts/build_portal_data.py
+python3 -m unittest discover -s tests -p test_portal_data.py
+node tests/portal_math.test.cjs
+# With Playwright Python and Chromium installed, against the static local server:
+python3 tests/portal_browser_qa.py http://127.0.0.1:8000 /path/to/chrome
+```
+
+The generator is deterministic, including its gzip archive; it reads cached Naver responses and never downloads or packages broadcast media. Refresh the frozen inputs separately before rebuilding. The UI hides unsupported measurements and reports record-load failures without replacing unknown values with estimates. Release and third-party reuse terms are explained on the Dataset & Methods page; no new blanket data/model/footage license is asserted.
+
 ## What the reconstruction means
 
 The official GVHMR learned checkpoint runs with final RTMPose and HMR2a pitcher-crop inputs (with full-image bbox coordinates), 30 Hz network resampling and identity camera-angular-velocity hypotheses. Its shared SMPL-X rotations are approximately adapted to SMPL, with a separate WHAM-derived **SMPL shape only** for the original inputs. Versioned subject recoveries instead use the corrected pitcher’s HMR2a RGB shape. This is **not** the complete native SMPL-X GVHMR demo/postprocessor. Camera, pose and root are then fitted in stages; the contact step jointly refines lower body, trunk, root and a shared focal estimate, preserving fixed sequence shape and local upper-limb rotations.
