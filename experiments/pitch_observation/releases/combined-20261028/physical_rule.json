@@ -1,0 +1,20 @@
+{
+  "version": "combined-population-full-support-qc-v5",
+  "minimum_foot_height_max_leg": 0.08,
+  "shoe_rotation_step_at30fps_max_radians": 1.1,
+  "ankle_velocity_change_at30fps_max_leg": 0.2,
+  "contact_diameter_max_leg": 0.01,
+  "primary_contact_error_max_leg": 0.0001,
+  "floor_penetration_p95_leg": 0.02,
+  "floor_penetration_max_leg": 0.04,
+  "contact_height_max_leg": 0.08,
+  "root_step_at_30fps_max_leg": 0.2,
+  "root_velocity_change_at30fps_max_leg": 0.12,
+  "native_bone_variation_max_model": 2e-05,
+  "native_fk_error_max_model": 2e-05,
+  "source_p50_increase_px": 2.0,
+  "wrist_p95_increase_px": 2.0,
+  "feet_p95_increase_px": 2.0,
+  "new_source_unsupported_forearm_returns": 0,
+  "interpretation": "Operational source/geometry screens, not ground-truth accuracy bounds"
+}

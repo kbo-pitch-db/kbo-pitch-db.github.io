@@ -1,0 +1,41 @@
+{
+  "release": "gvhmr-ground-motionbert-20261028-v1",
+  "clips": 813,
+  "actual_motionbert_inference": true,
+  "motionbert_pretrained_checkpoint_sha256": "597c708bd585646cc6961df057ef73634edb83a4d5c1155d98a4cc0c04e81b98",
+  "motionbert_adapted_checkpoint_sha256": "67ca2dbb4abb80561823257e6724d33237bb3d3078b53aad492a57b63e75dfab",
+  "selection_policy": "All actual rigid-shoe fits must pass unchanged contact/FK/bone/floor/root-continuity screens; strict source regressions retained",
+  "pre_shoe_selection_semantics": "Frozen intermediate candidates; overridden for the independently corrected Oh pitcher input",
+  "source_regression_counts": {
+    "source_p50_px": 90,
+    "wrist_p95_px": 0,
+    "feet_p95_px": 774
+  },
+  "strict_source_pass": 38,
+  "no_render_time_trajectory_edits": true,
+  "constant_sequence_shape": true,
+  "constant_native_bones": true,
+  "constant_shoe_shape": true,
+  "versioned_final_2d_tail_recoveries": [
+    "02dad52fd781_c0049",
+    "0b70417b94ab_c0010",
+    "1161553ed7d7_c0056",
+    "3ef5720dccec_c0010",
+    "3ef5720dccec_c0021",
+    "782c3ca51bd5_c0004",
+    "b54e0e701d77_c0006",
+    "e72b3a782760_c0009"
+  ],
+  "original_input_files_overwritten": false,
+  "fixed_floor_and_coordinates_per_clip": true,
+  "native_fk_audited_all_valid_frames": true,
+  "camera_cut_unavailable_frames": 14,
+  "source_pixels_or_model_weights_published": false,
+  "human_manually_reviewed": 0,
+  "ground_truth_3d_accuracy_validated": false,
+  "limitations": [
+    "Inferred contact/plane checks are objective-linked, not independent accuracy evidence",
+    "Source reprojection regressions remain failed/visible; no measured depth/scale/absolute stride",
+    "Broadcast timestamps retain unknown slow-motion factor; no physical velocity claim"
+  ]
+}

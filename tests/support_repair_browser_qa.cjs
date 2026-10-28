@@ -32,9 +32,9 @@ const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   }
   assert.ok(ready,'Default repaired 3D did not load');
   assert.equal(await ev('app.reconstructions'),null);
-  assert.equal(await ev('app.poses[3].postprocessing_version'),'independent-support-v7');
+  assert.equal(await ev('app.poses[3].method'),'gvhmr-ground-motionbert-v1');
   assert.equal(await ev('app.selected.reconstructionId'),'published');
-  assert.ok(requests.some(url=>url.includes('gvhmr-release-v1/support-v7/d4ea211e62bd_c0026.json.gz')));
+  assert.ok(requests.some(url=>url.includes('combined-v1/d4ea211e62bd_c0026.json.gz')));
   assert.equal(await ev("document.querySelector('.motion-canvas[data-dimension=\"3\"]').dataset.renderer"),'bone-mesh');
   const matrix=await ev("document.querySelector('.motion-canvas[data-dimension=\"3\"]').dataset.cameraMatrix");
   for(const frame of [0,16,26,32,42,54,61]){
@@ -43,14 +43,14 @@ const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
    assert.equal(await ev("document.querySelector('.motion-canvas[data-dimension=\"3\"]').dataset.frame"),String(frame));
   }
   const toe=await ev(`(async()=>{
-   const audit=await fetch(new URL(app.selected.supportAudit,DATA_URL)).then(r=>r.json());
-   return audit.after_episodes.map(e=>{
+   const audit=await fetch(new URL(app.selected.motionQuality,DATA_URL)).then(r=>r.json());
+   return audit.contact_episodes.map(e=>{
     const p=app.poses[3].frames.slice(e.start,e.end+1).map(f=>f.feet[e.marker]);
     return {marker:e.marker,start:e.start,end:e.end,extent:Math.max(...p.map(q=>Math.hypot(...q.map((v,k)=>v-p[0][k]))))/audit.normalization_leg_model};
    });
   })()`);
   const seen=new Set();
-  for(const e of toe){assert.ok(e.extent<=(seen.has(e.marker)?.05:.03));seen.add(e.marker)}
+  for(const e of toe){assert.ok(e.extent<=.01001);seen.add(e.marker)}
   await ev("seekFrame(42);document.querySelector('#detail-panel').scrollIntoView({block:'start'});document.querySelector('.motion-yaw').value='90';document.querySelector('.motion-yaw').dispatchEvent(new Event('input'))");
   await sleep(150);
   const rect=await ev("(()=>{const r=document.querySelector('.motion-canvas[data-dimension=\"3\"]').getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height,scale:1}})()");

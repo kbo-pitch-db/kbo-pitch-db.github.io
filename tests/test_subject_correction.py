@@ -2,11 +2,12 @@
 import gzip,hashlib,json,unittest
 from pathlib import Path
 import numpy as np
+from release_fixture import support_index_bytes
 SITE=Path(__file__).resolve().parents[1];DATA=SITE/'data';CID='4e09dd724a8c_c0011'
 
 class SubjectCorrectionTests(unittest.TestCase):
  def test_actual_recovery_preserves_old_assets_and_tracks_a_distinct_foreground_person(self):
-  c=next(c for c in json.loads((DATA/'clips.json').read_text())['clips'] if c['id']==CID);r=json.loads((DATA/c['subjectCorrection']).read_text());old=r['old_clip']
+  c=next(c for c in json.loads(support_index_bytes())['clips'] if c['id']==CID);r=json.loads((DATA/c['subjectCorrection']).read_text());old=r['old_clip']
   for path,key in [(old['poseRefined'],'original_2d_sha256'),(old['pose'],'original_raw_2d_sha256'),(old['pose3d'],'original_3d_sha256'),(c['poseRefined'],'new_2d_sha256'),(c['pose3d'],'new_3d_sha256')]:self.assertEqual(hashlib.sha256((DATA/path).read_bytes()).hexdigest(),r[key])
   before=json.loads((DATA/old['poseRefined']).read_text());after=json.loads((DATA/c['poseRefined']).read_text());pose=json.loads(gzip.decompress((DATA/c['pose3d']).read_bytes()));self.assertEqual(len(after['frames']),75)
   for a,b,d in zip(before['frames'],after['frames'],pose['frames']):

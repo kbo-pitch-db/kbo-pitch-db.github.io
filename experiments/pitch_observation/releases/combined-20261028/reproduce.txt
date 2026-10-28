@@ -1,0 +1,44 @@
+Run in the separate research worktree with the prepared CUDA environment.
+Required: original dataset, original official GVHMR/MotionBERT/HMR2a weights,
+existing public-mocap MotionBERT adaptation and separately licensed SMPL.
+No model weights, SMPL meshes, source image pixels/audio are published.
+
+Restore inputs.json and the pre-combination canonical index from
+ data/releases/support-20261028/original_index.json.gz into the private
+ combined_population_v1 directory. Reproduce the upstream GVHMR estimates
+ using the historical README and the separately versioned subject correction.
+Never substitute the old Oh batter pose/shape for the corrected pitcher.
+
+combined_population.py motionbert
+combined_support.py
+combined_arms.py --once
+combined_contact_ik.py --once
+Reproduce the versioned repairs identified by pre_shoe_selection.json.
+combined_foot_pose_temporal.py
+ audit_combined_temporal.py --once
+ repair_combined_temporal.py --once
+repair_root_support.py
+recover_subject_tails.py observe
+recover_subject_tails.py features
+recover_subject_tails.py network
+recover_subject_tails.py base
+recover_subject_tails.py combine
+package_subject_tails.py
+adopt_subject_tails.py
+combined_subject_update.py
+adopt_combined_subject.py
+select_combined_release.py
+package_combined_population.py
+Review saved-coordinate checks, source-error flags and staged geometry.
+package_combined_population.py --promote
+package_combined_provenance.py
+Run Python unit tests and combined_population_browser_qa.cjs against staging.
+After a push and successful Pages deployment, verify_live_combined.py checks
+all813 deployed pose, quality and unchanged final-2D hashes. Browser verification
+must also check actual fetched models, synchronization, floor, fixed camera,
+cut gaps, JSON/CSV and desktop/mobile behavior. Generation never auto-pushes.
+
+Recorded content hashes identify actual outputs. CUDA/solver executions need
+not be bitwise reproducible; re-audit any regenerated coordinates rather than
+copying the old pass labels. No predeclared accuracy test or human review is
+claimed by this population consistency audit.

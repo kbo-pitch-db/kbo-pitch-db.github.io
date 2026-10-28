@@ -1,0 +1,38 @@
+{
+  "release_id": "gvhmr-ground-motionbert-20261028-v1",
+  "clips": 813,
+  "players": 123,
+  "frames": 135741,
+  "valid_3d_frames": 135727,
+  "motionbert_clips": 813,
+  "gvhmr_clips": 813,
+  "contact_consistency_passed": 813,
+  "contact_consistency_failed": 0,
+  "contact_diameter_max_leg": 7.730289948844794e-06,
+  "strict_source_pass": 38,
+  "strict_source_regression_clips": 775,
+  "constant_shoe_shape_clips": 813,
+  "sole_length_variation_max_model": 8.648427174406947e-08,
+  "sole_fk_error_max_model": 9.961251832280027e-07,
+  "source_regression_counts": {
+    "source_p50_px": 90,
+    "wrist_p95_px": 0,
+    "feet_p95_px": 774
+  },
+  "original_final_2d_changed": true,
+  "active_final_2d_recovered_clips": [
+    "02dad52fd781_c0049",
+    "0b70417b94ab_c0010",
+    "1161553ed7d7_c0056",
+    "3ef5720dccec_c0010",
+    "3ef5720dccec_c0021",
+    "782c3ca51bd5_c0004",
+    "b54e0e701d77_c0006",
+    "e72b3a782760_c0009"
+  ],
+  "original_final_2d_assets_overwritten": false,
+  "human_manually_reviewed": 0,
+  "absolute_3d_accuracy_validated": false,
+  "interpretation": "All actual combined estimates pass saved-coordinate support/FK/bone/continuity screens. Source regression flags are retained; no claim of measured 3D accuracy.",
+  "unavailable_3d_frames": 14
+}

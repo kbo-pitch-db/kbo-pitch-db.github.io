@@ -10,6 +10,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'experiments/pitch_observation'))
 from independent_support import contact_state
+from release_fixture import support_index_bytes
 
 
 def observation():
@@ -53,7 +54,7 @@ class IndependentSupportTests(unittest.TestCase):
         site = Path(__file__).resolve().parents[1]
         cid = 'd4ea211e62bd_c0026'
         audit = json.loads((site / f'data/support_repairs/{cid}-v7.json').read_text())
-        current = json.loads((site / 'data/clips.json').read_text())
+        current = json.loads(support_index_bytes())
         clips = {c['id']: c for c in current['clips']}
         before = json.loads(subprocess.check_output(
             ['git', 'show', '2dfb149974bae3486e714cdc6b0999cc04a52c7d:data/clips.json'], cwd=site))

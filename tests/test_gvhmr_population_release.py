@@ -1,14 +1,14 @@
 """The requested main migration must include every actual GVHMR pose and 2D."""
 import gzip,hashlib,json,math,subprocess,unittest
 from pathlib import Path
-from release_fixture import original_clips,original_index_bytes
+from release_fixture import original_clips,original_index_bytes,population_index_bytes
 SITE=Path(__file__).resolve().parents[1]
 BASELINE='7d24094ad6aec0d3518864bdf820c7c87c4427ef'
 
 class GvhmrPopulationReleaseTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.index=json.loads((SITE/'data/clips.json').read_text());cls.old={c['id']:c for c in original_clips()}
+  cls.index=json.loads(population_index_bytes());cls.old={c['id']:c for c in original_clips()}
   cls.summary=json.loads((SITE/'data/gvhmr_release_summary.json').read_text())
   tree=subprocess.check_output(['git','ls-tree','-r',BASELINE,'data/assets'],cwd=SITE,text=True)
   cls.blobs={line.split('\t',1)[1]:line.split()[2] for line in tree.splitlines()}

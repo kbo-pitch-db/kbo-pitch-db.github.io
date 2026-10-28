@@ -7,6 +7,62 @@
       "new_2d": "assets/4e09dd724a8c_c0011/subject-corrected-v1/pose_halpe26_refined.json",
       "old_3d": "reconstructions/gvhmr-release-v1/4e09dd724a8c_c0011.json.gz",
       "new_3d": "reconstructions/gvhmr-release-v1/subject-corrected-v1/4e09dd724a8c_c0011.json.gz"
+    },
+    "3ef5720dccec_c0021": {
+      "manifest": "subject_corrections/3ef5720dccec_c0021-tail-v1.json",
+      "old_2d": "assets/3ef5720dccec_c0021/pose_halpe26_refined.json",
+      "new_2d": "assets/3ef5720dccec_c0021/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/3ef5720dccec_c0021.json.gz",
+      "new_3d": "reconstructions/combined-v1/3ef5720dccec_c0021.json.gz"
+    },
+    "b54e0e701d77_c0006": {
+      "manifest": "subject_corrections/b54e0e701d77_c0006-tail-v1.json",
+      "old_2d": "assets/b54e0e701d77_c0006/pose_halpe26_refined.json",
+      "new_2d": "assets/b54e0e701d77_c0006/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/b54e0e701d77_c0006.json.gz",
+      "new_3d": "reconstructions/combined-v1/b54e0e701d77_c0006.json.gz"
+    },
+    "1161553ed7d7_c0056": {
+      "manifest": "subject_corrections/1161553ed7d7_c0056-tail-v1.json",
+      "old_2d": "assets/1161553ed7d7_c0056/pose_halpe26_refined.json",
+      "new_2d": "assets/1161553ed7d7_c0056/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/1161553ed7d7_c0056.json.gz",
+      "new_3d": "reconstructions/combined-v1/1161553ed7d7_c0056.json.gz"
+    },
+    "0b70417b94ab_c0010": {
+      "manifest": "subject_corrections/0b70417b94ab_c0010-tail-v1.json",
+      "old_2d": "assets/0b70417b94ab_c0010/pose_halpe26_refined.json",
+      "new_2d": "assets/0b70417b94ab_c0010/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/0b70417b94ab_c0010.json.gz",
+      "new_3d": "reconstructions/combined-v1/0b70417b94ab_c0010.json.gz"
+    },
+    "02dad52fd781_c0049": {
+      "manifest": "subject_corrections/02dad52fd781_c0049-tail-v1.json",
+      "old_2d": "assets/02dad52fd781_c0049/pose_halpe26_refined.json",
+      "new_2d": "assets/02dad52fd781_c0049/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/02dad52fd781_c0049.json.gz",
+      "new_3d": "reconstructions/combined-v1/02dad52fd781_c0049.json.gz"
+    },
+    "782c3ca51bd5_c0004": {
+      "manifest": "subject_corrections/782c3ca51bd5_c0004-tail-v1.json",
+      "old_2d": "assets/782c3ca51bd5_c0004/pose_halpe26_refined.json",
+      "new_2d": "assets/782c3ca51bd5_c0004/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/782c3ca51bd5_c0004.json.gz",
+      "new_3d": "reconstructions/combined-v1/782c3ca51bd5_c0004.json.gz"
+    },
+    "e72b3a782760_c0009": {
+      "manifest": "subject_corrections/e72b3a782760_c0009-tail-v1.json",
+      "old_2d": "assets/e72b3a782760_c0009/pose_halpe26_refined.json",
+      "new_2d": "assets/e72b3a782760_c0009/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/e72b3a782760_c0009.json.gz",
+      "new_3d": "reconstructions/combined-v1/e72b3a782760_c0009.json.gz"
+    },
+    "3ef5720dccec_c0010": {
+      "manifest": "subject_corrections/3ef5720dccec_c0010-tail-v1.json",
+      "old_2d": "assets/3ef5720dccec_c0010/pose_halpe26_refined.json",
+      "new_2d": "assets/3ef5720dccec_c0010/subject-tail-v1/pose_halpe26_refined.json",
+      "old_3d": "reconstructions/gvhmr-release-v1/3ef5720dccec_c0010.json.gz",
+      "new_3d": "reconstructions/combined-v1/3ef5720dccec_c0010.json.gz"
     }
   }
 }
