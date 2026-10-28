@@ -496,7 +496,7 @@
   ],
   "version": "event-validation-20261029-v3",
   "independentHumanGroundTruth": false,
-  "referenceScope": "12 new clip-disjoint provisional image reviews; 10 visible contact references, 12 release brackets. Shared source videos with development exist. Detector and head frozen before held-out event-image review; no population accuracy claim.",
+  "referenceScope": "12 new clip-disjoint provisional image reviews; 10 visible contact references, 12 release brackets. Shared source videos with development exist. Detector core and head frozen before native event-bracket annotation. Preliminary coarse sheets only located review windows; no new labels used for fitting or tuning. No population accuracy claim.",
   "freeze": {
     "files": {
       "scripts/pitch_events/detector.py": "377c87406e78895b8c1aa471eb3c62fbf70d280dfac77a8fa6297bd2555ce812",

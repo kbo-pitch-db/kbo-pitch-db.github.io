@@ -3,7 +3,6 @@
   "reviewer": "coding_agent_visual_inspection",
   "independentHumanReview": false,
   "blindToDetectorOutput": true,
-  "modelFrozenBeforeReview": "83743d7fbdca5bb3ad822bd06c953c152ecc32a2ff89140419093d4d01ca5161",
   "method": "Native unique RGB frames with frame numbers only; model event/detection overlays hidden. Inclusive brackets retain visibility and temporal ambiguity. New clip-disjoint sample, includes shared source videos with development; not independent human ground truth.",
   "clips": [
     {
@@ -156,5 +155,7 @@
       ],
       "notes": "First lead-foot contact occluded by score graphic; do not fabricate contact label."
     }
-  ]
+  ],
+  "modelFrozenBeforeNativeBracketing": "83743d7fbdca5bb3ad822bd06c953c152ecc32a2ff89140419093d4d01ca5161",
+  "reviewProtocol": "Preliminary coarse contact sheets located review windows. Detector core and contact weights were frozen before assigning native event brackets; detector overlays/predictions were hidden. New labels were not used to fit or tune the released model."
 }
