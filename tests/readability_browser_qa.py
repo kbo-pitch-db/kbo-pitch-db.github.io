@@ -21,7 +21,7 @@ with sync_playwright() as p:
     page=browser.new_page(viewport={'width':1440,'height':1050},device_scale_factor=1)
     page.add_init_script("localStorage.setItem('kbo-lang','ko')")
     errors=[];page.on('pageerror',lambda error:errors.append(str(error)))
-    page.goto(base+'/?pitcher=65320&v=reading1#pitchers',wait_until='networkidle')
+    page.goto(base+'/?pitcher=65320&v=reading1#analysis',wait_until='networkidle')
     page.wait_for_selector('#report-tab-overview')
     page.locator('#report-tab-overview').click()
     page.wait_for_selector('.stat-definition')

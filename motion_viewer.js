@@ -41,12 +41,12 @@ window.MotionViewer = (() => {
       pause(){if(paused)return;paused=true;cancelAnimationFrame(timer);emit('pause');}
     };
   }
-  async function mount({clip, panel, lang, url, pose2d, onPoses, clock}) {
+  async function mount({clip, panel, lang, url, pose2d, onPoses, clock, compact=false}) {
     dispose();
     const ticket = generation, t = copy[lang] || copy.en;
     const control = document.createElement('section'); control.className = 'motion-controls';
-    control.innerHTML = `<div class="motion-orbit" hidden><label>${t.yaw}<input class="motion-yaw" type="range" min="-180" max="180" value="0" aria-label="${t.yaw}"></label><label>${t.pitch}<input class="motion-pitch" type="range" min="-60" max="60" value="0" aria-label="${t.pitch}"></label><button class="download-btn motion-reset" type="button">${t.reset}</button></div><p class="motion-note">${t.interpolated}</p><p class="motion-status" role="status"></p>`;
-    panel.querySelector('.player-bar').after(control);
+    control.innerHTML = `<div class="motion-orbit" hidden><label>${t.yaw}<input class="motion-yaw" type="range" min="-180" max="180" value="0" aria-label="${t.yaw}"></label><label class="motion-pitch-label">${t.pitch}<input class="motion-pitch" type="range" min="-60" max="60" value="0" aria-label="${t.pitch}"></label><button class="download-btn motion-reset" type="button">${t.reset}</button></div><p class="motion-note">${t.interpolated}</p><p class="motion-status" role="status"></p>`;
+    panel.querySelector('.player-bar').after(control);if(compact){control.querySelector('.motion-pitch-label').hidden=true;control.querySelector('.motion-reset').hidden=true;control.querySelector('.motion-note').hidden=true;control.querySelector('.motion-status').hidden=true}
     const views = [{data:pose2d,canvas:panel.querySelector('.motion-canvas[data-dimension="2"]')}];
     const s = state = {clip,panel,control,views,video:clock,yaw:0,pitch:0,t};
     function ready(view) {
@@ -110,7 +110,7 @@ window.MotionViewer = (() => {
         for (const axis of ['yaw','pitch']) control.querySelector('.motion-'+axis).value = '0';
         draw();
       });
-      const canvas=views[1].canvas;
+      const canvas=views[1].canvas;canvas.tabIndex=0;canvas.setAttribute('aria-label',(lang==='ko'?'3D 투구 동작. 방향키로 시점을 회전하세요.':'3D delivery. Use arrow keys to rotate the view.'));canvas.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key))return;event.preventDefault();event.stopPropagation();if(event.key==='ArrowLeft'||event.key==='ArrowRight')s.yaw=Math.max(-Math.PI,Math.min(Math.PI,s.yaw+(event.key==='ArrowRight'?.1:-.1)));else s.pitch=Math.max(-Math.PI/3,Math.min(Math.PI/3,s.pitch+(event.key==='ArrowDown'?.1:-.1)));for(const axis of ['yaw','pitch'])control.querySelector('.motion-'+axis).value=String(s[axis]*180/Math.PI);draw()});
       let drag = null;
       canvas.addEventListener('pointerdown',e => {
         drag = [e.clientX,e.clientY,s.yaw,s.pitch]; canvas.setPointerCapture(e.pointerId);

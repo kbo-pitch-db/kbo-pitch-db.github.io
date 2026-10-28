@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261028-portal1"><link rel="stylesheet" href="portal.css?v=20261028-portal1"><link rel="stylesheet" href="experience.css?v=20261028-ux2"><link rel="stylesheet" href="readability.css?v=20261028-reading1"><link rel="stylesheet" href="mechanics_report.css?v=20261028-knee2"><link rel="stylesheet" href="metrics_database.css?v=20261029-bio2">
+  <link rel="stylesheet" href="player_overview.css?v=20261029-visitor1">
 </head>
 <body>
 <a class="skip-link" href="#pitchers" data-i18n="skipContent">Skip to pitchers</a>
@@ -15,41 +16,37 @@
   <header class="topbar">
     <a class="brand" href="#home" aria-label="KBO Pitch Lab home"><span class="brand-mark"><span></span></span><span class="brand-name">KBO <b>PITCH LAB</b></span></a>
     <nav class="main-nav" aria-label="Main navigation">
-      <a class="nav-link" href="#database" data-i18n="navMetrics">Metrics DB</a>
-      <a class="nav-link active" href="#home" data-i18n="navOverview">Overview</a>
+      <a class="nav-link active" href="#home" data-i18n="navOverview">Home</a>
       <a class="nav-link" href="#pitchers" data-i18n="navPitchers">Pitchers</a>
-      <a class="nav-link" href="#explore" data-i18n="navExplore">Explore</a>
-      <a class="nav-link" href="#compare" data-i18n="navCompare">Compare</a>
-      <a class="nav-link" href="#guide" data-i18n="navGuide">Dataset & Methods</a>
+      <a class="nav-link" href="#database" data-i18n="navMetrics">Explore data</a>
     </nav>
     <div class="top-actions"><span class="dataset-status"><i></i>2024 KBO</span><button id="lang-toggle" class="lang-toggle" aria-label="Switch language">한국어 ↗</button></div>
     <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
   </header>
   <main>
+    <nav class="data-navigation" aria-label="Data explorer"><a href="#database" data-i18n="dataTables">Metric tables</a><a href="#explore" data-i18n="dataMotion">Pitch videos</a><a href="#compare" data-i18n="navCompare">Compare</a><a href="#guide" data-i18n="downloadData">Downloads</a></nav>
+    <section id="player-analysis" aria-label="Player data explorer"><div id="analysis-profile" hidden></div></section>
     <section id="metrics-database" aria-label="Mechanics metrics database"><div id="metrics-database-root"></div></section>
     <section class="hero" id="home">
       <div class="hero-copy">
         <div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="eyebrow">OPEN DATA · BASEBALL · HUMAN MOTION</span></div>
         <h1 data-i18n="heroTitle">The pitch.<br>The motion.<br><em>The connection.</em></h1>
         <p class="hero-description" data-i18n="heroDesc">An open dataset connecting pitching motion reconstructed from KBO broadcasts with pitch-by-pitch records.</p>
-        <div class="hero-actions"><a class="button-primary" href="#pitchers"><span data-i18n="browsePitchers">Meet the pitchers</span> ↗</a><a class="button-outline" href="#database" data-i18n="navMetrics">Metrics DB</a><a class="text-link" href="#downloads"><span data-i18n="downloadData">Download data</span> ↓</a></div>
+        <div class="hero-actions"><a class="button-primary" href="#pitchers"><span data-i18n="browsePitchers">Meet the pitchers</span> ↗</a><a class="button-outline" href="#database" data-i18n="navMetrics">Metrics DB</a></div>
         <div class="release-line" id="release-line">2024 KBO · <span data-i18n="loading">Loading dataset…</span></div>
       </div>
       <div class="hero-visual">
         <div class="visual-frame">
           <div class="visual-top"><span class="live-dot"></span><span data-i18n="realSequence">A REAL DELIVERY</span><button id="hero-pause" class="demo-pause" aria-pressed="false" data-i18n="pauseDemo">Pause demo</button></div>
           <div class="field-lines"></div>
-          <div class="pitcher-art"><div class="art-glow"></div><svg class="hero-skeleton" viewBox="0 0 320 390" role="img" aria-label="Animated pitching motion from a dataset clip"><polyline id="hero-wrist-trail" class="wrist-trail" points=""></polyline><g class="bones" id="hero-bones"></g><g class="joints" id="hero-joints"></g></svg><div class="art-tag tag-left"><span>26</span><small data-i18n="keypointLabel">KEYPOINTS</small></div><div class="art-tag tag-right"><span id="hero-fps">—</span><small>FPS</small></div></div>
+          <div class="pitcher-art"><div class="art-glow"></div><svg class="hero-skeleton" viewBox="0 0 320 390" role="img" aria-label="Animated pitching motion from a dataset clip"><polyline id="hero-wrist-trail" class="wrist-trail" points=""></polyline><g class="bones" id="hero-bones"></g><g class="joints" id="hero-joints"></g></svg></div>
           <div class="visual-bottom"><span id="hero-time">00:00.00</span><div class="timeline"><i id="hero-progress"></i></div><span id="hero-frame">F0000</span></div>
         </div>
         <div class="demo-caption"><div><span class="micro-label" data-i18n="linkedExample">PITCH × MOTION</span><strong id="demo-name">—</strong></div><label><span class="sr-only" data-i18n="pitch">Pitch type</span><select id="demo-pitch" aria-label="Demo pitch type" disabled><option>—</option></select></label><span id="demo-speed" class="demo-speed">—</span><a id="demo-open" href="#explore" class="demo-open" data-i18n="inspectPitch">Inspect this pitch ↗</a></div>
       </div>
     </section>
     <section class="dataset-numbers" id="overview-stats" aria-label="Dataset coverage" aria-live="polite"></section>
-    <div class="research-line"><span data-i18n="researchLine">One pitch is the common thread.</span><p data-i18n="researchDesc">Start with a pitcher. Explore the repertoire. Follow a point back to the actual delivery.</p><span class="research-arrow" aria-hidden="true">↘</span></div>
-
     <section class="home-discover" id="home-discover">
-      <div class="home-steps"><article><span>01</span><h3 data-i18n="homeStep1">Understand the player</h3><p data-i18n="homeStep1Desc">Five comparable characteristics.</p></article><article><span>02</span><h3 data-i18n="homeStep2">Read the repertoire</h3><p data-i18n="homeStep2Desc">Usage, speed and location.</p></article><article><span>03</span><h3 data-i18n="homeStep3">Watch the delivery</h3><p data-i18n="homeStep3Desc">Actual motion with a reading guide.</p></article></div>
       <div class="home-discover-heading"><h2 data-i18n="homePlayers">A few reports to explore</h2><a href="#pitchers" data-i18n="seeAllPlayers">See all pitchers</a></div><div id="home-featured-players" class="home-featured-players"></div>
       <p class="home-data-scope" data-i18n="coverageShort">2024 · 32 acquired games · not a full-season sample</p>
     </section>
@@ -78,29 +75,22 @@
     <section class="portal-section methods-section" id="guide">
       <div class="section-head"><div><div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="methodsEyebrow">04 / DATASET GUIDE</span></div><h2 data-i18n="methodsTitle">Dataset guide</h2></div><p data-i18n="methodsDesc">What is included and how to use it.</p></div>
       <div id="dataset-card"></div>
-      <div class="methods-grid">
-        <article class="method-card"><span class="micro-label">01</span><h3 data-i18n="sampleTitle">Collected data</h3><p data-i18n="sampleDesc">Broadcast highlights select memorable plays, not a random sample. Clip repertoire and the acquired game records are separate denominators. Neither represents a complete season.</p><p data-i18n="inclusionDesc">Includes automatically selected pitcher clips with identified players and published 2D/3D estimates. Tracking failures, uncertain depth, and incomplete deliveries may remain; quality flags accompany the data.</p></article>
-        <article class="method-card"><span class="micro-label">02</span><h3 data-i18n="provenanceTitle">Same pitch. Traceable evidence.</h3><p data-i18n="provenanceDesc">A game, pitcher code and pitch ID must agree with the accepted automatic link audit. Held and unresolved links never inherit a pitch record. Duplicate clips share one pitch-record denominator.</p><p data-i18n="reviewDesc">Automatic acceptance is not human validation. Player identity evidence, pitch linkage and motion quality are separate checks.</p></article>
-        <article class="method-card"><span class="micro-label">03</span><h3 data-i18n="coordinateTitle">Motion data</h3><p data-i18n="coordinateDesc">Explore pitching motion through 2D and 3D joint coordinates. The 3D motion is estimated from video; distances and joint angles may differ from actual measurements.</p></article>
-      </div>
-      <details class="dictionary model-details"><summary data-i18n="modelDetails">Coordinate formats and models</summary><p data-i18n="modelDescription">2D uses RTMPose (Halpe-26); 3D combines GVHMR and MotionBERT (SMPL-24). Model and coordinate details are recorded in each file.</p><p data-i18n="timeDesc">Time follows broadcast playback. Unknown slow motion is not converted to physical time; no peak angular velocity or force-transfer score is published.</p></details>
-      <details class="dictionary"><summary data-i18n="metricDictionary">Metric dictionary & availability</summary><div id="metric-dictionary"></div></details>
-      <div class="coverage-block"><div><h3 data-i18n="coverageTitle">Coverage, not a leaderboard</h3><p data-i18n="coverageDesc">The distributions below describe the collected clips. Missing pitch labels are shown explicitly.</p></div><div id="coverage-charts"></div></div>
-      <div class="downloads-block" id="downloads"><div><div class="eyebrow"><span class="eyebrow-line"></span><span>DOWNLOADS</span></div><h3 data-i18n="downloadsTitle">Take the next question with you.</h3><p data-i18n="downloadsDesc">Download metadata and per-player records here. Original and refined pose files, quality reports and per-clip JSON/CSV are linked from the explorer.</p></div><div class="download-links"><a href="data/metrics/pitches.csv.gz" download>Mechanics database · CSV.gz ↓</a><a href="data/metrics/dictionary.json" download>Metric dictionary · JSON ↓</a><a href="data/clips.json" download data-i18n="downloadIndex">Clip index · JSON ↓</a><a href="data/portal/summary.json" download data-i18n="downloadSummary">Profiles & coverage · JSON ↓</a><a href="data/portal/pitch_records.csv.gz" download data-i18n="downloadRecords">All acquired records · CSV.gz ↓</a><a href="data/motion_summary.json" download data-i18n="downloadQuality">Motion quality summary · JSON ↓</a><a href="docs/portal-example.py" download data-i18n="downloadExample">Example code · Python ↓</a></div></div>
-      <div class="citation-row"><div><h3 data-i18n="citationTitle">Version & citation</h3><p id="citation-text"></p><button id="copy-citation" class="text-btn" data-i18n="copyCitation">Copy citation</button></div><div><h3 data-i18n="termsTitle">Use & attribution</h3><p data-i18n="termsDesc">Broadcast footage stays with its providers; only links and numerical poses are packaged. Portraits: KBO. No blanket license for third-party footage, records, images or body models is granted here. Check the source and model terms before reuse.</p><a href="README.md" class="text-link" data-i18n="releaseDetails">Release details & change log ↗</a></div></div>
+      <div class="downloads-block" id="downloads"><div><div class="eyebrow"><span class="eyebrow-line"></span><span>DOWNLOADS</span></div><h3 data-i18n="downloadsTitle">Take the next question with you.</h3><p data-i18n="downloadsDesc">Download metadata and per-player records here. Original and refined pose files, quality reports and per-clip JSON/CSV are linked from the explorer.</p></div><div class="download-links"><a href="data/metrics/pitches.csv.gz" download>Mechanics database · CSV.gz ↓</a><a href="data/metrics/dictionary.json" download>Metric dictionary · JSON ↓</a><a href="data/clips.json" download data-i18n="downloadIndex">Clip index · JSON ↓</a><a href="data/portal/summary.json" download data-i18n="downloadSummary">Profiles & coverage · JSON ↓</a><a href="data/portal/pitch_records.csv.gz" download data-i18n="downloadRecords">All acquired records · CSV.gz ↓</a><a href="docs/portal-example.py" download data-i18n="downloadExample">Example code · Python ↓</a></div></div>
+      <div class="citation-row"><div><h3 data-i18n="citationTitle">Version & citation</h3><p id="citation-text"></p><button id="copy-citation" class="text-btn" data-i18n="copyCitation">Copy citation</button></div><div><h3 data-i18n="termsTitle">Use & attribution</h3><p data-i18n="termsDesc">Broadcast footage stays with its providers; only links and numerical poses are packaged. Portraits: KBO. No blanket license for third-party footage, records, images or body models is granted here. Check the source and model terms before reuse.</p></div></div>
     </section>
   </main>
   <footer><a class="brand footer-brand" href="#home"><span class="brand-mark"><span></span></span><span class="brand-name">KBO <b>PITCH LAB</b></span></a><span class="footer-note" data-i18n="footerNote">An open research archive connecting pitch records and motion.</span><a href="https://github.com/kbo-pitch-db/kbo-pitch-db.github.io" target="_blank" rel="noopener noreferrer" class="footer-copy">GITHUB ↗</a></footer>
   <div id="toast" class="toast" role="status"></div>
 </div>
 <script src="reconstruction_registry.js?v=20261028-gvhmr-all813-v1"></script>
-<script src="motion_viewer.js?v=20261028-ko-copy1"></script>
+<script src="motion_viewer.js?v=20261029-visitor1"></script>
 <script src="pitch_charts.js?v=20261028-ux2"></script>
-<script src="mechanics_report.js?v=20261029-bio2"></script>
-<script src="metrics_database.js?v=20261029-bio2"></script>
-<script src="profile_experience.js?v=20261029-bio2"></script>
-<script src="portal.js?v=20261029-home1"></script>
-<script src="hero_motion.js?v=20261028-portal1"></script>
+<script src="mechanics_report.js?v=20261029-visitor1"></script>
+<script src="metrics_database.js?v=20261029-visitor1"></script>
+<script src="player_overview.js?v=20261029-visitor1"></script>
+<script src="profile_experience.js?v=20261029-visitor1"></script>
+<script src="portal.js?v=20261029-visitor1"></script>
+<script src="hero_motion.js?v=20261029-visitor1"></script>
 <script src="app.js?v=20261028-ko-copy1"></script>
 </body>
 </html>

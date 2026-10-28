@@ -15,8 +15,8 @@ window.HeroMotion = (() => {
       if(request!==ticket)return;const pose=cache.get(path),points=pose.frames.flatMap(f=>f.keypoints.filter(valid));if(!points.length)throw Error('empty');
       const low=[Infinity,Infinity],high=[-Infinity,-Infinity];for(const p of points)for(let i=0;i<2;i++){low[i]=Math.min(low[i],p[i]);high[i]=Math.max(high[i],p[i])}
       current={clip,pose,center:low.map((v,i)=>(v+high[i])/2),scale:Math.min(250/Math.max(1,high[0]-low[0]),300/Math.max(1,high[1]-low[1]))};frame=0;last=0;
-      document.querySelector('#hero-fps').textContent=Number(pose.fps).toFixed(2);
-      document.querySelector('.tag-left span').textContent=pose.joints.length;
+
+
       skeleton.setAttribute('aria-label',`${clip.player} · ${clip.pitch} · ${clip.speed} km/h · ${clip.id}`);skeleton.dataset.clip=clip.id;draw();
     }catch(error){if(request===ticket){current=null;document.querySelector('#hero-bones').replaceChildren();document.querySelector('#hero-joints').replaceChildren();document.querySelector('#hero-frame').textContent='—'}}
   }

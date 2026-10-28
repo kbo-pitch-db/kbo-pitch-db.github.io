@@ -67,14 +67,19 @@ window.PitcherExperience = (() => {
   function install(){Object.assign(I18N.en,en);Object.assign(I18N.ko,ko)}
   function stub(p){return app.clips.find(c=>c.playerCode===p.code)||{player:p.name,playerCode:p.code,playerKnown:true,playerKey:'naver:'+p.code}}
   function teams(p){return p.teams.map(t=>app.lang==='en'?({'삼성':'Samsung','한화':'Hanwha','키움':'Kiwoom','두산':'Doosan','롯데':'Lotte'}[t]||t):t).join(' / ')}
-  function stop(){generation++;formClock?.pause();formClock=null;window.MechanicsReport?.dispose()}
-  function navigateTab(tab){state().reportTab=tab;if(tab!=='mechanics'){const link=new URL(location.href);window.MechanicsReport?.clearLink(link);history.replaceState(null,'',link)}render();$('#report-tab-'+tab)?.focus({preventScroll:true});document.querySelector('.report-tabs')?.scrollIntoView({behavior:'smooth',block:'nearest'})}
+  function stop(){window.PlayerOverview?.stop();generation++;formClock?.pause();formClock=null;window.MechanicsReport?.dispose()}
+  function navigateTab(tab){state().reportTab=tab;const routeLink=new URL(location.href);routeLink.searchParams.set('analysis_tab',tab);routeLink.hash='analysis';history.replaceState(null,'',routeLink);if(tab!=='mechanics'){const link=new URL(location.href);window.MechanicsReport?.clearLink(link);history.replaceState(null,'',link)}render();$('#report-tab-'+tab)?.focus({preventScroll:true});document.querySelector('.report-tabs')?.scrollIntoView({behavior:'smooth',block:'nearest'})}
   function directory(open){document.querySelectorAll('#pitchers [data-directory]').forEach(el=>el.hidden=open);$('#pitchers').classList.toggle('showing-report',open)}
   function render(){
     const p=player(),d=data();if(!p||!d)return;stop();directory(true);
+    const advanced=location.hash==='#analysis';$('#pitcher-profile').hidden=advanced;$('#analysis-profile').hidden=!advanced;
+    if(advanced){$('#analysis-profile').classList.remove('visitor-profile');renderAdvanced()}else window.PlayerOverview.mount($('#pitcher-profile'),p,d);
+  }
+  function renderAdvanced(){
+    const p=player(),d=data();if(!p||!d)return;stop();directory(true);
     const tab=state().reportTab||'metrics',stats=p.statistics;
-    const section=$('#pitcher-profile');section.hidden=false;
-    section.innerHTML=`<div class="report-topline"><button class="back-to-players">← ${text(label('backPlayers'))}</button><span>${text(label('coverageShort'))}</span><a href="${text(url(p.detailPath))}" download>JSON ↓</a></div>
+    const section=$('#analysis-profile');section.hidden=false;
+    section.innerHTML=`<div class="report-topline"><a href="${text(PlayerOverview.playerLink(p.code))}" class="analysis-player-summary">${app.lang==='ko'?'선수 요약':'Player overview'}</a><button class="back-to-players">← ${text(label('backPlayers'))}</button><span>${text(label('coverageShort'))}</span><a href="${text(url(p.detailPath))}" download>JSON ↓</a></div>
       <div class="report-identity"><span class="profile-portrait">${playerPortrait(stub(p))}</span><div><span class="micro-label">2024 KBO · ${text(teams(p))}</span><h2>${text(p.name)} <small>${text(p.hand?label(p.hand==='L'?'left':'right'):label('notRecorded'))}</small></h2><div class="player-style" ${tab==='metrics'?'hidden':''}>${text(label('style_'+stats.archetype))}</div><details class="style-rule" ${tab==='metrics'?'hidden':''}><summary>${text(label('styleRule'))}</summary><p>${text(label('styleRules'))}</p></details></div><div class="report-coverage"><strong>${p.recordCount.toLocaleString()}</strong><span>${text(label('samplePitches'))}</span><small>${p.recordGames} ${text(label('gamesCaptured'))} · ${p.recordStart} — ${p.recordEnd}</small></div></div>
       <p class="report-sample-note">${text(label('recordCoverageNote'))}</p>
       <nav class="report-tabs" role="tablist" aria-label="${text(label('reportTag'))}">${[['metrics','reportMetrics'],['arsenal','reportArsenal'],['mechanics','reportMechanics'],['overview','reportOverview']].map(([key,title])=>`<button id="report-tab-${key}" role="tab" data-report-tab="${key}" aria-selected="${tab===key}" aria-controls="report-pane" tabindex="${tab===key?'0':'-1'}">${text(label(title))}${key==='mechanics'?`<small>${p.clipCount}</small>`:''}</button>`).join('')}</nav>
@@ -89,7 +94,8 @@ window.PitcherExperience = (() => {
     if(tab==='arsenal')bindArsenal(p,d);
     if(tab==='mechanics')bindMechanics(p,d);
   }
-  function back(){stop();state().active=null;directory(false);$('#pitcher-profile').hidden=true;const link=new URL(location.href);link.searchParams.delete('pitcher');window.MechanicsReport?.clearLink(link);window.MetricsDatabase?.clearPlayerLink(link);history.replaceState(null,'',link);$('#pitchers').scrollIntoView({behavior:'smooth'})}
+  function back(){stop();state().active=null;directory(false);$('#pitcher-profile').hidden=true;$('#analysis-profile').hidden=true;const link=new URL(location.href);link.search='';link.hash='pitchers';history.pushState(null,'',link);PitchPortal.render();$('#pitchers').scrollIntoView({behavior:'smooth'})}
+
   function metricWhy(key){return label(({fastballVelocity:'velocityMeaning',whiffRate:'whiffMeaning',cswRate:'cswMeaning',zoneRate:'zoneMeaning',breakingShare:'breakingMeaning'})[key])}
   function quickStats(p){
     const stats=p.statistics;

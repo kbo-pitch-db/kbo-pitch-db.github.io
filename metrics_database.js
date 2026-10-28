@@ -113,11 +113,11 @@ window.MetricsDatabase = (() => {
     const token={};root._metricsToken=token;
     root.innerHTML=`<p class="db-loading" role="status">${t('메커니즘 지표를 불러오는 중…','Loading mechanics metrics…')}</p>`;
     try{await load();if(!root.isConnected||root._metricsToken!==token)return;
-      const key=root.id+':'+(fixedPlayer||''),state=contexts.get(key)||parseOptions(fixedPlayer);contexts.set(key,state);
+      const key=root.id+':'+(fixedPlayer||''),state=parseOptions(fixedPlayer);contexts.set(key,state);
       render(root,state,fixedPlayer);
     }catch(error){if(root.isConnected&&root._metricsToken===token)root.innerHTML=`<p class="db-error" role="alert">${t('지표 데이터베이스를 불러오지 못했습니다.','The metrics database could not be loaded.')} <button class="button-outline" data-db-retry>${t('다시 시도','Retry')}</button></p>`;root.querySelector('[data-db-retry]')?.addEventListener('click',()=>mount(root,fixedPlayer))}
   }
-  function refresh(){if(document.querySelector('.shell')?.dataset.route==='database')mount(document.querySelector('#metrics-database-root'));else load().then(renderGuideDictionary).catch(()=>{});renderGuideDictionary()}
+  function refresh(){if(document.querySelector('.shell')?.dataset.route==='database')mount(document.querySelector('#metrics-database-root'))}
   function render(root,state,fixedPlayer,focusId){
     if(!root.isConnected||root._dbRendering)return;
     root._dbResize?.disconnect();

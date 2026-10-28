@@ -31,6 +31,8 @@ with sync_playwright() as p:
     page.locator('#pitcher-search').fill('65320')
     assert page.locator('.pitcher-card').count()==1
     page.locator('.pitcher-card').click()
+    page.wait_for_selector('#visitor-play')
+    page.locator('[data-visitor-explore]').click()
     page.wait_for_selector('#player-metrics-root .db-aggregate-table')
     assert page.locator('#report-tab-metrics').get_attribute('aria-selected')=='true'
     page.locator('#report-tab-overview').click()
@@ -125,7 +127,7 @@ with sync_playwright() as p:
     assert page.locator('#compare-curves path').count()==4
     assert page.evaluate('document.documentElement.scrollWidth')<=321
     # A player without any collected motion still has a complete pitch-record report.
-    page.goto(base+'/?pitcher=50030#pitchers',wait_until='networkidle')
+    page.goto(base+'/?pitcher=50030#analysis',wait_until='networkidle')
     page.wait_for_selector('.report-identity')
     assert page.locator('html').get_attribute('lang')=='ko'
     assert page.locator('.report-coverage>strong').inner_text()=='27'
