@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "reviewDate": "2026-10-29",
+  "method": "Assistant visual review of source context and event images; provisional labels, not independently adjudicated human ground truth. All 34 initial windup candidates, both pace alerts, 24 unresolved and 16 sampled set clips reviewed (76 total).",
+  "reviewedClipIds": [
+    "8eeef70dce48_c0050",
+    "7ef66f7a16b0_c0043",
+    "d644482ee06d_c0037",
+    "98e127654749_c0007",
+    "8eeef70dce48_c0007",
+    "0d84991ce9f6_c0018",
+    "0e1f00c192b9_c0008",
+    "1e24233962b6_c0021",
+    "d644482ee06d_c0016",
+    "b902a8ad2499_c0015",
+    "d4ea211e62bd_c0025",
+    "8eeef70dce48_c0021",
+    "8eeef70dce48_c0023",
+    "0e1f00c192b9_c0033",
+    "1e24233962b6_c0011",
+    "1e24233962b6_c0015",
+    "1e24233962b6_c0022",
+    "5153961e52fe_c0018",
+    "782c3ca51bd5_c0033",
+    "8eeef70dce48_c0040",
+    "98e127654749_c0019",
+    "99f1a527c09b_c0035",
+    "b54e0e701d77_c0021",
+    "b54e0e701d77_c0026",
+    "b54e0e701d77_c0027",
+    "d30b22cfc0b0_c0019",
+    "d30b22cfc0b0_c0026",
+    "d644482ee06d_c0015",
+    "e1cae96b4d83_c0009",
+    "e56945a0fd80_c0005",
+    "e56945a0fd80_c0013",
+    "e56945a0fd80_c0018",
+    "e56945a0fd80_c0019",
+    "e56945a0fd80_c0021",
+    "e56945a0fd80_c0028",
+    "e72b3a782760_c0024",
+    "fa1febd5056f_c0015",
+    "d4ea211e62bd_c0026",
+    "0b70417b94ab_c0015",
+    "d4ea211e62bd_c0014",
+    "8eeef70dce48_c0034",
+    "b902a8ad2499_c0014",
+    "98e127654749_c0020",
+    "3ef5720dccec_c0013",
+    "3ef5720dccec_c0014",
+    "0d84991ce9f6_c0042",
+    "fa1febd5056f_c0007",
+    "210747e6a7e9_c0015",
+    "5153961e52fe_c0010",
+    "b54e0e701d77_c0050",
+    "e72b3a782760_c0011",
+    "3fdcd2dbaf58_c0005",
+    "3ef5720dccec_c0017",
+    "f4acaa32cd9a_c0019",
+    "3fdcd2dbaf58_c0015",
+    "3fdcd2dbaf58_c0018",
+    "d644482ee06d_c0043",
+    "9e6eb12cf195_c0004",
+    "8eeef70dce48_c0045",
+    "0e1f00c192b9_c0005",
+    "0e1f00c192b9_c0028",
+    "8eeef70dce48_c0036",
+    "0e1f00c192b9_c0030",
+    "0d84991ce9f6_c0019",
+    "1161553ed7d7_c0019",
+    "fa1febd5056f_c0011",
+    "1e24233962b6_c0010",
+    "3fdcd2dbaf58_c0019",
+    "4e09dd724a8c_c0023",
+    "782c3ca51bd5_c0032",
+    "8eeef70dce48_c0019",
+    "99f1a527c09b_c0028",
+    "d30b22cfc0b0_c0029",
+    "dd2c4908dfa7_c0015",
+    "e56945a0fd80_c0024",
+    "fa1febd5056f_c0042"
+  ],
+  "clips": {
+    "8eeef70dce48_c0050": {
+      "excludeSequence": true,
+      "stance": "unresolved",
+      "slowMotion": "not_flagged",
+      "reason": "post_release_shot_without_complete_delivery"
+    },
+    "7ef66f7a16b0_c0043": {
+      "excludeSequence": true,
+      "stance": "unresolved",
+      "slowMotion": "not_flagged",
+      "reason": "player_walking_between_plays"
+    },
+    "d644482ee06d_c0037": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "98e127654749_c0007": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "0d84991ce9f6_c0018": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "d644482ee06d_c0016": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "b902a8ad2499_c0015": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "d4ea211e62bd_c0025": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "8eeef70dce48_c0040": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "98e127654749_c0019": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "e56945a0fd80_c0005": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "fa1febd5056f_c0015": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "b902a8ad2499_c0014": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "0d84991ce9f6_c0042": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "210747e6a7e9_c0015": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "5153961e52fe_c0010": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "3fdcd2dbaf58_c0005": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "3ef5720dccec_c0017": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "3fdcd2dbaf58_c0015": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "d644482ee06d_c0043": {
+      "stance": "unresolved",
+      "reason": "Preparation is outside the clip or already in progress; source context does not resolve set versus windup."
+    },
+    "d4ea211e62bd_c0026": {
+      "stance": "set",
+      "reason": "Visible stationary side-on preparation before leg lift in source context."
+    },
+    "98e127654749_c0020": {
+      "stance": "set",
+      "reason": "Visible stationary side-on preparation before leg lift in source context."
+    },
+    "e72b3a782760_c0011": {
+      "stance": "set",
+      "reason": "Visible stationary side-on preparation before leg lift in source context."
+    },
+    "f4acaa32cd9a_c0019": {
+      "stance": "set",
+      "reason": "Visible stationary side-on preparation before leg lift in source context."
+    },
+    "3fdcd2dbaf58_c0018": {
+      "stance": "set",
+      "reason": "Visible stationary side-on preparation before leg lift in source context."
+    },
+    "8eeef70dce48_c0045": {
+      "stance": "set",
+      "reason": "Visible stationary side-on preparation before leg lift in source context."
+    },
+    "0b70417b94ab_c0015": {
+      "stance": "windup",
+      "reason": "Visible front-on preparation followed by a turn into leg lift; provisional source-image classification."
+    },
+    "8eeef70dce48_c0034": {
+      "stance": "windup",
+      "reason": "Visible front-on preparation followed by a turn into leg lift; provisional source-image classification."
+    },
+    "3ef5720dccec_c0014": {
+      "stance": "windup",
+      "reason": "Visible front-on preparation followed by a turn into leg lift; provisional source-image classification."
+    },
+    "fa1febd5056f_c0007": {
+      "stance": "windup",
+      "reason": "Visible front-on preparation followed by a turn into leg lift; provisional source-image classification."
+    },
+    "b54e0e701d77_c0050": {
+      "stance": "windup",
+      "reason": "Visible front-on preparation followed by a turn into leg lift; provisional source-image classification."
+    }
+  },
+  "slowMotionConfirmed": [],
+  "note": "Both initial pace alerts were non-delivery shots. No confirmed slow-motion delivery among these candidates; unflagged clips are not independently speed-verified."
+}

@@ -126,7 +126,7 @@ window.PitchPortal = (() => {
     const advanced=same&&(incoming.hash==='#analysis'||[...incoming.searchParams.keys()].some(k=>k.startsWith('pm_')||k.startsWith('db_')||['mechanics','analysis_tab'].includes(k)));
     if(advanced)incoming.hash='analysis';else if(scroll)incoming.hash='pitchers';
     state.reportTab=incoming.searchParams.get('mechanics')==='lead-knee'?'mechanics':['metrics','arsenal','mechanics','overview'].includes(incoming.searchParams.get('analysis_tab'))?incoming.searchParams.get('analysis_tab'):'metrics';
-    if(!advanced&&incoming.hash==='#pitchers'){const pitch=incoming.searchParams.get('pitch');incoming.search='';incoming.searchParams.set('pitcher',code);if(pitch)incoming.searchParams.set('pitch',pitch)}
+    if(!advanced&&incoming.hash==='#pitchers'){const pitch=incoming.searchParams.get('pitch'),delivery=incoming.searchParams.get('delivery');incoming.search='';incoming.searchParams.set('pitcher',code);if(pitch)incoming.searchParams.set('pitch',pitch);if(['set','windup'].includes(delivery))incoming.searchParams.set('delivery',delivery)}
     history.replaceState(null,'',incoming);window.PitcherExperience?.stop();window.PitcherExperience?.directory(true);activeNav(false);
     const section=$(advanced?'#analysis-profile':'#pitcher-profile');section.hidden=false;section.innerHTML=`<p class="sample-note">${e(tr('loading'))}</p>`;
 

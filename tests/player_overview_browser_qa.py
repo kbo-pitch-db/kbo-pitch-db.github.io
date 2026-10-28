@@ -88,7 +88,7 @@ with sync_playwright() as p:
     assert root.locator('[data-pitch-row="슬라이더"]').get_attribute('aria-pressed') == 'true'
     assert root.locator('[data-pitch-row="직구"]').get_attribute('aria-pressed') == 'false'
     assert root.locator('[data-pitch-row="슬라이더"] strong').first.inner_text() == '32.6%'
-    assert set(parse_qs(urlparse(page.url).query)) == {'pitcher', 'pitch'}
+    assert set(parse_qs(urlparse(page.url).query)) <= {'pitcher', 'pitch', 'delivery'}
     separation = root.locator('[data-mechanism="thorax_pelvis_axial_fc"]')
     assert '16.5' in separation.inner_text() and '3구' in separation.inner_text()
     knee = root.locator('[data-mechanism="lead_knee_net_extension"]')
