@@ -40,6 +40,23 @@ with sync_playwright() as p:
         assert root.locator(selector).first.bounding_box()['height']>=44
     for text in ['GVHMR', 'MotionBERT', 'RTMPose', '감사', '이관', '모델', '계산 방법']:
         assert text not in root.inner_text(), text
+    # Graphs are visible below the cards without opening the details dialog.
+    page.wait_for_selector('#visitor-graphs[data-clip]')
+    assert root.locator('.visitor-inline-graph').count() == 2
+    assert root.locator('#visitor-graphs').evaluate('(el)=>!!(el.compareDocumentPosition(document.querySelector("#visitor-cards"))&Node.DOCUMENT_POSITION_PRECEDING)')
+    slider = root.locator('#visitor-frame')
+    maximum = int(slider.get_attribute('max'))
+    def selected_frame(expected):
+        assert root.locator('canvas').evaluate_all('(els)=>els.map(e=>Number(e.dataset.frame))') == [expected, expected]
+        assert root.locator('.visitor-wave-cursor').evaluate_all('(els)=>els.map(e=>Number(e.dataset.frame))') == [expected, expected]
+        assert slider.input_value() == str(expected)
+        assert root.locator('#visitor-frame-value').inner_text() == f'{expected+1} / {maximum+1}'
+    for frame in [maximum // 2, maximum, 0]:
+        slider.fill(str(frame)); selected_frame(frame)
+    slider.focus();page.keyboard.press('ArrowRight');selected_frame(1)
+    page.keyboard.press('End');selected_frame(maximum)
+    page.keyboard.press('Home');selected_frame(0)
+    first_graph_clip = root.locator('#visitor-graphs').get_attribute('data-clip')
     # Both canvases advance together with the only playback button.
     page.locator('#visitor-play').click()
     page.wait_for_function("[...document.querySelectorAll('#visitor-form canvas')].every(c=>Number(c.dataset.frame)>2)")
@@ -47,6 +64,11 @@ with sync_playwright() as p:
     assert frames[0] == frames[1], frames
     page.locator('#visitor-play').click()
     assert page.locator('#visitor-play').get_attribute('aria-pressed') == 'false'
+    selected_frame(int(slider.input_value()))
+    # Scrubbing while playing pauses on the exact requested frame.
+    page.locator('#visitor-play').click();slider.fill('3');selected_frame(3)
+    assert page.locator('#visitor-play').get_attribute('aria-pressed') == 'false'
+
     # 3D has keyboard and touch rotation, without opening another screen.
     canvas = root.locator('canvas[data-dimension="3"]')
     before = root.locator('.motion-yaw').input_value()
@@ -59,6 +81,10 @@ with sync_playwright() as p:
     page.locator('#visitor-pitch').select_option('슬라이더')
     page.wait_for_function("document.querySelector('.visitor-delivery-meta')?.textContent.includes('슬라이더')")
     page.wait_for_selector('#visitor-form[data-ready=true]')
+    page.wait_for_selector('#visitor-graphs[data-clip]')
+    assert root.locator('#visitor-graphs').get_attribute('data-clip') != first_graph_clip
+    maximum = int(slider.get_attribute('max'))
+    slider.fill(str(maximum // 2));selected_frame(maximum // 2)
     assert root.locator('[data-pitch-row="슬라이더"]').get_attribute('aria-pressed') == 'true'
     assert root.locator('[data-pitch-row="직구"]').get_attribute('aria-pressed') == 'false'
     assert root.locator('[data-pitch-row="슬라이더"] strong').first.inner_text() == '32.6%'
@@ -136,6 +162,7 @@ with sync_playwright() as p:
     assert '수집된 동작 영상이 없습니다' in root.inner_text()
     assert root.locator('.visitor-pitch-row').count() == 3
     assert root.locator('.visitor-metric-value strong').count() == 0
+    assert root.locator('#visitor-frame,.visitor-inline-graph').count() == 0
     # English uses the same three-section screen.
     page.locator('#lang-toggle').click()
     assert 'Featured delivery' in root.inner_text()
