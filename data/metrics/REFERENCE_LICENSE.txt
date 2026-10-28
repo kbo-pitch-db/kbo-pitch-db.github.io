@@ -1,0 +1,8 @@
+reference_check.json contains derived numerical comparisons using OpenBiomechanics.
+Attribution: Driveline Baseball / OpenBiomechanics
+https://github.com/drivelineresearch/openbiomechanics
+Source data and these derived comparisons: CC BY-NC-SA 4.0, subject to upstream exclusions.
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Original source signals, C3D data, ZIPs and licensed model assets are not redistributed here.
+This reference comparison does not validate KBO broadcast reconstruction accuracy.
+Other KBO-derived estimates retain the repository's existing data/source terms.

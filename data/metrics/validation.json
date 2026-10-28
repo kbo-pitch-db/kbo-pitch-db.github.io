@@ -1,0 +1,75 @@
+{
+  "version": "biomechanics-db-20261029-v2",
+  "calculationVerification": {
+    "suite": "python unittest discover tests/test_*.py",
+    "testsRun": 137,
+    "skipped": 2,
+    "result": "passed",
+    "scientificDefinitionAndReleaseTests": 20,
+    "scope": "Known geometry, transforms, sign/wrap, gimbal, axial non-identifiability, native-frame/event gating, physical-clock gating, public pose-to-scalar consistency, immutable archive and pitch identity"
+  },
+  "javascriptVerification": {
+    "result": "passed",
+    "checks": [
+      "3D summary mean/SD/IQR/n/games",
+      "Candidate-event exclusion",
+      "Separate capture/model/version grouping",
+      "Complete filtered CSV and identical full-export headers",
+      "Zero/null and spreadsheet-safe export",
+      "Velocity filters",
+      "Existing portal geometry, bounded display interpolation and selected-joint behavior"
+    ]
+  },
+  "websiteVerification": {
+    "result": "passed",
+    "browser": "Chromium via Playwright",
+    "suites": [
+      "biomechanics_browser_qa",
+      "portal_browser_qa",
+      "readability_browser_qa",
+      "mechanics_browser_qa"
+    ],
+    "checks": [
+      "table filters/sort/column groups",
+      "filtered CSV/JSON",
+      "player statistics",
+      "dictionary sources and method differences",
+      "automatic-candidate exclusion from plots",
+      "URL restore",
+      "source-frame 2D/3D evidence",
+      "playback controls",
+      "KO/EN",
+      "responsive layouts and source-quality support tab"
+    ],
+    "pageErrors": 0
+  },
+  "stabilityDiagnostics": {
+    "eventBracketEndpointsAndMidpoint": true,
+    "smoothingNativeImageSigma": [
+      0.5,
+      1.0
+    ],
+    "alternativeModel": "GVHMR camera f12 / pre-native refit where available",
+    "pitchAxisHypothesisPerturbationDegrees": [
+      10,
+      20
+    ],
+    "scope": "Operational sensitivity only, not external accuracy"
+  },
+  "publicReferenceComparison": {
+    "pitches": 12,
+    "artifact": "reference_check.json",
+    "exactPOIReplication": false,
+    "scope": "Laboratory definition/implementation comparison only"
+  },
+  "externalAccuracyValidation": {
+    "status": "not_validated_against_external_GT",
+    "broadcastPairedGTTrials": 0
+  },
+  "sourceEventReview": {
+    "clips": 19,
+    "reviewer": "coding agent",
+    "independentHumanReview": false
+  },
+  "duplicateAudit": "duplicate_audit.json"
+}

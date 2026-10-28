@@ -1,0 +1,9 @@
+{
+  "clips": 813,
+  "framesDecoded": 135741,
+  "method": "Same player/game, >=3 exact 96x96 grayscale image hashes or >=80% shared source interval. Not a perceptual biomechanics classifier.",
+  "candidates": [],
+  "duplicateAcceptedPitchIds": 0,
+  "unresolvedClipUnitPolicy": "Unlinked clips remain clip observations and never inflate unique-pitch aggregates.",
+  "limitations": "Recompressed, recropped, mirrored or speed-edited replays can evade exact hashes; zero matches does not establish physical uniqueness."
+}

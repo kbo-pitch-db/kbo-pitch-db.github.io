@@ -1,0 +1,46 @@
+{
+  "version": "mechanics-db-20261028-v1",
+  "gitCommit": "2a092aa5",
+  "files": {
+    "pitches.csv.gz": {
+      "archive": "pitches.csv.gz",
+      "sha256": "3d43b670c6707980a86ed7f1c8de4b90ccec9368e5d20fd06f5729f5f6492b69",
+      "bytes": 355958
+    },
+    "database.json": {
+      "archive": "database.json.gz",
+      "sha256": "773a48324a73eadb0d6a5e6824f7f32b360aae65c60a2ae6020d2a604f0c6686",
+      "bytes": 7241816
+    },
+    "dictionary.json": {
+      "archive": "dictionary.json.gz",
+      "sha256": "4aad6a5c72756836dda4f82b091fba9493468195857b2b765a9730595007088d",
+      "bytes": 29581
+    },
+    "database.json.gz": {
+      "archive": "database.json.gz",
+      "sha256": "84a365e5109faf49045a2904938d8fb069846170df6a80c05f0dc445946e3071",
+      "bytes": 344289
+    },
+    "clip_provenance.json": {
+      "archive": "clip_provenance.json.gz",
+      "sha256": "c11020fd927d89a1b47e74bbdbb0cc69a0943e3e8bd799847d8c0cbf90997deb",
+      "bytes": 466791
+    },
+    "scripts/build_metrics_database.py": {
+      "archive": "build_metrics_database.py.gz",
+      "sha256": "30fabe965a41f32915f3587bd4d98e44efa469b8a1b39f8c27e4802b3dd7116f",
+      "bytes": 26611
+    },
+    "metrics_database.js": {
+      "archive": "metrics_database.js.gz",
+      "sha256": "a88babacf48a39805154921d9729a53fbce138d70825e4308c4c312003e1e005",
+      "bytes": 44130
+    },
+    "metrics_database.css": {
+      "archive": "metrics_database.css.gz",
+      "sha256": "1d25c3b15389b93ad288f3aebc94e25336b61e1c552a5a239984f85d94364873",
+      "bytes": 10761
+    }
+  }
+}

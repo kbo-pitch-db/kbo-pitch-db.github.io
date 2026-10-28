@@ -1,0 +1,71 @@
+{
+  "version": "biomechanics-db-20261029-v2",
+  "items": [
+    {
+      "id": "ground_reaction_force_and_braking_impulse",
+      "name": "지면반력·제동 충격량",
+      "required": [
+        "Synchronized calibrated force plates or validated instrumented mound",
+        "Independent physical clock",
+        "Foot contact attribution"
+      ],
+      "excludedProxy": "Knee extension is not braking force."
+    },
+    {
+      "id": "whole_body_com_deceleration",
+      "name": "전신 무게중심 감속",
+      "required": [
+        "Validated whole-body segment kinematics including relevant segments",
+        "Subject mass distribution/inertial model",
+        "Calibrated length and real time"
+      ],
+      "excludedProxy": "Pelvis center is not whole-body COM."
+    },
+    {
+      "id": "joint_moments_power_energy_flow",
+      "name": "관절 모멘트·파워·에너지 흐름",
+      "required": [
+        "Validated segment coordinate frames and rotations",
+        "Subject segment masses/COM/inertia",
+        "External forces/contact",
+        "Inverse dynamics and power/energy accounting",
+        "Synchronized physical time and calibrated length"
+      ],
+      "excludedProxy": "Angular-velocity ratios are not energy efficiency."
+    },
+    {
+      "id": "elbow_shoulder_load",
+      "name": "팔꿈치·어깨 부하",
+      "required": [
+        "Validated high-rate upper-limb orientation and anatomical joint axes",
+        "External forces and subject-specific inertial assumptions",
+        "Inverse dynamics compared against external ground truth"
+      ],
+      "excludedProxy": "Pose angle alone is not torque, tissue stress or injury risk."
+    },
+    {
+      "id": "energy_efficiency_or_kinetic_chain_score",
+      "name": "에너지 효율·운동사슬 종합 점수",
+      "required": [
+        "Public reproducible physical definition",
+        "Validated energy/power quantities and accounting boundary",
+        "External construct validation"
+      ],
+      "excludedProxy": "Peak order alone is not energy-transfer efficiency."
+    },
+    {
+      "id": "mvpi",
+      "name": "MVPI",
+      "required": [
+        "Verifiable public formal definition and reproducible implementation",
+        "Measurement conditions and independent validation"
+      ],
+      "excludedProxy": "No invented expansion, formula or score is implemented."
+    }
+  ],
+  "sources": [
+    "https://github.com/drivelineresearch/openbiomechanics/blob/main/baseball_pitching/README.md",
+    "https://drivelinebaseball.com/blogs/blog/a-quantitative-analysis-of-the-lead-leg-block-and-its-contributions-to-velocity",
+    "https://pubmed.ncbi.nlm.nih.gov/32635991/"
+  ]
+}

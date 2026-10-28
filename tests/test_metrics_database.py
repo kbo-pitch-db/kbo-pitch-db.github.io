@@ -1,4 +1,4 @@
-"""Validate metric provenance, pitch units, missingness and independent gates."""
+"""Regression checks for immutable v1 (retained as quality-only legacy data)."""
 import csv
 import gzip
 import hashlib
@@ -18,9 +18,9 @@ import build_metrics_database as builder
 class MetricsDatabaseTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.data=json.loads((ROOT/'data/metrics/database.json').read_text())
+        cls.data=json.loads(gzip.decompress((ROOT/'data/releases/metrics-20261028-v1/database.json.gz').read_bytes()))
         cls.clips={c['id']:c for c in json.loads((ROOT/'data/clips.json').read_text())['clips']}
-        cls.provenance=json.loads((ROOT/'data/metrics/clip_provenance.json').read_text())['clips']
+        cls.provenance=json.loads(gzip.decompress((ROOT/'data/releases/metrics-20261028-v1/clip_provenance.json.gz').read_bytes()))['clips']
 
     def test_record_and_motion_units_are_exhaustive_and_separate(self):
         rows=self.data['rows'];records=[r for r in rows if r['unit']=='pitch_record'];unlinked=[r for r in rows if r['unit']=='unlinked_clip']
@@ -112,9 +112,9 @@ class MetricsDatabaseTests(unittest.TestCase):
             finally:builder.DATA=old
 
     def test_full_csv_preserves_missing_and_public_compressed_payload(self):
-        plain=(ROOT/'data/metrics/database.json').read_bytes()
-        self.assertEqual(gzip.decompress((ROOT/'data/metrics/database.json.gz').read_bytes()),plain)
-        with gzip.open(ROOT/'data/metrics/pitches.csv.gz','rt',encoding='utf-8-sig',newline='') as stream:rows=list(csv.DictReader(stream))
+        plain=gzip.decompress((ROOT/'data/releases/metrics-20261028-v1/database.json.gz').read_bytes())
+        self.assertEqual(gzip.decompress((ROOT/'data/releases/metrics-20261028-v1/database.json.gz').read_bytes()),plain)
+        with gzip.open(ROOT/'data/releases/metrics-20261028-v1/pitches.csv.gz','rt',encoding='utf-8-sig',newline='') as stream:rows=list(csv.DictReader(stream))
         self.assertEqual(len(rows),10177)
         missing=next(r for r in rows if r['pitch_link_status']=='no_motion')
         self.assertEqual(missing['lead_knee_range_2d__value'],'')

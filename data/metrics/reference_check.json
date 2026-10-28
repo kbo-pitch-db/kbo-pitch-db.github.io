@@ -1,0 +1,355 @@
+{
+  "kind": "definition_and_implementation_comparison",
+  "broadcastAccuracyValidation": false,
+  "source": "https://github.com/drivelineresearch/openbiomechanics",
+  "license": "Derived summaries from OpenBiomechanics; CC BY-NC-SA 4.0; attribution Driveline Baseball. Source ZIPs not redistributed.",
+  "sourceHashes": {
+    "pitching_joint_angles.zip": "b4c4854ffcc52a0f757e0b3a3c86acdc4a2fc2e50516a76e62aabdb916afed46",
+    "pitching_joint_velos.zip": "5752f571b40acc4f02afc42dcfdb4b9eb191fcffd5fb25bc3c585e149941fb69",
+    "pitching_landmarks.zip": "efcc078d5d8e77ed1fbf0b9f6a78f750c57a624165f71f30e34142b74db7ec22"
+  },
+  "pitches": 12,
+  "results": [
+    {
+      "sessionPitch": "1031_2",
+      "sourceContactTimes": {
+        "fp10": 1.1806,
+        "fp100": 1.1917,
+        "br": 1.3389
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.8440264700890214,
+        "maxAbsoluteDegrees": 1.3383943861643246
+      },
+      "netExtension": {
+        "recomputedFC10": 11.029400000000003,
+        "recomputedFP100": 9.316099999999999,
+        "publishedPOI": 10.1399,
+        "errorFC10": 0.8895000000000017,
+        "errorFP100": -0.8238000000000021
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 449.407,
+        "publishedPOI": 452.7888,
+        "difference": -3.3817999999999984
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.022299999999999986,
+        "publishedPOISeconds": 0.0223
+      }
+    },
+    {
+      "sessionPitch": "1031_3",
+      "sourceContactTimes": {
+        "fp10": 0.6639,
+        "fp100": 0.6806,
+        "br": 0.825
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.8906869243261267,
+        "maxAbsoluteDegrees": 1.3813378006306323
+      },
+      "netExtension": {
+        "recomputedFC10": 19.013800000000003,
+        "recomputedFP100": 14.043399999999991,
+        "publishedPOI": 14.8421,
+        "errorFC10": 4.171700000000003,
+        "errorFP100": -0.7987000000000091
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 490.8747,
+        "publishedPOI": 513.3286,
+        "difference": -22.453900000000033
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.013900000000000023,
+        "publishedPOISeconds": 0.0139
+      }
+    },
+    {
+      "sessionPitch": "1097_1",
+      "sourceContactTimes": {
+        "fp10": 0.7722,
+        "fp100": 0.8278,
+        "br": 1.0028
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.7822551027705276,
+        "maxAbsoluteDegrees": 1.3543088228204283
+      },
+      "netExtension": {
+        "recomputedFC10": 18.689599999999995,
+        "recomputedFP100": 26.7861,
+        "publishedPOI": 26.2749,
+        "errorFC10": -7.585300000000004,
+        "errorFP100": 0.5112000000000023
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 333.5518,
+        "publishedPOI": 333.5518,
+        "difference": 0.0
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.025000000000000022,
+        "publishedPOISeconds": 0.025
+      }
+    },
+    {
+      "sessionPitch": "1097_2",
+      "sourceContactTimes": {
+        "fp10": 0.8528,
+        "fp100": 0.8917,
+        "br": 1.0611
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.936706367212503,
+        "maxAbsoluteDegrees": 1.5849618111520272
+      },
+      "netExtension": {
+        "recomputedFC10": 12.724800000000002,
+        "recomputedFP100": 12.7819,
+        "publishedPOI": 12.7819,
+        "errorFC10": -0.057099999999998374,
+        "errorFP100": 0.0
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 347.2241,
+        "publishedPOI": 350.0649,
+        "difference": -2.8408000000000015
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.016700000000000048,
+        "publishedPOISeconds": 0.0167
+      }
+    },
+    {
+      "sessionPitch": "1097_3",
+      "sourceContactTimes": {
+        "fp10": 0.8361,
+        "fp100": 0.8472,
+        "br": 1.0306
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.8337006721434965,
+        "maxAbsoluteDegrees": 1.9428189867673495
+      },
+      "netExtension": {
+        "recomputedFC10": 36.305499999999995,
+        "recomputedFP100": 33.6014,
+        "publishedPOI": 32.7313,
+        "errorFC10": 3.5741999999999976,
+        "errorFP100": 0.8701000000000008
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 477.7753,
+        "publishedPOI": 477.7753,
+        "difference": 0.0
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.013899999999999912,
+        "publishedPOISeconds": 0.0139
+      }
+    },
+    {
+      "sessionPitch": "1170_1",
+      "sourceContactTimes": {
+        "fp10": 0.9861,
+        "fp100": 1.0,
+        "br": 1.1667
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.8284343282067594,
+        "maxAbsoluteDegrees": 1.3760839717848654
+      },
+      "netExtension": {
+        "recomputedFC10": 17.262000000000004,
+        "recomputedFP100": 12.6508,
+        "publishedPOI": 12.6508,
+        "errorFC10": 4.611200000000004,
+        "errorFP100": 0.0
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 352.1963,
+        "publishedPOI": 354.4133,
+        "difference": -2.2169999999999845
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.06109999999999993,
+        "publishedPOISeconds": 0.0611
+      }
+    },
+    {
+      "sessionPitch": "1170_2",
+      "sourceContactTimes": {
+        "fp10": 0.8806,
+        "fp100": 0.8889,
+        "br": 1.0472
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 1.0217702920913019,
+        "maxAbsoluteDegrees": 1.7093810582384776
+      },
+      "netExtension": {
+        "recomputedFC10": 11.942,
+        "recomputedFP100": 9.2926,
+        "publishedPOI": 10.0847,
+        "errorFC10": 1.8573000000000004,
+        "errorFP100": -0.7920999999999996
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 343.5536,
+        "publishedPOI": 304.9185,
+        "difference": 38.63510000000002
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.06109999999999993,
+        "publishedPOISeconds": 0.0611
+      }
+    },
+    {
+      "sessionPitch": "1250_1",
+      "sourceContactTimes": {
+        "fp10": 0.6306,
+        "fp100": 0.6417,
+        "br": 0.7778
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 1.2792408418074712,
+        "maxAbsoluteDegrees": 2.0890338101504966
+      },
+      "netExtension": {
+        "recomputedFC10": 17.387999999999998,
+        "recomputedFP100": 15.740500000000004,
+        "publishedPOI": 16.1337,
+        "errorFC10": 1.254299999999997,
+        "errorFP100": -0.39319999999999666
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 434.884,
+        "publishedPOI": 434.884,
+        "difference": 0.0
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.04720000000000002,
+        "publishedPOISeconds": 0.0472
+      }
+    },
+    {
+      "sessionPitch": "1250_3",
+      "sourceContactTimes": {
+        "fp10": 0.6583,
+        "fp100": 0.6694,
+        "br": 0.8
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 1.1765486048720348,
+        "maxAbsoluteDegrees": 2.1425030145747215
+      },
+      "netExtension": {
+        "recomputedFC10": 22.247299999999996,
+        "recomputedFP100": 18.716199999999994,
+        "publishedPOI": 20.4489,
+        "errorFC10": 1.7983999999999973,
+        "errorFP100": -1.7327000000000048
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 456.2266,
+        "publishedPOI": 456.2266,
+        "difference": 0.0
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.038899999999999935,
+        "publishedPOISeconds": 0.0389
+      }
+    },
+    {
+      "sessionPitch": "1313_1",
+      "sourceContactTimes": {
+        "fp10": 0.9111,
+        "fp100": 0.9528,
+        "br": 1.1028
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.5171521176202288,
+        "maxAbsoluteDegrees": 0.9297412306548054
+      },
+      "netExtension": {
+        "recomputedFC10": 4.8687000000000005,
+        "recomputedFP100": 14.399899999999999,
+        "publishedPOI": 11.7028,
+        "errorFC10": -6.834099999999999,
+        "errorFP100": 2.697099999999999
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 359.6947,
+        "publishedPOI": 373.0743,
+        "difference": -13.379599999999982
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.011099999999999888,
+        "publishedPOISeconds": 0.0111
+      }
+    },
+    {
+      "sessionPitch": "1313_2",
+      "sourceContactTimes": {
+        "fp10": 0.8528,
+        "fp100": 0.8917,
+        "br": 1.0444
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.5785374461573284,
+        "maxAbsoluteDegrees": 1.0195623000827894
+      },
+      "netExtension": {
+        "recomputedFC10": 1.0215999999999994,
+        "recomputedFP100": 10.432000000000002,
+        "publishedPOI": 7.9452,
+        "errorFC10": -6.9236,
+        "errorFP100": 2.4868000000000023
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 365.6292,
+        "publishedPOI": 396.3889,
+        "difference": -30.759699999999953
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.016700000000000048,
+        "publishedPOISeconds": 0.0167
+      }
+    },
+    {
+      "sessionPitch": "1313_3",
+      "sourceContactTimes": {
+        "fp10": 0.9278,
+        "fp100": 0.9528,
+        "br": 1.1111
+      },
+      "kneeGeometryVersusPublishedAngle": {
+        "rmseDegrees": 0.6204974713087698,
+        "maxAbsoluteDegrees": 1.0797565557848046
+      },
+      "netExtension": {
+        "recomputedFC10": 9.7486,
+        "recomputedFP100": 15.005600000000005,
+        "publishedPOI": 14.45,
+        "errorFC10": -4.7014,
+        "errorFP100": 0.5556000000000054
+      },
+      "kneePeakExtensionVelocity": {
+        "recomputedFC10BR": 372.7272,
+        "publishedPOI": 395.4072,
+        "difference": -22.680000000000007
+      },
+      "pelvisTrunkPeakGap": {
+        "recomputedPKHBRSeconds": 0.013900000000000023,
+        "publishedPOISeconds": 0.0139
+      }
+    }
+  ],
+  "findings": [
+    "Three-point knee flexion compared to published laboratory knee channel; differences are retained, not forced to zero.",
+    "Both force-event thresholds are compared; POI wording alone does not establish whether 10% or 100% BW was used.",
+    "These are laboratory signal/definition checks, not a validation of reconstructed broadcast poses."
+  ]
+}

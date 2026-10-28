@@ -309,4 +309,5 @@ def main():
     print(json.dumps(payload['scope'],ensure_ascii=False));print(f'Database JSON: {(OUT/"database.json").stat().st_size/1e6:.2f} MB')
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    raise SystemExit('Archived v1 builder. Use scripts/build_biomechanics_database.py for current research 3D data; the original executable is losslessly preserved in data/releases/metrics-20261028-v1/.')
