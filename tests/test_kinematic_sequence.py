@@ -25,6 +25,13 @@ class SequenceTests(unittest.TestCase):
         np.testing.assert_allclose(build.phase([20.,20.5,21.],20,20.5,21),[-100,0,100])
         self.assertEqual(build.relation([1,1.1],[1.09,1.2],1/30),'overlap')
         self.assertEqual(build.relation([1,1.05],[1.2,1.3],1/30),'before')
+    def test_motion_proxy_and_unreviewed_ball_tracks_are_not_release(self):
+        u=np.array([0,2,4,6,8,10])
+        ev={'br':{'source':'rgb_ball_departure_hypothesis','interval':[4,8]},'fc':{'source':'image_keypoint_hypothesis','interval':[0,2]}}
+        points,intervals=build.reviewed_events(ev,u);self.assertIsNone(points['br']);self.assertIsNone(points['fc']);self.assertEqual(intervals,{})
+        ev['br']={'source':'agent_visual_source_bracket','interval':[5,8]}
+        points,intervals=build.reviewed_events(ev,u);self.assertEqual(points['br'],6);self.assertEqual(intervals['br'],[5,8])
+        ev['br']['interval']=[1,1];self.assertIsNone(build.reviewed_events(ev,u)[0]['br'])
     def test_public_coverage_exclusions_and_separate_time_basis(self):
         data=json.loads((ROOT/'data/kinematics/sequences.json').read_text());index=json.loads((ROOT/'data/clips.json').read_text());db=json.loads((ROOT/'data/metrics/database.json').read_text())
         self.assertEqual(data['poseVersion'],index['packageVersion']);self.assertEqual(set(data['clips']),{c['id'] for c in index['clips']});self.assertEqual(len(data['clips']),813)
@@ -33,9 +40,14 @@ class SequenceTests(unittest.TestCase):
             c=data['clips'][cid];self.assertEqual(c['state'],'not_pitch_delivery');self.assertNotIn('peaks',c);self.assertEqual(c['slowMotion'],'not_flagged')
         for c in data['clips'].values():
             if 'events' not in c:continue
-            ev=c['events'];self.assertLess(ev['pkh'],ev['br'])
-            self.assertIn(c['eventBasis']['br'],['source_reviewed_release','image_release_candidate','arm_acceleration_proxy'])
-            if c['state']=='estimated':self.assertLess(ev['pkh'],ev['fc']);self.assertLess(ev['fc'],ev['br'])
+            ev=c['events']
+            if c['state']=='estimated':
+                self.assertTrue(all(ev[k] is not None for k in ['pkh','fc','br']))
+                self.assertLess(ev['pkh'],ev['fc']);self.assertLess(ev['fc'],ev['br'])
+                self.assertEqual(c['eventAcceptance'],'source_reviewed_provisional')
+            else:self.assertIsNone(c.get('gapAssumedMs'))
+            if c['eventBasis']['br']=='unconfirmed':self.assertIsNone(ev['br'])
+            self.assertFalse(c['diagnosticWindow']['releaseProxyUsed'])
             for p in c.get('peaks',{}).values():self.assertLessEqual(p['range'][0],p['time']);self.assertGreaterEqual(p['range'][1],p['time'])
             if c.get('gapAssumedMs') is not None:
                 self.assertEqual(c['timeBasis'],'normal_speed_assumed_by_user');self.assertEqual(c['slowMotion'],'not_flagged')

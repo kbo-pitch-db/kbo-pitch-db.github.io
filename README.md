@@ -20,7 +20,7 @@ Advanced player tools are preserved at `?pitcher=65320#analysis`. Old `pm_*` and
 
 ## Kinematic sequence (2026-10-29)
 
-Player pages include set/windup selection, an event-aligned peak timeline, native-image velocity profiles and buttons that seek the shared 2D/3D frame. Preparation, landing and release estimates align clips independently of their duration. Missing preparation remains unclassified; overlapping peaks remain unresolved. A separate assumed-normal-speed peak-gap metric is available in the data explorer and CSV, without changing the original physical-time metrics or poses. Both initial slow-pace alerts were source-reviewed non-delivery shots and excluded. See [definitions, limits and source-review findings](docs/kinematic-sequence.md).
+Player pages include set/windup selection, an event-aligned peak timeline, native-image velocity profiles and buttons that seek the shared 2D/3D frame. Only complete source-reviewed event intervals align clips independently of their duration. Unreviewed clips retain full playback-time curves and peak candidates; wrist motion is never published as release. Missing preparation remains unclassified; overlapping peaks remain unresolved. The earlier v1 aggregates that admitted automatic event candidates are withdrawn. Event-boundary and filter sensitivity now gate a separate assumed-normal-speed peak-gap metric, available in the data explorer and CSV, without changing the original physical-time metrics or poses. Both initial slow-pace alerts were source-reviewed non-delivery shots and excluded. See [definitions, limits and source-review findings](docs/kinematic-sequence.md).
 
 ## Pitch flight and data exploration (2026-10-29)
 

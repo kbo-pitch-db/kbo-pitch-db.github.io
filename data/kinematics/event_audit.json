@@ -1,0 +1,601 @@
+{
+  "version": "event-discrepancy-20261029-v1",
+  "independentGroundTruth": false,
+  "scope": "19 source-reviewed provisional brackets selected in the prior release; selected sample, not held-out ground truth. Missing detections counted separately. Timing is playback time.",
+  "summary": {
+    "pkh": {
+      "reviewed": 15,
+      "automaticAvailable": 10,
+      "automaticMissing": 5,
+      "overlappingBrackets": 10,
+      "medianMidpointDiscrepancyPlaybackMs": 33.3666666333
+    },
+    "fc": {
+      "reviewed": 18,
+      "automaticAvailable": 12,
+      "automaticMissing": 6,
+      "overlappingBrackets": 5,
+      "medianMidpointDiscrepancyPlaybackMs": 141.7333332666
+    },
+    "br": {
+      "reviewed": 19,
+      "automaticAvailable": 15,
+      "automaticMissing": 4,
+      "overlappingBrackets": 8,
+      "medianMidpointDiscrepancyPlaybackMs": 83.33333333333333
+    }
+  },
+  "clips": [
+    {
+      "clipId": "e1cae96b4d83_c0027",
+      "player": "더거",
+      "sourceUrl": "https://www.youtube.com/watch?v=eHZ1PFn9lhI&t=410s",
+      "fps": 23.976024,
+      "reviewed": {
+        "pkh": [
+          31,
+          35
+        ],
+        "fc": [
+          44,
+          47
+        ],
+        "br": [
+          50,
+          53
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          32,
+          34
+        ],
+        "fc": [
+          38,
+          41
+        ],
+        "br": [
+          46,
+          48
+        ]
+      }
+    },
+    {
+      "clipId": "d30b22cfc0b0_c0036",
+      "player": "벤자민",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y5DKr3cISxg&t=145s",
+      "fps": 60.0,
+      "reviewed": {
+        "pkh": [
+          24,
+          31
+        ],
+        "fc": [
+          51,
+          58
+        ],
+        "br": [
+          68,
+          73
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          26,
+          30
+        ],
+        "fc": [
+          62,
+          68
+        ],
+        "br": [
+          64,
+          68
+        ]
+      }
+    },
+    {
+      "clipId": "3fdcd2dbaf58_c0014",
+      "player": "장민재",
+      "sourceUrl": "https://www.youtube.com/watch?v=7ZBflnAuzXA&t=498s",
+      "fps": 29.97003,
+      "reviewed": {
+        "pkh": [
+          19,
+          25
+        ],
+        "fc": [
+          34,
+          38
+        ],
+        "br": [
+          43,
+          47
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          20,
+          22
+        ],
+        "fc": null,
+        "br": null
+      }
+    },
+    {
+      "clipId": "e72b3a782760_c0038",
+      "player": "조상우",
+      "sourceUrl": "https://www.youtube.com/watch?v=kZV5e5BtcGQ&t=614s",
+      "fps": 60.0,
+      "reviewed": {
+        "pkh": [
+          105,
+          116
+        ],
+        "fc": [
+          142,
+          150
+        ],
+        "br": [
+          164,
+          172
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          108,
+          112
+        ],
+        "fc": [
+          130,
+          136
+        ],
+        "br": null
+      }
+    },
+    {
+      "clipId": "fa1febd5056f_c0015",
+      "player": "김진욱",
+      "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=217s",
+      "fps": 29.97003,
+      "reviewed": {
+        "pkh": null,
+        "fc": [
+          4,
+          7
+        ],
+        "br": [
+          15,
+          19
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": null,
+        "br": [
+          6,
+          8
+        ]
+      }
+    },
+    {
+      "clipId": "4e09dd724a8c_c0031",
+      "player": "임창민",
+      "sourceUrl": "https://www.youtube.com/watch?v=ShyF0RQVoAI&t=547s",
+      "fps": 29.97003,
+      "reviewed": {
+        "pkh": [
+          0,
+          4
+        ],
+        "fc": [
+          13,
+          17
+        ],
+        "br": [
+          23,
+          27
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": [
+          10,
+          13
+        ],
+        "br": [
+          19,
+          21
+        ]
+      }
+    },
+    {
+      "clipId": "d644482ee06d_c0015",
+      "player": "이용찬",
+      "sourceUrl": "https://www.youtube.com/watch?v=yOfZUwpUGiA&t=615s",
+      "fps": 60.0,
+      "reviewed": {
+        "pkh": [
+          48,
+          60
+        ],
+        "fc": [
+          87,
+          95
+        ],
+        "br": [
+          107,
+          113
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          57,
+          61
+        ],
+        "fc": [
+          79,
+          85
+        ],
+        "br": [
+          103,
+          107
+        ]
+      }
+    },
+    {
+      "clipId": "0b70417b94ab_c0013",
+      "player": "이승현",
+      "sourceUrl": "https://www.youtube.com/watch?v=m2lpw1y06Fs&t=445s",
+      "fps": 29.97003,
+      "reviewed": {
+        "pkh": [
+          11,
+          15
+        ],
+        "fc": [
+          22,
+          25
+        ],
+        "br": [
+          30,
+          33
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": [
+          18,
+          33
+        ],
+        "br": null
+      }
+    },
+    {
+      "clipId": "e56945a0fd80_c0028",
+      "player": "양현종",
+      "sourceUrl": "https://www.youtube.com/watch?v=jTJWTrRnPGU&t=171s",
+      "fps": 60.0,
+      "reviewed": {
+        "pkh": [
+          55,
+          68
+        ],
+        "fc": [
+          82,
+          91
+        ],
+        "br": [
+          104,
+          112
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          59,
+          63
+        ],
+        "fc": [
+          91,
+          97
+        ],
+        "br": [
+          91,
+          95
+        ]
+      }
+    },
+    {
+      "clipId": "e72b3a782760_c0022",
+      "player": "이기순",
+      "sourceUrl": "https://www.youtube.com/watch?v=kZV5e5BtcGQ&t=504s",
+      "fps": 60.0,
+      "reviewed": {
+        "pkh": [
+          10,
+          17
+        ],
+        "fc": [
+          31,
+          36
+        ],
+        "br": [
+          50,
+          56
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": [
+          43,
+          49
+        ],
+        "br": null
+      }
+    },
+    {
+      "clipId": "99f1a527c09b_c0013",
+      "player": "크로우",
+      "sourceUrl": "https://www.youtube.com/watch?v=7UdYlQpNmIY&t=251s",
+      "fps": 29.97003,
+      "reviewed": {
+        "pkh": null,
+        "fc": [
+          13,
+          17
+        ],
+        "br": [
+          23,
+          27
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": [
+          10,
+          20
+        ],
+        "br": [
+          26,
+          28
+        ]
+      }
+    },
+    {
+      "clipId": "e1cae96b4d83_c0013",
+      "player": "이로운",
+      "sourceUrl": "https://www.youtube.com/watch?v=eHZ1PFn9lhI&t=574s",
+      "fps": 23.976024,
+      "reviewed": {
+        "pkh": [
+          28,
+          34
+        ],
+        "fc": [
+          43,
+          47
+        ],
+        "br": [
+          53,
+          57
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          29,
+          31
+        ],
+        "fc": null,
+        "br": [
+          40,
+          42
+        ]
+      }
+    },
+    {
+      "clipId": "4e09dd724a8c_c0011",
+      "player": "오승환",
+      "sourceUrl": "https://www.youtube.com/watch?v=ShyF0RQVoAI&t=614s",
+      "fps": 29.97003,
+      "reviewed": {
+        "pkh": null,
+        "fc": null,
+        "br": [
+          9,
+          13
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": null,
+        "br": [
+          6,
+          8
+        ]
+      }
+    },
+    {
+      "clipId": "0d84991ce9f6_c0017",
+      "player": "최원태",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=113s",
+      "fps": 59.94006,
+      "reviewed": {
+        "pkh": [
+          52,
+          62
+        ],
+        "fc": [
+          79,
+          85
+        ],
+        "br": [
+          100,
+          105
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": null,
+        "br": [
+          98,
+          102
+        ]
+      }
+    },
+    {
+      "clipId": "0d84991ce9f6_c0038",
+      "player": "최원태",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=121s",
+      "fps": 59.94006,
+      "reviewed": {
+        "pkh": [
+          72,
+          82
+        ],
+        "fc": [
+          94,
+          100
+        ],
+        "br": [
+          114,
+          119
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": null,
+        "br": [
+          112,
+          116
+        ]
+      }
+    },
+    {
+      "clipId": "0d84991ce9f6_c0023",
+      "player": "최원태",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=250s",
+      "fps": 59.94006,
+      "reviewed": {
+        "pkh": [
+          43,
+          54
+        ],
+        "fc": [
+          77,
+          83
+        ],
+        "br": [
+          98,
+          103
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          41,
+          45
+        ],
+        "fc": [
+          69,
+          75
+        ],
+        "br": [
+          89,
+          93
+        ]
+      }
+    },
+    {
+      "clipId": "0d84991ce9f6_c0034",
+      "player": "최원태",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=371s",
+      "fps": 59.94006,
+      "reviewed": {
+        "pkh": [
+          63,
+          76
+        ],
+        "fc": [
+          99,
+          105
+        ],
+        "br": [
+          119,
+          125
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          64,
+          68
+        ],
+        "fc": [
+          90,
+          96
+        ],
+        "br": [
+          118,
+          122
+        ]
+      }
+    },
+    {
+      "clipId": "0d84991ce9f6_c0002",
+      "player": "최원태",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=377s",
+      "fps": 59.94006,
+      "reviewed": {
+        "pkh": null,
+        "fc": [
+          28,
+          34
+        ],
+        "br": [
+          48,
+          53
+        ]
+      },
+      "automatic": {
+        "pkh": null,
+        "fc": null,
+        "br": [
+          47,
+          51
+        ]
+      }
+    },
+    {
+      "clipId": "0d84991ce9f6_c0013",
+      "player": "최원태",
+      "sourceUrl": "https://www.youtube.com/watch?v=mM9X03fKoYM&t=96s",
+      "fps": 59.94006,
+      "reviewed": {
+        "pkh": [
+          77,
+          89
+        ],
+        "fc": [
+          115,
+          121
+        ],
+        "br": [
+          137,
+          143
+        ]
+      },
+      "automatic": {
+        "pkh": [
+          79,
+          83
+        ],
+        "fc": [
+          109,
+          115
+        ],
+        "br": [
+          135,
+          139
+        ]
+      }
+    }
+  ]
+}

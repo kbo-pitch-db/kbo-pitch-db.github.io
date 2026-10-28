@@ -20,6 +20,7 @@ with sync_playwright() as p:
   assert parse_qs(urlparse(page.url).query)['delivery']==[stance]
   return cid
  first=check_clip('windup')
+ assert root.locator('[data-mechanism=pelvis_trunk_peak_gap_ms] .visitor-metric-value strong').count()==0
  # Peak buttons select the exact native frame on both canvases and the sequence.
  def peak_seek():
   button=root.locator('[data-sequence-frame]').first;frame=int(button.get_attribute('data-sequence-frame'));button.click()
@@ -47,6 +48,8 @@ with sync_playwright() as p:
  with page.expect_download() as download:page.locator('[data-db-csv]').click()
  text=Path(download.value.path()).read_text(encoding='utf-8-sig');assert 'delivery' in text and metric+'__median' in text and 'windup' in text
  page.reload(wait_until='networkidle');page.wait_for_selector('.db-aggregate-table');assert page.locator('[data-db-filter=delivery]').input_value()=='windup'
+ page.goto(BASE+'/?pitcher=65320#pitchers',wait_until='networkidle');page.wait_for_selector('#visitor-form[data-ready=true]');page.wait_for_selector('.sequence-axis');assert '무릎 최고점' in page.locator('.sequence-axis').inner_text()
+ page.goto(BASE+'/?pitcher=54612#pitchers',wait_until='networkidle');page.wait_for_selector('#visitor-form[data-ready=true]');page.wait_for_selector('.sequence-axis');assert '클립 시간' in root.locator('.sequence-axis').inner_text();assert '릴리스' not in root.locator('.sequence-axis').inner_text();assert page.evaluate('KinematicSequence.data.clips[document.querySelector("#visitor-form").dataset.clip].events.br') is None;peak_seek()
  # Old advanced links and the home entry point still resolve independently.
  page.goto(BASE+'/?pitcher=65320&pm_scope=linked&pm_columns=lead_knee_net_extension&pm_view=aggregate#pitchers',wait_until='networkidle');page.wait_for_selector('#player-metrics-root .db-aggregate-table');assert urlparse(page.url).fragment=='analysis'
  page.goto(BASE+'/',wait_until='networkidle');assert page.locator('#home').is_visible()
