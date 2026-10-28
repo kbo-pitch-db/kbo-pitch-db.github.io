@@ -20,7 +20,13 @@ def main():
     time.sleep(1+attempt)
  raw=fetch('data/clips.json');expected=(CODE/'data/clips.json').read_bytes();assert raw==expected,'Live canonical index is not the intended release';index=json.loads(raw);records={r['id']:r for r in json.loads((ROOT/'release_records.json').read_text())};assert len(index['clips'])==813
  def verify(c):
-  data=fetch('data/'+c['pose3d']);actual=hashlib.sha256(data).hexdigest();assert actual==records[c['id']]['gzip_sha256'],c['id'];return dict(id=c['id'],sha256_gzip=actual,bytes=len(data),method=c['motionMethod'])
+  expected=records[c['id']]['gzip_sha256']
+  if c.get('supportAudit'):
+   audit=json.loads((CODE/'data'/c['supportAudit']).read_text())
+   assert audit['selected_pose_sha256']==c['sceneSignature']
+   assert audit['status']=='support_consistency_passed'
+   expected=audit['public_payload_sha256']
+  data=fetch('data/'+c['pose3d']);actual=hashlib.sha256(data).hexdigest();assert actual==expected,c['id'];return dict(id=c['id'],sha256_gzip=actual,bytes=len(data),method=c['motionMethod'])
  results=[]
  with ThreadPoolExecutor(max_workers=8) as executor:
   futures=[executor.submit(verify,c) for c in index['clips']]

@@ -2,7 +2,7 @@
   "schemaVersion": 9,
   "mediaPolicy": "pose-only",
   "generatedFrom": "dataset/clips.csv",
-  "packageVersion": "gvhmr-contact-20261028-v1",
+  "packageVersion": "gvhmr-contact-20261028-v1-support7",
   "packageStats": {
     "videoBytes": 5105469,
     "videoMegabytes": 4.9,
@@ -11,7 +11,7 @@
     "clipsWithRawWham": 0,
     "clipsWithGvhmr": 813,
     "clipsWithSceneFit": 813,
-    "clipsWithContactFit": 509,
+    "clipsWithContactFit": 510,
     "clipsWithScreened3d": 0,
     "screenedPreviews": 0,
     "reviewRequiredPreviews": 813
@@ -587,19 +587,18 @@
       "example": false,
       "review": "unreviewed",
       "poseFile": "pose_halpe26.json",
-      "motionQuality": "quality/gvhmr-release-v1/d4ea211e62bd_c0026.json",
+      "motionQuality": "quality/gvhmr-release-v1/support-v7/d4ea211e62bd_c0026.json",
       "pose3dStatus": "review_required_preview",
       "motionMethod": "gvhmr-phase-aware-contact",
       "poseRefined": "assets/d4ea211e62bd_c0026/pose_halpe26_refined.json",
-      "pose3d": "reconstructions/gvhmr-release-v1/d4ea211e62bd_c0026.json.gz",
+      "pose3d": "reconstructions/gvhmr-release-v1/support-v7/d4ea211e62bd_c0026.json.gz",
       "pose3dBackend": "gvhmr",
       "pose2dLayout": "halpe26",
       "pose3dLayout": "coco17",
       "model3d": "GVHMR + phase-aware contact fitting",
       "sceneFrame": "clip-fixed-inferred-support",
-      "sceneSignature": "988b997ed82c3e2fe97362004dad311db461fea5145d6170811e8d0725703603",
+      "sceneSignature": "9e14bd1f02e937f584bfb6d906000d3e10d7574ae61b90019f83d1f47f893447",
       "pose3dReasons": [
-        "rear_contact_unknown",
         "monocular_global_depth_and_absolute_stride_unvalidated"
       ],
       "strideValidated": false,
@@ -609,7 +608,9 @@
       },
       "pose3dPrimaryLayout": "smpl24",
       "pose3dSupplementaryLayout": "coco17",
-      "reconstructionVersion": "gvhmr-contact-20261028-v1"
+      "reconstructionVersion": "gvhmr-contact-20261028-v1-support7",
+      "postprocessingVersion": "independent-support-v7",
+      "supportAudit": "support_repairs/d4ea211e62bd_c0026-v7.json"
     },
     {
       "id": "0b70417b94ab_c0015",
