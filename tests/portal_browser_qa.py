@@ -69,6 +69,7 @@ with sync_playwright() as p:
     advanced.locator('.heatmap').first.locator('button:not([disabled])').first.click()
     assert page.locator('.matching-records button').count()>0
     page.locator('#report-tab-mechanics').click()
+    page.locator('#single-pitch-inspector>summary').click()
     page.wait_for_selector('.guided-angle-chart')
     assert page.locator('.dimension-3').get_attribute('aria-pressed')=='true'
     assert len(page.locator('.curve-observed').get_attribute('d'))>100
@@ -101,7 +102,7 @@ with sync_playwright() as p:
         page.set_viewport_size({'width':width,'height':844})
         assert page.evaluate('document.documentElement.scrollWidth')<=width+1,('arsenal',width)
     page.screenshot(path='/tmp/kbo-ux2-mobile-arsenal.png',full_page=True)
-    page.locator('#report-tab-mechanics').click();page.wait_for_selector('.guided-angle-chart')
+    page.locator('#report-tab-mechanics').click();page.locator('#single-pitch-inspector>summary').click();page.wait_for_selector('.guided-angle-chart')
     current=page.locator('#reference-clip').input_value()
     page.locator('#profile-open-3d').click()
     page.wait_for_function('!!app.poses[3]')

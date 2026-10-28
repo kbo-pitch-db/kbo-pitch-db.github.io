@@ -108,6 +108,7 @@ window.PitchPortal = (() => {
   }
   async function openPlayer(code,{scroll=true}={}){
     if(!profile(code))return;const request=++state.request;state.active=code;state.reportTab='overview';state.mechanicMetric=null;state.formClip=null;state.linkedOnly=false;state.scope='records';state.pitch='';state.hand='';state.inning='';state.count=null;state.pair=null;state.region=null;state.selectedRecord=null;
+    const incoming=new URL(location.href);if(incoming.searchParams.get('pitcher')===code&&incoming.searchParams.get('mechanics')==='lead-knee')state.reportTab='mechanics';else window.MechanicsReport?.clearLink(incoming);history.replaceState(null,'',incoming);
     window.PitcherExperience?.stop();window.PitcherExperience?.directory(true);if(scroll){location.hash='pitchers';activeNav()}const section=$('#pitcher-profile');section.hidden=false;section.innerHTML=`<p class="sample-note">${e(tr('loading'))}</p>`;
     const link=new URL(location.href);link.searchParams.set('pitcher',code);history.replaceState(null,'',link);
     renderPitchers();

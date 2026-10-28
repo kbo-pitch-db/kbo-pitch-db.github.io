@@ -1,0 +1,22 @@
+{
+  "version": "lead-knee-pilot-20261028-v1",
+  "playerCode": "65320",
+  "gameId": "20240530LGSK02024",
+  "cameraGroup": "20240530-center-field-live",
+  "review": "provisional_agent_visual_inspection",
+  "humanReviewed": false,
+  "frameConvention": "Zero-based local decoded frame; endpoints inclusive. Source frames are preserved separately.",
+  "eventMethod": "Visual inspection of consecutive original crop frames. Landing brackets the descending forefoot approaching the surface and sustained support. Release brackets the last hand/ball overlap and visibly separated ball. Occlusion and repeated frames widen intervals. These are provisional image-event brackets, not force contact or independently validated ball-release labels.",
+  "selection": "Seven accessible, automatically linked fastballs/sliders from one game and center-field live view, selected to exercise a multi-pitch workflow. Convenience pilot, not a random or representative player sample. Other views and games remain unaudited.",
+  "physicalTimeValidated": false,
+  "modelSensitivityValidated": false,
+  "samples": [
+    {"clipId":"0d84991ce9f6_c0017","landing":[79,85],"release":[100,105],"decision":"include"},
+    {"clipId":"0d84991ce9f6_c0038","landing":[94,100],"release":[114,119],"decision":"include"},
+    {"clipId":"0d84991ce9f6_c0023","landing":[77,83],"release":[98,103],"decision":"include"},
+    {"clipId":"0d84991ce9f6_c0034","landing":[99,105],"release":[119,125],"decision":"include"},
+    {"clipId":"0d84991ce9f6_c0002","landing":[28,34],"release":[48,53],"decision":"include"},
+    {"clipId":"0d84991ce9f6_c0013","landing":[115,121],"release":[137,143],"decision":"include"},
+    {"clipId":"0d84991ce9f6_c0009","decision":"exclude","reason":"landing_occluded"}
+  ]
+}

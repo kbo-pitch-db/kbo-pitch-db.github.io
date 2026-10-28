@@ -40,7 +40,7 @@ with sync_playwright() as p:
         assert result['contrast']>=4.5,(selector,result)
     assert abs(checks['.stat-definition']['line']-1.6)<.05
     page.screenshot(path='/tmp/kbo-reading-overview.png',full_page=True)
-    page.locator('#report-tab-mechanics').click();page.wait_for_selector('.guided-angle-chart')
+    page.locator('#report-tab-mechanics').click();page.locator('#single-pitch-inspector>summary').click();page.wait_for_selector('.guided-angle-chart')
     assert page.locator('.motion-demo-label h3').inner_text()=='2D 동작'
     assert page.locator('.curve-source-title').inner_text()=='3D 모델에서 계산한 각도'
     assert page.get_by_role('combobox',name='재생 속도',exact=True).count()==1

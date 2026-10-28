@@ -1,0 +1,164 @@
+{
+  "0d84991ce9f6_c0017": {
+    "sourceSha256": "929181348d325f326f6f5709a10456c69e1b9db5ab6ef3cabb4779f35e730eae",
+    "range": [
+      79,
+      105
+    ],
+    "independentFrameCandidates": [
+      79,
+      80,
+      82,
+      84,
+      86,
+      88,
+      90,
+      92,
+      94,
+      96,
+      98,
+      100,
+      102,
+      104
+    ],
+    "adjacentComparisons": 27,
+    "nearDuplicatePairs": 14,
+    "method": "160x160 grayscale mean absolute adjacent difference <1/255; image-cadence diagnostic, not a physical-time calibration",
+    "playbackRateVerified": false
+  },
+  "0d84991ce9f6_c0038": {
+    "sourceSha256": "0d5236c56ee6b36e77674435f64bc461aca7aef71b0157d7258e4e5c5c1b63d7",
+    "range": [
+      94,
+      119
+    ],
+    "independentFrameCandidates": [
+      94,
+      96,
+      98,
+      100,
+      102,
+      104,
+      106,
+      108,
+      110,
+      112,
+      114,
+      116,
+      118
+    ],
+    "adjacentComparisons": 26,
+    "nearDuplicatePairs": 13,
+    "method": "160x160 grayscale mean absolute adjacent difference <1/255; image-cadence diagnostic, not a physical-time calibration",
+    "playbackRateVerified": false
+  },
+  "0d84991ce9f6_c0023": {
+    "sourceSha256": "83c024079cc52680a96c18607ddbcdfb2b95364122c5d8baa06d9a5e7fe5455c",
+    "range": [
+      77,
+      103
+    ],
+    "independentFrameCandidates": [
+      77,
+      79,
+      81,
+      83,
+      85,
+      87,
+      89,
+      91,
+      93,
+      95,
+      97,
+      99,
+      101,
+      103
+    ],
+    "adjacentComparisons": 27,
+    "nearDuplicatePairs": 13,
+    "method": "160x160 grayscale mean absolute adjacent difference <1/255; image-cadence diagnostic, not a physical-time calibration",
+    "playbackRateVerified": false
+  },
+  "0d84991ce9f6_c0034": {
+    "sourceSha256": "462b75e595bdeb89c7de63155d58207ba1d8f30df4cb8b55f23b4287a3380e50",
+    "range": [
+      99,
+      125
+    ],
+    "independentFrameCandidates": [
+      99,
+      100,
+      102,
+      104,
+      106,
+      108,
+      110,
+      112,
+      114,
+      116,
+      118,
+      120,
+      122,
+      124
+    ],
+    "adjacentComparisons": 27,
+    "nearDuplicatePairs": 14,
+    "method": "160x160 grayscale mean absolute adjacent difference <1/255; image-cadence diagnostic, not a physical-time calibration",
+    "playbackRateVerified": false
+  },
+  "0d84991ce9f6_c0002": {
+    "sourceSha256": "e0d0b95dfa52a253cafca9750b5d081c0d1249872e9291130eaa7f8baae61419",
+    "range": [
+      28,
+      53
+    ],
+    "independentFrameCandidates": [
+      28,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39,
+      41,
+      43,
+      45,
+      47,
+      49,
+      51,
+      53
+    ],
+    "adjacentComparisons": 26,
+    "nearDuplicatePairs": 13,
+    "method": "160x160 grayscale mean absolute adjacent difference <1/255; image-cadence diagnostic, not a physical-time calibration",
+    "playbackRateVerified": false
+  },
+  "0d84991ce9f6_c0013": {
+    "sourceSha256": "9e9cf678c0a37a242892077f8a19032d223aad3ffbf15084fb2c20171e786e53",
+    "range": [
+      115,
+      143
+    ],
+    "independentFrameCandidates": [
+      115,
+      117,
+      119,
+      121,
+      123,
+      125,
+      127,
+      129,
+      131,
+      133,
+      135,
+      137,
+      139,
+      141,
+      143
+    ],
+    "adjacentComparisons": 29,
+    "nearDuplicatePairs": 14,
+    "method": "160x160 grayscale mean absolute adjacent difference <1/255; image-cadence diagnostic, not a physical-time calibration",
+    "playbackRateVerified": false
+  }
+}

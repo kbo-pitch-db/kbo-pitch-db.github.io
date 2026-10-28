@@ -48,6 +48,8 @@ PTS x is `cross_plate_x_ft`; z evaluates the provider's quadratic trajectory at 
 
 ### Rebuild and verify
 
+The delivery tab now starts with a separate [event-aligned lead-knee pilot](docs/mechanics-pilot.md) for Choi Won-tae: six actual pitches from one game, pitch-type median/IQR curves, individual-pitch distributions, a velocity scatter, synchronized 2D pose evidence, and shareable analysis conditions. This is explicitly a **2D projection exploration** using provisional visual event brackets, with raw/3/5-frame processing, a stricter observation screen, an exhaustive exclusion list and separate event/filter sensitivity. Only one pitch survives the strict screen; summaries require at least three. The current 3D model, physical time and cross-model stability are not validated for this report, so 3D aggregates, angular velocities, peak-time offsets and energy/force grades are withheld. Other players' event-aligned reports remain pending. See the linked method document for definitions, hashes, source cadence, scope and reproduction commands. Individual-joint inspection remains available below the pilot.
+
 ```bash
 python3 scripts/build_portal_data.py
 python3 -m unittest discover -s tests -p test_portal_data.py
