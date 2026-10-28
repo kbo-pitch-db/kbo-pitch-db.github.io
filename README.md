@@ -6,31 +6,53 @@ Release: `gvhmr-ground-motionbert-20261028-v1`. All **813** clips use actual Mot
 
 All clips use the same viewer, one clip-wide camera/scale and one inferred ground frame. No framewise recentering, endpoint hold, population-stride target or display trajectory correction is applied. Playback stops at the last frame. JSON exports the saved coordinates; 3D CSV exports 24 native SMPL joint centers, source timing and availability. COCO-17 surface landmarks and six foot markers remain supplementary data. Rigid saved shoes also retain their shape between rendered frames; interpolation preserves a marker that is stationary in both saved frames.
 
-## Research portal (2026-10-28)
+## Player reports, v2 (2026-10-28)
 
-The bilingual Overview / Pitchers / Explore / Compare / Dataset & Methods interface connects a player’s collected repertoire to actual pitch records and the existing synchronized 2D/3D viewer. Language preference persists in the browser. Official player names are preserved as recorded; interface and pitch labels support English and Korean.
+The English/Korean website now uses focused routes and three report tabs: **At a glance → Pitches & results → Delivery**. Opening a player replaces the directory; research metadata and advanced count/sequence tables are disclosed on demand. Language and report filters persist during language changes. Official player names remain as recorded.
 
-- **Profiles:** 123 players, historical 2024 team and throwing side from cached Naver game rosters, clip/game/date coverage, linked sample counts, and per-metric observation counts. `?pitcher=65320#pitchers` opens a profile directly. No player or explorer clip is selected by default; the overview demo alone uses an explicitly labeled actual delivery near its pitch type’s median observed speed.
-- **Two denominators:** collected highlight clips and acquired game records. The 32 cached games contain 9,754 deduplicated pitch records, including 8,948 by the 123 motion-sample players. Neither sample is a complete season. Unknown clip pitch labels remain visible.
-- **Record exploration:** pitch-wise speed distributions, provider PTS position normalized to the recorded batter zone, batter-side and inning filters, count composition, and consecutive within-at-bat pitch transitions. Each point has a keyboard-accessible observation selector; records without a motion link still link to the Naver source. Zone and heatmap selections expose matching actual records. Transition pairs cannot bridge games, at-bats or missing pitch numbers.
-- **Linkage:** 390 automatically accepted links / 33 held / 390 unresolved, with zero human-validated links. A join requires accepted audit evidence and agreement on game, player code/name and pitch ID with the canonical index. Identity evidence alone does not establish a pitch link. Multiple clips of the same pitch share its record denominator; the current accepted population has zero duplicate replay links.
-- **Mechanics:** left/right knee and elbow **2D included angles**, not clinical flexion, true 3D rotations or a ball arm-angle measurement. Each uses the final Halpe-26 crop x/y triplet, confidence ≥0.5, excluding interpolated/outlier joints and degenerate segments. Curves preserve gaps and seek the same source frame in the existing 2D/3D viewer. Availability counts mean at least ten eligible frames, not validated biomechanics. No new smoothing or differentiation is applied. Landing/release times, physical angular velocities, HB/IVB, spin and MVPI are not inferred or published.
-- **Comparison:** two actual final 2D clips and angle curves share normalized clip progress while preserving separate frame clocks. It is not foot-plant/release alignment. Original source links and the full explorer remain available for both clips. Compare playback is independent of explorer playback.
-- **Downloads:** `data/portal/summary.json`, lazy-loaded `data/portal/players/<code>.json`, the complete source-preserving `data/portal/pitch_records.csv.gz`, and [standard-library example code](docs/portal-example.py). Original/refined pose files and per-clip quality JSON are linked in the explorer. Source CSV hashes and the canonical clip-index hash are stored in the summary. Source `raw_file` entries reference cached local provenance, not public raw-response downloads.
+**All acquired records are included.** The 32 cached games contain 9,754 distinct pitches by **155 pitchers**, including 806 pitches by 32 players with no collected motion. The original motion sample remains **813 clips / 123 players**. Reports start from every acquired pitch, not just automatically linked highlights. Neither the records nor the clips are a complete KBO season. `?pitcher=65320#pitchers` opens a report; `?clip=CLIP_ID#explore` opens the full 2D/3D viewer.
 
-PTS x comes from `cross_plate_x_ft`; z is the provider’s quadratic trajectory evaluated at `cross_plate_y_ft`, both in feet. The chart uses `(z − bottom_sz)/(top_sz − bottom_sz)` per pitch. Only records with `tracking_status=derived_validated_x` and finite, ordered zone bounds enter the location chart. Consistency with the source trajectory is not independent tracking accuracy. No target location is available, so this chart is not labeled command.
+The overview combines a plain-language reading of the pitch mix, an explicitly defined repertoire type, raw pitch-based statistics and a five-axis characteristic plot with percentile bars. The visual structure is informed by [Baseball Savant player reports](https://baseballsavant.mlb.com/savant-player/paul-skenes-694973); the data and reference population here are KBO acquired-game records, not MLB Statcast or full-season league rankings. No synthetic overall grade is calculated. A larger radar shape is not uniformly better, particularly for zone rate and breaking-ball share.
 
-Rebuild only the portal metadata from the existing frozen inputs (does not modify poses, clips or link-audit decisions):
+- **Statistics:** fastball average speed uses records labeled `직구`. Whiff rate is `S/(S+F+H)`; called-plus-swinging-strike rate is `(T+S)/(B+T+S+F+H)`. Naver's text confirms `T=called strike`, `S=swinging strike`, `F=foul`, `H=in play`, `B=ball`, `V=missed bunt`, `W=foul bunt`. Bunt attempts are excluded from the ordinary-swing and CSW denominators. No strikeout rate or ERA is inferred from pitch outcome codes.
+- **Relative positions:** midrank percentiles are computed independently for each metric among pitchers with ≥50 acquired pitches. Additional thresholds are 15 fastballs for velocity, 20 non-bunt swings for whiff rate and 50 supported locations for zone rate. A reference group must have ≥5 players. Eligibility, metric denominators, reference-group sizes and medians are exported; small samples are not assigned ranks. These are descriptive sample comparisons, not calibrated talent estimates.
+- **Types:** fastball/two-seam/cutter share ≥55% → fastball-led; slider/curve share ≥45% → breaking-ball-led; changeup/forkball share ≥30% → offspeed-led; otherwise mixed. Fewer than 30 pitches is labeled limited sample. The rule and caveat are visible in the report. It is not a learned scouting classification.
+- **Readable repertoire:** usage bars preserve the full record denominator; velocity ranges show the mean, middle 50% and observed range with their units; a 5×5 location-density grid outlines the recorded strike zone. Filters update the related views together. Users can switch to individual points, select a region, inspect translated outcomes and follow actual record or motion links. Count and within-at-bat sequence tables remain available under a disclosure.
+- **Linkage:** 390 automatically accepted links / 33 held / 390 unresolved, zero human-validated links. A join still requires accepted audit evidence and agreement on game, player identity and pitch ID. A record without an accepted motion link retains its statistics and source URL. Different clips of one pitch share the same record denominator; the current accepted population has no duplicate replays.
+- **Reference delivery:** when the most-used pitch has ≥2 collected clips, compare those; otherwise use the most-collected available pitch type. Sample the four supported 2D angle curves at 21 normalized clip positions, require ≥42 supported components and choose the actual clip closest to the componentwise median with a missing-support penalty. This is an example representative of the captured views, not an averaged skeleton or validated event-aligned template. A sparse fallback is labeled an example only. The player presents a real numerical sequence, three actual snapshots and a linked full 2D/3D viewer; no other player's motion is substituted.
+
+### Mechanics and display
+
+The guide explains what to watch, why a joint angle helps, what 180° means, and the limitations of the coordinates. It shows one readable curve at a time, synchronized with the actual delivery. **3D model included angles** are the default when a time-aligned reconstruction is available; users can switch to **2D image angles** and unsmoothed observations. Native model angles are continuous model estimates, not independent physical observations or validated anatomical rotations. They are not Baseball Savant's shoulder-to-ball [arm angle](https://baseballsavant.mlb.com/leaderboard/pitcher-arm-angles).
+
+Both modes use `acos((a−b)·(c−b)/(|a−b||c−b|))`, in degrees:
+
+| Joint | Halpe-26 image triplet | SMPL-24 model triplet |
+| --- | --- | --- |
+| Left knee | 11–13–15 | 1–4–7 |
+| Right knee | 12–14–16 | 2–5–8 |
+| Left elbow | 5–7–9 | 16–18–20 |
+| Right elbow | 6–8–10 | 17–19–21 |
+
+2D requires all three confidences ≥0.5 and excludes interpolated/outlier joints and degenerate segments. 3D requires three finite native joint centers and excludes `available=false` frames. Model timing must match the final 2D sequence. Native-model gaps, including camera-cut exclusions, are never bridged.
+
+**Display processing never changes source/downloaded values.** The readable curve applies a five-frame weighted mean within supported runs. In 2D only, internal gaps may be linearly bridged when they span at most 3 missing frames and 100 ms, with endpoint change ≤45°. These segments are dashed; longer/unsupported gaps are shaded and retained. Raw mode disables smoothing and display bridges. Bounded cubic display segments avoid overshoot between values. Current-frame readouts always use the unmodified source/model angle. `pitch_charts.js` owns these display-only transforms. Curve axes resize with their container so labels remain legible on mobile.
+
+Comparison uses actual 2D sequences with a shared normalized-progress slider and native 3D curves when both reconstructions exist; otherwise both curves use 2D image angles. Original source timing is retained separately for each clip. This is not foot-plant or release alignment. No landing/release duration, physical angular velocity, force-transfer grade, MVPI, HB/IVB or spin estimate is derived from these poses.
+
+PTS x is `cross_plate_x_ft`; z evaluates the provider's quadratic trajectory at `cross_plate_y_ft`, both in feet. Density cells use `(z−bottom_sz)/(top_sz−bottom_sz)` with the central zone width 17 inches. Only supported PTS records and ordered finite zone bounds enter location statistics. Source-model consistency does not establish independent tracking accuracy; no target location is available, so location is not labeled command.
+
+### Rebuild and verify
 
 ```bash
 python3 scripts/build_portal_data.py
 python3 -m unittest discover -s tests -p test_portal_data.py
 node tests/portal_math.test.cjs
-# With Playwright Python and Chromium installed, against the static local server:
+# With Playwright Python and Chromium installed, against a static local server:
 python3 tests/portal_browser_qa.py http://127.0.0.1:8000 /path/to/chrome
 ```
 
-The generator is deterministic, including its gzip archive; it reads cached Naver responses and never downloads or packages broadcast media. Refresh the frozen inputs separately before rebuilding. The UI hides unsupported measurements and reports record-load failures without replacing unknown values with estimates. Release and third-party reuse terms are explained on the Dataset & Methods page; no new blanket data/model/footage license is asserted.
+The generator reads cached inputs and writes deterministic schema-v2 metadata; it does not alter canonical clips, poses or audit decisions. `data/portal/summary.json` includes source hashes, all 155 profiles and reference-group definitions. Player JSON includes all that player's acquired records, joins, statistics, reference delivery and observation counts. Portal data URLs have their own version, independently of the pose release, preventing older cached summaries from breaking a new UI. Schema/release mismatches fail explicitly. The complete `data/portal/pitch_records.csv.gz` preserves the source CSV; `raw_file` entries refer to local cached provenance rather than hosted raw responses. [Example code](docs/portal-example.py) follows an accepted pitch link to a final 2D sequence. Broadcast footage, model files and private research inputs are not packaged by this workflow. Third-party source/model terms remain separate from the site's metadata.
 
 ## What the reconstruction means
 

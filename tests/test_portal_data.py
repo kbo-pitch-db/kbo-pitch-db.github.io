@@ -26,7 +26,8 @@ class PortalDataTests(unittest.TestCase):
         s = self.summary
         self.assertEqual(s['poseVersion'], self.index['packageVersion'])
         self.assertEqual(s['clipIndexSha256'], hashlib.sha256((SITE/'data/clips.json').read_bytes()).hexdigest())
-        self.assertEqual((s['clipCount'], s['playerCount'], s['gameCount']), (813, 123, 32))
+        self.assertEqual((s['clipCount'], s['playerCount'], s['gameCount']), (813, 155, 32))
+        self.assertEqual(s['motionPlayerCount'], 123)
         self.assertEqual(sum(p['clipCount'] for p in s['players']), 813)
         self.assertEqual(sum(p['recordCount'] for p in s['players']), s['profileRecordCount'])
         self.assertEqual(sum(s['links'].values()), 813)
@@ -66,7 +67,54 @@ class PortalDataTests(unittest.TestCase):
                     self.assertEqual(detail['clips'][cid]['pitchId'], record['id'])
         self.assertEqual(linked, 390)
         self.assertEqual(len(seen_clips), 813)
-        self.assertEqual(len(seen_records), 8948)
+        self.assertEqual(len(seen_records), 9754)
+
+    def test_statistics_use_all_acquired_records_including_players_without_video(self):
+        no_video = [d for d in self.details if d['profile']['clipCount'] == 0]
+        self.assertEqual(len(no_video), 32)
+        self.assertEqual(sum(len(d['records']) for d in no_video), 806)
+        for detail in self.details:
+            p = detail['profile']
+            stats = builder.pitch_statistics(detail['records'])
+            self.assertEqual(stats, p['statistics'])
+            self.assertEqual(sum(stats['pitchCounts'].values()), p['recordCount'])
+            self.assertEqual(sum(stats['byPitch'][k]['count'] for k in stats['byPitch']), p['recordCount'])
+            if p['representative']:
+                representative = self.clips[p['representative']['clipId']]
+                self.assertEqual(representative['playerCode'], p['code'])
+                self.assertGreater(p['representative']['candidateCount'], 0)
+            else:
+                self.assertEqual(p['clipCount'], 0)
+
+    def test_result_denominators_exclude_bunts_and_missing_positions(self):
+        records = [dict(pitch='직구', speed=140., result=result, plateX=0., plateZ=2., zoneBottom=1., zoneTop=3.)
+                   for result in ['S','F','H','T','B','V','W']]
+        stats = builder.pitch_statistics(records)
+        self.assertEqual(stats['pitches'], 7)
+        self.assertEqual(stats['swings'], 3)
+        self.assertEqual(stats['ordinaryPitches'], 5)
+        self.assertAlmostEqual(stats['whiffRate'], 33.333, places=3)
+        self.assertEqual(stats['cswRate'], 40)
+        self.assertEqual(stats['zoneRate'], 100)
+        records[0]['plateX'] = None
+        self.assertEqual(builder.pitch_statistics(records)['locations'], 6)
+
+    def test_percentiles_have_explicit_eligible_cohorts_and_midrank_ties(self):
+        profiles = self.summary['players']
+        for metric, (denominator, minimum) in builder.BENCHMARKS.items():
+            cohort = [p for p in profiles if p['recordCount'] >= 50 and p['statistics'][denominator] >= minimum
+                      and p['statistics'][metric] is not None]
+            self.assertEqual(len(cohort), self.summary['benchmarks'][metric]['players'])
+            values = [p['statistics'][metric] for p in cohort]
+            for p in profiles:
+                b = p['benchmarks'][metric]
+                if p not in cohort:
+                    self.assertFalse(b['qualified'])
+                    self.assertIsNone(b['percentile'])
+                else:
+                    v = p['statistics'][metric]
+                    expected = round(100*(sum(x < v for x in values)+.5*sum(x == v for x in values))/len(values), 1)
+                    self.assertEqual(expected, b['percentile'])
 
     def test_full_record_download_is_the_hashed_source(self):
         archive = gzip.decompress((SITE/'data/portal/pitch_records.csv.gz').read_bytes())

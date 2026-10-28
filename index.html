@@ -7,11 +7,11 @@
   <title>KBO Pitch Lab — Pitch records meet motion</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261028-portal1"><link rel="stylesheet" href="portal.css?v=20261028-portal1">
+  <link rel="stylesheet" href="styles.css?v=20261028-portal1"><link rel="stylesheet" href="portal.css?v=20261028-portal1"><link rel="stylesheet" href="experience.css?v=20261028-ux2">
 </head>
 <body>
 <a class="skip-link" href="#pitchers" data-i18n="skipContent">Skip to pitchers</a>
-<div class="shell">
+<div class="shell" data-route="home">
   <header class="topbar">
     <a class="brand" href="#home" aria-label="KBO Pitch Lab home"><span class="brand-mark"><span></span></span><span class="brand-name">KBO <b>PITCH LAB</b></span></a>
     <nav class="main-nav" aria-label="Main navigation">
@@ -46,11 +46,16 @@
     <section class="dataset-numbers" id="overview-stats" aria-label="Dataset coverage" aria-live="polite"></section>
     <div class="research-line"><span data-i18n="researchLine">One pitch is the common thread.</span><p data-i18n="researchDesc">Start with a pitcher. Explore the repertoire. Follow a point back to the actual delivery.</p><span class="research-arrow" aria-hidden="true">↘</span></div>
 
+    <section class="home-discover" id="home-discover">
+      <div class="home-steps"><article><span>01</span><h3 data-i18n="homeStep1">Understand the player</h3><p data-i18n="homeStep1Desc">Five comparable characteristics.</p></article><article><span>02</span><h3 data-i18n="homeStep2">Read the repertoire</h3><p data-i18n="homeStep2Desc">Usage, speed and location.</p></article><article><span>03</span><h3 data-i18n="homeStep3">Watch the delivery</h3><p data-i18n="homeStep3Desc">Actual motion with a reading guide.</p></article></div>
+      <div class="home-discover-heading"><h2 data-i18n="homePlayers">A few reports to explore</h2><a href="#pitchers" data-i18n="seeAllPlayers">See all pitchers</a></div><div id="home-featured-players" class="home-featured-players"></div>
+      <p class="home-data-scope" data-i18n="coverageShort">2024 · 32 acquired games · not a full-season sample</p>
+    </section>
     <section class="portal-section" id="pitchers">
-      <div class="section-head"><div><div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="pitchersEyebrow">01 / THE PEOPLE BEHIND THE PITCH</span></div><h2 data-i18n="pitchersTitle">Every pitcher has a <em>story.</em></h2></div><p data-i18n="pitchersDesc">Find a player and explore the pitches and motion actually captured in this dataset.</p></div>
-      <div class="pitcher-toolbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only" data-i18n="pitcherSearch">Search pitchers</span><input id="pitcher-search" type="search" data-i18n-placeholder="pitcherSearch" placeholder="Search pitchers"></label><label><span class="sr-only" data-i18n="team">Team</span><select id="pitcher-team" aria-label="Pitcher team"></select></label><label><span class="sr-only" data-i18n="season">Season</span><select id="pitcher-season" aria-label="Season"><option value="2024">2024 KBO</option></select></label><span id="pitcher-result-count" class="micro-label" aria-live="polite"></span></div>
-      <div id="pitcher-grid" class="pitcher-grid"><p data-i18n="loading">Loading pitchers…</p></div>
-      <button id="more-pitchers" class="button-outline centered" hidden data-i18n="showMore">Show more pitchers</button>
+      <div class="section-head" data-directory><div><div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="pitchersEyebrow">01 / THE PEOPLE BEHIND THE PITCH</span></div><h2 data-i18n="pitchersTitle">Every pitcher has a <em>story.</em></h2></div><p data-i18n="pitchersDesc">Find a player and explore the pitches and motion actually captured in this dataset.</p></div>
+      <div class="pitcher-toolbar" data-directory><label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only" data-i18n="pitcherSearch">Search pitchers</span><input id="pitcher-search" type="search" data-i18n-placeholder="pitcherSearch" placeholder="Search pitchers"></label><label><span class="sr-only" data-i18n="team">Team</span><select id="pitcher-team" aria-label="Pitcher team"></select></label><label><span class="sr-only" data-i18n="season">Season</span><select id="pitcher-season" aria-label="Season"><option value="2024">2024 KBO</option></select></label><label><span class="sr-only" data-i18n="motionFilter">Motion availability</span><select id="pitcher-motion" aria-label="Motion availability"><option value="" data-i18n="recordsAll">All pitchers</option><option value="motion" data-i18n="motionAvailable">With motion examples</option></select></label><label><span class="sr-only" data-i18n="reportSort">Sort reports</span><select id="pitcher-sort" aria-label="Sort reports"><option value="records" data-i18n="mostRecords">Most pitch records</option><option value="clips" data-i18n="mostClips">Most motion examples</option></select></label><span id="pitcher-result-count" class="micro-label" aria-live="polite"></span></div>
+      <div data-directory id="pitcher-grid" class="pitcher-grid"><p data-i18n="loading">Loading pitchers…</p></div>
+      <button data-directory id="more-pitchers" class="button-outline centered" hidden data-i18n="showMore">Show more pitchers</button>
       <section id="pitcher-profile" class="pitcher-profile" aria-label="Pitcher profile" aria-live="polite" hidden></section>
     </section>
 
@@ -88,8 +93,10 @@
 </div>
 <script src="reconstruction_registry.js?v=20261028-gvhmr-all813-v1"></script>
 <script src="motion_viewer.js?v=20261028-combined-v1"></script>
-<script src="portal.js?v=20261028-portal1"></script>
+<script src="pitch_charts.js?v=20261028-ux2"></script>
+<script src="profile_experience.js?v=20261028-ux2"></script>
+<script src="portal.js?v=20261028-ux2"></script>
 <script src="hero_motion.js?v=20261028-portal1"></script>
-<script src="app.js?v=20261028-portal1"></script>
+<script src="app.js?v=20261028-ux2"></script>
 </body>
 </html>
