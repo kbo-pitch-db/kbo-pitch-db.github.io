@@ -9,6 +9,9 @@ with sync_playwright() as p:
  page.add_init_script("localStorage.setItem('kbo-lang','ko')");page.goto(BASE+'/index.html#database');page.wait_for_selector('.db-pitch-table tbody tr',timeout=60000)
  g=page.locator('#metrics-database-root');assert g.locator('[data-db-remove="lead_knee_flexion_fc"]').count()==1
  assert g.locator('td[data-metric="lead_knee_range_2d"]').count()==0
+ g.locator('[data-db-sort="lead_knee_flexion_fc"]').click();g.locator('[data-db-sort="lead_knee_flexion_fc"]').click();values=[float(x) for x in g.locator('td[data-metric="lead_knee_flexion_fc"]').evaluate_all('(els)=>els.map(e=>e.dataset.value).filter(Boolean)')];assert values==sorted(values)
+ g.locator('.db-controls>summary').click();g.locator('[data-db-preset="timing"]').click();assert g.locator('td[data-metric="fc_br_time_ms"]').count()>0;assert all(v=='' for v in g.locator('td[data-metric="fc_br_time_ms"]').evaluate_all('(els)=>els.map(e=>e.dataset.value)'))
+ g.locator('[data-db-preset="default"]').click();g.locator('[data-db-add-choice]').select_option('upper_arm_elevation_fc');g.locator('[data-db-add]').click();assert g.locator('td[data-metric="upper_arm_elevation_fc"]').count()>0;g.locator('[data-db-remove="upper_arm_elevation_fc"]').click();assert g.locator('td[data-metric="upper_arm_elevation_fc"]').count()==0
  g.locator('[data-db-filter="scope"]').select_option('records');assert '9,754' in g.locator('.db-table-actions').inner_text()
  with page.expect_download() as info:g.locator('[data-db-csv]').click()
  rows=list(csv.DictReader(io.StringIO(Path(info.value.path()).read_text(encoding='utf-8-sig'))));assert len(rows)==9754;assert any(r['lead_knee_flexion_fc__status']=='no_motion' and r['lead_knee_flexion_fc__value']=='' for r in rows)
