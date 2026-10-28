@@ -9,7 +9,7 @@ window.MotionViewer = (() => {
       gap:'No supported joints in this frame',limited:'Limited tracking',ready:'Stability screened · depth and stride unvalidated',scene:'Fixed clip frame · inferred floor',
       load:'Motion data could not be loaded.', unavailable:'3D data unavailable',depthheld:'3D withheld: stride depth needs review.',sequenceheld:'3D withheld: pitch-event order needs review.',contactheld:'3D withheld: landing timing is uncertain.',visualpending:'3D is awaiting visual review.',pending:'3D refitting and quality checks in progress.',withheld:'3D withheld: motion, support or depth needs review.',method:'Method & quality',interpolated:'Amber = interpolated joint'},
     ko: {view2:'최종 2D',view3:'최종 3D',yaw:'3D 회전',pitch:'기울기',reset:'시점 초기화',
-      note:'3D 깊이와 크기는 단안 추정치입니다. 골반 중심 상대 좌표이며 투구 정확도는 검증되지 않았습니다.',
+      note:'영상에서 추정한 3D 동작입니다. 실제 깊이와 크기는 차이가 날 수 있습니다.',
       preview:'3D 미리보기 · 검토 필요',reviewReasons:{short_stride_depth_review:'짧은 보폭·깊이 불확실',depth_initialization_sensitivity:'초기값에 따른 깊이 차이',stride_direction_depth_review:'보폭 방향 불확실',pitch_event_order_review:'투구 단계 순서 불확실',pitch_preparation_unresolved:'준비 자세 불확실',arm_phase_unresolved:'팔 동작 단계 불확실',pitch_contact_phase_ambiguous:'착지 시점 불확실',floor_penetration:'발의 바닥 관통',insufficient_supported_frames:'관측 지원 부족',poor_2d_alignment:'2D 정합 제한',visual_review_failed:'원본 시각 대조 후 추가 검토 필요',visual_review_pending:'시각 검토 대기',stance_anchor_refinement_required:'접지 위치 추가 보정 대기'},
       gap:'이 프레임에 표시할 관절이 없습니다',limited:'추적 제한 있음',ready:'움직임 검사 통과 · 깊이·스트라이드 미검증',scene:'클립 고정 좌표 · 추정 바닥',
       load:'동작 데이터를 불러오지 못했습니다.',unavailable:'3D 데이터 없음',depthheld:'보폭 깊이를 신뢰하기 어려워 3D를 보류했습니다.',sequenceheld:'투구 단계의 연결을 확인하지 못해 3D를 보류했습니다.',contactheld:'착지 시점을 확정하지 못해 3D를 보류했습니다.',visualpending:'3D 시각 검토를 기다리고 있습니다.',pending:'3D 재처리와 품질 확인 중입니다.',withheld:'3D 품질 검사를 통과하지 못해 3D 표시를 보류했습니다.',method:'추정 방식·품질',interpolated:'주황색 = 보간된 관절'}
@@ -98,7 +98,7 @@ window.MotionViewer = (() => {
       views.push(view3);
       ready(views[1]);
       control.querySelector('.motion-orbit').hidden=false;
-      control.querySelector('.motion-status').textContent=lang==='ko'?'단안 3D 추정 · 고정 장면 · 지면과 크기 미검증':'Monocular 3D estimate · fixed scene · ground and scale unvalidated';
+      control.querySelector('.motion-status').textContent=lang==='ko'?'영상에서 추정한 3D · 실제 거리와 다를 수 있습니다':'Monocular 3D estimate · fixed scene · ground and scale unvalidated';
       const coordinates=panel.querySelector('[data-meta="coords"] .meta-value');
       if(coordinates)coordinates.title=coordinates.textContent='2D: crop pixels · 3D: '+pose3d.coordinate_system;
       for (const axis of ['yaw','pitch']) control.querySelector('.motion-'+axis).addEventListener('input', e => {
