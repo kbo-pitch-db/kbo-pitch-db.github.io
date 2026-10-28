@@ -33,6 +33,8 @@ with sync_playwright() as p:
     page.locator('.pitcher-card').click()
     page.wait_for_selector('#visitor-play')
     page.locator('[data-visitor-explore]').click()
+    page.wait_for_selector('#player-metrics-root .db-pitch-table')
+    page.locator('#player-metrics-root [data-db-view=aggregate]').click()
     page.wait_for_selector('#player-metrics-root .db-aggregate-table')
     assert page.locator('#report-tab-metrics').get_attribute('aria-selected')=='true'
     page.locator('#report-tab-overview').click()

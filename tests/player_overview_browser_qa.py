@@ -105,9 +105,11 @@ with sync_playwright() as p:
     page.wait_for_selector('dialog',state='detached')
     assert separation.locator('button').evaluate('(el)=>el===document.activeElement')
     page.screenshot(path=str(OUT / 'player-desktop.png'), full_page=True)
-    # Missing pitch-level movement never produces a pretend scatter plot.
-    assert '기록이 없습니다' in root.locator('.visitor-missing-metrics').inner_text()
-    assert root.locator('.visitor-missing-metrics svg').count() == 0
+    # Real PTS data supply both the movement map and fixed-axis VAA chart.
+    assert root.locator('#visitor-flight .flight-panel').count() == 2
+    assert root.locator('#visitor-flight .flight-point').count() == 10
+    assert 'n=356' in root.locator('#visitor-flight').inner_text()
+    assert root.locator('#visitor-flight [data-flight-pitch="슬라이더"]').first.get_attribute('aria-pressed') == 'true'
     page.locator('#visitor-pitch').select_option('커브')
     page.wait_for_function("document.querySelector('.visitor-delivery-meta')?.textContent.includes('커브')")
     # Existing advanced player links retain all parameters on a separate route.
@@ -130,7 +132,7 @@ with sync_playwright() as p:
     page.goto(BASE + '/?pitcher=65320#pitchers', wait_until='networkidle')
     page.wait_for_selector('#visitor-form[data-ready=true]')
     page.locator('[data-visitor-explore]').click()
-    page.wait_for_selector('#player-metrics-root .db-aggregate-table')
+    page.wait_for_selector('#player-metrics-root .db-pitch-table')
     assert urlparse(page.url).fragment == 'analysis'
     page.go_back(wait_until='networkidle')
     page.wait_for_selector('#visitor-form[data-ready=true]')
