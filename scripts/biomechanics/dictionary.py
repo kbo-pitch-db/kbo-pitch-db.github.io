@@ -83,6 +83,41 @@ def dictionary():
       'lead_foot_lateral_pct':'프로젝트 파생 변수입니다. 착지 시 앞발목의 뒷발목 대비 좌우 위치를 모델 다리 길이로 나눕니다. 신장 대비 보폭이 아닙니다.',
       'lead_foot_direction_fc':'착지 시 뒤꿈치→발가락 방향과 투구 축의 수평 각도입니다. 원본 발가락·뒤꿈치 관측과 투구 축이 필요합니다.'}
     for m in metrics:
+        id=m['id'];series=m.get('series');inputs=['Known throwing hand / original left-right identities','Original image confidence, interpolation/outlier flags','Native source-frame IDs and declared image event brackets']
+        if series=='lead_knee_flexion' or id.startswith('lead_knee_'):
+            joints='SMPL lead hip–knee–ankle: R throw [1,4,7], L throw [2,5,8]; original Halpe R [11,13,15], L [12,14,16]'
+            inputs+=['Native 3D lead hip, knee and ankle centers; no humeral or thorax rotation required']
+        elif series=='elbow_flexion' or id.startswith('elbow_'):
+            joints='SMPL throwing shoulder–elbow–wrist: R [17,19,21], L [16,18,20]; Halpe R [6,8,10], L [5,7,9]'
+            inputs+=['Native 3D throwing shoulder, elbow and wrist centers']
+        elif series=='shoulder_line_separation':
+            joints='SMPL hips [1,2], shoulders [16,17]; original Halpe [5,6,11,12]'
+            inputs+=['3D hip/shoulder joint-center lines','Clip-fixed inferred up; sufficiently long horizontal projections']
+        elif series in ['upper_arm_elevation','shoulder_horizontal_abduction']:
+            joints='SMPL upper arm R [17,19], L [16,18]; thorax chain [0,3,6,9] and neutral-rest neck/shoulders [9,12,16,17]; Halpe torso [5,6,11,12] and throwing upper arm'
+            inputs+=['3D shoulder/elbow centers','Cumulative SMPL thorax orientation and native-rest anatomical frame calibration']
+        elif id.startswith('shoulder_'):
+            joints='Independently observable anatomical thorax/scapula/humerus frames and humeral long-axis orientation; joint centers alone are insufficient'
+            inputs+=['Anatomical shoulder calibration','Observation-supported humeral/scapular orientation; SMPL local twist output alone does not establish observability']
+        elif id.startswith('stride_') or id=='lead_foot_lateral_pct':
+            joints='SMPL ankle centers [7,8]; lead hip–knee–ankle for model-leg normalization where specified; Halpe ankle support [15,16]'
+            inputs+=['Same-FC native 3D ankle centers']
+            if id=='stride_length_cm':inputs+=['Independently verified model-unit-to-meters scale and scale evidence']
+            if id=='stride_height_pct':inputs+=['Independently verified model-unit-to-meters scale','Independently measured player stature and evidence']
+        elif id=='lead_foot_direction_fc':
+            joints='Lead foot native heel/big-toe/small-toe surface markers: R throw [0,2,4], L throw [1,3,5]; Halpe R [20,22,24], L [21,23,25]'
+            inputs+=['Native surface heel and both toe directions','Independently supported original heel/toe image observations']
+        elif id=='fc_br_time_ms':
+            joints='No joint-angle input required: independently supported image FC and BR events'
+            inputs+=['Physical timestamps of FC and BR; not a wrist-speed surrogate']
+        else:
+            joints='SMPL pelvis root 0; cumulative thorax chain [0,3,6,9]; neutral-rest hips [1,2], spine/neck [9,12], shoulders [16,17]; original Halpe [5,6,11,12]'
+            inputs+=['Native SMPL local rotations and joint-center neutral-rest offsets','Cumulative segment orientations in the clip-fixed inferred-up frame']
+        if series in ['pelvis_rotation','trunk_rotation','trunk_forward_lean','trunk_lateral_lean'] or id in ['lead_foot_lateral_pct','lead_foot_direction_fc','pelvis_trunk_peak_gap_ms'] or id.startswith(('pelvis_peak','trunk_peak')):
+            inputs+=['Independently supported plate-direction hypothesis and its uncertainty; unavailable axis blocks this metric only']
+        if 'peak_velocity' in id or 'peak_time_ms' in id or id in ['fc_br_time_ms','pelvis_trunk_peak_gap_ms']:
+            inputs+=['Verified playback-to-physical time factor and independent clock evidence','Original independent-image cadence; native filtering/peak sensitivity assessment']
+        m['requiredJoints']=joints;m['requiredInputs']=inputs
         if m['operation'] in ['maximum','argmax'] or 'peak_' in m['id']:
             m['differenceFromSource']+=' The declared FC→BR window can exclude earlier delivery peaks; it is not a full-delivery maximum. Physical peak filtering is a native-image polynomial sensitivity analysis, not the laboratory 13.4/20 Hz Butterworth pipeline.'
         if 'lean' in m['id']:
