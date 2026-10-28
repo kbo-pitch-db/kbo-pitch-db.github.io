@@ -42,8 +42,9 @@ class SequenceTests(unittest.TestCase):
             if 'events' not in c:continue
             ev=c['events']
             if c['state']=='estimated':
-                self.assertTrue(all(ev[k] is not None for k in ['pkh','fc','br']))
-                self.assertLess(ev['pkh'],ev['fc']);self.assertLess(ev['fc'],ev['br'])
+                self.assertTrue(all(ev[k] is not None for k in ['fc','br']))
+                if ev['pkh'] is not None:self.assertLess(ev['pkh'],ev['fc'])
+                self.assertLess(ev['fc'],ev['br'])
                 self.assertEqual(c['eventAcceptance'],'source_reviewed_provisional')
             else:self.assertIsNone(c.get('gapAssumedMs'))
             if c['eventBasis']['br']=='unconfirmed':self.assertIsNone(ev['br'])

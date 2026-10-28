@@ -1,0 +1,160 @@
+{
+  "version": "source-event-review-20261029-v3",
+  "reviewer": "coding_agent_visual_inspection",
+  "independentHumanReview": false,
+  "blindToDetectorOutput": true,
+  "modelFrozenBeforeReview": "83743d7fbdca5bb3ad822bd06c953c152ecc32a2ff89140419093d4d01ca5161",
+  "method": "Native unique RGB frames with frame numbers only; model event/detection overlays hidden. Inclusive brackets retain visibility and temporal ambiguity. New clip-disjoint sample, includes shared source videos with development; not independent human ground truth.",
+  "clips": [
+    {
+      "clipId": "1161553ed7d7_c0049",
+      "pkh": null,
+      "fc": null,
+      "br": [
+        96,
+        102
+      ],
+      "notes": "First contact is obscured by score graphic; no contact reference. Ball departure bracket retained."
+    },
+    {
+      "clipId": "f4acaa32cd9a_c0007",
+      "pkh": null,
+      "fc": [
+        32,
+        34
+      ],
+      "br": [
+        42,
+        44
+      ],
+      "notes": "First heel contact and subsequent ball departure visible. PKH not annotated in this event-validation pass."
+    },
+    {
+      "clipId": "99f1a527c09b_c0037",
+      "pkh": null,
+      "fc": [
+        4,
+        6
+      ],
+      "br": [
+        10,
+        12
+      ],
+      "notes": "Delivery starts during stride; knee peak outside clip. PKH not annotated in this event-validation pass."
+    },
+    {
+      "clipId": "3fdcd2dbaf58_c0022",
+      "pkh": null,
+      "fc": [
+        20,
+        23
+      ],
+      "br": [
+        28,
+        31
+      ],
+      "notes": "Heel settles before arm passage; release blur bracket retained. PKH not annotated in this event-validation pass."
+    },
+    {
+      "clipId": "02dad52fd781_c0026",
+      "pkh": null,
+      "fc": [
+        16,
+        20
+      ],
+      "br": [
+        28,
+        30
+      ],
+      "notes": "Several similar body images during foot lowering; contact bracket kept broad. Outgoing ball visible after frame 28."
+    },
+    {
+      "clipId": "1161553ed7d7_c0022",
+      "pkh": null,
+      "fc": [
+        73,
+        79
+      ],
+      "br": [
+        83,
+        87
+      ],
+      "notes": "Broad first heel contact retained; separated ball follows arm passage."
+    },
+    {
+      "clipId": "99f1a527c09b_c0023",
+      "pkh": null,
+      "fc": [
+        33,
+        35
+      ],
+      "br": [
+        39,
+        41
+      ],
+      "notes": "Native heel-contact and hand-ball departure bracket; PKH not annotated in this pass."
+    },
+    {
+      "clipId": "0b70417b94ab_c0021",
+      "pkh": null,
+      "fc": [
+        26,
+        28
+      ],
+      "br": [
+        36,
+        38
+      ],
+      "notes": "Native heel-contact and hand-ball departure bracket; PKH not annotated in this pass."
+    },
+    {
+      "clipId": "782c3ca51bd5_c0014",
+      "pkh": null,
+      "fc": [
+        244,
+        248
+      ],
+      "br": [
+        262,
+        266
+      ],
+      "notes": "Native heel approach and visible outgoing ball bracketed."
+    },
+    {
+      "clipId": "210747e6a7e9_c0015",
+      "pkh": null,
+      "fc": [
+        8,
+        14
+      ],
+      "br": [
+        36,
+        40
+      ],
+      "notes": "Heel approach near ground is blurred; broad contact bracket, ball departure separately bracketed."
+    },
+    {
+      "clipId": "e56945a0fd80_c0010",
+      "pkh": null,
+      "fc": [
+        73,
+        77
+      ],
+      "br": [
+        87,
+        91
+      ],
+      "notes": "Ground contact and visible ball departure brackets."
+    },
+    {
+      "clipId": "b54e0e701d77_c0041",
+      "pkh": null,
+      "fc": null,
+      "br": [
+        114,
+        118
+      ],
+      "notes": "First lead-foot contact occluded by score graphic; do not fabricate contact label."
+    }
+  ]
+}

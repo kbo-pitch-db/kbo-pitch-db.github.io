@@ -1,0 +1,574 @@
+{
+  "summary": {
+    "fc": {
+      "old": {
+        "referenceN": 10,
+        "detectedN": 8,
+        "missingN": 2,
+        "medianMidpointDifferenceMs": 75.074999924925,
+        "p90MidpointDifferenceMs": 260.25999973974,
+        "overlappingBrackets": 5,
+        "nonoverlapOver100ms": 2
+      },
+      "new": {
+        "referenceN": 10,
+        "detectedN": 8,
+        "missingN": 2,
+        "medianMidpointDifferenceMs": 75.04166662495834,
+        "p90MidpointDifferenceMs": 170.16999982982998,
+        "overlappingBrackets": 5,
+        "nonoverlapOver100ms": 1
+      },
+      "sameDetectedClips": {
+        "n": 6,
+        "old": 75.04999994995,
+        "new": 75.04166662495834
+      }
+    },
+    "br": {
+      "old": {
+        "referenceN": 12,
+        "detectedN": 7,
+        "missingN": 5,
+        "medianMidpointDifferenceMs": 100.0999998999,
+        "p90MidpointDifferenceMs": 146.81333318652,
+        "overlappingBrackets": 2,
+        "nonoverlapOver100ms": 1
+      },
+      "new": {
+        "referenceN": 12,
+        "detectedN": 10,
+        "missingN": 2,
+        "medianMidpointDifferenceMs": 41.68333331665,
+        "p90MidpointDifferenceMs": 131.70833329162488,
+        "overlappingBrackets": 8,
+        "nonoverlapOver100ms": 1
+      },
+      "sameDetectedClips": {
+        "n": 6,
+        "old": 100.0999998999,
+        "new": 25.024999974975
+      }
+    }
+  },
+  "clips": [
+    {
+      "clipId": "1161553ed7d7_c0049",
+      "reference": {
+        "clipId": "1161553ed7d7_c0049",
+        "pkh": null,
+        "fc": null,
+        "br": [
+          96,
+          102
+        ],
+        "notes": "First contact is obscured by score graphic; no contact reference. Ball departure bracket retained."
+      },
+      "old": {
+        "fc": [
+          104,
+          128
+        ],
+        "br": null
+      },
+      "new": {
+        "pkh": [
+          50,
+          58
+        ],
+        "fc": null,
+        "br": null
+      },
+      "fps": 60.0
+    },
+    {
+      "clipId": "f4acaa32cd9a_c0007",
+      "reference": {
+        "clipId": "f4acaa32cd9a_c0007",
+        "pkh": null,
+        "fc": [
+          32,
+          34
+        ],
+        "br": [
+          42,
+          44
+        ],
+        "notes": "First heel contact and subsequent ball departure visible. PKH not annotated in this event-validation pass."
+      },
+      "old": {
+        "fc": [
+          27,
+          30
+        ],
+        "br": [
+          39,
+          41
+        ]
+      },
+      "new": {
+        "pkh": [
+          20,
+          23
+        ],
+        "fc": [
+          36,
+          39
+        ],
+        "br": [
+          42,
+          44
+        ]
+      },
+      "fps": 29.97003
+    },
+    {
+      "clipId": "99f1a527c09b_c0037",
+      "reference": {
+        "clipId": "99f1a527c09b_c0037",
+        "pkh": null,
+        "fc": [
+          4,
+          6
+        ],
+        "br": [
+          10,
+          12
+        ],
+        "notes": "Delivery starts during stride; knee peak outside clip. PKH not annotated in this event-validation pass."
+      },
+      "old": {
+        "fc": [
+          4,
+          7
+        ],
+        "br": [
+          13,
+          15
+        ]
+      },
+      "new": {
+        "pkh": null,
+        "fc": [
+          3,
+          6
+        ],
+        "br": [
+          9,
+          12
+        ]
+      },
+      "fps": 29.97003
+    },
+    {
+      "clipId": "3fdcd2dbaf58_c0022",
+      "reference": {
+        "clipId": "3fdcd2dbaf58_c0022",
+        "pkh": null,
+        "fc": [
+          20,
+          23
+        ],
+        "br": [
+          28,
+          31
+        ],
+        "notes": "Heel settles before arm passage; release blur bracket retained. PKH not annotated in this event-validation pass."
+      },
+      "old": {
+        "fc": [
+          17,
+          20
+        ],
+        "br": [
+          28,
+          30
+        ]
+      },
+      "new": {
+        "pkh": [
+          8,
+          11
+        ],
+        "fc": [
+          23,
+          25
+        ],
+        "br": [
+          30,
+          32
+        ]
+      },
+      "fps": 29.97003
+    },
+    {
+      "clipId": "02dad52fd781_c0026",
+      "reference": {
+        "clipId": "02dad52fd781_c0026",
+        "pkh": null,
+        "fc": [
+          16,
+          20
+        ],
+        "br": [
+          28,
+          30
+        ],
+        "notes": "Several similar body images during foot lowering; contact bracket kept broad. Outgoing ball visible after frame 28."
+      },
+      "old": {
+        "fc": [
+          15,
+          18
+        ],
+        "br": [
+          23,
+          25
+        ]
+      },
+      "new": {
+        "pkh": [
+          7,
+          11
+        ],
+        "fc": null,
+        "br": null
+      },
+      "fps": 29.97003
+    },
+    {
+      "clipId": "1161553ed7d7_c0022",
+      "reference": {
+        "clipId": "1161553ed7d7_c0022",
+        "pkh": null,
+        "fc": [
+          73,
+          79
+        ],
+        "br": [
+          83,
+          87
+        ],
+        "notes": "Broad first heel contact retained; separated ball follows arm passage."
+      },
+      "old": {
+        "fc": null,
+        "br": [
+          87,
+          91
+        ]
+      },
+      "new": {
+        "pkh": null,
+        "fc": [
+          65,
+          71
+        ],
+        "br": [
+          89,
+          93
+        ]
+      },
+      "fps": 60.0
+    },
+    {
+      "clipId": "99f1a527c09b_c0023",
+      "reference": {
+        "clipId": "99f1a527c09b_c0023",
+        "pkh": null,
+        "fc": [
+          33,
+          35
+        ],
+        "br": [
+          39,
+          41
+        ],
+        "notes": "Native heel-contact and hand-ball departure bracket; PKH not annotated in this pass."
+      },
+      "old": {
+        "fc": [
+          24,
+          27
+        ],
+        "br": [
+          43,
+          45
+        ]
+      },
+      "new": {
+        "pkh": [
+          15,
+          18
+        ],
+        "fc": [
+          33,
+          35
+        ],
+        "br": [
+          40,
+          42
+        ]
+      },
+      "fps": 29.97003
+    },
+    {
+      "clipId": "0b70417b94ab_c0021",
+      "reference": {
+        "clipId": "0b70417b94ab_c0021",
+        "pkh": null,
+        "fc": [
+          26,
+          28
+        ],
+        "br": [
+          36,
+          38
+        ],
+        "notes": "Native heel-contact and hand-ball departure bracket; PKH not annotated in this pass."
+      },
+      "old": {
+        "fc": [
+          33,
+          36
+        ],
+        "br": null
+      },
+      "new": {
+        "pkh": [
+          11,
+          15
+        ],
+        "fc": null,
+        "br": [
+          23,
+          26
+        ]
+      },
+      "fps": 29.97003
+    },
+    {
+      "clipId": "782c3ca51bd5_c0014",
+      "reference": {
+        "clipId": "782c3ca51bd5_c0014",
+        "pkh": null,
+        "fc": [
+          244,
+          248
+        ],
+        "br": [
+          262,
+          266
+        ],
+        "notes": "Native heel approach and visible outgoing ball bracketed."
+      },
+      "old": {
+        "fc": [
+          240,
+          246
+        ],
+        "br": null
+      },
+      "new": {
+        "pkh": [
+          204,
+          216
+        ],
+        "fc": [
+          246,
+          254
+        ],
+        "br": [
+          264,
+          268
+        ]
+      },
+      "fps": 60.0
+    },
+    {
+      "clipId": "210747e6a7e9_c0015",
+      "reference": {
+        "clipId": "210747e6a7e9_c0015",
+        "pkh": null,
+        "fc": [
+          8,
+          14
+        ],
+        "br": [
+          36,
+          40
+        ],
+        "notes": "Heel approach near ground is blurred; broad contact bracket, ball departure separately bracketed."
+      },
+      "old": {
+        "fc": [
+          8,
+          14
+        ],
+        "br": [
+          30,
+          34
+        ]
+      },
+      "new": {
+        "pkh": null,
+        "fc": [
+          22,
+          26
+        ],
+        "br": [
+          36,
+          40
+        ]
+      },
+      "fps": 59.94006
+    },
+    {
+      "clipId": "e56945a0fd80_c0010",
+      "reference": {
+        "clipId": "e56945a0fd80_c0010",
+        "pkh": null,
+        "fc": [
+          73,
+          77
+        ],
+        "br": [
+          87,
+          91
+        ],
+        "notes": "Ground contact and visible ball departure brackets."
+      },
+      "old": {
+        "fc": null,
+        "br": null
+      },
+      "new": {
+        "pkh": [
+          41,
+          49
+        ],
+        "fc": [
+          69,
+          75
+        ],
+        "br": [
+          89,
+          95
+        ]
+      },
+      "fps": 60.0
+    },
+    {
+      "clipId": "b54e0e701d77_c0041",
+      "reference": {
+        "clipId": "b54e0e701d77_c0041",
+        "pkh": null,
+        "fc": null,
+        "br": [
+          114,
+          118
+        ],
+        "notes": "First lead-foot contact occluded by score graphic; do not fabricate contact label."
+      },
+      "old": {
+        "fc": [
+          106,
+          112
+        ],
+        "br": null
+      },
+      "new": {
+        "pkh": [
+          62,
+          74
+        ],
+        "fc": [
+          96,
+          106
+        ],
+        "br": [
+          116,
+          122
+        ]
+      },
+      "fps": 60.0
+    }
+  ],
+  "version": "event-validation-20261029-v3",
+  "independentHumanGroundTruth": false,
+  "referenceScope": "12 new clip-disjoint provisional image reviews; 10 visible contact references, 12 release brackets. Shared source videos with development exist. Detector and head frozen before held-out event-image review; no population accuracy claim.",
+  "freeze": {
+    "files": {
+      "scripts/pitch_events/detector.py": "377c87406e78895b8c1aa471eb3c62fbf70d280dfac77a8fa6297bd2555ce812",
+      "scripts/pitch_events/contact_model.py": "f529cb0cf5cb96191110adbe5d060736d906319f4357bb4489492e2b04ed407f",
+      "scripts/build_pitch_event_candidates.py": "fb92ec3e8072a738c956acdd1ee363b7a983a3b5dfc4376570bc43b978769dba"
+    },
+    "modelSha256": "83743d7fbdca5bb3ad822bd06c953c152ecc32a2ff89140419093d4d01ca5161",
+    "holdoutReviewClipIds": [
+      "1161553ed7d7_c0049",
+      "f4acaa32cd9a_c0007",
+      "99f1a527c09b_c0037",
+      "3fdcd2dbaf58_c0022",
+      "02dad52fd781_c0026",
+      "1161553ed7d7_c0022",
+      "99f1a527c09b_c0023",
+      "0b70417b94ab_c0021",
+      "782c3ca51bd5_c0014",
+      "210747e6a7e9_c0015",
+      "e56945a0fd80_c0010",
+      "b54e0e701d77_c0041"
+    ],
+    "policy": "Freeze detector and learned contact head before inspecting native held-out event sheets. Reference labels are provisional agent image review, not independent human ground truth.",
+    "publicationPolicy": {
+      "release": {
+        "minimumTrackImages": 5,
+        "minimumMeanDetectionConfidence": 0.45,
+        "maximumTrajectoryResidualBodyHeights": 0.025,
+        "maximumAssociationDistanceBodyHeights": 0.2,
+        "maximumIntervalPlaybackSeconds": 0.11
+      },
+      "landing": {
+        "maximumBeforeContactProbability": 0.3,
+        "minimumAfterContactProbability": 0.7,
+        "maximumIntervalPlaybackSeconds": 0.12
+      },
+      "events": "Strictly ordered non-overlapping contact/release intervals; reviewed missing events never replaced automatically. Automatic PKH remains a candidate."
+    },
+    "policyFrozenBeforeHeldoutScoring": true
+  },
+  "developmentClipIds": [
+    "e1cae96b4d83_c0027",
+    "d30b22cfc0b0_c0036",
+    "3fdcd2dbaf58_c0014",
+    "e72b3a782760_c0038",
+    "fa1febd5056f_c0015",
+    "4e09dd724a8c_c0031",
+    "d644482ee06d_c0015",
+    "0b70417b94ab_c0013",
+    "e56945a0fd80_c0028",
+    "e72b3a782760_c0022",
+    "99f1a527c09b_c0013",
+    "e1cae96b4d83_c0013",
+    "4e09dd724a8c_c0011",
+    "0d84991ce9f6_c0017",
+    "0d84991ce9f6_c0038",
+    "0d84991ce9f6_c0023",
+    "0d84991ce9f6_c0034",
+    "0d84991ce9f6_c0002",
+    "0d84991ce9f6_c0013"
+  ],
+  "modelSha256": "83743d7fbdca5bb3ad822bd06c953c152ecc32a2ff89140419093d4d01ca5161",
+  "upstream": {
+    "ballModel": "https://github.com/BaseballCV/BaseballCV",
+    "ballWeightSha256": "00faa0a129ef4b25bcc4f4610d70211efed6470d89225618cc6ffab000f507d0",
+    "footEncoder": "https://github.com/facebookresearch/dinov2",
+    "encoderRevision": "e1277af2ba9496fbadf7aec6eba56e8d882d1e35"
+  },
+  "coverage": {
+    "totalClips": 813,
+    "releaseCandidates": 619,
+    "landingCandidates": 600,
+    "automaticPreviewEligible": 425,
+    "reviewedClips": 31
+  }
+}

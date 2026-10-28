@@ -13,7 +13,7 @@ from scipy.signal import find_peaks
 from biomechanics.calculation import support_masks
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='pitch-sequence-20261029-v2'
+VERSION='pitch-sequence-20261029-v3'
 KEYS=['pelvis','trunk','elbow']
 
 
@@ -96,7 +96,7 @@ def classify_stance(xy,score,u,times,h,pk,lead):
     return 'unresolved',{**diagnostics,'reason':'stance_ambiguous'}
 
 
-def analyse(clip,pose,analysis,review=None):
+def analyse(clip,pose,analysis,review=None,event_data=None):
     n=len(pose['frames']);fps=pose['fps'];times=np.array([f['time'] for f in pose['frames']],float);hand=analysis['throwingHand'];factor=1 if hand=='R' else -1;lead=0 if hand=='R' else 1;arm=1 if hand=='R' else 0
     xy=np.array([[p[:2] if p else [np.nan,np.nan] for p in f['keypoints']] for f in pose['frames']]);score=np.array([[p[2] if p else 0 for p in f['keypoints']] for f in pose['frames']]);u=np.array(analysis['cadence']['uniqueImageCandidates'],int);u=u[u<n]
     h=max(50,float(np.nanmedian(np.maximum(xy[:,15,1],xy[:,16,1])-xy[:,0,1])))
@@ -109,7 +109,7 @@ def analyse(clip,pose,analysis,review=None):
         good=np.isfinite(w[:,d]);w[:,d]=np.interp(np.arange(len(u)),np.flatnonzero(good),w[good,d]) if good.any() else 0
     speed=np.linalg.norm(np.gradient(gaussian_filter1d(w,.65,axis=0),ts,axis=0),axis=1)/h;speed[~wgood]=0
     ev=analysis['events'];pk_ev=ev.get('pkh',{}).get('interval');br_ev=ev.get('br',{}).get('interval');source_review=ev.get('br',{}).get('source')=='agent_visual_source_bracket'
-    accepted,brackets=reviewed_events(ev,u)
+    accepted,brackets=reviewed_events(event_data['sourceEvents'] if event_data else ev,u)
     lift=(xy[:,11:13,1].mean(1)-xy[:,13+lead,1])/h;lift[score[:,13+lead]<.4]=np.nan
     native_lift=lift[u].copy();okay=np.isfinite(native_lift)
     native_lift=np.interp(np.arange(len(u)),np.flatnonzero(okay),native_lift[okay]) if okay.any() else np.zeros(len(u))
@@ -138,9 +138,20 @@ def analyse(clip,pose,analysis,review=None):
             fc=eligible[0] if eligible else None;fc_kind='image_foot_stability_candidate'
     stance,diagnostic=classify_stance(xy,score,u,times,h,pk,lead)
     if review and review.get('stance') in ['set','windup','unresolved']:stance=review['stance'];diagnostic['reason']='source_image_review';diagnostic['reviewNote']=review.get('reason')
-    aligned=all(accepted.get(k) is not None for k in ['pkh','fc','br']) and brackets['pkh'][1]<brackets['fc'][0] and brackets['fc'][1]<brackets['br'][0]
-    if aligned:pk,fc,br=[accepted[k] for k in ['pkh','fc','br']]
-    base.update(stance=stance,stanceEvidence=diagnostic,events=accepted,eventIntervals=brackets,eventAcceptance='source_reviewed_provisional' if aligned else 'events_unreviewed_or_incomplete',eventCandidates={k:ev.get(k,{}).get('interval') for k in ['pkh','fc','br']},diagnosticWindow=dict(start=pk,end=br,motionBurst=burst,releaseProxyUsed=False),eventBasis={k:'source_reviewed_'+k if accepted[k] is not None else 'unconfirmed' for k in accepted},independentImageCount=len(u),independentMedianDt=float(np.median(np.diff(ts))),activeDuration=float(times[br]-times[pk]),peakImageWristSpeed=float(max(speed)))
+    reviewed_aligned=accepted['fc'] is not None and accepted['br'] is not None and brackets['fc'][1]<brackets['br'][0]
+    if accepted['pkh'] is not None and reviewed_aligned and brackets['pkh'][1]>=brackets['fc'][0]:accepted['pkh']=None;brackets.pop('pkh',None)
+    preview=bool(event_data and event_data['previewEligible'] and not event_data['reviewed'])
+    alignment_intervals=dict(brackets);alignment=dict(accepted)
+    if preview:
+        alignment_intervals={k:v for k,v in event_data['automaticEvents'].items() if k!='pkh' and v}
+        alignment={k:int(min(u,key=lambda i:abs(i-np.mean(alignment_intervals[k])))) if k in alignment_intervals else None for k in ['pkh','fc','br']}
+    aligned=reviewed_aligned or preview
+    if aligned:
+        fc,br=alignment['fc'],alignment['br']
+        if alignment['pkh'] is not None:pk=alignment['pkh']
+        else:pk=int(u[np.argmin(abs(times[u]-max(0,2*times[fc]-times[br])))])
+    event_candidates=event_data['automaticEvents'] if event_data else {k:ev.get(k,{}).get('interval') for k in ['pkh','fc','br']}
+    base.update(stance=stance,stanceEvidence=diagnostic,events=accepted,eventIntervals=brackets,alignmentEvents=alignment if aligned else None,alignmentIntervals=alignment_intervals if aligned else {},eventAcceptance='source_reviewed_provisional' if reviewed_aligned else 'automatic_preview' if preview else 'events_unreviewed_or_incomplete',eventCandidates=event_candidates,diagnosticWindow=dict(start=pk,end=br,motionBurst=burst,releaseProxyUsed=False),eventBasis={k:'source_reviewed_'+k if accepted[k] is not None else 'unconfirmed' for k in accepted},independentImageCount=len(u),independentMedianDt=float(np.median(np.diff(ts))),activeDuration=float(times[br]-times[pk]),peakImageWristSpeed=float(max(speed)))
     if fc is not None and 0<times[br]-times[fc]:base['landingReleasePlaybackSeconds']=float(times[br]-times[fc])
     # A long clip or duplicate images alone never indicate slow motion.
     active=times[br]-times[pk];suspect=(active>1.25 and max(speed)<3.8) or (base.get('landingReleasePlaybackSeconds',0)>.68 and active>1.1 and max(speed)<4.2)
@@ -163,8 +174,9 @@ def analyse(clip,pose,analysis,review=None):
         nominal=next((x for x in native if x['width']==5),native[0])
         if nominal['speed']<=0:continue
         if aligned:
-            for start in brackets['pkh']:
-                for end in brackets['br']:
+            starts=alignment_intervals.get('pkh') or [max(0,2*alignment_intervals['fc'][0]-alignment_intervals['br'][1]),max(0,2*alignment_intervals['fc'][1]-alignment_intervals['br'][0])]
+            for start in starts:
+                for end in alignment_intervals['br']:
                     for width,v in estimates.items():
                         ids=np.flatnonzero((u>=start)&(u<=end)&np.isfinite(v))
                         if len(ids)<3:continue
@@ -179,26 +191,27 @@ def analyse(clip,pose,analysis,review=None):
     p,t=peaks['pelvis'],peaks['trunk'];resolution=float(np.median(np.diff(ts)));order=relation(p['range'],t['range'],resolution)
     if p['boundary'] or t['boundary']:order='overlap'
     base['pelvisTrunkOrder']=order;base['gapPlaybackMs']=1000*(t['time']-p['time']);base['gapRangePlaybackMs']=[1000*(t['range'][0]-p['range'][1]),1000*(t['range'][1]-p['range'][0])]
-    base['gapAssumedMs']=None if not aligned or suspect or p['boundary'] or t['boundary'] or base['gapRangePlaybackMs'][1]-base['gapRangePlaybackMs'][0]>160 else base['gapPlaybackMs']
-    base['state']='estimated' if aligned else 'release_aligned_only' if accepted['br'] is not None else 'events_unverified';base['reason']=None if aligned else 'source_event_review_required'
-    if base['state']=='estimated':
-        base['peakPhase']={k:dict(value=float(phase(v['time'],times[pk],times[fc],times[br])),range=phase(v['range'],times[pk],times[fc],times[br]).tolist()) for k,v in peaks.items()}
+    base['gapAssumedMs']=None if not reviewed_aligned or suspect or p['boundary'] or t['boundary'] or base['gapRangePlaybackMs'][1]-base['gapRangePlaybackMs'][0]>160 else base['gapPlaybackMs']
+    base['state']='estimated' if reviewed_aligned else 'automatic_preview' if preview else 'release_aligned_only' if accepted['br'] is not None else 'events_unverified';base['reason']=None if reviewed_aligned else 'automatic_events_not_in_headline_statistics' if preview else 'source_event_review_required'
+    if aligned:
+        pk_time=times[alignment['pkh']] if alignment['pkh'] is not None else None
+        base['peakPhase']={k:dict(value=float(phase(v['time'],pk_time,times[fc],times[br])),range=phase(v['range'],pk_time,times[fc],times[br]).tolist()) for k,v in peaks.items()}
     return base
 
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--limit',type=int,default=0);args=parser.parse_args()
     index=json.load(open(ROOT/'data/clips.json'));clips=index['clips'][:args.limit or None];review_path=ROOT/'data/kinematics/source_review.json';review=json.load(open(review_path)).get('clips',{}) if review_path.exists() else {}
-    result={}
+    events=json.load(open(ROOT/'data/kinematics/events_v3.json'));result={}
     for i,c in enumerate(clips):
-        pose=json.load(open(ROOT/'data'/c['pose']));analysis=json.load(gzip.open(ROOT/'data/biomechanics/analysis'/f"{c['id']}.json.gz"));result[c['id']]=analyse(c,pose,analysis,review.get(c['id']))
+        pose=json.load(open(ROOT/'data'/c['pose']));analysis=json.load(gzip.open(ROOT/'data/biomechanics/analysis'/f"{c['id']}.json.gz"));result[c['id']]=analyse(c,pose,analysis,review.get(c['id']),events['clips'][c['id']])
         if (i+1)%100==0:print('Sequence',i+1,flush=True)
-    out=dict(schemaVersion=2,version=VERSION,poseVersion=index['packageVersion'],normalSpeedPolicy='User instructed default 1x playback unless unusually slow motion is suspected; not an independently verified physical clock.',alignment='Only source-reviewed, strictly ordered event intervals align PKH=-100%, FC=0%, BR=100%. Other curves remain in clip playback time and never enter event-aligned headline statistics. Motion bursts are not release.',segmentDefinitions={'pelvis':'Signed angular velocity about inferred vertical of calibrated model pelvis frame','trunk':'Signed angular velocity about inferred vertical of calibrated model thorax frame','elbow':'Elbow extension angular velocity, not humeral internal rotation'},clips=result)
+    out=dict(schemaVersion=3,version=VERSION,poseVersion=index['packageVersion'],eventVersion=events['version'],normalSpeedPolicy='User instructed default 1x playback unless unusually slow motion is suspected; not an independently verified physical clock.',alignment='FC=0%, BR=100%; PKH=-100% only when reviewed and observed. Otherwise pre-contact window spans one FC-to-BR duration and is not a knee-lift event. Strong automatic image events align previews only; headline statistics require source-reviewed events. Missing event pairs remain in clip time. No wrist-speed substitution.',segmentDefinitions={'pelvis':'Signed angular velocity about inferred vertical of calibrated model pelvis frame','trunk':'Signed angular velocity about inferred vertical of calibrated model thorax frame','elbow':'Elbow extension angular velocity, not humeral internal rotation'},clips=result)
     out['coverage']={k:dict(Counter(v[k] for v in result.values())) for k in ['stance','slowMotion','state']}
     dest=ROOT/'data/kinematics';dest.mkdir(exist_ok=True);encoded=(json.dumps(clean(out),ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n').encode();(dest/'sequences.json').write_bytes(encoded);(dest/'sequences.json.gz').write_bytes(gzip.compress(encoded,mtime=0))
-    rows=io.StringIO();w=csv.writer(rows);w.writerow(['clip_id','player_code','player','date','pitch','stance','slow_motion','state','time_basis','pkh_frame','landing_frame','release_frame','release_basis','pelvis_peak_frame','trunk_peak_frame','elbow_peak_frame','pelvis_trunk_order','gap_assumed_ms','gap_playback_ms','gap_range_min_playback_ms','gap_range_max_playback_ms','stance_basis','native_median_dt_seconds','source_url'])
+    rows=io.StringIO();w=csv.writer(rows);w.writerow(['clip_id','player_code','player','date','pitch','stance','slow_motion','state','time_basis','pkh_frame','landing_frame','release_frame','release_basis','pelvis_peak_frame','trunk_peak_frame','elbow_peak_frame','pelvis_trunk_order','gap_assumed_ms','gap_playback_ms','gap_range_min_playback_ms','gap_range_max_playback_ms','stance_basis','native_median_dt_seconds','event_acceptance','sequence_version','auto_fc_min','auto_fc_max','auto_br_min','auto_br_max','source_url'])
     for c in result.values():
-        ev=c.get('events',{});pk=c.get('peaks',{});w.writerow([c['clipId'],c['playerCode'],c['player'],c['date'],c['pitch'],c['stance'],c['slowMotion'],c['state'],c['timeBasis'],ev.get('pkh'),ev.get('fc'),ev.get('br'),c.get('eventBasis',{}).get('br'),pk.get('pelvis',{}).get('frame'),pk.get('trunk',{}).get('frame'),pk.get('elbow',{}).get('frame'),c.get('pelvisTrunkOrder'),c.get('gapAssumedMs'),c.get('gapPlaybackMs'),*c.get('gapRangePlaybackMs',[None,None]),c.get('stanceEvidence',{}).get('reason'),c.get('independentMedianDt'),c['sourceUrl']])
+        ev=c.get('events',{});pk=c.get('peaks',{});w.writerow([c['clipId'],c['playerCode'],c['player'],c['date'],c['pitch'],c['stance'],c['slowMotion'],c['state'],c['timeBasis'],ev.get('pkh'),ev.get('fc'),ev.get('br'),c.get('eventBasis',{}).get('br'),pk.get('pelvis',{}).get('frame'),pk.get('trunk',{}).get('frame'),pk.get('elbow',{}).get('frame'),c.get('pelvisTrunkOrder'),c.get('gapAssumedMs'),c.get('gapPlaybackMs'),*c.get('gapRangePlaybackMs',[None,None]),c.get('stanceEvidence',{}).get('reason'),c.get('independentMedianDt'),c.get('eventAcceptance'),VERSION,*(c.get('eventCandidates',{}).get('fc') or [None,None]),*(c.get('eventCandidates',{}).get('br') or [None,None]),c['sourceUrl']])
     (dest/'sequences.csv.gz').write_bytes(gzip.compress(rows.getvalue().encode('utf-8-sig'),mtime=0));print(out['coverage']);print('bytes',len(encoded))
 
 
