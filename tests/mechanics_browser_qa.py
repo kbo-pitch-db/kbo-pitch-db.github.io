@@ -84,6 +84,7 @@ with sync_playwright() as p:
     page.locator('#knee-open-inspector').click();page.wait_for_function('!!app.poses[3]')
     assert page.evaluate('app.selected.id')==chosen
     assert page.locator('#explore').is_visible()
+    if not page.locator('.main-nav a[href="#pitchers"]').is_visible():page.locator('#menu-btn').click()
     page.locator('.main-nav a[href="#pitchers"]').click();page.wait_for_selector('#knee-pose[data-frame]')
     page.locator('[data-knee-event="landing"]').click();page.locator('#knee-play').click();page.wait_for_timeout(100)
     assert float(page.locator('#knee-pose').get_attribute('data-phase'))>0
