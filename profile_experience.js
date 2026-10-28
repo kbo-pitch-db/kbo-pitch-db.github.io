@@ -72,23 +72,24 @@ window.PitcherExperience = (() => {
   function directory(open){document.querySelectorAll('#pitchers [data-directory]').forEach(el=>el.hidden=open);$('#pitchers').classList.toggle('showing-report',open)}
   function render(){
     const p=player(),d=data();if(!p||!d)return;stop();directory(true);
-    const tab=state().reportTab||'overview',stats=p.statistics;
+    const tab=state().reportTab||'metrics',stats=p.statistics;
     const section=$('#pitcher-profile');section.hidden=false;
     section.innerHTML=`<div class="report-topline"><button class="back-to-players">← ${text(label('backPlayers'))}</button><span>${text(label('coverageShort'))}</span><a href="${text(url(p.detailPath))}" download>JSON ↓</a></div>
-      <div class="report-identity"><span class="profile-portrait">${playerPortrait(stub(p))}</span><div><span class="micro-label">2024 KBO · ${text(teams(p))}</span><h2>${text(p.name)} <small>${text(p.hand?label(p.hand==='L'?'left':'right'):label('notRecorded'))}</small></h2><div class="player-style">${text(label('style_'+stats.archetype))}</div><details class="style-rule"><summary>${text(label('styleRule'))}</summary><p>${text(label('styleRules'))}</p></details></div><div class="report-coverage"><strong>${p.recordCount.toLocaleString()}</strong><span>${text(label('samplePitches'))}</span><small>${p.recordGames} ${text(label('gamesCaptured'))} · ${p.recordStart} — ${p.recordEnd}</small></div></div>
+      <div class="report-identity"><span class="profile-portrait">${playerPortrait(stub(p))}</span><div><span class="micro-label">2024 KBO · ${text(teams(p))}</span><h2>${text(p.name)} <small>${text(p.hand?label(p.hand==='L'?'left':'right'):label('notRecorded'))}</small></h2><div class="player-style" ${tab==='metrics'?'hidden':''}>${text(label('style_'+stats.archetype))}</div><details class="style-rule" ${tab==='metrics'?'hidden':''}><summary>${text(label('styleRule'))}</summary><p>${text(label('styleRules'))}</p></details></div><div class="report-coverage"><strong>${p.recordCount.toLocaleString()}</strong><span>${text(label('samplePitches'))}</span><small>${p.recordGames} ${text(label('gamesCaptured'))} · ${p.recordStart} — ${p.recordEnd}</small></div></div>
       <p class="report-sample-note">${text(label('recordCoverageNote'))}</p>
-      <nav class="report-tabs" role="tablist" aria-label="${text(label('reportTag'))}">${[['overview','reportOverview'],['arsenal','reportArsenal'],['mechanics','reportMechanics']].map(([key,title])=>`<button id="report-tab-${key}" role="tab" data-report-tab="${key}" aria-selected="${tab===key}" aria-controls="report-pane" tabindex="${tab===key?'0':'-1'}">${text(label(title))}${key==='mechanics'?`<small>${p.clipCount}</small>`:''}</button>`).join('')}</nav>
-      <div id="report-pane" class="report-pane" role="tabpanel" aria-labelledby="report-tab-${tab}" tabindex="0">${tab==='overview'?overview(p):tab==='arsenal'?arsenal(p,d):mechanics(p,d)}</div>`;
+      <nav class="report-tabs" role="tablist" aria-label="${text(label('reportTag'))}">${[['metrics','reportMetrics'],['arsenal','reportArsenal'],['mechanics','reportMechanics'],['overview','reportOverview']].map(([key,title])=>`<button id="report-tab-${key}" role="tab" data-report-tab="${key}" aria-selected="${tab===key}" aria-controls="report-pane" tabindex="${tab===key?'0':'-1'}">${text(label(title))}${key==='mechanics'?`<small>${p.clipCount}</small>`:''}</button>`).join('')}</nav>
+      <div id="report-pane" class="report-pane" role="tabpanel" aria-labelledby="report-tab-${tab}" tabindex="0">${tab==='metrics'?'<div id="player-metrics-root"></div>':tab==='overview'?overview(p):tab==='arsenal'?arsenal(p,d):mechanics(p,d)}</div>`;
     bindPortraits(section);section.querySelector('.back-to-players').addEventListener('click',back);
     section.querySelectorAll('[data-report-tab]').forEach(button=>{
       button.addEventListener('click',()=>navigateTab(button.dataset.reportTab));
-      button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=['overview','arsenal','mechanics'],i=tabs.indexOf(tab),next=event.key==='Home'?tabs[0]:event.key==='End'?tabs[2]:tabs[(i+(event.key==='ArrowRight'?1:2))%3];navigateTab(next);$('#report-tab-'+next).focus()});
+      button.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const tabs=['metrics','arsenal','mechanics','overview'],i=tabs.indexOf(tab),next=event.key==='Home'?tabs[0]:event.key==='End'?tabs[3]:tabs[(i+(event.key==='ArrowRight'?1:3))%4];navigateTab(next);$('#report-tab-'+next).focus()});
     });
+    if(tab==='metrics')window.MetricsDatabase?.mount($('#player-metrics-root'),p.code);
     if(tab==='overview')bindOverview(p);
     if(tab==='arsenal')bindArsenal(p,d);
     if(tab==='mechanics')bindMechanics(p,d);
   }
-  function back(){stop();state().active=null;directory(false);$('#pitcher-profile').hidden=true;const link=new URL(location.href);link.searchParams.delete('pitcher');window.MechanicsReport?.clearLink(link);history.replaceState(null,'',link);$('#pitchers').scrollIntoView({behavior:'smooth'})}
+  function back(){stop();state().active=null;directory(false);$('#pitcher-profile').hidden=true;const link=new URL(location.href);link.searchParams.delete('pitcher');window.MechanicsReport?.clearLink(link);window.MetricsDatabase?.clearPlayerLink(link);history.replaceState(null,'',link);$('#pitchers').scrollIntoView({behavior:'smooth'})}
   function metricWhy(key){return label(({fastballVelocity:'velocityMeaning',whiffRate:'whiffMeaning',cswRate:'cswMeaning',zoneRate:'zoneMeaning',breakingShare:'breakingMeaning'})[key])}
   function quickStats(p){
     const stats=p.statistics;

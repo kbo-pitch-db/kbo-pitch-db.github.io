@@ -13,7 +13,7 @@ with sync_playwright() as p:
     errors,failed=[],[]
     page.on('pageerror',lambda error:errors.append(str(error)))
     page.on('response',lambda response:failed.append(response.url) if response.status>=400 and base in response.url else None)
-    page.goto(base+'/',wait_until='networkidle')
+    page.goto(base+'/#home',wait_until='networkidle')
     page.wait_for_function('PitchPortal.state.summary?.playerCount===155')
     assert page.evaluate('app.selected===null')
     assert page.locator('#home-featured-players button').count()==4
@@ -31,13 +31,16 @@ with sync_playwright() as p:
     page.locator('#pitcher-search').fill('65320')
     assert page.locator('.pitcher-card').count()==1
     page.locator('.pitcher-card').click()
+    page.wait_for_selector('#player-metrics-root .db-aggregate-table')
+    assert page.locator('#report-tab-metrics').get_attribute('aria-selected')=='true'
+    page.locator('#report-tab-overview').click()
     page.wait_for_selector('.characteristic-radar')
     assert page.locator('#pitcher-grid').is_hidden()
     assert page.locator('.report-coverage>strong').inner_text()=='356'
     assert page.locator('.percentile-row').count()==5
     assert page.locator('.radar-player').count()==1
     assert page.locator('#report-tab-overview').get_attribute('aria-selected')=='true'
-    page.locator('#report-tab-overview').focus();page.keyboard.press('ArrowRight')
+    page.locator('#report-tab-metrics').click();page.locator('#report-tab-metrics').focus();page.keyboard.press('ArrowRight')
     assert page.locator('#report-tab-arsenal').get_attribute('aria-selected')=='true'
     assert page.locator('.simple-arsenal-table').count()==1
     assert page.locator('.density-cell').count()==25
@@ -126,6 +129,8 @@ with sync_playwright() as p:
     page.wait_for_selector('.report-identity')
     assert page.locator('html').get_attribute('lang')=='ko'
     assert page.locator('.report-coverage>strong').inner_text()=='27'
+    assert page.locator('#report-tab-metrics').get_attribute('aria-selected')=='true'
+    page.locator('#report-tab-overview').click()
     assert page.locator('.radar-player').count()==0
     page.locator('#report-tab-mechanics').click()
     assert page.locator('.empty-report-motion').count()==1

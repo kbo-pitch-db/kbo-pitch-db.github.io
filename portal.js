@@ -53,7 +53,7 @@ window.PitchPortal = (() => {
   const profile = code => state.summary?.players.find(p=>p.code===code);
   const loaded = () => state.players.get(state.active);
   function install() {
-    Object.assign(I18N.en,en);Object.assign(I18N.ko,ko);window.PitcherExperience?.install();
+    Object.assign(I18N.en,en);Object.assign(I18N.ko,ko);window.PitcherExperience?.install();window.MetricsDatabase?.install();
     $('#pitcher-search').addEventListener('input',()=>{state.limit=12;renderPitchers()});
     $('#pitcher-team').addEventListener('change',()=>{state.limit=12;renderPitchers()});
     $('#pitcher-motion').addEventListener('change',()=>{state.limit=12;renderPitchers()});
@@ -74,7 +74,7 @@ window.PitchPortal = (() => {
       for(const c of app.clips)c.hand=profile(c.playerCode)?.hand||'';
     }catch(error){state.summary=null;$('#pitcher-grid').innerHTML=`<p role="alert">${e(tr('portalFailed'))}</p>`}
   }
-  function activeNav(){const previousRoute=$('.shell').dataset.route,hash=location.hash||'#home',route=hash==='#downloads'?'guide':hash.slice(1);$('.shell').dataset.route=['home','pitchers','explore','compare','guide'].includes(route)?route:'home';if(route!=='pitchers')window.PitcherExperience?.stop();if(route!=='explore')app.video?.pause();if(route!=='compare')stopComparison();if(hash==='#downloads')requestAnimationFrame(()=>$('#downloads').scrollIntoView({behavior:'smooth'}));document.querySelectorAll('.main-nav a').forEach(a=>{const active=a.hash===hash||hash==='#downloads'&&a.hash==='#guide';a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(route==='pitchers'&&previousRoute!=='pitchers'&&state.active&&state.players.has(state.active))renderProfile()}
+  function activeNav(){const previousRoute=$('.shell').dataset.route,hash=location.hash||'#database',route=hash==='#downloads'?'guide':hash.slice(1);$('.shell').dataset.route=['database','home','pitchers','explore','compare','guide'].includes(route)?route:'database';if(route!=='pitchers')window.PitcherExperience?.stop();if(route!=='explore')app.video?.pause();if(route!=='compare')stopComparison();if(hash==='#downloads')requestAnimationFrame(()=>$('#downloads').scrollIntoView({behavior:'smooth'}));document.querySelectorAll('.main-nav a').forEach(a=>{const active=a.hash===hash||hash==='#downloads'&&a.hash==='#guide';a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(route==='pitchers'&&previousRoute!=='pitchers'&&state.active&&state.players.has(state.active))renderProfile();if(route==='database'&&previousRoute!=='database')window.MetricsDatabase?.refresh()}
   function render(){
     activeNav();if(!state.summary)return;
     const s=state.summary;
@@ -82,7 +82,7 @@ window.PitchPortal = (() => {
     $('#overview-stats').innerHTML=[[s.playerCount,'players'],[s.clipCount,'sampleClips'],[s.gameCount,'games'],[s.recordCount,'pitchRecords']].map(([value,key])=>`<div><strong>${n(value)}</strong><span>${e(tr(key))}</span></div>`).join('')+`<div class="stat-period"><strong>${s.dateStart.slice(5).replace('-','.')} — ${s.dateEnd.slice(5).replace('-','.')}</strong><span>2024 · ${e(tr('period'))}</span></div>`;
     const teamValue=$('#pitcher-team').value;
     $('#pitcher-team').innerHTML=`<option value="">${e(tr('allProfileTeams'))}</option>`+[...new Set(s.players.flatMap(p=>p.teams))].sort().map(t=>`<option value="${e(t)}">${e(teamLabel(t))}</option>`).join('');$('#pitcher-team').value=teamValue;
-    renderPitchers();setupDemo();renderCompareSelectors();renderMethods();window.PitcherExperience?.renderHome();
+    renderPitchers();setupDemo();renderCompareSelectors();renderMethods();window.PitcherExperience?.renderHome();window.MetricsDatabase?.refresh();
     if(state.active&&loaded())renderProfile();
     else {const requested=new URLSearchParams(location.search).get('pitcher');if(requested&&profile(requested))openPlayer(requested,{scroll:false})}
     if(state.compare)renderCompare();
@@ -107,8 +107,8 @@ window.PitchPortal = (() => {
     const response=await fetch(url(profile(code).detailPath));if(!response.ok)throw Error('player');const data=await response.json();if(data.schemaVersion!==2||data.profile?.code!==code)throw Error('player version mismatch');state.players.set(code,data);return data;
   }
   async function openPlayer(code,{scroll=true}={}){
-    if(!profile(code))return;const request=++state.request;state.active=code;state.reportTab='overview';state.mechanicMetric=null;state.formClip=null;state.linkedOnly=false;state.scope='records';state.pitch='';state.hand='';state.inning='';state.count=null;state.pair=null;state.region=null;state.selectedRecord=null;
-    const incoming=new URL(location.href);if(incoming.searchParams.get('pitcher')===code&&incoming.searchParams.get('mechanics')==='lead-knee')state.reportTab='mechanics';else window.MechanicsReport?.clearLink(incoming);history.replaceState(null,'',incoming);
+    if(!profile(code))return;const request=++state.request;state.active=code;state.reportTab='metrics';state.mechanicMetric=null;state.formClip=null;state.linkedOnly=false;state.scope='records';state.pitch='';state.hand='';state.inning='';state.count=null;state.pair=null;state.region=null;state.selectedRecord=null;
+    const incoming=new URL(location.href);if(incoming.searchParams.get('pitcher')===code&&incoming.searchParams.get('mechanics')==='lead-knee')state.reportTab='mechanics';else {window.MechanicsReport?.clearLink(incoming);if(incoming.searchParams.get('pitcher')!==code)window.MetricsDatabase?.clearPlayerLink(incoming)}history.replaceState(null,'',incoming);
     window.PitcherExperience?.stop();window.PitcherExperience?.directory(true);if(scroll){location.hash='pitchers';activeNav()}const section=$('#pitcher-profile');section.hidden=false;section.innerHTML=`<p class="sample-note">${e(tr('loading'))}</p>`;
     const link=new URL(location.href);link.searchParams.set('pitcher',code);history.replaceState(null,'',link);
     renderPitchers();

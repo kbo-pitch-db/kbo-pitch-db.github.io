@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "version": "mechanics-db-20261028-v1",
+  "metrics": [
+    {
+      "id": "lead_knee_p10_2d",
+      "name": {
+        "ko": "앞무릎 투영 굴곡 P10",
+        "en": "Lead-knee projected flexion P10"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "관측된 클립 구간에서 앞무릎 투영 굴곡의 P10. 0°는 영상에서 펴진 관절입니다. 착지–릴리스 구간의 신전량과 다릅니다.",
+        "en": "P10 of projected flexion across the observed clip. 0° means projected straight. Distinct from event-aligned extension."
+      },
+      "formula": "flexion=180-acos((a-b)·(c-b)/(|a-b||c-b|)); Q0.10(flexion)",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:11-13-15; L:12-14-16",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "lead_knee_p90_2d",
+      "name": {
+        "ko": "앞무릎 투영 굴곡 P90",
+        "en": "Lead-knee projected flexion P90"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "관측된 클립 구간에서 앞무릎 투영 굴곡의 P90. 0°는 영상에서 펴진 관절입니다. 착지–릴리스 구간의 신전량과 다릅니다.",
+        "en": "P90 of projected flexion across the observed clip. 0° means projected straight. Distinct from event-aligned extension."
+      },
+      "formula": "flexion=180-acos((a-b)·(c-b)/(|a-b||c-b|)); Q0.90(flexion)",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:11-13-15; L:12-14-16",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "lead_knee_range_2d",
+      "name": {
+        "ko": "앞무릎 투영 굴곡 변화폭 P90−P10",
+        "en": "Lead-knee projected flexion range P90−P10"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "관측된 클립 구간에서 앞무릎 투영 굴곡의 변화폭 P90−P10. 0°는 영상에서 펴진 관절입니다. 착지–릴리스 구간의 신전량과 다릅니다.",
+        "en": "range P90−P10 of projected flexion across the observed clip. 0° means projected straight. Distinct from event-aligned extension."
+      },
+      "formula": "flexion=180-acos((a-b)·(c-b)/(|a-b||c-b|)); Q0.90(flexion)-Q0.10(flexion)",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:11-13-15; L:12-14-16",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "throw_elbow_p10_2d",
+      "name": {
+        "ko": "투구팔꿈치 투영 굴곡 P10",
+        "en": "Throwing-elbow projected flexion P10"
+      },
+      "group": "arm",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "관측된 클립 구간에서 투구팔꿈치 투영 굴곡의 P10. 0°는 영상에서 펴진 관절입니다. 착지–릴리스 구간의 신전량과 다릅니다.",
+        "en": "P10 of projected flexion across the observed clip. 0° means projected straight. Distinct from event-aligned extension."
+      },
+      "formula": "flexion=180-acos((a-b)·(c-b)/(|a-b||c-b|)); Q0.10(flexion)",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:6-8-10; L:5-7-9",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "throw_elbow_p90_2d",
+      "name": {
+        "ko": "투구팔꿈치 투영 굴곡 P90",
+        "en": "Throwing-elbow projected flexion P90"
+      },
+      "group": "arm",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "관측된 클립 구간에서 투구팔꿈치 투영 굴곡의 P90. 0°는 영상에서 펴진 관절입니다. 착지–릴리스 구간의 신전량과 다릅니다.",
+        "en": "P90 of projected flexion across the observed clip. 0° means projected straight. Distinct from event-aligned extension."
+      },
+      "formula": "flexion=180-acos((a-b)·(c-b)/(|a-b||c-b|)); Q0.90(flexion)",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:6-8-10; L:5-7-9",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "throw_elbow_range_2d",
+      "name": {
+        "ko": "투구팔꿈치 투영 굴곡 변화폭 P90−P10",
+        "en": "Throwing-elbow projected flexion range P90−P10"
+      },
+      "group": "arm",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "관측된 클립 구간에서 투구팔꿈치 투영 굴곡의 변화폭 P90−P10. 0°는 영상에서 펴진 관절입니다. 착지–릴리스 구간의 신전량과 다릅니다.",
+        "en": "range P90−P10 of projected flexion across the observed clip. 0° means projected straight. Distinct from event-aligned extension."
+      },
+      "formula": "flexion=180-acos((a-b)·(c-b)/(|a-b||c-b|)); Q0.90(flexion)-Q0.10(flexion)",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:6-8-10; L:5-7-9",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "trunk_tilt_p90_2d",
+      "name": {
+        "ko": "몸통 영상 수직선 기울기 P90",
+        "en": "Image-vertical trunk tilt P90"
+      },
+      "group": "posture",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "골반 중점→어깨 중점 벡터와 영상 위쪽 수직선 사이 각도의 P90입니다. 해부학적 전경·측굴과 구분합니다.",
+        "en": "P90 angle between hip-midpoint→shoulder-midpoint and image up. Does not identify anatomical forward or lateral lean."
+      },
+      "formula": "Q0.90(angle(shoulder_mid-hip_mid,[0,-1]))",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "5,6,11,12",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "arm_elevation_p90_2d",
+      "name": {
+        "ko": "투구 상완–몸통 투영각 P90",
+        "en": "Projected upper-arm / trunk angle P90"
+      },
+      "group": "arm",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "어깨→투구 팔꿈치와 어깨 중점→골반 중점 사이 투영각의 P90입니다. 팔이 몸통 아래 방향이면 0°입니다.",
+        "en": "P90 projected angle of throwing upper arm relative to downward trunk. Arm along downward trunk is 0°."
+      },
+      "formula": "Q0.90(angle(elbow-shoulder,hip_mid-shoulder_mid))",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R:6,8; L:5,7; torso:5,6,11,12",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "separation_p50_3d",
+      "name": {
+        "ko": "어깨선–골반선 수평 분리각 P50",
+        "en": "Shoulder–pelvis horizontal separation P50"
+      },
+      "group": "pelvis_trunk",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "모델의 좌→우 어깨선과 좌→우 골반선을 추정 지면에 투영한 무부호 각도의 P50입니다. 해부학적 흉곽 회전이 아닙니다.",
+        "en": "P50 unsigned angle between left-to-right shoulder and hip lines projected onto inferred ground. Not anatomical thorax rotation."
+      },
+      "formula": "Q0.50(angle(shoulder_line_XZ,hip_line_XZ))",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "SMPL:1,2,16,17",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement."
+    },
+    {
+      "id": "separation_p90_3d",
+      "name": {
+        "ko": "어깨선–골반선 수평 분리각 P90",
+        "en": "Shoulder–pelvis horizontal separation P90"
+      },
+      "group": "pelvis_trunk",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "관측 클립의 모델 수평 분리각 P90입니다. 최대 분리각이나 착지 시 값과 다릅니다.",
+        "en": "P90 horizontal separation across the observed clip. Not maximum separation or the landing value."
+      },
+      "formula": "Q0.90(angle(shoulder_line_XZ,hip_line_XZ))",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "SMPL:1,2,16,17",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement."
+    },
+    {
+      "id": "pelvis_rotation_range_3d",
+      "name": {
+        "ko": "골반선 관측 회전폭 P90−P10",
+        "en": "Observed pelvis-line rotation range P90−P10"
+      },
+      "group": "pelvis_trunk",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "가장 긴 연속 유효 구간에서 수평 골반선 방향을 연속화한 후 P90−P10을 계산합니다. 투구 단계나 회전 속도를 뜻하지 않습니다.",
+        "en": "Unwrapped horizontal hip-line yaw P90−P10 in the longest contiguous supported run. Not a pitching-phase excursion or angular velocity."
+      },
+      "formula": "unwrap(atan2(hip_line.z,hip_line.x)); Q0.90-Q0.10",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "SMPL:1,2; Halpe:11,12",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement."
+    },
+    {
+      "id": "trunk_inclination_p90_3d",
+      "name": {
+        "ko": "몸통 추정 수직선 기울기 P90",
+        "en": "Estimated vertical trunk inclination P90"
+      },
+      "group": "posture",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "모델 골반→목 벡터와 추정 장면의 수직선 사이 각도의 P90입니다. 투구 방향 기준 전경·측굴로 해석하지 않습니다.",
+        "en": "P90 angle of model pelvis→neck against estimated scene vertical. Not forward/lateral lean relative to pitching direction."
+      },
+      "formula": "Q0.90(angle(neck-pelvis,[0,1,0]))",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "SMPL:0,12; Halpe:5,6,11,12",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement."
+    },
+    {
+      "id": "arm_elevation_p90_3d",
+      "name": {
+        "ko": "투구 상완–몸통 추정각 P90",
+        "en": "Estimated upper-arm / trunk angle P90"
+      },
+      "group": "arm",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "투구측 어깨→팔꿈치와 모델 목→골반 사이 각도의 P90입니다. 해부학적 어깨 외전이나 공의 진입각이 아닙니다.",
+        "en": "P90 model upper-arm angle against downward trunk. Not anatomical shoulder abduction or ball approach angle."
+      },
+      "formula": "Q0.90(angle(elbow-shoulder,pelvis-neck))",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "R SMPL:17,19; L:16,18; trunk:0,12",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement."
+    },
+    {
+      "id": "ankle_spread_p90_3d",
+      "name": {
+        "ko": "정규화 발목 수평 간격 P90",
+        "en": "Normalized horizontal ankle separation P90"
+      },
+      "group": "space",
+      "unit": "ratio",
+      "basis": "3d",
+      "definition": {
+        "ko": "발목 사이 XZ 거리 / 양쪽 고관절–무릎–발목 길이 평균의 P90입니다. 착지 보폭이나 실측 거리가 아닙니다.",
+        "en": "P90 ankle XZ separation divided by mean hip–knee–ankle segment length. Not landing stride or measured distance."
+      },
+      "formula": "Q0.90(norm((ankle_L-ankle_R)_XZ)/mean(leg_segment_lengths))",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "observed_clip",
+      "requiredJoints": "SMPL:1,2,4,5,7,8",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "At least 10 finite supported frames and >=50% of the clip; original 2D score >=0.5 at required observations; no interpolated/outlier joints. No gap filling or phase inference.",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement."
+    },
+    {
+      "id": "landing_knee_flexion_2d",
+      "name": {
+        "ko": "착지 시 앞무릎 투영 굴곡",
+        "en": "Lead-knee projected flexion at landing"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "착지 후보 범위 중앙에서의 투영 굴곡입니다.",
+        "en": "Projected flexion at landing-bracket midpoint."
+      },
+      "formula": "lead-knee-pilot-20261028-v1: landingFlexion; 3-frame mean",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "provisional_landing_release",
+      "requiredJoints": "R:11,13,15; L:12,14,16",
+      "calculationVersion": "lead-knee-pilot-20261028-v1",
+      "conditions": "Requires published provisional visual event brackets; original joint scores >=0.4 throughout; no filled observations; midpoint alignment; 3-frame box mean. Separate strict >=0.5 screen and sensitivity remain in source pilot.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "extra_knee_flexion_2d",
+      "name": {
+        "ko": "착지 후 앞무릎 추가 굴곡",
+        "en": "Additional projected knee bending after landing"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "착지–릴리스 최대 굴곡 − 착지 굴곡입니다.",
+        "en": "Maximum aligned flexion minus landing flexion."
+      },
+      "formula": "lead-knee-pilot-20261028-v1: extraFlexion; 3-frame mean",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "provisional_landing_release",
+      "requiredJoints": "R:11,13,15; L:12,14,16",
+      "calculationVersion": "lead-knee-pilot-20261028-v1",
+      "conditions": "Requires published provisional visual event brackets; original joint scores >=0.4 throughout; no filled observations; midpoint alignment; 3-frame box mean. Separate strict >=0.5 screen and sensitivity remain in source pilot.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "knee_extension_2d",
+      "name": {
+        "ko": "최대 굴곡 후 앞무릎 신전량",
+        "en": "Projected knee straightening after maximum bend"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "착지–릴리스 최대 굴곡 − 릴리스 굴곡입니다. 착지 기준 순 신전량과 다릅니다.",
+        "en": "Maximum aligned flexion minus release flexion. Distinct from net extension from landing."
+      },
+      "formula": "lead-knee-pilot-20261028-v1: extension; 3-frame mean",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "provisional_landing_release",
+      "requiredJoints": "R:11,13,15; L:12,14,16",
+      "calculationVersion": "lead-knee-pilot-20261028-v1",
+      "conditions": "Requires published provisional visual event brackets; original joint scores >=0.4 throughout; no filled observations; midpoint alignment; 3-frame box mean. Separate strict >=0.5 screen and sensitivity remain in source pilot.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "net_knee_extension_2d",
+      "name": {
+        "ko": "착지→릴리스 앞무릎 순 신전량",
+        "en": "Net projected knee straightening landing→release"
+      },
+      "group": "lead_leg",
+      "unit": "°",
+      "basis": "2d",
+      "definition": {
+        "ko": "착지 굴곡 − 릴리스 굴곡입니다. 음수는 착지 때보다 더 굽혀진 상태를 뜻합니다.",
+        "en": "Landing flexion minus release flexion. Negative means more bent at release than landing."
+      },
+      "formula": "lead-knee-pilot-20261028-v1: netExtension; 3-frame mean",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "provisional_landing_release",
+      "requiredJoints": "R:11,13,15; L:12,14,16",
+      "calculationVersion": "lead-knee-pilot-20261028-v1",
+      "conditions": "Requires published provisional visual event brackets; original joint scores >=0.4 throughout; no filled observations; midpoint alignment; 3-frame box mean. Separate strict >=0.5 screen and sensitivity remain in source pilot.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "max_knee_flexion_progress",
+      "name": {
+        "ko": "앞무릎 최대 굴곡 시점",
+        "en": "Timing of maximum projected knee bend"
+      },
+      "group": "lead_leg",
+      "unit": "%",
+      "basis": "2d",
+      "definition": {
+        "ko": "착지 0%, 릴리스 100% 정렬 구간의 첫 최대 굴곡 시점입니다. 최대 신전 속도 시점이 아닙니다.",
+        "en": "First maximum bend in landing=0%, release=100% alignment. Not the time of peak extension speed."
+      },
+      "formula": "lead-knee-pilot-20261028-v1: maximumFlexionProgress; 3-frame mean",
+      "coordinateSystem": "Halpe-26 crop pixels; image x right, y down",
+      "referenceEvent": "provisional_landing_release",
+      "requiredJoints": "R:11,13,15; L:12,14,16",
+      "calculationVersion": "lead-knee-pilot-20261028-v1",
+      "conditions": "Requires published provisional visual event brackets; original joint scores >=0.4 throughout; no filled observations; midpoint alignment; 3-frame box mean. Separate strict >=0.5 screen and sensitivity remain in source pilot.",
+      "limitations": "Image projection depends on view and clip boundaries; not anatomical 3D flexion."
+    },
+    {
+      "id": "landing_release_time_ms",
+      "name": {
+        "ko": "착지→릴리스 실제 시간",
+        "en": "Physical landing→release time"
+      },
+      "group": "timing",
+      "unit": "ms",
+      "basis": "3d",
+      "definition": {
+        "ko": "필요 조건이 검증되지 않아 현재 결측입니다. 다른 지표나 클립 진행률로 대체하지 않습니다.",
+        "en": "Currently missing because required conditions are unvalidated. Never substituted with another metric or clip progress."
+      },
+      "formula": "Not computed",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "audited_landing_release",
+      "requiredJoints": "See required conditions",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "Physical source clock with duplicate/slow-motion calibration and validated event brackets",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement.",
+      "pendingReason": "physical_time_unverified"
+    },
+    {
+      "id": "pelvis_trunk_peak_gap_ms",
+      "name": {
+        "ko": "골반–몸통 회전 피크 시간 차이",
+        "en": "Pelvis–trunk rotation peak-time offset"
+      },
+      "group": "timing",
+      "unit": "ms",
+      "basis": "3d",
+      "definition": {
+        "ko": "필요 조건이 검증되지 않아 현재 결측입니다. 다른 지표나 클립 진행률로 대체하지 않습니다.",
+        "en": "Currently missing because required conditions are unvalidated. Never substituted with another metric or clip progress."
+      },
+      "formula": "Not computed",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "audited_landing_release",
+      "requiredJoints": "See required conditions",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "Validated physical clock, segment coordinates, filtering and stable rotation peaks",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement.",
+      "pendingReason": "physical_time_unverified"
+    },
+    {
+      "id": "trunk_forward_lean_release",
+      "name": {
+        "ko": "릴리스 몸통 전경",
+        "en": "Forward trunk lean at release"
+      },
+      "group": "posture",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "필요 조건이 검증되지 않아 현재 결측입니다. 다른 지표나 클립 진행률로 대체하지 않습니다.",
+        "en": "Currently missing because required conditions are unvalidated. Never substituted with another metric or clip progress."
+      },
+      "formula": "Not computed",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "audited_landing_release",
+      "requiredJoints": "See required conditions",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "Calibrated pitching-direction frame plus audited release",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement.",
+      "pendingReason": "pitch_direction_unverified"
+    },
+    {
+      "id": "trunk_lateral_lean_release",
+      "name": {
+        "ko": "릴리스 몸통 측굴",
+        "en": "Lateral trunk lean at release"
+      },
+      "group": "posture",
+      "unit": "°",
+      "basis": "3d",
+      "definition": {
+        "ko": "필요 조건이 검증되지 않아 현재 결측입니다. 다른 지표나 클립 진행률로 대체하지 않습니다.",
+        "en": "Currently missing because required conditions are unvalidated. Never substituted with another metric or clip progress."
+      },
+      "formula": "Not computed",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "audited_landing_release",
+      "requiredJoints": "See required conditions",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "Calibrated pitching-direction frame plus audited release",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement.",
+      "pendingReason": "pitch_direction_unverified"
+    },
+    {
+      "id": "normalized_stride_landing",
+      "name": {
+        "ko": "착지 시 정규화 보폭",
+        "en": "Normalized stride at landing"
+      },
+      "group": "space",
+      "unit": "ratio",
+      "basis": "3d",
+      "definition": {
+        "ko": "필요 조건이 검증되지 않아 현재 결측입니다. 다른 지표나 클립 진행률로 대체하지 않습니다.",
+        "en": "Currently missing because required conditions are unvalidated. Never substituted with another metric or clip progress."
+      },
+      "formula": "Not computed",
+      "coordinateSystem": "SMPL-24 joint centers; clip-fixed inferred support; Y up; uncalibrated scale",
+      "referenceEvent": "audited_landing_release",
+      "requiredJoints": "See required conditions",
+      "calculationVersion": "mechanics-db-20261028-v1",
+      "conditions": "Audited landing plus validated stride direction, contact and model geometry",
+      "limitations": "Unvalidated monocular 3D geometry; excluded from default aggregate statistics. Not a laboratory measurement.",
+      "pendingReason": "pitch_direction_unverified"
+    }
+  ],
+  "statusCodes": {
+    "observed_2d": {
+      "ko": "2D 관측 통계",
+      "en": "2D observation statistic"
+    },
+    "needs_review_3d": {
+      "ko": "3D 추정·검토 필요",
+      "en": "3D estimate · review required"
+    },
+    "provisional_event": {
+      "ko": "잠정 이벤트",
+      "en": "Provisional events"
+    },
+    "no_motion": {
+      "ko": "연결 동작 없음",
+      "en": "No linked motion"
+    },
+    "event_not_audited": {
+      "ko": "이벤트 미검수",
+      "en": "Events not audited"
+    },
+    "insufficient_observations": {
+      "ko": "유효 관측 부족",
+      "en": "Insufficient supported observations"
+    },
+    "throwing_side_unknown": {
+      "ko": "투구측 미확인",
+      "en": "Throwing side unknown"
+    },
+    "physical_time_unverified": {
+      "ko": "실제 시간 미검증",
+      "en": "Physical time unverified"
+    },
+    "pitch_direction_unverified": {
+      "ko": "투구 기준축 미검증",
+      "en": "Pitching frame unverified"
+    },
+    "model_alignment_mismatch": {
+      "ko": "모델 정렬 불일치",
+      "en": "Model alignment mismatch"
+    }
+  }
+}

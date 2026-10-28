@@ -1,0 +1,26 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const data=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/metrics/database.json'),'utf8'));
+const context={window:{},app:{lang:'en'},document:{querySelector:()=>null},URL,fetch:async()=>({ok:true,json:async()=>data}),url:p=>'https://example.invalid/data/'+p};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../pitch_charts.js'),'utf8'),context);
+context.PitchCharts=context.window.PitchCharts;
+vm.runInContext(fs.readFileSync(path.join(__dirname,'../metrics_database.js'),'utf8'),context);
+(async()=>{
+  const db=context.window.MetricsDatabase;await db.load();
+  const metric='lead_knee_range_2d',cell=(value,status='observed_2d')=>({value,status,validFrames:20,totalFrames:20});
+  const rows=[{id:'a',metrics:{[metric]:cell(0)}},{id:'b',metrics:{[metric]:cell(10)}},{id:'c',metrics:{[metric]:cell(null,'insufficient_observations')}},{id:'d',metrics:{[metric]:cell(100,'needs_review_3d')}}];
+  let result=db.summarize(rows,metric);assert.equal(result.n,2);assert.equal(result.median,5);assert.equal(result.q25,null);assert.equal(result.q75,null);
+  result=db.summarize(rows,metric,true);assert.equal(result.n,3);assert.equal(result.median,10);assert.equal(result.q25,5);assert.equal(result.q75,55);
+  assert.equal(db.cell({metrics:null},metric).value,null);assert.equal(db.cell({metrics:null},metric).status,'no_motion');
+  assert.equal(db.sortRows(rows,{sort:metric,direction:'asc'})[0].id,'a');assert.equal(db.sortRows(rows,{sort:metric,direction:'desc'}).at(-1).id,'c');
+  const state={scope:'records',player:'',pitch:'',game:'',source:'',search:'',status:'',metric};assert.equal(db.filtered(state).length,9754);
+  state.scope='linked';assert.equal(db.filtered(state).length,390);state.scope='unlinked';assert.equal(db.filtered(state).length,423);assert(db.filtered(state).every(r=>r.unit==='unlinked_clip'&&r.pitchId===null));
+  const noMotion=data.rows.find(r=>r.metrics===null),text=db.exportPitches([noMotion],[metric]);
+  assert(text.startsWith('\ufeff'));assert(text.includes(metric+'__status'));assert(text.includes(',no_motion,0,0,'));assert(!text.includes('NaN'));assert(!text.includes('undefined'));
+  const fullHeader=require('node:zlib').gunzipSync(fs.readFileSync(path.join(__dirname,'../data/metrics/pitches.csv.gz'))).toString('utf8').replace(/^\uFEFF/,'').split('\r\n')[0];
+  assert.equal(db.exportPitches([],data.dictionary.map(m=>m.id)).replace(/^\uFEFF/,'').split('\r\n')[0],fullHeader);
+  const actual=data.rows.filter(r=>r.unit==='pitch_record'&&r.playerCode==='65320'&&r.primaryClipId),groups=db.grouped(actual);
+  assert.equal(groups.length,5);assert.equal(groups.reduce((n,g)=>n+g.rows.length,0),17);
+  assert(db.aggregateCsv(groups,[metric],false).includes(metric+'__valid_n'));
+  console.log('PASS: null/zero distinction, per-metric n/IQR, default 3D exclusion, missing-last sorting, separate units, complete filtered exports and player grouping');
+})().catch(error=>{console.error(error);process.exitCode=1});
