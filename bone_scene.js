@@ -1,7 +1,7 @@
 /* Procedural bone illustration driven by inferred SMPL joint centers.
  * Geometry is illustrative; it adds no measured anatomy or OpenSim simulation.
  */
-import {interpolateAnatomy} from './bone_interpolation.js?v=20261027-anchor3';
+import {interpolateAnatomy,interpolateRigidFeet} from './bone_interpolation.js?v=20261028-combined-v1';
 export {interpolateAnatomy};
 import * as THREE from './third_party/three.module.min.js';
 
@@ -148,7 +148,7 @@ export function createBoneScene(canvas,data){
       }else ribs.visible=false;
       if(points[0]&&points[1]&&points[2]){pelvis.visible=true;pelvis.position.copy(V(points[0]));pelvis.quaternion.copy(q);const hip=V(points[1]).distanceTo(V(points[2]));pelvis.scale.set(hip*1.25,personScale*.22,personScale*.24);}else pelvis.visible=false;
       if(points[15]){head.visible=true;head.position.copy(V(points[15]));head.quaternion.copy(q);head.scale.setScalar(personScale);}else head.visible=false;
-      const foot=interpolate(current.feet||[],next?.feet||current.feet||[],fraction);
+      const foot=(data.quality?.constant_shoe_shape?interpolateRigidFeet:interpolate)(current.feet||[],next?.feet||current.feet||[],fraction);
       for(let side=0;side<2;side++){
         const ankle=points[7+side],toe=foot[side],small=foot[2+side],heel=foot[4+side];
         placeSegment(feet[side*3],ankle,heel,personScale);placeSegment(feet[side*3+1],heel,toe,personScale);placeSegment(feet[side*3+2],heel,small,personScale);
