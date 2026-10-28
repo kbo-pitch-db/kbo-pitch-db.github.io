@@ -31,7 +31,7 @@ The approximation removes both gravity and the mean drag component. It is not th
 - `tests/test_pitch_flight.py`: gravity-only and pure-drag controls, horizontal reflection, analytic VAA, missingness and complete pitch-ID coverage.
 - `tests/pitch_flight_browser_qa.py`: real charts, shared pitch selection, exact row values, complete exports, grouping, missing physical timing, old shares, languages and mobile layouts.
 
-Player charts show pitch-type means and metric-specific valid n, without zero imputation. Flight summaries pool by actual player/type; they do not split by pose model or filming conditions. Biomechanics retains its original grouping and acceptance rules. No original pose or audit file is changed.
+Player charts show pitch-type means and metric-specific valid n, without zero imputation. Flight summaries pool by actual player/type; they do not split by pose model or filming conditions. Biomechanics retains its original grouping and acceptance rules. Adding a mechanics column to a flight summary also retains the capture/model groups; mixed summaries never pool those conditions. No original pose or audit file is changed.
 
 ## References
 

@@ -44,6 +44,15 @@ with sync_playwright() as p:
  with page.expect_download() as download:g.locator('[data-db-csv]').click()
  aggregated=list(csv.DictReader(io.StringIO(Path(download.value.path()).read_text(encoding='utf-8-sig'))));assert len(aggregated)==5
  assert sum(int(r['rows']) for r in aggregated)==356
+ # Adding a mechanics column preserves capture/model groups rather than pooling them.
+ g.locator('[data-db-add-choice]').select_option('lead_knee_net_extension');g.locator('[data-db-add]').click()
+ with page.expect_download() as download:g.locator('[data-db-csv]').click()
+ mixed=list(csv.DictReader(io.StringIO(Path(download.value.path()).read_text(encoding='utf-8-sig'))))
+ assert len(mixed)>5 and sum(int(r['rows']) for r in mixed)==356
+ assert all(r['capture_condition']!='naver_pts' for r in mixed)
+ g.locator('[data-db-remove=lead_knee_net_extension]').click()
+ assert g.locator('.db-aggregate-table tbody tr').count()==5
+
  g.locator('[data-db-view=charts]').click();assert g.locator('.db-data-point').count()==356
  g.locator('[data-db-plot=scatter]').click();g.locator('[data-db-axis=x]').select_option('ivb_cm');g.locator('[data-db-axis=y]').select_option('vaa_deg')
  assert g.locator('.db-data-point').count()==356
