@@ -31,6 +31,21 @@ class PitcherMapTests(unittest.TestCase):
             matrix = scores(cohort['players'])
             np.testing.assert_allclose(matrix, matrix.T, atol=1e-12)
             np.testing.assert_allclose(matrix.diagonal(), 1, atol=1e-12)
+            # Background links use the real top two, never geometric proximity.
+            player_keys = [p['key'] for p in cohort['players']]
+            expected_edges = set()
+            for i in range(len(player_keys)):
+                nearest = sorted((j for j in range(len(player_keys)) if j != i),
+                                 key=lambda j: (-matrix[i,j], player_keys[j]))[:2]
+                expected_edges.update(tuple(sorted((player_keys[i], player_keys[j]))) for j in nearest)
+            actual_edges = set()
+            for edge in layout['edges']:
+                pair = tuple(sorted((edge['source'], edge['target'])))
+                self.assertNotIn(pair, actual_edges)
+                actual_edges.add(pair)
+                i, j = player_keys.index(pair[0]), player_keys.index(pair[1])
+                self.assertAlmostEqual(edge['score'], 100*matrix[i,j], places=4)
+            self.assertEqual(actual_edges, expected_edges)
             target = 1-matrix
             np.fill_diagonal(target, 0)
             observed = np.linalg.norm(xy[:, None]-xy, axis=2)

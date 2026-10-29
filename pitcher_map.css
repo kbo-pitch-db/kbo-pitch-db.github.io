@@ -16,3 +16,40 @@
 .pitcher-map-searchbox{position:relative;min-width:180px;max-width:360px;flex:1}.pitcher-map-searchbox>label{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden}.pitcher-map-searchbox>input{box-sizing:border-box;width:100%;min-height:48px;padding:9px 12px;border:1px solid #9db6a7;border-radius:7px;background:white}.pitcher-map-searchbox #pitcher-map-results:not(:empty){position:absolute;left:0;right:0;top:100%;z-index:5;background:#fff;border:1px solid #9db6a7;border-radius:8px;box-shadow:0 12px 32px #173c3622;padding:12px;margin:5px 0 0}.pitcher-map-searchbox ul{list-style:none;margin:0;padding:0}.pitcher-map-controls>span{margin-left:auto}
 @media(max-width:800px){.pitcher-map-sidebar{order:0}.pitcher-map-sidebar:has(.pitcher-map-empty){display:none}.pitcher-map-controls>span{width:100%;margin:0}.pitcher-map-searchbox{max-width:none}.pitcher-map-controls{gap:12px}}
 @media(max-width:620px){.pitcher-map-searchbox{flex-basis:100%}#pitcher-map-plot{height:420px}}
+/* Hover and keyboard previews share the same fixed graph geometry. */
+.pitcher-map-plot-wrap{position:relative}
+.pitcher-map-mark{transform-box:fill-box;transform-origin:center;transition:transform .18s cubic-bezier(.2,.8,.2,1),filter .18s ease}
+.pitcher-map-node{transition:opacity .2s ease}
+.pitcher-map-node.is-reference .pitcher-map-mark{transform:scale(1.13)}
+.pitcher-map-node.is-hovered .pitcher-map-mark{transform:scale(var(--map-hover-scale,1.7));filter:drop-shadow(0 3px 5px #173c3644)}
+.pitcher-map-node.is-reference .pitcher-map-focus,.pitcher-map-node.is-hovered .pitcher-map-focus{fill:#fff;stroke:#175d4a;stroke-width:2;stroke-dasharray:none}
+#pitcher-map-plot.has-focus .pitcher-map-node:not(.is-context){opacity:.24}
+#pitcher-map-plot.is-previewing .pitcher-map-node:not(.is-context){opacity:.14}
+#pitcher-map-plot.has-focus .pitcher-map-node.is-context{opacity:1}
+.pitcher-map-edges-background{pointer-events:none;transition:opacity .2s ease}
+.pitcher-map-edges-background line{stroke:#64897b;stroke-width:1.35;stroke-linecap:round}
+#pitcher-map-plot.has-focus .pitcher-map-edges-background{opacity:.18}
+#pitcher-map-focus-edges{pointer-events:none}
+.pitcher-map-edge-halo{fill:none;stroke:#fff;stroke-opacity:.94;stroke-width:7;stroke-linecap:round}
+.pitcher-map-edge-line{fill:none;stroke:#267c62;stroke-width:var(--edge-width,3px);stroke-linecap:round;animation:map-link-appear .2s ease-out}
+.pitcher-map-edge.is-pair .pitcher-map-edge-line{stroke:#123f32;stroke-width:4.5}
+.pitcher-map-edge-score rect{fill:#fff;stroke:#a8c3b2;stroke-width:1}
+.pitcher-map-edge-score text{font:600 14px var(--mono,monospace);fill:#174d3b}
+.pitcher-map-edge.is-pair .pitcher-map-edge-score rect{fill:#174d3b;stroke:#174d3b}
+.pitcher-map-edge.is-pair .pitcher-map-edge-score text{fill:#fff}
+#pitcher-map-labels{transition:opacity .16s ease}
+#pitcher-map-plot.has-focus #pitcher-map-labels text:not(.is-important){opacity:.25}
+#pitcher-map-tooltip{position:absolute;z-index:3;box-sizing:border-box;padding:15px 17px;border:1px solid #bdd1c2;border-radius:12px;background:#fffffffa;color:#173c36;box-shadow:0 9px 30px #173c3624;pointer-events:none;line-height:1.55;animation:map-tip-appear .15s ease-out}
+#pitcher-map-tooltip[hidden]{display:none}
+#pitcher-map-tooltip>strong{font-size:20px;display:block;margin-bottom:3px}
+#pitcher-map-tooltip>span{font-size:15px;color:#4d655c}
+.pitcher-map-tooltip-mix{display:flex;gap:4px 10px;flex-wrap:wrap;font-size:14px;color:#425e50;margin:10px 0}
+.pitcher-map-tooltip-mix>span{display:inline-flex;align-items:center;gap:4px}
+.pitcher-map-tooltip-mix i{width:8px;height:8px;border-radius:50%;display:inline-block}
+#pitcher-map-tooltip p{padding-top:9px;border-top:1px solid #dce5d6;font-size:15px;margin:0}
+#pitcher-map-tooltip p b{float:right;font:600 17px var(--mono,monospace)}
+.pitcher-map-neighbors button.is-hovered{background:#e1eddf;box-shadow:inset 3px 0 #267c62}
+@keyframes map-link-appear{from{opacity:0}to{opacity:1}}
+@keyframes map-tip-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.pitcher-map-mark,.pitcher-map-node,.pitcher-map-edges-background,#pitcher-map-labels{transition:none}.pitcher-map-edge-line,#pitcher-map-tooltip{animation:none}}
+.pitcher-map-node.is-context:not(.is-reference) .pitcher-map-focus{stroke:#6a9c82;stroke-width:1.6;stroke-dasharray:3 3}

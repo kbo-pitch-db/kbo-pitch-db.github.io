@@ -77,7 +77,7 @@ def embed(distances, starts=5, iterations=1800):
 
 def build():
     manifest = json.loads((ROOT/'data/visuals/affinity.json').read_text())
-    output = {'schemaVersion': 1, 'version': 'pitcher-map-20261030-v1',
+    output = {'schemaVersion': 1, 'version': 'pitcher-map-20261030-v2',
               'similarityModel': 'usage-overlap-sliced-wasserstein-v1',
               'layout': 'metric-smacof-2d', 'distance': '1 - similarity/100',
               'latestSeason': manifest['latestSeason'], 'seasons': {}}
@@ -91,10 +91,19 @@ def build():
         xy, audit = embed(1-matrix)
         points = [{'key': p['key'], 'x': round(float(x), 7), 'y': round(float(y), 7)}
                   for p, (x, y) in zip(data['players'], xy)]
+        # Undirected union of each pitcher's two actual nearest neighbours.
+        # Ties use the same player-key order as the interactive ranking.
+        pairs = set()
+        for i, player in enumerate(data['players']):
+            nearest = sorted((j for j in range(len(points)) if i != j),
+                             key=lambda j: (-matrix[i, j], data['players'][j]['key']))[:2]
+            pairs.update(tuple(sorted((i, j))) for j in nearest)
+        edges = [{'source': points[i]['key'], 'target': points[j]['key'],
+                  'score': round(float(100*matrix[i, j]), 5)} for i,j in sorted(pairs)]
         output['seasons'][year] = {'season': int(year), 'cohortSha256': meta['sha256'],
             'dateStart': data['dateStart'], 'dateEnd': data['dateEnd'],
             'minimumPitches': data['minimumPitches'], 'minimumCoverage': data['minimumCoverage'],
-            'points': points, 'audit': audit}
+            'points': points, 'edges': edges, 'audit': audit}
         print(json.dumps({'season': year, 'players': len(points), **audit}), flush=True)
     (ROOT/'data/visuals/pitcher-map.json').write_text(json.dumps(output, separators=(',', ':'))+'\n')
 

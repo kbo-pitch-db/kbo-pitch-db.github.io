@@ -1,8 +1,8 @@
 /* League-wide view of the same seasonal pitcher similarity; fixed coordinates. */
 window.PitcherMap=(()=>{
   'use strict';
-  const URL_DATA=new URL('data/visuals/pitcher-map.json?v=20261030-map1',document.currentScript.src);
-  const state={index:null,pending:null,request:0,data:null,layout:null,selected:'',query:'',zoom:1,dx:0,dy:0,positions:[],signature:''};
+  const URL_DATA=new URL('data/visuals/pitcher-map.json?v=20261030-hover1',document.currentScript.src);
+  const state={index:null,pending:null,request:0,data:null,layout:null,selected:'',hovered:'',hoverSource:'',pointerType:'',query:'',zoom:1,dx:0,dy:0,positions:[],signature:'',ranks:new Map()};
   const ko=()=>document.documentElement.lang==='ko';
   const text=(a,b)=>ko()?a:b;
   const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -38,7 +38,8 @@ window.PitcherMap=(()=>{
       if(ticket!==state.request||routePath()!=='#visuals/map')return;
       const year=String(data.season),layout=index.seasons?.[year];
       if(index.schemaVersion!==1||!layout||layout.cohortSha256!==KBOVisuals.state.manifest.seasons[year].sha256||layout.points.length!==data.players.length||new Set(layout.points.map(p=>p.key)).size!==data.players.length||layout.points.some(p=>!data.players.some(q=>q.key===p.key)||!Number.isFinite(p.x)||!Number.isFinite(p.y)))throw Error('Map cohort mismatch');
-      state.index=index;state.data=data;state.layout=layout;
+      if(state.data!==data)state.ranks.clear();
+      state.index=index;state.data=data;state.layout=layout;state.hovered='';state.hoverSource='';
       state.selected=data.players.some(p=>p.key===q.get('player'))?q.get('player'):'';
       const canonical=fragment(year,state.selected);
       if(location.hash!==canonical||location.search)history.replaceState(null,'',href(canonical));
@@ -56,7 +57,7 @@ window.PitcherMap=(()=>{
     const d=state.data;
     host.innerHTML=`<a class="visuals-back" href="${href('#visuals')}">← Visuals</a><header class="visuals-heading pitcher-map-heading"><div><span class="visuals-kicker">02 / PITCHER MAP</span><h1>${title()}</h1><p>${text('구종과 공의 움직임이 비슷한 투수들을 함께 살펴보세요.','Explore pitchers with similar repertoires and movement.')}</p></div><button class="button-outline" id="pitcher-map-share">${text('링크 복사','Copy link')}</button></header>
       <div class="pitcher-map-controls"><label for="pitcher-map-season">${text('기록 연도','Season')}<select id="pitcher-map-season">${Object.keys(state.index.seasons).sort().reverse().map(y=>`<option value="${y}" ${Number(y)===d.season?'selected':''}>${y}</option>`).join('')}</select></label><div class="pitcher-map-searchbox"><label for="pitcher-map-search">${text('투수 찾기','Find a pitcher')}</label><input id="pitcher-map-search" type="search" autocomplete="off" placeholder="${text('이름으로 검색','Search by name')}" aria-controls="pitcher-map-results"><div id="pitcher-map-results" aria-live="polite"></div></div><span>${date(d.dateStart)}–${date(d.dateEnd)} · ${text('투수','Pitchers')} <strong id="pitcher-map-count">${d.players.length}${text('명','')}</strong> · ${text('유효 투구','Minimum')} ${fmt(d.minimumPitches)}${text('구 이상',' usable pitches')}</span></div>
-      <div class="pitcher-map-workspace"><div class="pitcher-map-chart"><div class="pitcher-map-tools"><span>${text('원을 눌러 투수를 선택하세요.','Select a pitcher on the map.')}</span><div role="group" aria-label="${text('지도 확대와 이동','Map zoom and navigation')}"><button id="pitcher-map-minus" aria-label="${text('축소','Zoom out')}">−</button><button id="pitcher-map-plus" aria-label="${text('확대','Zoom in')}">+</button><button id="pitcher-map-reset">${text('전체 보기','Fit all')}</button></div></div><svg id="pitcher-map-plot" role="group" tabindex="0" aria-label="${title()}" aria-describedby="pitcher-map-help"></svg><p class="sr-only" id="pitcher-map-help">${text('방향키로 투수 사이를 이동하고 Enter로 선택합니다. 더하기와 빼기로 확대하거나 축소하고 Home으로 전체를 봅니다.','Use arrow keys to move between pitchers, Enter to select, plus or minus to zoom, and Home to fit all pitchers.')}</p><div id="pitcher-map-legend"></div><p class="pitcher-map-note">${text('원의 색은 구종 비율입니다. 거리는 유사도를 2차원으로 줄인 근사치이며, 정확한 점수는 선수를 선택하면 볼 수 있습니다.','Ring colours show pitch usage. Distances approximate similarity in two dimensions; select a pitcher for exact scores.')}</p></div>
+      <div class="pitcher-map-workspace"><div class="pitcher-map-chart"><div class="pitcher-map-tools"><span id="pitcher-map-hint">${text('마우스를 올리거나 원을 눌러보세요.','Hover over or select a pitcher.')}</span><div role="group" aria-label="${text('지도 확대와 이동','Map zoom and navigation')}"><button id="pitcher-map-minus" aria-label="${text('축소','Zoom out')}">−</button><button id="pitcher-map-plus" aria-label="${text('확대','Zoom in')}">+</button><button id="pitcher-map-reset">${text('전체 보기','Fit all')}</button></div></div><svg id="pitcher-map-plot" role="group" tabindex="0" aria-label="${title()}" aria-describedby="pitcher-map-help"></svg><p class="sr-only" id="pitcher-map-help">${text('방향키로 투수 사이를 이동하고 Enter로 선택합니다. 더하기와 빼기로 확대하거나 축소하고 Home으로 전체를 봅니다.','Use arrow keys to move between pitchers, Enter to select, plus or minus to zoom, and Home to fit all pitchers.')}</p><div id="pitcher-map-legend"></div><p class="pitcher-map-note">${text('원의 색은 구종 비율이며, 선은 비슷한 투수를 잇습니다. 거리는 유사도를 2차원으로 줄인 근사치이며, 정확한 점수는 선수를 선택하면 볼 수 있습니다.','Ring colours show pitch usage; lines connect similar pitchers. Distances approximate similarity in two dimensions; select a pitcher for exact scores.')}</p></div>
       <aside class="pitcher-map-sidebar"><div id="pitcher-map-detail" aria-live="polite"></div></aside></div><p id="pitcher-map-announcement" class="sr-only" role="status"></p>`;
     host.querySelector('#pitcher-map-season').onchange=e=>navigate(e.target.value,state.selected);
     host.querySelector('#pitcher-map-search').oninput=e=>{state.query=e.target.value;search();draw();};
@@ -65,7 +66,10 @@ window.PitcherMap=(()=>{
     host.querySelector('#pitcher-map-minus').onclick=()=>zoom(1/1.4);
     host.querySelector('#pitcher-map-reset').onclick=()=>{state.zoom=1;state.dx=state.dy=0;draw();};
     host.querySelector('#pitcher-map-share').onclick=async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent=text('복사했습니다.','Copied.');}catch{host.querySelector('#pitcher-map-announcement').textContent=text('주소창의 링크를 복사해 주세요.','Copy the link from the address bar.');}};
-    gestures(host.querySelector('svg'));
+    const plot=host.querySelector('#pitcher-map-plot'),wrap=document.createElement('div');wrap.className='pitcher-map-plot-wrap';plot.before(wrap);wrap.append(plot);
+    wrap.insertAdjacentHTML('beforeend','<div id="pitcher-map-tooltip" role="tooltip" hidden></div>');
+    gestures(plot);
+    host.onpointerdown=e=>{state.pointerType=e.pointerType;};
     search();draw();detail();
   }
   function matching(){const q=state.query.trim().toLowerCase();return state.data.players.filter(p=>(p.name+' '+p.code).toLowerCase().includes(q)).sort((a,b)=>a.name.localeCompare(b.name,'ko')||a.key.localeCompare(b.key));}
@@ -77,17 +81,25 @@ window.PitcherMap=(()=>{
     results.querySelectorAll('button').forEach(b=>b.onclick=()=>select(b.dataset.mapSearch,true));
   }
   function select(key,reveal=false){
-    state.selected=key;state.query='';document.getElementById('pitcher-map-search').value='';search();
+    state.selected=key;state.hovered='';state.hoverSource='';state.query='';document.getElementById('pitcher-map-search').value='';search();
     if(reveal&&state.zoom>1){const p=state.positions.find(p=>p.key===key);state.dx=state.width/2-state.zoom*p.x;state.dy=state.height/2-state.zoom*p.y;}
     if(location.hash!==fragment(state.data.season,key))history.pushState(null,'',href(fragment(state.data.season,key)));draw();detail();
   }
-  function neighbors(){const p=state.data.players.find(p=>p.key===state.selected);return p?AffinityCore.rank(state.data.players,p).slice(0,5):[];}
+  function neighbors(key=state.selected){
+    if(!key)return [];
+    if(!state.ranks.has(key)){const p=state.data.players.find(p=>p.key===key);if(!p)return [];state.ranks.set(key,AffinityCore.rank(state.data.players,p).slice(0,5));}
+    return state.ranks.get(key);
+  }
   function detail(){
     const host=document.getElementById('pitcher-map-detail'),p=state.data.players.find(p=>p.key===state.selected);
     if(!p){host.innerHTML=`<div class="pitcher-map-empty"><h2>${text('투수를 선택해 보세요.','Choose a pitcher.')}</h2><p>${text('지도에서 원을 누르거나 이름을 검색하면 비슷한 투수와 유사도 점수가 나옵니다.','Select a ring or search by name to see similar pitchers and their scores.')}</p></div>`;return;}
     const near=neighbors(),sample=text(`${fmt(p.pitches)}구 · ${fmt(p.games)}경기`,`${fmt(p.pitches)} pitches · ${fmt(p.games)} games`);
     host.innerHTML=`<div class="pitcher-map-player"><span>${text('선택한 투수','Selected pitcher')}</span><h2>${esc(label(p))}</h2><p>${sample}</p><div class="pitcher-map-mix">${p.counts.map((n,i)=>n?`<span style="width:${100*n/p.pitches}%;background:${state.data.pitchTypes[i].color}" title="${esc(state.data.pitchTypes[i].name[ko()?'ko':'en'])} ${(100*n/p.pitches).toFixed(1)}%"></span>`:'').join('')}</div></div><div class="pitcher-map-neighbors"><h3>${text('비슷한 투수','Similar pitchers')}</h3><ol>${near.map(({player:q,score},i)=>`<li><button data-map-neighbor="${esc(q.key)}"><span class="pitcher-map-rank">${i+1}</span><span>${esc(label(q))}</span><strong>${score.toFixed(1)}</strong></button><a href="${href(AffinityCore.fragment({key:p.key,compare:q.key,year:String(state.data.season),threshold:0}))}" aria-label="${esc(label(p)+' · '+label(q)+' '+text('구종별 비교','repertoire comparison'))}">${text('비교','Compare')} ↗</a></li>`).join('')}</ol></div>`;
-    host.querySelectorAll('[data-map-neighbor]').forEach(b=>b.onclick=()=>select(b.dataset.mapNeighbor,true));
+    host.querySelectorAll('[data-map-neighbor]').forEach(b=>{
+      b.onclick=()=>select(b.dataset.mapNeighbor,true);
+      b.onpointerenter=e=>{if(e.pointerType==='mouse')hover(b.dataset.mapNeighbor,'list');};b.onpointerleave=()=>hover('');
+      b.onfocus=()=>{if(state.pointerType!=='touch')hover(b.dataset.mapNeighbor,'list');};b.onblur=()=>hover('');
+    });
     document.getElementById('pitcher-map-announcement').textContent=text(`${label(p)} 선택. 비슷한 투수 5명을 표시합니다.`,`${label(p)} selected. Showing five similar pitchers.`);
   }
   function geometry(){
@@ -102,33 +114,32 @@ window.PitcherMap=(()=>{
     const focused=document.activeElement?.dataset?.mapPlayer;geometry();
     const byKey=new Map(state.data.players.map(p=>[p.key,p])),positions=new Map(state.positions.map(p=>[p.key,p]));
     const near=neighbors(),nearKeys=new Set(near.map(p=>p.player.key)),matches=new Set(matching().map(p=>p.key));
-    const edges=state.selected?near.map(({player})=>[state.selected,player.key]):[];
-    const line=edges.map(([a,b])=>{const p=positions.get(a),q=positions.get(b);return `<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}"/>`;}).join('');
+    const line=(state.layout.edges||[]).map(edge=>{const p=positions.get(edge.source),q=positions.get(edge.target);return `<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" data-map-edge="${esc(edge.source+':'+edge.target)}" vector-effect="non-scaling-stroke" style="stroke-opacity:${.28+.3*edge.score/100}"/>`;}).join('');
     const nodes=state.positions.map(point=>{
       const p=byKey.get(point.key),selected=p.key===state.selected,nearby=nearKeys.has(p.key),dim=state.query.trim()&&!matches.has(p.key),radius=selected?10:nearby?7.5:6;
       let offset=0;const circumference=2*Math.PI*radius;
       const ring=p.counts.map((n,i)=>{if(!n)return '';const length=n/p.pitches*circumference,dash=`<circle r="${radius}" fill="none" stroke="${state.data.pitchTypes[i].color}" stroke-width="${selected?5:4}" stroke-dasharray="${length} ${circumference}" stroke-dashoffset="${-offset}" transform="rotate(-90)"/>`;offset+=length;return dash;}).join('');
-      return `<g class="pitcher-map-node${selected?' is-selected':''}${nearby?' is-near':''}${dim?' is-dim':''}" data-map-player="${esc(p.key)}" data-map-x="${point.x}" data-map-y="${point.y}" transform="translate(${point.x} ${point.y})" role="button" tabindex="${p.key===(focused||state.selected||state.positions[0].key)?0:-1}" aria-pressed="${selected}" aria-label="${esc(label(p))} · ${fmt(p.pitches)}${text('구',' pitches')}"><title>${esc(label(p))} · ${fmt(p.pitches)}${text('구',' pitches')}</title><circle class="pitcher-map-focus" r="${radius+5}"/><circle r="${radius}" fill="#fff"/>${ring}</g>`;
+      return `<g class="pitcher-map-node${selected?' is-selected':''}${nearby?' is-near':''}${dim?' is-dim':''}" data-map-player="${esc(p.key)}" data-map-x="${point.x}" data-map-y="${point.y}" transform="translate(${point.x} ${point.y})" style="--map-hover-scale:${1+.7/Math.sqrt(state.zoom)}" role="button" tabindex="${p.key===(focused||state.selected||state.positions[0].key)?0:-1}" aria-pressed="${selected}" aria-label="${esc(label(p))} · ${fmt(p.pitches)}${text('구',' pitches')}"><g class="pitcher-map-mark"><circle class="pitcher-map-focus" r="${radius+5}"/><circle r="${radius}" fill="#fff"/>${ring}</g></g>`;
     }).join('');
-    svg.innerHTML=`<g id="pitcher-map-viewport" transform="translate(${state.dx} ${state.dy}) scale(${state.zoom})"><g class="pitcher-map-edges">${line}</g>${nodes}</g><g id="pitcher-map-labels" aria-hidden="true"></g>`;
-    svg.querySelectorAll('[data-map-player]').forEach(g=>{g.onkeydown=e=>keyboard(e,g);g.onclick=e=>{if(e.detail===0)select(g.dataset.mapPlayer);};});
-    labels(byKey,nearKeys,matches);
+    svg.innerHTML=`<g class="pitcher-map-edges-background" transform="translate(${state.dx} ${state.dy}) scale(${state.zoom})" aria-hidden="true">${line}</g><g id="pitcher-map-focus-edges" aria-hidden="true"></g><g id="pitcher-map-viewport" transform="translate(${state.dx} ${state.dy}) scale(${state.zoom})">${nodes}</g><g id="pitcher-map-labels" aria-hidden="true"></g>`;
+    svg.querySelectorAll('[data-map-player]').forEach(g=>{g.onkeydown=e=>keyboard(e,g);g.onclick=e=>{if(e.detail===0)select(g.dataset.mapPlayer);};g.onfocus=()=>{if(state.pointerType!=='touch')hover(g.dataset.mapPlayer,'keyboard');};});
+    emphasize();
     const used=state.data.pitchTypes.filter((t,i)=>state.data.players.some(p=>p.counts[i]));
     document.getElementById('pitcher-map-legend').innerHTML=used.map(t=>`<span><i style="background:${t.color}"></i>${esc(t.name[ko()?'ko':'en'])}</span>`).join('');
     if(focused)svg.querySelector(`[data-map-player="${CSS.escape(focused)}"]`)?.focus({preventScroll:true});
   }
-  function labels(byKey,nearKeys,matches){
+  function labels(byKey,nearKeys,matches,focusKey=state.selected){
     const width=state.width,height=state.height,occupied=[];
     const ordered=[...state.positions].sort((a,b)=>{
-      const priority=p=>(p.key===state.selected?1e9:0)+(state.query.trim()&&matches.has(p.key)?1e8:0)+(nearKeys.has(p.key)?1e7:0)+byKey.get(p.key).pitches;
+      const priority=p=>(p.key===focusKey?1e9:0)+(state.query.trim()&&matches.has(p.key)?1e8:0)+(nearKeys.has(p.key)?1e7:0)+byKey.get(p.key).pitches;
       return priority(b)-priority(a);
     });
     const result=[];
     for(const point of ordered){
-      if(state.query.trim()&&!matches.has(point.key)&&point.key!==state.selected)continue;
+      if(state.query.trim()&&!matches.has(point.key)&&point.key!==focusKey)continue;
       const p=byKey.get(point.key),x=point.x*state.zoom+state.dx,y=point.y*state.zoom+state.dy;
       if(x<12||x>width-12||y<12||y>height-12)continue;
-      const selected=p.key===state.selected,important=selected||nearKeys.has(p.key),name=label(p),size=selected?17:important?15:state.zoom>=2?15:12;
+      const selected=p.key===focusKey,important=selected||nearKeys.has(p.key),name=label(p),size=selected?17:important?15:state.zoom>=2?15:12;
       const labelWidth=[...name].reduce((n,c)=>n+(c.charCodeAt(0)>255?size:size*.6),0)+8;
       const radius=(selected?10:important?7.5:6)*state.zoom+7;
       const candidates=[[x,y+radius+size],[x,y-radius],[x+radius+labelWidth/2,y+size/3],[x-radius-labelWidth/2,y+size/3]];
@@ -143,7 +154,70 @@ window.PitcherMap=(()=>{
     // Paint important labels last, on top of the ordinary labels.
     document.getElementById('pitcher-map-labels').innerHTML=result.reverse().join('');
   }
+  function hover(key,source='map'){
+    if(state.hovered===key&&state.hoverSource===(key?source:''))return;
+    state.hovered=key;state.hoverSource=key?source:'';emphasize();
+  }
+  function emphasize(){
+    const svg=document.getElementById('pitcher-map-plot'),layer=document.getElementById('pitcher-map-focus-edges');
+    if(!svg||!layer||routePath()!=='#visuals/map')return;
+    const focusKey=state.hoverSource==='list'?state.selected:state.hovered||(state.query.trim()?'':state.selected);
+    const near=neighbors(focusKey),keys=new Set(near.map(n=>n.player.key));if(focusKey)keys.add(focusKey);
+    svg.classList.toggle('has-focus',!!focusKey);svg.classList.toggle('is-previewing',!!state.hovered);
+    svg.querySelectorAll('[data-map-player]').forEach(node=>{
+      const key=node.dataset.mapPlayer;
+      node.classList.toggle('is-context',keys.has(key));node.classList.toggle('is-reference',key===focusKey);node.classList.toggle('is-hovered',key===state.hovered);
+      node.removeAttribute('aria-describedby');
+    });
+    const positions=new Map(state.positions.map(p=>[p.key,{x:p.x*state.zoom+state.dx,y:p.y*state.zoom+state.dy}]));
+    const origin=positions.get(focusKey),occupied=[];
+    const markup=origin?near.map(({player,score},i)=>{
+      const to=positions.get(player.key),dx=to.x-origin.x,dy=to.y-origin.y,length=Math.hypot(dx,dy)||1;
+      const bend=Math.min(30,length*.12)*(i%2?1:-1),cx=(origin.x+to.x)/2-dy/length*bend,cy=(origin.y+to.y)/2+dx/length*bend;
+      const path=`M ${origin.x} ${origin.y} Q ${cx} ${cy} ${to.x} ${to.y}`;
+      const pair=state.hoverSource==='list'&&state.hovered===player.key;
+      let badge='';
+      if(length>58)for(const t of [.5,.65,.35]){
+        const x=(1-t)**2*origin.x+2*t*(1-t)*cx+t*t*to.x,y=(1-t)**2*origin.y+2*t*(1-t)*cy+t*t*to.y;
+        if(x<24||x>state.width-24||y<16||y>state.height-16||occupied.some(p=>Math.abs(p.x-x)<48&&Math.abs(p.y-y)<25)||[...positions].some(([key,p])=>keys.has(key)&&Math.abs(p.x-x)<28&&Math.abs(p.y-y)<20))continue;
+        occupied.push({x,y});badge=`<g class="pitcher-map-edge-score" transform="translate(${x} ${y})"><rect x="-23" y="-12" width="46" height="24" rx="8"/><text text-anchor="middle" y="5">${score.toFixed(1)}</text></g>`;break;
+      }
+      return `<g class="pitcher-map-edge${pair?' is-pair':''}" data-edge-target="${esc(player.key)}" data-edge-score="${score}" style="--edge-width:${(1.8+score/100*2.2).toFixed(2)}px"><path class="pitcher-map-edge-halo" d="${path}"/><path class="pitcher-map-edge-line" d="${path}"/>${badge}</g>`;
+    }).join(''):'';
+    // Keep the path elements when the focus is unchanged, so pointer motion
+    // does not restart transitions or steal focus from the SVG nodes.
+    const signature=[focusKey,state.hoverSource==='list'?state.hovered:'',state.zoom,state.dx,state.dy,state.width,state.height].join(':');
+    if(layer.dataset.signature!==signature){layer.innerHTML=markup;layer.dataset.signature=signature;}
+    const byKey=new Map(state.data.players.map(p=>[p.key,p]));
+    labels(byKey,new Set(near.map(n=>n.player.key)),new Set(matching().map(p=>p.key)),focusKey);
+    const hint=document.getElementById('pitcher-map-hint');
+    if(hint)hint.textContent=focusKey?`${label(byKey.get(focusKey))} · ${text('비슷한 투수 5명','5 similar pitchers')}`:text('마우스를 올리거나 원을 눌러보세요.','Hover over or select a pitcher.');
+    document.querySelectorAll('[data-map-neighbor]').forEach(button=>button.classList.toggle('is-hovered',button.dataset.mapNeighbor===state.hovered));
+    tooltip(positions);
+  }
+  function tooltip(positions){
+    const tip=document.getElementById('pitcher-map-tooltip');if(!tip)return;
+    const p=state.data.players.find(p=>p.key===state.hovered),point=positions.get(state.hovered);
+    if(!p||!point||point.x<0||point.x>state.width||point.y<0||point.y>state.height){tip.hidden=true;return;}
+    const top=p.counts.map((n,i)=>({n,i})).filter(v=>v.n).sort((a,b)=>b.n-a.n).slice(0,3);
+    const selected=state.data.players.find(p=>p.key===state.selected);
+    let relation='';
+    if(selected&&selected.key!==p.key)relation=`${esc(label(selected))} · ${text('유사도','Similarity')} <b>${AffinityCore.similarity(selected,p).toFixed(1)}</b>`;
+    else {const first=neighbors(p.key)[0];if(first)relation=`${text('가장 비슷한 투수','Closest match')}<br>${esc(label(first.player))} <b>${first.score.toFixed(1)}</b>`;}
+    tip.innerHTML=`<strong>${esc(label(p))}</strong><span>${fmt(p.pitches)}${text('구',' pitches')} · ${fmt(p.games)}${text('경기',' games')}</span><div class="pitcher-map-tooltip-mix">${top.map(({n,i})=>`<span><i style="background:${state.data.pitchTypes[i].color}"></i>${esc(state.data.pitchTypes[i].name[ko()?'ko':'en'])} ${(100*n/p.pitches).toFixed(0)}%</span>`).join('')}</div><p>${relation}</p>`;
+    tip.style.width=Math.min(248,state.width-16)+'px';tip.hidden=false;
+    const focusKey=state.hoverSource==='list'?state.selected:state.hovered;
+    const relevant=[focusKey,...neighbors(focusKey).map(n=>n.player.key)].map(key=>positions.get(key)).filter(Boolean);
+    const candidates=[[point.x+22,point.y-tip.offsetHeight-22],[point.x-tip.offsetWidth-22,point.y-tip.offsetHeight-22],[point.x+22,point.y+22],[point.x-tip.offsetWidth-22,point.y+22]].map(([x,y],i)=>{
+      const left=Math.max(8,Math.min(state.width-tip.offsetWidth-8,x)),top=Math.max(8,Math.min(state.height-tip.offsetHeight-8,y));
+      const overlaps=relevant.filter(p=>p.x>left-18&&p.x<left+tip.offsetWidth+18&&p.y>top-18&&p.y<top+tip.offsetHeight+18).length;
+      return {left,top,cost:overlaps*100+i};
+    }).sort((a,b)=>a.cost-b.cost);
+    tip.style.left=candidates[0].left+'px';tip.style.top=candidates[0].top+'px';
+    document.querySelector(`[data-map-player="${CSS.escape(p.key)}"]`)?.setAttribute('aria-describedby','pitcher-map-tooltip');
+  }
   function keyboard(e,node){
+    state.pointerType='keyboard';
     if(e.key==='Enter'||e.key===' '){e.preventDefault();select(node.dataset.mapPlayer);return;}
     const vectors={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]},direction=vectors[e.key];
     if(!direction)return;e.preventDefault();e.stopPropagation();
@@ -164,12 +238,22 @@ window.PitcherMap=(()=>{
     const pointers=new Map();let origin=null,moved=false,pinch=null;
     svg.onpointerdown=e=>{
       if(e.button&&e.pointerType==='mouse')return;
+      state.pointerType=e.pointerType;
+      hover('');
       pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});svg.setPointerCapture(e.pointerId);
       if(pointers.size===1){origin={x:e.clientX,y:e.clientY,dx:state.dx,dy:state.dy};moved=false;}
       if(pointers.size===2){const [a,b]=[...pointers.values()];pinch={distance:Math.hypot(a.x-b.x,a.y-b.y),zoom:state.zoom};moved=true;}
     };
     svg.onpointermove=e=>{
-      if(!pointers.has(e.pointerId))return;
+      if(!pointers.has(e.pointerId)){
+        if(e.pointerType==='mouse'){
+          const rect=svg.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+          const closest=state.positions.map(p=>({p,d:Math.hypot(p.x*state.zoom+state.dx-x,p.y*state.zoom+state.dy-y)})).sort((a,b)=>a.d-b.d)[0];
+          const radius=Math.max(16,(closest?.p.key===state.hovered?18:11)*state.zoom);
+          hover(closest&&closest.d<=radius?closest.p.key:'');
+        }
+        return;
+      }
       pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
       if(pointers.size===2&&pinch){const [a,b]=[...pointers.values()],rect=svg.getBoundingClientRect(),distance=Math.hypot(a.x-b.x,a.y-b.y);zoom(pinch.zoom*distance/pinch.distance/state.zoom,(a.x+b.x)/2-rect.left,(a.y+b.y)/2-rect.top);return;}
       if(!origin)return;
@@ -188,8 +272,12 @@ window.PitcherMap=(()=>{
       origin=null;
     };
     svg.onpointercancel=e=>{pointers.delete(e.pointerId);origin=null;pinch=null;moved=true;};
+    svg.onpointerleave=()=>hover('');
+    svg.onfocusout=e=>{if(!svg.contains(e.relatedTarget))hover('');};
     svg.onwheel=e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();const r=svg.getBoundingClientRect();zoom(Math.exp(-e.deltaY*.004),e.clientX-r.left,e.clientY-r.top);}};
     svg.onkeydown=e=>{
+      state.pointerType='keyboard';
+      if(e.key==='Escape'){hover('');svg.focus();return;}
       if(e.target===svg&&e.key.startsWith('Arrow')){const node=svg.querySelector('[tabindex="0"]');if(node)keyboard(e,node);}
       if(['+','=','-','Home'].includes(e.key)){e.preventDefault();if(e.key==='Home'){state.zoom=1;state.dx=state.dy=0;draw();}else zoom(e.key==='-'?1/1.4:1.4);}
     };
