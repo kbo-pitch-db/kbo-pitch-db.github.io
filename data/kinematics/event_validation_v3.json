@@ -565,10 +565,10 @@
     "encoderRevision": "e1277af2ba9496fbadf7aec6eba56e8d882d1e35"
   },
   "coverage": {
-    "totalClips": 813,
-    "releaseCandidates": 619,
-    "landingCandidates": 600,
-    "automaticPreviewEligible": 425,
+    "totalClips": 891,
+    "releaseCandidates": 676,
+    "landingCandidates": 655,
+    "automaticPreviewEligible": 465,
     "reviewedClips": 31
   }
 }

@@ -34,7 +34,7 @@ class SequenceTests(unittest.TestCase):
         ev['br']['interval']=[1,1];self.assertIsNone(build.reviewed_events(ev,u)[0]['br'])
     def test_public_coverage_exclusions_and_separate_time_basis(self):
         data=json.loads((ROOT/'data/kinematics/sequences.json').read_text());index=json.loads((ROOT/'data/clips.json').read_text());db=json.loads((ROOT/'data/metrics/database.json').read_text())
-        self.assertEqual(data['poseVersion'],index['packageVersion']);self.assertEqual(set(data['clips']),{c['id'] for c in index['clips']});self.assertEqual(len(data['clips']),813)
+        self.assertEqual(data['poseVersion'],index['packageVersion']);self.assertEqual(set(data['clips']),{c['id'] for c in index['clips']})
         self.assertTrue(all(r['metrics'].get('pelvis_trunk_peak_gap_ms',{}).get('value') is None for r in db['rows']))
         for cid in ['8eeef70dce48_c0050','7ef66f7a16b0_c0043']:
             c=data['clips'][cid];self.assertEqual(c['state'],'not_pitch_delivery');self.assertNotIn('peaks',c);self.assertEqual(c['slowMotion'],'not_flagged')
@@ -55,5 +55,5 @@ class SequenceTests(unittest.TestCase):
                 self.assertFalse(c['peaks']['pelvis']['boundary'] or c['peaks']['trunk']['boundary'])
                 self.assertLessEqual(c['gapRangePlaybackMs'][1]-c['gapRangePlaybackMs'][0],160.001)
         text=gzip.decompress((ROOT/'data/kinematics/sequences.json.gz').read_bytes()).decode();self.assertEqual(json.loads(text),data)
-        rows=list(csv.DictReader(io.StringIO(gzip.decompress((ROOT/'data/kinematics/sequences.csv.gz').read_bytes()).decode('utf-8-sig'))));self.assertEqual(len(rows),813);self.assertIn('gap_range_min_playback_ms',rows[0])
+        rows=list(csv.DictReader(io.StringIO(gzip.decompress((ROOT/'data/kinematics/sequences.csv.gz').read_bytes()).decode('utf-8-sig'))));self.assertEqual(len(rows),len(index['clips']));self.assertIn('gap_range_min_playback_ms',rows[0])
 if __name__=='__main__':unittest.main()

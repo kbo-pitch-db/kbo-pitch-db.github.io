@@ -55,8 +55,11 @@ class PitchFlightTests(unittest.TestCase):
         raw=(ROOT/'data/portal/pitch_flight.json').read_bytes()
         self.assertEqual(gzip.decompress((ROOT/'data/portal/pitch_flight.json.gz').read_bytes()),raw)
         d=json.loads(raw)
-        self.assertEqual(d['recordCount'],9754)
-        self.assertEqual(d['statusCounts'],{'derived_pts':9747,'no_tracking':7})
+        portal=json.loads((ROOT/'data/portal/summary.json').read_text())
+        self.assertEqual(d['recordCount'],portal['recordCount'])
+        from collections import Counter
+        self.assertEqual(d['statusCounts'],dict(Counter(r['status'] for r in d['rows'].values())))
+        self.assertEqual(d['statusCounts']['no_tracking'],7)
         ids={r['id'] for path in (ROOT/'data/portal/players').glob('*.json') for r in json.loads(path.read_text())['records']}
         self.assertEqual(ids,set(d['rows']))
         for r in d['rows'].values():

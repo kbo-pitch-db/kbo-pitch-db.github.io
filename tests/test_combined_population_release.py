@@ -13,15 +13,18 @@ class CombinedPopulationReleaseTests(unittest.TestCase):
   cls.index=json.loads((SITE/'data/clips.json').read_text())
   cls.old={c['id']:c for c in json.loads(support_index_bytes())['clips']}
   cls.summary=json.loads((SITE/'data/combined_release_summary.json').read_text())
+  added=SITE/'data/releases/combined-20261029-increment-v1/quality_records.json'
+  cls.added={r['id']:r for r in json.loads(added.read_text())} if added.exists() else {}
 
  def test_all_actual_combined_coordinates_and_serialized_support_geometry(self):
-  self.assertEqual(len(self.index['clips']),813)
-  self.assertEqual(len({c['playerKey'] for c in self.index['clips']}),123)
+  self.assertEqual(len(self.index['clips']),self.summary['clips'])
+  self.assertTrue(set(self.old)<={c['id'] for c in self.index['clips']})
+  self.assertEqual(len({c['playerKey'] for c in self.index['clips']}),self.summary['players'])
   frames=valid=source_pass=0;flags={}
   for c in self.index['clips']:
    with self.subTest(clip=c['id']):
-    old=self.old[c['id']]
-    if c['poseRefined']!=old['poseRefined']:
+    old=self.old.get(c['id'])
+    if old and c['poseRefined']!=old['poseRefined']:
      recovery=json.loads((SITE/'data'/c['subjectCorrection']).read_text())
      self.assertEqual(recovery['version'],'subject-tail-v1')
      self.assertEqual(recovery['old_clip']['poseRefined'],old['poseRefined'])
@@ -30,17 +33,19 @@ class CombinedPopulationReleaseTests(unittest.TestCase):
      before=json.loads((SITE/'data'/old['poseRefined']).read_text());after=json.loads((SITE/'data'/c['poseRefined']).read_text())
      self.assertEqual(before['frames'][:recovery['recovery_start_frame']],after['frames'][:recovery['recovery_start_frame']])
      self.assertEqual(hashlib.sha256((SITE/'data'/c['pose3d']).read_bytes()).hexdigest(),recovery['new_3d_sha256'])
-    else:
+    elif old:
      for key in ['pose','poseRefined']:self.assertEqual(c.get(key),old.get(key))
+    else:
+     self.assertEqual(hashlib.sha256((SITE/'data'/c['poseRefined']).read_bytes()).hexdigest(),self.added[c['id']]['final_2d_public_sha256'])
     self.assertEqual(c['pose3dBackend'],'gvhmr-motionbert')
     self.assertEqual(c['motionMethod'],'gvhmr-ground-motionbert-v1')
-    self.assertNotEqual(c['pose3d'],old['pose3d'])
+    if old:self.assertNotEqual(c['pose3d'],old['pose3d'])
     pose=json.loads(gzip.decompress((SITE/'data'/c['pose3d']).read_bytes()))
     q=json.loads((SITE/'data'/c['motionQuality']).read_text())
     two=json.loads((SITE/'data'/c['poseRefined']).read_text())
-    previous=json.loads(gzip.decompress((SITE/'data'/old['pose3d']).read_bytes()))
+    previous=json.loads(gzip.decompress((SITE/'data'/old['pose3d']).read_bytes())) if old else None
     self.assertEqual(pose['source_fit_sha256'],c['sceneSignature'])
-    self.assertNotEqual(pose['source_fit_sha256'],previous['source_fit_sha256'])
+    if previous:self.assertNotEqual(pose['source_fit_sha256'],previous['source_fit_sha256'])
     self.assertEqual(pose['method'],c['motionMethod'])
     self.assertTrue(pose['fit_provenance']['motionbert_applied'])
     self.assertTrue(pose['fit_provenance']['both_arms_processed'])
@@ -98,10 +103,10 @@ class CombinedPopulationReleaseTests(unittest.TestCase):
     self.assertLessEqual(np.linalg.norm(change,axis=-1).max(),q['physical_rule']['root_velocity_change_at30fps_max_leg']+.00005)
     source_pass+=q['strict_source_pass']
     for flag in q['source_regression_flags']:flags[flag]=flags.get(flag,0)+1
-  self.assertEqual(frames,135741);self.assertEqual(valid,135727)
+  self.assertEqual(frames,self.summary['frames']);self.assertEqual(valid,self.summary['valid_3d_frames'])
   self.assertEqual(source_pass,self.summary['strict_source_pass'])
   self.assertEqual(self.summary['contact_consistency_failed'],0)
-  self.assertEqual(self.summary['constant_shoe_shape_clips'],813)
+  self.assertEqual(self.summary['constant_shoe_shape_clips'],len(self.index['clips']))
   self.assertEqual(len(self.summary['active_final_2d_recovered_clips']),8)
   self.assertFalse(self.summary['original_final_2d_assets_overwritten'])
   for key,count in self.summary['source_regression_counts'].items():self.assertEqual(count,flags.get(key+'_regression',0))

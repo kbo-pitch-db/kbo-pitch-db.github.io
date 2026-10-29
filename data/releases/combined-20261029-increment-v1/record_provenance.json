@@ -1,0 +1,25 @@
+{
+  "sourceUrl": "https://github.com/leekichang/where-do-the-robot-umpires-see/blob/37cf62be0604aa8a7f077759eebf7a6eda002edb/data/2024.csv",
+  "sourceGitBlob": "c96f7e24fb50f08381b6c8060342f7a3d4ccd754",
+  "sourceSha256": "b4fc2497f579cc60c714b54c1fe91e9046c905cccc4dfae6eae6f85a2a6d21f4",
+  "games": {
+    "df7c27e6bbcf": "20240329NCLT02024",
+    "7fb35265ff17": "20240723NCHT02024",
+    "8b3dda578503": "20240815KTSS02024",
+    "7514f107f3d7": "20240818WOLT02024",
+    "d1ca854585d4": "20240824HTNC02024"
+  },
+  "rowScope": "Available published tracked pitches; not all game pitches",
+  "missingFields": [
+    "half_inning",
+    "pitcher_pitch_number",
+    "relay_seqno",
+    "at_bat_id",
+    "balls_before",
+    "strikes_before",
+    "outs_before"
+  ],
+  "automaticPitchIdentityLinksCreated": 0,
+  "recordCount": 1407,
+  "importedRowsThisRun": 1119
+}

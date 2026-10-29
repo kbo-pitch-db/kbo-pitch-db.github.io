@@ -13556,6 +13556,2762 @@
           "sourceUrl": "https://www.youtube.com/watch?v=oQKJQLsYCGw&t=331s"
         }
       ]
+    },
+    "7514f107f3d7_c0005": {
+      "clipId": "7514f107f3d7_c0005",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 267.0668,
+      "end": 269.6027,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 267.60067,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=267s"
+        },
+        {
+          "time": 268.70177,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=268s"
+        },
+        {
+          "time": 269.269,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=269s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0006": {
+      "clipId": "7514f107f3d7_c0006",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 484.6842,
+      "end": 486.6528,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 485.0846,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=485s"
+        },
+        {
+          "time": 485.95213,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=485s"
+        },
+        {
+          "time": 486.3859,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=486s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0008": {
+      "clipId": "7514f107f3d7_c0008",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 602.0014,
+      "end": 604.0701,
+      "name": "김연주",
+      "code": "54368",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 602.43517,
+          "name": "김연주",
+          "code": "54368",
+          "layout": "sbs_left",
+          "raw": "『. 김연주",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=602s"
+        },
+        {
+          "time": 603.33607,
+          "name": "김연주",
+          "code": "54368",
+          "layout": "sbs_left",
+          "raw": "『. 김연주",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=603s"
+        },
+        {
+          "time": 603.8032,
+          "name": "김연주",
+          "code": "54368",
+          "layout": "sbs_left",
+          "raw": "『. 김연주",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=603s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0009": {
+      "clipId": "7514f107f3d7_c0009",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 204.8046,
+      "end": 207.6741,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 205.4052,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=205s"
+        },
+        {
+          "time": 206.63977,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=206s"
+        },
+        {
+          "time": 207.3071,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=207s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0012": {
+      "clipId": "7514f107f3d7_c0012",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 385.385,
+      "end": 387.4871,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 385.81877,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=385s"
+        },
+        {
+          "time": 386.71967,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=386s"
+        },
+        {
+          "time": 387.22017,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=387s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0013": {
+      "clipId": "7514f107f3d7_c0013",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 194.7946,
+      "end": 197.6975,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 195.42857,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=195s"
+        },
+        {
+          "time": 196.66313,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=196s"
+        },
+        {
+          "time": 197.33047,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=197s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0014": {
+      "clipId": "7514f107f3d7_c0014",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 237.8376,
+      "end": 239.7395,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 238.238,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=238s"
+        },
+        {
+          "time": 239.07217,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=239s"
+        },
+        {
+          "time": 239.50593,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=239s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0016": {
+      "clipId": "7514f107f3d7_c0016",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 510.9104,
+      "end": 513.6465,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 511.47763,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=511s"
+        },
+        {
+          "time": 512.67883,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=512s"
+        },
+        {
+          "time": 513.3128,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=513s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0022": {
+      "clipId": "7514f107f3d7_c0022",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 420.8204,
+      "end": 423.2562,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 421.35427,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=421s"
+        },
+        {
+          "time": 422.38863,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=422s"
+        },
+        {
+          "time": 422.95587,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=422s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0025": {
+      "clipId": "7514f107f3d7_c0025",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 218.8186,
+      "end": 221.0875,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 219.28573,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=219s"
+        },
+        {
+          "time": 220.28673,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=220s"
+        },
+        {
+          "time": 220.78723,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=220s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0031": {
+      "clipId": "7514f107f3d7_c0031",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 118.9188,
+      "end": 123.4233,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 119.88643,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=119s"
+        },
+        {
+          "time": 121.8217,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=121s"
+        },
+        {
+          "time": 122.85607,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=122s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0038": {
+      "clipId": "7514f107f3d7_c0038",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 154.5544,
+      "end": 156.79,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 155.02153,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=155s"
+        },
+        {
+          "time": 155.98917,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=155s"
+        },
+        {
+          "time": 156.48967,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=156s"
+        }
+      ]
+    },
+    "7514f107f3d7_c0046": {
+      "clipId": "7514f107f3d7_c0046",
+      "sourceId": "7514f107f3d7",
+      "gameId": "20240818WOLT02024",
+      "start": 256.8566,
+      "end": 260.2934,
+      "name": "김윤하",
+      "code": "54319",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 257.59067,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=257s"
+        },
+        {
+          "time": 259.0588,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=259s"
+        },
+        {
+          "time": 259.8596,
+          "name": "김윤하",
+          "code": "54319",
+          "layout": "sbs_left",
+          "raw": "『. 김윤하",
+          "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0&t=259s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0003": {
+      "clipId": "7fb35265ff17_c0003",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 341.341,
+      "end": 344.1772,
+      "name": "류진욱",
+      "code": "65949",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 341.9416,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=341s"
+        },
+        {
+          "time": 343.17617,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=343s"
+        },
+        {
+          "time": 343.81013,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=343s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0006": {
+      "clipId": "7fb35265ff17_c0006",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 520.9204,
+      "end": 523.0225,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 521.35417,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=521s"
+        },
+        {
+          "time": 522.25507,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=522s"
+        },
+        {
+          "time": 522.75557,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=522s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0010": {
+      "clipId": "7fb35265ff17_c0010",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 353.5532,
+      "end": 355.6219,
+      "name": "류진욱",
+      "code": "65949",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 353.98697,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=353s"
+        },
+        {
+          "time": 354.88787,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=354s"
+        },
+        {
+          "time": 355.355,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=355s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0011": {
+      "clipId": "7fb35265ff17_c0011",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 512.9124,
+      "end": 517.3502,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 515.78193,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=515s"
+        },
+        {
+          "time": 516.78293,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=516s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0012": {
+      "clipId": "7fb35265ff17_c0012",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 737.737,
+      "end": 740.8401,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 738.40433,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=738s"
+        },
+        {
+          "time": 739.739,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=739s"
+        },
+        {
+          "time": 740.4397,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=740s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0015": {
+      "clipId": "7fb35265ff17_c0015",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 371.1708,
+      "end": 372.9726,
+      "name": "류진욱",
+      "code": "65949",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 371.53783,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=371s"
+        },
+        {
+          "time": 372.33863,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=372s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0020": {
+      "clipId": "7fb35265ff17_c0020",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 696.8962,
+      "end": 701.4007,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 697.86383,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=697s"
+        },
+        {
+          "time": 699.7991,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=699s"
+        },
+        {
+          "time": 700.83347,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=700s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0021": {
+      "clipId": "7fb35265ff17_c0021",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 387.7874,
+      "end": 389.9229,
+      "name": "류진욱",
+      "code": "65949",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 388.25453,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=388s"
+        },
+        {
+          "time": 389.15543,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=389s"
+        },
+        {
+          "time": 389.65593,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "sbs_left",
+          "raw": "『. 류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=389s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0024": {
+      "clipId": "7fb35265ff17_c0024",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 724.3236,
+      "end": 728.094,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 725.1244,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=725s"
+        },
+        {
+          "time": 726.75937,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=726s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0025": {
+      "clipId": "7fb35265ff17_c0025",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 150.15,
+      "end": 152.9862,
+      "name": "카스타노",
+      "code": "54920",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 151.98517,
+          "name": "카스타노",
+          "code": "54920",
+          "layout": "sbs_left",
+          "raw": "『. 카스타노",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=151s"
+        },
+        {
+          "time": 152.61913,
+          "name": "카스타노",
+          "code": "54920",
+          "layout": "sbs_left",
+          "raw": "『. 카스타노",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=152s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0026": {
+      "clipId": "7fb35265ff17_c0026",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 404.404,
+      "end": 407.5738,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 405.07133,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=405s"
+        },
+        {
+          "time": 406.43937,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=406s"
+        },
+        {
+          "time": 407.17343,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=407s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0027": {
+      "clipId": "7fb35265ff17_c0027",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 279.6794,
+      "end": 282.0151,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 280.1799,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=280s"
+        },
+        {
+          "time": 281.1809,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=281s"
+        },
+        {
+          "time": 281.71477,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=281s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0032": {
+      "clipId": "7fb35265ff17_c0032",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 269.0688,
+      "end": 271.1042,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 269.50257,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=269s"
+        },
+        {
+          "time": 270.3701,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=270s"
+        }
+      ]
+    },
+    "7fb35265ff17_c0037": {
+      "clipId": "7fb35265ff17_c0037",
+      "sourceId": "7fb35265ff17",
+      "gameId": "20240723NCHT02024",
+      "start": 715.9152,
+      "end": 717.5502,
+      "name": "양현종",
+      "code": "77637",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 716.24887,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=716s"
+        },
+        {
+          "time": 716.94957,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=716s"
+        },
+        {
+          "time": 717.34997,
+          "name": "양현종",
+          "code": "77637",
+          "layout": "sbs",
+          "raw": "0. 양현종",
+          "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA&t=717s"
+        }
+      ]
+    },
+    "8b3dda578503_c0001": {
+      "clipId": "8b3dda578503_c0001",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 446.8464,
+      "end": 451.451,
+      "name": "김민",
+      "code": "68043",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 447.8474,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=447s"
+        },
+        {
+          "time": 449.81603,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=449s"
+        },
+        {
+          "time": 450.88377,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=450s"
+        }
+      ]
+    },
+    "8b3dda578503_c0006": {
+      "clipId": "8b3dda578503_c0006",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 197.9978,
+      "end": 201.3678,
+      "name": "코너",
+      "code": "54452",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 198.73187,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=198s"
+        },
+        {
+          "time": 200.16663,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=200s"
+        },
+        {
+          "time": 200.93407,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=200s"
+        }
+      ]
+    },
+    "8b3dda578503_c0008": {
+      "clipId": "8b3dda578503_c0008",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 296.4962,
+      "end": 298.6317,
+      "name": "코너",
+      "code": "54452",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 296.96333,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=296s"
+        },
+        {
+          "time": 297.86423,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=297s"
+        },
+        {
+          "time": 298.36473,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=298s"
+        }
+      ]
+    },
+    "8b3dda578503_c0009": {
+      "clipId": "8b3dda578503_c0009",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 280.6804,
+      "end": 283.4165,
+      "name": "우규민",
+      "code": "73117",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 281.24763,
+          "name": "우규민",
+          "code": "73117",
+          "layout": "sbs_left",
+          "raw": "『. 우규민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=281s"
+        },
+        {
+          "time": 283.0828,
+          "name": "우규민",
+          "code": "73117",
+          "layout": "sbs_left",
+          "raw": "『. 우규민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=283s"
+        }
+      ]
+    },
+    "8b3dda578503_c0010": {
+      "clipId": "8b3dda578503_c0010",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 97.2972,
+      "end": 101.7016,
+      "name": "코너",
+      "code": "54452",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 98.23147,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=98s"
+        },
+        {
+          "time": 100.13337,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "0. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=100s"
+        },
+        {
+          "time": 101.16773,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "0. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=101s"
+        }
+      ]
+    },
+    "8b3dda578503_c0011": {
+      "clipId": "8b3dda578503_c0011",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 274.0738,
+      "end": 278.7118,
+      "name": "우규민",
+      "code": "73117",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 277.0768,
+          "name": "우규민",
+          "code": "73117",
+          "layout": "sbs_left",
+          "raw": "『. 우규민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=277s"
+        },
+        {
+          "time": 278.14453,
+          "name": "우규민",
+          "code": "73117",
+          "layout": "sbs_left",
+          "raw": "『. 우규민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=278s"
+        }
+      ]
+    },
+    "8b3dda578503_c0013": {
+      "clipId": "8b3dda578503_c0013",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 255.0548,
+      "end": 258.8586,
+      "name": "벤자민",
+      "code": "52043",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 255.88897,
+          "name": "벤자민",
+          "code": "52043",
+          "layout": "sbs_left",
+          "raw": "『. 벤자민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=255s"
+        },
+        {
+          "time": 257.52393,
+          "name": "벤자민",
+          "code": "52043",
+          "layout": "sbs_left",
+          "raw": "『. 벤자민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=257s"
+        },
+        {
+          "time": 258.39147,
+          "name": "벤자민",
+          "code": "52043",
+          "layout": "sbs_left",
+          "raw": "『. 벤자민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=258s"
+        }
+      ]
+    },
+    "8b3dda578503_c0014": {
+      "clipId": "8b3dda578503_c0014",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 241.8416,
+      "end": 244.7445,
+      "name": "코너",
+      "code": "54452",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 242.47557,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=242s"
+        },
+        {
+          "time": 243.71013,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=243s"
+        },
+        {
+          "time": 244.37747,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=244s"
+        }
+      ]
+    },
+    "8b3dda578503_c0015": {
+      "clipId": "8b3dda578503_c0015",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 439.439,
+      "end": 442.9091,
+      "name": "김민",
+      "code": "68043",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 440.17307,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=440s"
+        },
+        {
+          "time": 441.67457,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=441s"
+        },
+        {
+          "time": 442.47537,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=442s"
+        }
+      ]
+    },
+    "8b3dda578503_c0018": {
+      "clipId": "8b3dda578503_c0018",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 80.4804,
+      "end": 83.1831,
+      "name": "코너",
+      "code": "54452",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 81.04763,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=81s"
+        },
+        {
+          "time": 82.21547,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=82s"
+        },
+        {
+          "time": 82.84943,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=82s"
+        }
+      ]
+    },
+    "8b3dda578503_c0021": {
+      "clipId": "8b3dda578503_c0021",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 137.7376,
+      "end": 140.8073,
+      "name": "코너",
+      "code": "54452",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 138.40493,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "2. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=138s"
+        },
+        {
+          "time": 139.70623,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "0. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=139s"
+        },
+        {
+          "time": 140.40693,
+          "name": "코너",
+          "code": "54452",
+          "layout": "sbs",
+          "raw": "0. 코너",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=140s"
+        }
+      ]
+    },
+    "8b3dda578503_c0022": {
+      "clipId": "8b3dda578503_c0022",
+      "sourceId": "8b3dda578503",
+      "gameId": "20240815KTSS02024",
+      "start": 422.0216,
+      "end": 425.2582,
+      "name": "김민",
+      "code": "68043",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 422.7223,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=422s"
+        },
+        {
+          "time": 424.1237,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=424s"
+        },
+        {
+          "time": 424.85777,
+          "name": "김민",
+          "code": "68043",
+          "layout": "sbs_left",
+          "raw": "『. 김민",
+          "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE&t=424s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0001": {
+      "clipId": "d1ca854585d4_c0001",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 645.0444,
+      "end": 648.1141,
+      "name": "김재열",
+      "code": "64580",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 645.71173,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=645s"
+        },
+        {
+          "time": 647.01303,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=647s"
+        },
+        {
+          "time": 647.71373,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=647s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0002": {
+      "clipId": "d1ca854585d4_c0002",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 174.3742,
+      "end": 179.5127,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 175.4753,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=175s"
+        },
+        {
+          "time": 177.71087,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=177s"
+        },
+        {
+          "time": 178.8787,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=178s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0006": {
+      "clipId": "d1ca854585d4_c0006",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 428.2278,
+      "end": 430.6302,
+      "name": "류진욱",
+      "code": "65949",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 428.7283,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "spotv",
+          "raw": "류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=428s"
+        },
+        {
+          "time": 429.76267,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "spotv",
+          "raw": "류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=429s"
+        },
+        {
+          "time": 430.3299,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "spotv",
+          "raw": "류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=430s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0007": {
+      "clipId": "d1ca854585d4_c0007",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 418.0176,
+      "end": 420.7537,
+      "name": "류진욱",
+      "code": "65949",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 418.58483,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "spotv",
+          "raw": "류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=418s"
+        },
+        {
+          "time": 419.78603,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "spotv",
+          "raw": "류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=419s"
+        },
+        {
+          "time": 420.42,
+          "name": "류진욱",
+          "code": "65949",
+          "layout": "spotv",
+          "raw": "류진욱",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=420s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0008": {
+      "clipId": "d1ca854585d4_c0008",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 457.8574,
+      "end": 460.2932,
+      "name": "곽도규",
+      "code": "53609",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 458.39127,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=458s"
+        },
+        {
+          "time": 459.42563,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=459s"
+        },
+        {
+          "time": 459.99287,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=459s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0009": {
+      "clipId": "d1ca854585d4_c0009",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 193.9938,
+      "end": 195.8957,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 194.3942,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=194s"
+        },
+        {
+          "time": 195.22837,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=195s"
+        },
+        {
+          "time": 195.66213,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=195s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0010": {
+      "clipId": "d1ca854585d4_c0010",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 237.4372,
+      "end": 240.9407,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 238.20463,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=238s"
+        },
+        {
+          "time": 239.70613,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=239s"
+        },
+        {
+          "time": 240.50693,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=240s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0011": {
+      "clipId": "d1ca854585d4_c0011",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 279.8796,
+      "end": 283.2496,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 280.61367,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=280s"
+        },
+        {
+          "time": 282.04843,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=282s"
+        },
+        {
+          "time": 282.81587,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=282s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0012": {
+      "clipId": "d1ca854585d4_c0012",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 202.6024,
+      "end": 204.8713,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 203.06953,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=203s"
+        },
+        {
+          "time": 204.07053,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=204s"
+        },
+        {
+          "time": 204.57103,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=204s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0013": {
+      "clipId": "d1ca854585d4_c0013",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 571.3708,
+      "end": 573.573,
+      "name": "김재열",
+      "code": "64580",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 571.83793,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=571s"
+        },
+        {
+          "time": 572.7722,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=572s"
+        },
+        {
+          "time": 573.30607,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=573s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0014": {
+      "clipId": "d1ca854585d4_c0014",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 136.3362,
+      "end": 139.7062,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 137.07027,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=137s"
+        },
+        {
+          "time": 138.50503,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=138s"
+        },
+        {
+          "time": 139.27247,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=139s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0015": {
+      "clipId": "d1ca854585d4_c0015",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 94.2942,
+      "end": 97.1637,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 94.8948,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=94s"
+        },
+        {
+          "time": 96.12937,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=96s"
+        },
+        {
+          "time": 96.7967,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=96s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0016": {
+      "clipId": "d1ca854585d4_c0016",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 558.1576,
+      "end": 563.7298,
+      "name": "김재열",
+      "code": "64580",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 559.3588,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=559s"
+        },
+        {
+          "time": 561.7612,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=561s"
+        },
+        {
+          "time": 563.02913,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=563s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0018": {
+      "clipId": "d1ca854585d4_c0018",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 563.7632,
+      "end": 566.3992,
+      "name": "김재열",
+      "code": "64580",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 564.33043,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=564s"
+        },
+        {
+          "time": 565.4649,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=565s"
+        },
+        {
+          "time": 566.0655,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=566s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0019": {
+      "clipId": "d1ca854585d4_c0019",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 54.2542,
+      "end": 57.2572,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 54.88817,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=54s"
+        },
+        {
+          "time": 56.18947,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=56s"
+        },
+        {
+          "time": 56.89017,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=56s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0020": {
+      "clipId": "d1ca854585d4_c0020",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 249.6494,
+      "end": 251.4512,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 250.01643,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=250s"
+        },
+        {
+          "time": 250.81723,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=250s"
+        },
+        {
+          "time": 251.21763,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=251s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0021": {
+      "clipId": "d1ca854585d4_c0021",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 659.2586,
+      "end": 662.2616,
+      "name": "정해영",
+      "code": "50662",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 659.89257,
+          "name": "정해영",
+          "code": "50662",
+          "layout": "spotv",
+          "raw": "정해영",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=659s"
+        },
+        {
+          "time": 661.19387,
+          "name": "정해영",
+          "code": "50662",
+          "layout": "spotv",
+          "raw": "정해영",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=661s"
+        },
+        {
+          "time": 661.89457,
+          "name": "정해영",
+          "code": "50662",
+          "layout": "spotv",
+          "raw": "정해영",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=661s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0022": {
+      "clipId": "d1ca854585d4_c0022",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 31.4314,
+      "end": 35.6022,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 32.3323,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=32s"
+        },
+        {
+          "time": 34.1341,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=34s"
+        },
+        {
+          "time": 35.06837,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=35s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0023": {
+      "clipId": "d1ca854585d4_c0023",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 547.9474,
+      "end": 550.183,
+      "name": "김재열",
+      "code": "64580",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 548.41453,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=548s"
+        },
+        {
+          "time": 549.38217,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=549s"
+        },
+        {
+          "time": 549.88267,
+          "name": "김재열",
+          "code": "64580",
+          "layout": "spotv",
+          "raw": "김재열",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=549s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0024": {
+      "clipId": "d1ca854585d4_c0024",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 188.188,
+      "end": 190.0565,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 188.5884,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=188s"
+        },
+        {
+          "time": 189.3892,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=189s"
+        },
+        {
+          "time": 189.82297,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=189s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0025": {
+      "clipId": "d1ca854585d4_c0025",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 377.5772,
+      "end": 379.9129,
+      "name": "곽도규",
+      "code": "53609",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 378.0777,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=378s"
+        },
+        {
+          "time": 379.0787,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=379s"
+        },
+        {
+          "time": 379.61257,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=379s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0026": {
+      "clipId": "d1ca854585d4_c0026",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 63.8638,
+      "end": 67.1671,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 64.5645,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=64s"
+        },
+        {
+          "time": 65.99927,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=65s"
+        },
+        {
+          "time": 66.7667,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=66s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0027": {
+      "clipId": "d1ca854585d4_c0027",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 147.3472,
+      "end": 151.9518,
+      "name": "신민혁",
+      "code": "68902",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 148.3482,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=148s"
+        },
+        {
+          "time": 150.31683,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=150s"
+        },
+        {
+          "time": 151.38457,
+          "name": "신민혁",
+          "code": "68902",
+          "layout": "spotv",
+          "raw": "신민혁",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=151s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0028": {
+      "clipId": "d1ca854585d4_c0028",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 289.6894,
+      "end": 294.0271,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 290.62367,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=290s"
+        },
+        {
+          "time": 292.4922,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=292s"
+        },
+        {
+          "time": 293.4932,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=293s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0030": {
+      "clipId": "d1ca854585d4_c0030",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 683.0824,
+      "end": 685.2512,
+      "name": "정해영",
+      "code": "50662",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 683.54953,
+          "name": "정해영",
+          "code": "50662",
+          "layout": "spotv",
+          "raw": "정해영",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=683s"
+        },
+        {
+          "time": 684.4838,
+          "name": "정해영",
+          "code": "50662",
+          "layout": "spotv",
+          "raw": "정해영",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=684s"
+        },
+        {
+          "time": 684.9843,
+          "name": "정해영",
+          "code": "50662",
+          "layout": "spotv",
+          "raw": "정해영",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=684s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0031": {
+      "clipId": "d1ca854585d4_c0031",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 109.109,
+      "end": 111.7783,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 109.67623,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=109s"
+        },
+        {
+          "time": 110.8107,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=110s"
+        },
+        {
+          "time": 111.44467,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=111s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0032": {
+      "clipId": "d1ca854585d4_c0032",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 119.7196,
+      "end": 123.6235,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 120.55377,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=120s"
+        },
+        {
+          "time": 122.25547,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=122s"
+        },
+        {
+          "time": 123.123,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=123s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0033": {
+      "clipId": "d1ca854585d4_c0033",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 295.4952,
+      "end": 298.4982,
+      "name": "네일",
+      "code": "54640",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 296.12917,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=296s"
+        },
+        {
+          "time": 297.43047,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=297s"
+        },
+        {
+          "time": 298.13117,
+          "name": "네일",
+          "code": "54640",
+          "layout": "spotv",
+          "raw": "네일",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=298s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0034": {
+      "clipId": "d1ca854585d4_c0034",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 405.2048,
+      "end": 409.3756,
+      "name": "곽도규",
+      "code": "53609",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 406.1057,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=406s"
+        },
+        {
+          "time": 407.9075,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=407s"
+        },
+        {
+          "time": 408.84177,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=408s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0035": {
+      "clipId": "d1ca854585d4_c0035",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 387.1868,
+      "end": 389.3556,
+      "name": "곽도규",
+      "code": "53609",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 387.65393,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=387s"
+        },
+        {
+          "time": 388.5882,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=388s"
+        },
+        {
+          "time": 389.0887,
+          "name": "곽도규",
+          "code": "53609",
+          "layout": "spotv",
+          "raw": "곽도규",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=389s"
+        }
+      ]
+    },
+    "d1ca854585d4_c0059": {
+      "clipId": "d1ca854585d4_c0059",
+      "sourceId": "d1ca854585d4",
+      "gameId": "20240824HTNC02024",
+      "start": 524.1236,
+      "end": 526.2257,
+      "name": "임정호",
+      "code": "63959",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 524.55737,
+          "name": "임정호",
+          "code": "63959",
+          "layout": "spotv",
+          "raw": "임정호",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=524s"
+        },
+        {
+          "time": 525.45827,
+          "name": "임정호",
+          "code": "63959",
+          "layout": "spotv",
+          "raw": "임정호",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=525s"
+        },
+        {
+          "time": 525.95877,
+          "name": "임정호",
+          "code": "63959",
+          "layout": "spotv",
+          "raw": "임정호",
+          "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0&t=525s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0002": {
+      "clipId": "df7c27e6bbcf_c0002",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 316.1158,
+      "end": 320.2199,
+      "name": "윌커슨",
+      "code": "53546",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 317.0167,
+          "name": "윌커슨",
+          "code": "53546",
+          "layout": "sbs",
+          "raw": ". 윌커슨",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=317s"
+        },
+        {
+          "time": 318.75177,
+          "name": "윌커슨",
+          "code": "53546",
+          "layout": "sbs",
+          "raw": ". 윌커슨",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=318s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0007": {
+      "clipId": "df7c27e6bbcf_c0007",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 124.9248,
+      "end": 127.4273,
+      "name": "윌커슨",
+      "code": "53546",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 125.45867,
+          "name": "윌커슨",
+          "code": "53546",
+          "layout": "sbs",
+          "raw": "”. 윌커슨",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=125s"
+        },
+        {
+          "time": 126.5264,
+          "name": "윌커슨",
+          "code": "53546",
+          "layout": "sbs",
+          "raw": "”. 윌커슨",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=126s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0008": {
+      "clipId": "df7c27e6bbcf_c0008",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 378.378,
+      "end": 382.0483,
+      "name": "김원중",
+      "code": "62528",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 379.1788,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "”. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=379s"
+        },
+        {
+          "time": 380.74703,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "”. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=380s"
+        },
+        {
+          "time": 381.5812,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "2. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=381s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0009": {
+      "clipId": "df7c27e6bbcf_c0009",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 352.5522,
+      "end": 357.357,
+      "name": "최준용",
+      "code": "50556",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 353.58657,
+          "name": "최준용",
+          "code": "50556",
+          "layout": "sbs",
+          "raw": "0. 최준용",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=353s"
+        },
+        {
+          "time": 355.6553,
+          "name": "최준용",
+          "code": "50556",
+          "layout": "sbs",
+          "raw": "0. 최준용",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=355s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0011": {
+      "clipId": "df7c27e6bbcf_c0011",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 307.9076,
+      "end": 312.8792,
+      "name": "한재승",
+      "code": "51994",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 308.97533,
+          "name": "한재승",
+          "code": "51994",
+          "layout": "sbs_left",
+          "raw": "『. 한재승",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=308s"
+        },
+        {
+          "time": 311.1108,
+          "name": "한재승",
+          "code": "51994",
+          "layout": "sbs_left",
+          "raw": "『. 한재승",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=311s"
+        },
+        {
+          "time": 312.27863,
+          "name": "한재승",
+          "code": "51994",
+          "layout": "sbs_left",
+          "raw": "『. 한재승",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=312s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0012": {
+      "clipId": "df7c27e6bbcf_c0012",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 359.5592,
+      "end": 362.0951,
+      "name": "최준용",
+      "code": "50556",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 360.09307,
+          "name": "최준용",
+          "code": "50556",
+          "layout": "sbs",
+          "raw": "0. 최준용",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=360s"
+        },
+        {
+          "time": 361.19417,
+          "name": "최준용",
+          "code": "50556",
+          "layout": "sbs",
+          "raw": "0. 최준용",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=361s"
+        },
+        {
+          "time": 361.7614,
+          "name": "최준용",
+          "code": "50556",
+          "layout": "sbs",
+          "raw": "0. 최준용",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=361s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0018": {
+      "clipId": "df7c27e6bbcf_c0018",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 387.9876,
+      "end": 393.6266,
+      "name": "김원중",
+      "code": "62528",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 389.22217,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": ". 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=389s"
+        },
+        {
+          "time": 391.62457,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "0. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=391s"
+        },
+        {
+          "time": 392.92587,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "0. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=392s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0019": {
+      "clipId": "df7c27e6bbcf_c0019",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 398.398,
+      "end": 402.7023,
+      "name": "김원중",
+      "code": "62528",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 399.33227,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "2. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=399s"
+        },
+        {
+          "time": 401.16743,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "2. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=401s"
+        },
+        {
+          "time": 402.16843,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": ". 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=402s"
+        }
+      ]
+    },
+    "df7c27e6bbcf_c0023": {
+      "clipId": "df7c27e6bbcf_c0023",
+      "sourceId": "df7c27e6bbcf",
+      "gameId": "20240329NCLT02024",
+      "start": 413.0126,
+      "end": 416.416,
+      "name": "김원중",
+      "code": "62528",
+      "method": "scoreboard_repeated_exact",
+      "samples": [
+        {
+          "time": 415.2148,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": ". 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=415s"
+        },
+        {
+          "time": 415.98223,
+          "name": "김원중",
+          "code": "62528",
+          "layout": "sbs",
+          "raw": "”. 김원중",
+          "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ&t=415s"
+        }
+      ]
     }
   }
 }

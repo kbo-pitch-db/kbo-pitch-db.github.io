@@ -76,8 +76,11 @@ class ReleaseTests(unittest.TestCase):
  def test_preserved_release_hashes(self):
   d=ROOT/'data/releases/metrics-20261028-v1';m=json.loads((d/'manifest.json').read_text())
   # The archived uncompressed JSON is the exact old identity/metric source.
-  old=json.load(gzip.open(d/'database.json.gz','rt'));self.assertEqual(old['schemaVersion'],1);self.assertEqual(len(old['rows']),len(self.db['rows']))
-  self.assertEqual({r['id'] for r in old['rows']},{r['id'] for r in self.db['rows']})
+  old=json.load(gzip.open(d/'database.json.gz','rt'));self.assertEqual(old['schemaVersion'],1)
+  current={r['id']:r for r in self.db['rows']}
+  self.assertTrue({r['id'] for r in old['rows']}<=set(current))
+  for r in old['rows']:
+   for key in ['unit','pitchId','playerCode','clipIds']:self.assertEqual(r[key],current[r['id']][key])
   for name,entry in m['files'].items():
    raw=(d/entry['archive']).read_bytes();raw=raw if name.endswith('.gz') else gzip.decompress(raw);self.assertEqual(hashlib.sha256(raw).hexdigest(),entry['sha256'],name)
  def test_undefined_axial_and_clock_not_fabricated(self):

@@ -166,8 +166,13 @@ def process(job):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--workers',type=int,default=4);parser.add_argument('--limit',type=int,default=0);args=parser.parse_args();OUT.mkdir(parents=True,exist_ok=True)
+    global STUDY
+    parser=argparse.ArgumentParser();parser.add_argument('--workers',type=int,default=4);parser.add_argument('--limit',type=int,default=0)
+    parser.add_argument('--ids',type=Path);parser.add_argument('--study-root',type=Path);args=parser.parse_args();OUT.mkdir(parents=True,exist_ok=True)
+    if args.study_root:STUDY=args.study_root.resolve()
     clips=json.loads((REPO/'data/clips.json').read_text())['clips'];profiles={p['code']:p for p in json.loads((REPO/'data/portal/summary.json').read_text())['players']}
+    if args.ids:
+        wanted=set(json.loads(args.ids.read_text()));clips=[c for c in clips if c['id'] in wanted]
     rows={r['dataset_clip_id']:r for r in csv.DictReader(open(REPO.parent/'dataset/clips.csv'))};reviews={r['clipId']:r for r in json.loads((REPO/'data/metrics/source_reviews_20261029.json').read_text())['clips']}
     if args.limit:clips=clips[:args.limit]
     jobs=[(c,rows[c['id']],profiles[c['playerCode']]['hand'],reviews.get(c['id'])) for c in clips]

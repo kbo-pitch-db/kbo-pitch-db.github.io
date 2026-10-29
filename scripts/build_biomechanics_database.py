@@ -65,7 +65,19 @@ def scene_data(fit,R,origin):
 
 def calculate_clip(job):
     c,hand,selection,metrics=job;cid=c['id'];original_path=REPO/'data'/c['pose3d'];model=json.load(gzip.open(original_path,'rt'))
-    path=STUDY/'combined_population_v1'/selection['fit_path'];sha=hashlib.sha256(path.read_bytes()).hexdigest()
+    study=Path(selection.get('_studyRoot',STUDY))
+    path=study/'combined_population_v1'/selection['fit_path'];sha=hashlib.sha256(path.read_bytes()).hexdigest()
+    cached=ANALYSIS/(cid+'.json.gz')
+    if selection.get('_reuseExisting') and cached.exists():
+        x=json.load(gzip.open(cached,'rt'))
+        if (x['version']==VERSION and x['originalPosePath']==c['pose3d']
+                and x['sourceFitSha256']==sha and x['throwingHand']==hand
+                and set(x['metrics'])=={m['id'] for m in metrics}):
+            observation=json.loads((WORK/'observations'/(cid+'.json')).read_text())
+            return cid,dict(metrics=x['metrics'],analysisPath='biomechanics/analysis/'+cid+'.json.gz',
+                analysisPose=x['posePath'],captureCondition=x['captureCondition'],view=observation.get('view') or 'unclassified',
+                sourceReview=x['sourceReview'],events={k:v['interval'] for k,v in x['events'].items()},
+                cadence=x['cadence'],sourceConsistency=x['sourceConsistency'],refit=x['refit'],model=x['analysisModel'])
     assert sha==model['source_fit_sha256'],('Pose lineage mismatch',cid)
     fit=align_fit(load_npz(path),[f['source_frame'] for f in model['frames']]);R=np.asarray(model['scene']['rotation_camera_to_scene']);origin=np.asarray(model['scene']['origin_camera']);original=scene_data(fit,R,origin)
     published=np.asarray([[p[:3] if p else [np.nan]*3 for p in f['anatomy']] for f in model['frames']]);finite=np.isfinite(published)
@@ -94,7 +106,7 @@ def calculate_clip(job):
     masks['source_pose_available']=np.isfinite(a).all(axis=(1,2))
     series,cal=make_series(a,rot,camera,R,hand,observation,feet)
     alternatives={'pre_native_refit':series_original} if model_name!='canonical_native_smpl_adapter' else {}
-    alt_path=STUDY/'all813_gvhmr_v1/base/gvhmr_camera_f12'/(cid+'.npz')
+    alt_path=study/'all813_gvhmr_v1/base/gvhmr_camera_f12'/(cid+'.npz')
     alt_meta=None
     if alt_path.exists():
         alt=align_fit(load_npz(alt_path),observation['sourceFrames'])
@@ -102,7 +114,7 @@ def calculate_clip(job):
             b=scene_data(alt,R,origin);alt_feet=None
             if 'foot_keypoints' in alt:alt_feet=np.einsum('ij,tkj->tki',R,alt['foot_keypoints']+alt['translation'][:,None]-origin)
             alt_series,_=make_series(b,alt['smpl_rotations'],alt['anatomical_keypoints'],R,hand,observation,alt_feet)
-            alternatives['gvhmr_camera_f12']=alt_series;alt_meta=dict(path=str(alt_path.relative_to(STUDY)),sha256=hashlib.sha256(alt_path.read_bytes()).hexdigest(),comparison='model sensitivity, not ground truth')
+            alternatives['gvhmr_camera_f12']=alt_series;alt_meta=dict(path=str(alt_path.relative_to(study)),sha256=hashlib.sha256(alt_path.read_bytes()).hexdigest(),comparison='model sensitivity, not ground truth')
     axis_variants=[]
     if observation.get('pitchAxisCamera') is not None:
         direction=R@np.asarray(observation['pitchAxisCamera']);angle=observation['axisUncertaintyDegrees']
@@ -152,10 +164,71 @@ def aggregate(rows,metrics):
     return dict(version=VERSION,grouping=['unit','player','pitch','source/capture condition','analysis model','calculation version'],eligibility='source-reviewed provisional 3D including separately flagged sensitivity; candidate automatic events excluded; not external GT validation',repeatability='Observed between-pitch variability also contains estimation error; not measurement reliability.',groups=result)
 
 
+def refresh_records(base,clips,profiles,details,source_games,pose_version):
+    """Append observed records/intervals without resurrecting archived 3D maths.
+
+    An identity match names a pitcher, not an individual pitch. Fresh intervals
+    remain unlinked until a separately audited exact pitch identity is available.
+    """
+    rows=list(base['rows']);existing={r['pitchId']:r for r in rows if r['pitchId']}
+    observed={r['id']:r for detail in details.values() for r in detail['records']}
+    if not set(existing)<=set(observed):raise ValueError('Record refresh would discard existing pitches')
+    represented={cid for r in rows for cid in r['clipIds']}
+    if not represented<={c['id'] for c in clips}:raise ValueError('Record refresh would discard existing motion intervals')
+    for code,detail in details.items():
+        for record in detail['records']:
+            if record['id'] in existing:
+                if set(record['clipIds'])!=set(existing[record['id']]['clipIds']):
+                    raise ValueError('An existing pitch link changed; explicit link migration is required')
+                continue
+            if record['clipIds']:raise ValueError('New exact pitch links require explicit primary-interval selection')
+            rows.append(dict(id=record['id'],pitchId=record['id'],unit='pitch_record',
+                playerCode=code,player=profiles[code]['name'],hand=profiles[code].get('hand'),season='2024',
+                gameId=record['gameId'],date=record['date'],pitch=record['pitch'],speed=record['speed'],
+                sourceId=None,sourceUrl=None,recordSourceUrl=record['sourceUrl'],clipIds=[],
+                primaryClipId=None,metrics=None,linkStatus='no_motion',qualityFlags=[]))
+    for c in clips:
+        cid=c['id']
+        if cid in represented:continue
+        code=c['playerCode'];link=details[code]['clips'][cid]
+        if link['status']=='auto_accepted':raise ValueError('Unregistered exact pitch link')
+        rows.append(dict(id='clip:'+cid,pitchId=None,unit='unlinked_clip',playerCode=code,
+            player=c['player'],hand=profiles[code].get('hand'),season='2024',gameId=source_games.get(c['sourceId']),
+            date=c['date'],pitch=c.get('pitch') or None,speed=float(c['speed']) if c.get('speed') else None,
+            sourceId=c['sourceId'],sourceUrl=c['sourceUrl'],recordSourceUrl=None,clipIds=[cid],
+            primaryClipId=cid,metrics={},linkStatus=link['status'],qualityFlags=c.get('pose3dReasons',[])))
+    record_rows=[r for r in rows if r['unit']=='pitch_record']
+    scope=dict(base['scope'],recordPitches=len(record_rows),motionClips=len(clips),
+        linkedPitches=sum(bool(r['clipIds']) for r in record_rows),
+        linkedClips=sum(len(r['clipIds']) for r in record_rows),
+        unlinkedClips=sum(r['unit']=='unlinked_clip' for r in rows),rows=len(rows),
+        motionPlayers=len({c['playerCode'] for c in clips}))
+    return dict(base,rows=rows,scope=scope,poseVersion=pose_version)
+
+
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--workers',type=int,default=4);parser.add_argument('--limit',type=int,default=0);args=parser.parse_args()
-    metrics=dictionary();old=json.load(gzip.open(REPO/'data/releases/metrics-20261028-v1/database.json.gz','rt'));clips=json.loads((REPO/'data/clips.json').read_text())['clips'];profiles={p['code']:p for p in json.loads((REPO/'data/portal/summary.json').read_text())['players']};selection=json.loads((STUDY/'combined_population_v1/selection.json').read_text())['selected']
+    parser=argparse.ArgumentParser();parser.add_argument('--workers',type=int,default=4);parser.add_argument('--limit',type=int,default=0)
+    parser.add_argument('--base-database',type=Path,default=REPO/'data/releases/metrics-20261028-v1/database.json.gz')
+    parser.add_argument('--additional-study',type=Path,action='append',default=[])
+    parser.add_argument('--refresh-records',action='store_true')
+    parser.add_argument('--reuse-existing',action='store_true');args=parser.parse_args()
+    metrics=dictionary();old=json.load(gzip.open(args.base_database,'rt') if args.base_database.suffix=='.gz' else args.base_database.open());clips=json.loads((REPO/'data/clips.json').read_text())['clips'];profiles={p['code']:p for p in json.loads((REPO/'data/portal/summary.json').read_text())['players']};selection=json.loads((STUDY/'combined_population_v1/selection.json').read_text())['selected']
+    if args.refresh_records:
+        details={code:json.loads((REPO/'data'/profile['detailPath']).read_text()) for code,profile in profiles.items()}
+        source_games={r['source_id']:r['naver_game_id'] for r in csv.DictReader((REPO.parent/'dataset/sources.csv').open())}
+        old=refresh_records(old,clips,profiles,details,source_games,json.loads((REPO/'data/clips.json').read_text())['packageVersion'])
+    for folder in args.additional_study:
+        additional=json.loads((folder/'combined_population_v1/selection.json').read_text())['selected']
+        overlap=set(selection)&set(additional)
+        if overlap:raise ValueError('Additional study must not replace existing clip fits: '+str(sorted(overlap)))
+        selection.update({cid:dict(choice,_studyRoot=str(folder.resolve())) for cid,choice in additional.items()})
+    if args.reuse_existing:
+        selection={cid:dict(choice,_reuseExisting=True) for cid,choice in selection.items()}
     if args.limit:clips=clips[:args.limit]
+    if not args.limit and {c['id'] for c in clips}!={cid for r in old['rows'] for cid in r['clipIds']}:
+        parser.error('The clip cohort changed; use --refresh-records to include the new intervals')
+    missing={c['id'] for c in clips}-set(selection)
+    if missing:parser.error('Missing fits for '+str(len(missing))+' clips; supply their --additional-study directory')
     ANALYSIS.mkdir(parents=True,exist_ok=True);POSES.mkdir(parents=True,exist_ok=True)
     jobs=[(c,profiles[c['playerCode']]['hand'],selection[c['id']],metrics) for c in clips];computed={}
     with ProcessPoolExecutor(max_workers=args.workers) as pool:

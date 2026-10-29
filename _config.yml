@@ -1,0 +1,5 @@
+# Keep repository-only files out of the Pages artifact. All dataset assets and
+# historical study viewers remain available on the website.
+exclude:
+  - experiments
+  - tests

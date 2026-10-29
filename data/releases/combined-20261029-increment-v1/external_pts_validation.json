@@ -1,0 +1,27 @@
+{
+  "matchedPitchIds": 9588,
+  "existingRecords": 9754,
+  "exactMatches": {
+    "pitcher_code": 9588,
+    "pitcher_name": 9588,
+    "batter_code": 9588,
+    "batter_name": 9588,
+    "pitch_number": 9588,
+    "pitch_result": 9588
+  },
+  "maximumAbsoluteFieldDiscrepancy": {
+    "x0_ft": 0.0,
+    "y0_ft": 0.0,
+    "z0_ft": 0.0,
+    "vx0_ft_s": 0.0,
+    "vy0_ft_s": 0.0,
+    "vz0_ft_s": 0.0,
+    "ax_ft_s2": 0.0,
+    "ay_ft_s2": 0.0,
+    "az_ft_s2": 0.0,
+    "cross_plate_x_ft": 4.334572302022721e-05,
+    "plate_z_ft_derived": 4.999897127433428e-07
+  },
+  "oldRecordsNotReplaced": true,
+  "sourceCoverage": "Published tracked rows only; missing rows and unavailable relay metadata remain missing"
+}

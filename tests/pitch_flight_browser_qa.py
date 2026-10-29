@@ -23,10 +23,10 @@ with sync_playwright() as p:
  page.screenshot(path='/tmp/kbo-flight-profile-desktop.png',full_page=True)
  page.goto(BASE+'/#database',wait_until='networkidle');g=page.locator('#metrics-database-root');page.wait_for_selector('.db-pitch-table')
  assert g.locator('[data-db-family=flight]').get_attribute('aria-pressed')=='true'
- assert g.locator('.db-result-summary').inner_text().startswith('9,754')
+ assert g.locator('.db-result-summary').inner_text().startswith(f"{DATA['recordCount']:,}")
  assert g.locator('.db-controls').is_visible() and g.locator('.db-filter-grid').is_visible()
  assert g.locator('details.db-controls,details.db-plots,.db-release-links').count()==0
- assert 'n=9747' in g.locator('.db-flight-overview').inner_text()
+ assert f"n={DATA['statusCounts']['derived_pts']}" in g.locator('.db-flight-overview').inner_text()
  assert g.locator('.db-pitch-table td[data-metric=hb_cm]').count()==20
  first=g.locator('.db-pitch-table tbody tr').first;identity=first.get_attribute('data-row-id')
  assert float(first.locator('td[data-metric=hb_cm]').get_attribute('data-value'))==DATA['rows'][identity]['hb_cm']
@@ -34,7 +34,7 @@ with sync_playwright() as p:
  # Export includes every filtered row, zeros and nulls, not only the visible page.
  with page.expect_download() as download:g.locator('[data-db-csv]').click()
  rows=list(csv.DictReader(io.StringIO(Path(download.value.path()).read_text(encoding='utf-8-sig'))))
- assert len(rows)==9754 and len([r for r in rows if r['hb_cm__value']==''])==7
+ assert len(rows)==DATA['recordCount'] and len([r for r in rows if r['hb_cm__value']==''])==7
  assert all(r['hb_cm__calculation_version']=='naver-pts-flight-20261029-v1' for r in rows)
  g.locator('[data-db-filter=player]').select_option('65320');assert '356' in g.locator('.db-result-summary').inner_text()
  with page.expect_download() as download:g.locator('[data-db-json]').click()
@@ -87,5 +87,5 @@ with sync_playwright() as p:
  page.locator('[data-db-family=flight]').click();assert page.locator('.db-pitch-table').is_visible()
  assert not errors,errors
  assert not failed,failed
- print(json.dumps({'base':BASE,'passed':True,'records':9754,'withMovement':9747,'missingTracking':7,'exports':'all filtered rows','mobile':[768,390,320],'errors':errors,'failed':failed}))
+ print(json.dumps({'base':BASE,'passed':True,'records':DATA['recordCount'],'withMovement':DATA['statusCounts']['derived_pts'],'missingTracking':7,'exports':'all filtered rows','mobile':[768,390,320],'errors':errors,'failed':failed}))
  b.close()

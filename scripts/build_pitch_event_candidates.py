@@ -7,6 +7,7 @@ from pitch_events.contact_model import probabilities,decode_contact
 from pitch_events.detector import VERSION,release_tracks,knee_peak,landing,associate_feet
 ROOT=Path(__file__).resolve().parents[1]
 PRIVATE=ROOT.parent/'research/event_detector_20261029'
+BACKGROUND_STUDY=ROOT.parent/'research/pitch_observation_20261028'
 def clean(v):
     if isinstance(v,dict):return {k:clean(x) for k,x in v.items()}
     if isinstance(v,(list,tuple,np.ndarray)):return [clean(x) for x in v]
@@ -18,7 +19,7 @@ def detect(clip,row):
     cid=clip['id'];p=json.load(open(ROOT/'data'/clip['pose']));a=json.load(gzip.open(ROOT/'data/biomechanics/analysis'/f'{cid}.json.gz'));ball_path=PRIVATE/'ball'/f'{cid}.json'
     if not ball_path.exists():return None
     ball=json.load(open(ball_path));xy=np.array([[v[:2] if v else [np.nan,np.nan] for v in f['keypoints']] for f in p['frames']]);score=np.array([[v[2] if v else 0 for v in f['keypoints']] for f in p['frames']]);times=np.array([f['time'] for f in p['frames']]);u=np.array(a['cadence']['uniqueImageCandidates']);video_origin=np.array([float(row['crop_x1']),float(row['crop_y1'])]);origin=np.array(p.get('crop_box',video_origin.tolist())[:2]);xy+=origin
-    study=ROOT.parent/'research/pitch_observation_20261028/all813_gvhmr_v1';paths=[study/'background'/f'{cid}.npz',study/'background_worker0/background'/f'{cid}.npz',study/'background_worker1/background'/f'{cid}.npz'];bg=next((p for p in paths if p.exists()),paths[0]);matrices=None;cuts=[]
+    study=BACKGROUND_STUDY/'all813_gvhmr_v1';paths=[study/'background'/f'{cid}.npz',study/'background_worker0/background'/f'{cid}.npz',study/'background_worker1/background'/f'{cid}.npz'];bg=next((p for p in paths if p.exists()),paths[0]);matrices=None;cuts=[]
     if bg.exists():
         with np.load(bg) as data:
             if len(data['full_transforms'])==len(times):matrices=data['full_transforms'];cuts=data['cuts'].tolist()
@@ -37,7 +38,10 @@ def job(arguments):
     clip,row=arguments;return detect(clip,row)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--ids');parser.add_argument('--workers',type=int,default=4);args=parser.parse_args();ids=set(json.load(open(args.ids))) if args.ids else None
+    global BACKGROUND_STUDY
+    parser=argparse.ArgumentParser();parser.add_argument('--ids');parser.add_argument('--workers',type=int,default=4)
+    parser.add_argument('--study-root',type=Path);args=parser.parse_args();ids=set(json.load(open(args.ids))) if args.ids else None
+    if args.study_root:BACKGROUND_STUDY=args.study_root.resolve()
     clips=json.load(open(ROOT/'data/clips.json'))['clips'];rows={r['dataset_clip_id']:r for r in csv.DictReader(open(ROOT.parent/'dataset/clips.csv'))};dest=PRIVATE/'candidates';dest.mkdir(exist_ok=True);results={}
     jobs=[(c,rows[c['id']]) for c in clips if ids is None or c['id'] in ids]
     with ProcessPoolExecutor(max_workers=args.workers) as pool:

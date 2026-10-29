@@ -1,0 +1,19 @@
+{
+  "clips": [
+    "7514f107f3d7_c0016",
+    "7514f107f3d7_c0014",
+    "7fb35265ff17_c0027",
+    "7fb35265ff17_c0020",
+    "8b3dda578503_c0008",
+    "8b3dda578503_c0015",
+    "d1ca854585d4_c0030",
+    "d1ca854585d4_c0034",
+    "df7c27e6bbcf_c0019",
+    "df7c27e6bbcf_c0009",
+    "7fb35265ff17_c0012"
+  ],
+  "framesPerClip": 5,
+  "reviewer": "Codex visual source/pose review",
+  "scope": "Source subjects and broad pitching phases agree in the reviewed panels; no independent 3D or contact ground truth",
+  "sourcePixelsPublished": false
+}

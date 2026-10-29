@@ -31,6 +31,8 @@ VERSION = 'pitcher_identity_v1'
 
 
 def rows(path):
+    if not path.exists():
+        return []
     with path.open(encoding='utf-8-sig', newline='') as handle:
         return list(csv.DictReader(handle))
 

@@ -6,6 +6,7 @@ require accepted audit evidence AND the same game/player/pitch identifier.
 """
 import argparse
 import csv
+from datetime import datetime, timezone
 import gzip
 import hashlib
 import json
@@ -178,7 +179,10 @@ def build(dataset, output):
     for path in sorted((dataset/'naver_sports/raw/schedules').glob('*.json.gz')):
         for game in json.load(gzip.open(path)).get('result', {}).get('games', []):
             games[game['gameId']] = game
-    # Handedness is from the historical game roster, never today's team page.
+    # Prefer historical game rosters. Explicitly verified fallback records carry
+    # throwing hand only; current teams are never transferred to old games.
+    fallback_path = dataset/'verified_player_hands.json'
+    fallback_hands = json.loads(fallback_path.read_text()) if fallback_path.exists() else {}
     hands, batter_hands = defaultdict(set), defaultdict(set)
     for path in sorted((dataset/'naver_sports/raw/games').glob('*/inning_*.json.gz')):
         relay = json.load(gzip.open(path)).get('result', {}).get('textRelayData', {})
@@ -217,9 +221,12 @@ def build(dataset, output):
     for code in sorted(set(by_clip) | set(by_player)):
         player_clips = by_clip[code]
         records, teams, player_hands = [], set(), set()
-        for p in sorted(by_player[code], key=lambda r: (r['naver_game_id'], int(r['relay_seqno']))):
+        for p in sorted(by_player[code], key=lambda r: (r['naver_game_id'],
+                0 if str(r['relay_seqno']).isdigit() else 1,
+                int(r['relay_seqno']) if str(r['relay_seqno']).isdigit() else r['pts_pitch_id'])):
             gid = p['naver_game_id']
-            team = games.get(gid, {}).get('homeTeamName' if p['half_inning'] == 'top' else 'awayTeamName')
+            team = (games.get(gid, {}).get('homeTeamName' if p['half_inning'] == 'top' else 'awayTeamName')
+                    if p['half_inning'] in ['top', 'bottom'] else None)
             if team:
                 teams.add(team)
             player_hands.update(hands.get((gid, code, p['pitcher_name']), set()))
@@ -228,9 +235,11 @@ def build(dataset, output):
             records.append({
                 'id': p['naver_pitch_id'], 'gameId': gid, 'date': p['game_date'],
                 'inning': int(p['inning']), 'half': p['half_inning'], 'atBat': p['at_bat_id'],
-                'sequence': int(p['pitcher_pitch_number']), 'atBatPitch': int(p['pitch_number']),
-                'balls': int(p['balls_before']), 'strikes': int(p['strikes_before']),
-                'outs': int(p['outs_before']), 'pitch': p['pitch_type_raw'] or None,
+                'sequence': int(p['pitcher_pitch_number']) if p['pitcher_pitch_number'] else None,
+                'atBatPitch': int(p['pitch_number']) if p['pitch_number'] else None,
+                'balls': int(p['balls_before']) if p['balls_before'] else None,
+                'strikes': int(p['strikes_before']) if p['strikes_before'] else None,
+                'outs': int(p['outs_before']) if p['outs_before'] else None, 'pitch': p['pitch_type_raw'] or None,
                 'speed': number(p['speed_kmh']), 'result': p['pitch_result'],
                 'batter': p['batter_name'], 'batterHand': next(iter(bh)) if len(bh) == 1 else None,
                 'plateX': number(p['cross_plate_x_ft']) if valid_pts else None,
@@ -238,6 +247,7 @@ def build(dataset, output):
                 'zoneTop': number(p['top_sz_ft']) if valid_pts else None,
                 'zoneBottom': number(p['bottom_sz_ft']) if valid_pts else None,
                 'trackingStatus': p['tracking_status'], 'sourceUrl': p['source_url'],
+                'recordSource': p['extraction_method'],
                 'clipIds': sorted(links_by_pitch.get(p['naver_pitch_id'], [])),
             })
         dates = sorted({c['date'] for c in player_clips})
@@ -269,6 +279,10 @@ def build(dataset, output):
             'detailPath': f'portal/players/{code}.json',
             'statistics': pitch_statistics(records),
         }
+        fallback = fallback_hands.get(code, {})
+        if profile['hand'] is None and fallback.get('name') == profile['name'] and fallback.get('hand') in ['L', 'R']:
+            profile['hand'] = fallback['hand']
+            profile['handSourceUrl'] = fallback['sourceUrl']
         profile['representative'] = representative_clip(player_clips, vectors, profile['statistics']['primaryPitch'])
         profiles.append(profile)
         details[code] = {'schemaVersion': 2, 'version': 'portal-20261028-v2', 'profile': profile, 'records': records, 'clips': clip_info}
@@ -277,7 +291,7 @@ def build(dataset, output):
         write(output/'players'/f'{code}.json', detail)
     clip_dates = sorted(c['date'] for c in clips)
     summary = {
-        'schemaVersion': 2, 'version': 'portal-20261028-v2', 'updated': '2026-10-28',
+        'schemaVersion': 2, 'version': 'portal-20261028-v2', 'updated': datetime.now(timezone.utc).date().isoformat(),
         'poseVersion': index['packageVersion'], 'season': '2024',
         'clipCount': len(clips), 'playerCount': len(profiles),
         'motionPlayerCount': len(by_clip) - sum(not cs for cs in by_clip.values()),
@@ -285,6 +299,7 @@ def build(dataset, output):
         'frameCount': sum(c['frames'] for c in clips),
         'dateStart': clip_dates[0], 'dateEnd': clip_dates[-1],
         'recordCount': len(pitches), 'recordGames': len({p['naver_game_id'] for p in pitches}),
+        'recordSourceCounts': dict(Counter(p['extraction_method'] for p in pitches)),
         'profileRecordCount': sum(p['recordCount'] for p in profiles),
         'recordsWithPts': sum(p['tracking_status'] == 'derived_validated_x' for p in pitches),
         'links': dict(statuses), 'uniqueLinkedPitches': len(links_by_pitch),
@@ -296,13 +311,13 @@ def build(dataset, output):
         'provenance': {
             str(p.relative_to(dataset)): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in [dataset/'naver_sports/pitches.csv', dataset/'naver_sports/auto_accepted.csv',
-                      dataset/'naver_sports/link_audit.csv', dataset/'sources.csv']
+                      dataset/'naver_sports/link_audit.csv', dataset/'sources.csv'] if p.exists()
         },
         'clipIndexSha256': hashlib.sha256(index_path.read_bytes()).hexdigest(),
-        'interpretation': 'Highlight clips and records in 32 acquired games are distinct samples, neither is a complete season. Automatic pitch links are not human validation. PTS plate x is provider-reported; z is derived at the provider crossing plane from its quadratic trajectory. Pose angles are image projections, not calibrated joint rotations.',
+        'interpretation': 'Collected clips and pitch records are separate samples, not complete-season data. Published PTS CSV rows cover available tracked pitches and omit relay order/count metadata; those omissions stay null and cannot establish exact pitch links. Automatic pitch links are not human validation. PTS plate x is provider-reported; z is derived at the provider crossing plane from its quadratic trajectory. Pose angles are image projections, not calibrated joint rotations.',
     }
-    # Deterministic archive includes every acquired record, including the 806
-    # pitches by players without a collected motion clip. Never package broadcast media.
+    # Include every acquired record, including players without motion clips.
+    # Never package broadcast media.
     (output/'pitch_records.csv.gz').write_bytes(gzip.compress(
         (dataset/'naver_sports/pitches.csv').read_bytes(), mtime=0))
     write(output/'summary.json', summary)

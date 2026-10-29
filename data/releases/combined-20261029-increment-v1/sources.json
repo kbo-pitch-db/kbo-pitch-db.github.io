@@ -1,0 +1,39 @@
+{
+  "sources": [
+    {
+      "providerVideoId": "2KJryTMFmKQ",
+      "bytes": 161511725,
+      "sha256": "1f7b47cc0f0f696e832d722d454a6e58dfd8e8b848b9eabb1a60fb32bc517a13",
+      "verified": true,
+      "sourceUrl": "https://www.youtube.com/watch?v=2KJryTMFmKQ"
+    },
+    {
+      "providerVideoId": "k0Moz-zV4w0",
+      "bytes": 163045933,
+      "sha256": "2ccbeafdd6beb283afdccf8dcd9df50c3f1e48cafee96bfab6476613a33f6942",
+      "verified": true,
+      "sourceUrl": "https://www.youtube.com/watch?v=k0Moz-zV4w0"
+    },
+    {
+      "providerVideoId": "7hojiziokKE",
+      "bytes": 168002481,
+      "sha256": "1f07edf689fb1aca56c608171db397faf3b84007bb6ae5ad4e7a64fe6f760d55",
+      "verified": true,
+      "sourceUrl": "https://www.youtube.com/watch?v=7hojiziokKE"
+    },
+    {
+      "providerVideoId": "OpEO2SYl3nA",
+      "bytes": 171949389,
+      "sha256": "bad38dc9b39d39f814a4d3fd6a2fda33f8a907b4dd42c6d628940e8d6e67722d",
+      "verified": true,
+      "sourceUrl": "https://www.youtube.com/watch?v=OpEO2SYl3nA"
+    },
+    {
+      "providerVideoId": "_YDE7-Z1oN0",
+      "bytes": 173772867,
+      "sha256": "2ae6456e3d19ec7f7d8a57a53bf13eff3795395c9e10ee47a716cd8767c5388d",
+      "verified": true,
+      "sourceUrl": "https://www.youtube.com/watch?v=_YDE7-Z1oN0"
+    }
+  ]
+}

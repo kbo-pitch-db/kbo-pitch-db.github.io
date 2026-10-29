@@ -4,10 +4,10 @@
   "preferred_method": "gvhmr_f4",
   "coordinate_policy": "Fixed camera basis, first-valid pelvis origin; no inferred floor",
   "coverage": {
-    "total": 813,
+    "total": 891,
     "latest": 36,
     "nlf": 24,
-    "legacy_only": 777
+    "legacy_only": 855
   },
   "clips": {
     "e1cae96b4d83_c0027": {

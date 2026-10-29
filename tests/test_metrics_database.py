@@ -19,7 +19,10 @@ class MetricsDatabaseTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.data=json.loads(gzip.decompress((ROOT/'data/releases/metrics-20261028-v1/database.json.gz').read_bytes()))
-        cls.clips={c['id']:c for c in json.loads((ROOT/'data/clips.json').read_text())['clips']}
+        # This suite checks the immutable v1 archive, whose original clip cohort
+        # stays fixed when later releases append observations.
+        cohort={cid for r in cls.data['rows'] for cid in r['clipIds']}
+        cls.clips={c['id']:c for c in json.loads((ROOT/'data/clips.json').read_text())['clips'] if c['id'] in cohort}
         cls.provenance=json.loads(gzip.decompress((ROOT/'data/releases/metrics-20261028-v1/clip_provenance.json.gz').read_bytes()))['clips']
 
     def test_record_and_motion_units_are_exhaustive_and_separate(self):

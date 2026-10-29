@@ -1863,6 +1863,58 @@
       "height": 118,
       "sha256": "c58fbee15406959d170ba0aa7a091625b27d27994296aa646849bf77b44def5f",
       "verifiedAt": "2026-10-27"
+    },
+    "50556": {
+      "name": "최준용",
+      "currentName": "최준용",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/50556.jpg",
+      "imagePath": "portraits/2024/50556.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=50556",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "sha256": "4cf4e0192c168916446c15b70ee92f6d39a5f944a4cf520fe79d99bce543cd66",
+      "verifiedAt": "2026-10-29"
+    },
+    "52530": {
+      "name": "이민석",
+      "currentName": "이민석",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/52530.jpg",
+      "imagePath": "portraits/2024/52530.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=52530",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "sha256": "a86b4b63818299b01f2cee7697be47fc3cc45fdd58b41f8800c4cb47a2223f29",
+      "verifiedAt": "2026-10-29"
+    },
+    "64995": {
+      "name": "배재환",
+      "currentName": "배재환",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/64995.jpg",
+      "imagePath": "portraits/2024/64995.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=64995",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "sha256": "87a73e04fcd330c11d17f7bf9cbaa2ea8b44bae20177112bedbad7579c78d6a6",
+      "verifiedAt": "2026-10-29"
+    },
+    "66920": {
+      "name": "최성영",
+      "currentName": "최성영",
+      "imageUrl": "https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2024/66920.jpg",
+      "imagePath": "portraits/2024/66920.jpg",
+      "sourceUrl": "https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=66920",
+      "source": "KBO",
+      "imageYear": "2024",
+      "width": 94,
+      "height": 118,
+      "sha256": "253d8900a46f076422fc75dcab1b0a611f5930252e828c9025e5c162a65a574d",
+      "verifiedAt": "2026-10-29"
     }
   },
   "refreshErrors": {}
