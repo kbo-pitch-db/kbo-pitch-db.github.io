@@ -82,6 +82,7 @@ window.KBOVisuals = (() => {
   function gallery() {
     document.getElementById('visuals-gallery').innerHTML=`<header class="visuals-heading"><span class="visuals-kicker">KBO PITCH LAB</span><h1>Visuals</h1><p>${t().intro}</p></header><div class="visuals-grid"><a class="visuals-card" href="${esc(href('#visuals/affinity'))}"><div class="visuals-thumbnail">${preview()}</div><div class="visuals-card-copy"><span class="visuals-kicker">01 / PITCHER SIMILARITY</span><h2>${t().name}</h2><p>${t().card}</p><span class="visuals-card-link">${t().open} <span aria-hidden="true">↗</span></span></div></a></div>`;
     document.querySelector('#visuals-gallery .visuals-grid').insertAdjacentHTML('beforeend',window.PitcherMap.card());
+    document.querySelector('#visuals-gallery .visuals-grid').insertAdjacentHTML('beforeend',window.PitchDistribution.card());
   }
   function install() {
     I18N.ko.navVisuals='Visuals'; I18N.en.navVisuals='Visuals';
@@ -95,6 +96,8 @@ window.KBOVisuals = (() => {
   }
   async function route(force=false) {
     const path = currentRoute();
+    if(path==='#visuals/distribution')return window.PitchDistribution.route(force);
+    window.PitchDistribution?.stop();
     if(path==='#visuals/map')return window.PitcherMap.route(force);
     if (!['#visuals', '#visuals/affinity'].includes(path)) return;
     if (path === '#visuals') {gallery(); return;}

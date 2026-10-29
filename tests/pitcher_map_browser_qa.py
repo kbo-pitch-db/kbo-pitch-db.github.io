@@ -20,7 +20,7 @@ with sync_playwright() as p:
     assert page.locator('#home').is_visible()
     assert not any('/data/visuals/' in u for u in requests)
     page.locator('.main-nav a[href="#visuals"]').click(); page.wait_for_selector('.visuals-card')
-    assert page.locator('.visuals-card').count()==2
+    assert page.locator('.visuals-card').count()==3
     page.locator('.visuals-card[href$="#visuals/map"]').click(); page.wait_for_selector('.pitcher-map-node')
     assert page.locator('#pitcher-map-season').input_value()=='2026'
     assert page.locator('.pitcher-map-node').count()==125
@@ -54,8 +54,8 @@ with sync_playwright() as p:
     active=page.locator(f'[data-map-player="{selected}"]'); active.focus(); page.keyboard.press('ArrowRight')
     next_key=page.evaluate('document.activeElement.dataset.mapPlayer'); assert next_key!=selected
     page.keyboard.press('Enter'); assert page.evaluate('PitcherMap.state.selected')==next_key
-    point=page.locator('.pitcher-map-node').nth(15); point.click(force=True)
-    assert page.evaluate('PitcherMap.state.selected')==point.get_attribute('data-map-player')
+    point=page.locator('.pitcher-map-node').nth(15); point_key=point.get_attribute('data-map-player'); point.click(force=True)
+    page.wait_for_function('(key)=>PitcherMap.state.selected===key',arg=point_key)
     # Zoom, drag and fit all; selection does not re-run or rotate the embedding.
     page.locator('#pitcher-map-plus').click(); assert page.evaluate('PitcherMap.state.zoom')>1
     plot=page.locator('#pitcher-map-plot'); box=plot.bounding_box()
