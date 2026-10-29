@@ -63,9 +63,10 @@ window.PitchDistribution=(()=>{
     host.querySelector('#distribution-next').onclick=()=>{stop(false);go(Math.min(m.years.length-1,index()+1),true);};
     host.querySelector('#distribution-season').oninput=e=>{const value=Number(e.target.value);stop(false);go(value,false);};
     host.querySelectorAll('[data-distribution-year]').forEach(b=>b.onclick=()=>{stop(false);go(m.years.findIndex(y=>y.year===b.dataset.distributionYear),true);});
-    host.querySelector('#distribution-trail').onchange=e=>{state.trail=e.target.checked;sync();draw();};
+    host.querySelector('#distribution-trail').onchange=e=>{state.trail=e.target.checked;sync();draw();update();};
     host.querySelector('#distribution-share').onclick=async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent=text('복사했습니다.','Copied.');}catch{host.querySelector('#distribution-status').textContent=text('주소창의 링크를 복사해 주세요.','Copy the address from your browser.');}};
     host.querySelector('svg').onpointermove=inspect;host.querySelector('svg').onpointerleave=hideTip;
+    host.querySelector('.distribution-options').insertAdjacentHTML('beforeend',`<a id="distribution-movement-link" class="visuals-back">${text('무브먼트 변화 보기','View movement changes')} ↗</a>`);
     legend();draw();update();
   }
   function picker(){
@@ -80,6 +81,7 @@ window.PitchDistribution=(()=>{
     document.getElementById('distribution-prev').disabled=i===0;document.getElementById('distribution-next').disabled=i===state.model.years.length-1;
     const slider=document.getElementById('distribution-season');slider.value=i;slider.disabled=single;slider.setAttribute('aria-valuetext',text(`${state.year}년`,state.year));
     document.getElementById('distribution-single').textContent=single?text('구속 기록이 있는 시즌은 한 시즌입니다.','Only one season has recorded velocities.') : '';
+    document.getElementById('distribution-movement-link').href=href('#visuals/movement?'+new URLSearchParams({player:state.player,year:state.year,...(state.pitch&&state.pitch!=='all'?{pitch:state.pitch}:{}),...(!state.trail?{trail:'0'}:{})}));
     document.querySelectorAll('[data-distribution-year]').forEach(b=>b.setAttribute('aria-current',b.dataset.distributionYear===state.year?'true':'false'));
     document.getElementById('distribution-status').textContent=text(`${state.year}년, 구속 기록 ${fmt(y.n)}구`,`${state.year}, ${fmt(y.n)} recorded velocities`);
   }
@@ -90,7 +92,7 @@ window.PitchDistribution=(()=>{
     host.querySelectorAll('button').forEach(b=>{
       b.onpointerenter=e=>{if(e.pointerType==='mouse'){state.hoverPitch=b.dataset.distributionType;emphasize();}};b.onpointerleave=()=>{state.hoverPitch='';emphasize();};
       b.onfocus=()=>{state.hoverPitch=b.dataset.distributionType;emphasize();};b.onblur=()=>{state.hoverPitch='';emphasize();};
-      b.onclick=()=>{state.pitch=state.pitch===b.dataset.distributionType?'':b.dataset.distributionType;host.querySelectorAll('button').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.distributionType===state.pitch)));sync();emphasize();};
+      b.onclick=()=>{state.pitch=state.pitch===b.dataset.distributionType?'':b.dataset.distributionType;host.querySelectorAll('button').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.distributionType===state.pitch)));sync();emphasize();update();};
     });
   }
   function draw(){

@@ -52,6 +52,8 @@ with sync_playwright()as p:
  # Language and link copy preserve a reproducible, paused endpoint.
  page.locator('#lang-toggle').click();page.wait_for_selector('[data-curve]');assert page.locator('.distribution-heading h1').inner_text()=='Pitch velocity over the seasons';assert page.url==shared
  page.locator('#lang-toggle').click();page.wait_for_selector('[data-curve]');ctx.grant_permissions(['clipboard-read','clipboard-write']);page.locator('#distribution-share').click();assert page.evaluate('navigator.clipboard.readText()')==shared
+ page.locator('#distribution-movement-link').click();page.wait_for_selector('[data-movement-mean]');assert page.evaluate('PitchMovement.state.player')=='76715';assert page.evaluate('PitchMovement.state.year')=='2026';assert page.evaluate('PitchMovement.state.pitch')=='4-Seam'
+ page.go_back();page.wait_for_selector('[data-curve]');assert page.url==shared
  # Keyboard search supports homonyms, exact IDs and a pitcher with one season.
  search=page.locator('#distribution-search');search.fill('이승현');assert page.locator('#distribution-players [role=option]').count()==2;assert '51454'in page.locator('#distribution-players').inner_text()and'60146'in page.locator('#distribution-players').inner_text();search.press('Escape')
  search.fill('김광현');search.press('ArrowDown');search.press('Enter');page.wait_for_function('PitchDistribution.state.players.find(p=>p.code===PitchDistribution.state.player).name==="김광현"');page.wait_for_selector('[data-curve]');page.locator('#distribution-play').click()if page.evaluate('PitchDistribution.state.playing')else None
@@ -60,7 +62,7 @@ with sync_playwright()as p:
  page.goto(BASE+f'/#visuals/distribution?player={single}',wait_until='networkidle');page.wait_for_selector('[data-curve]');assert page.evaluate('PitchDistribution.state.model.years.length')==1;assert page.locator('#distribution-play').is_disabled();assert page.locator('#distribution-season').is_disabled();assert page.locator('#distribution-single').inner_text()
  # Existing map and similarity still occupy their own routes; timers stop.
  page.goto(BASE+'/#visuals/distribution',wait_until='networkidle');page.wait_for_selector('[data-curve]');assert page.evaluate('PitchDistribution.state.playing')
- page.locator('.visuals-back').click();page.wait_for_selector('.visuals-card');assert not page.evaluate('PitchDistribution.state.playing');assert page.evaluate('PitchDistribution.state.frame')==0
+ page.locator('#visuals-distribution > .visuals-back').click();page.wait_for_selector('.visuals-card');assert not page.evaluate('PitchDistribution.state.playing');assert page.evaluate('PitchDistribution.state.frame')==0
  page.goto(BASE+'/#visuals/map?year=2024',wait_until='networkidle');page.wait_for_selector('.pitcher-map-node');assert page.locator('.pitcher-map-node').count()==154;assert page.locator('#visuals-distribution').is_hidden()
  # Mobile controls remain usable, without a horizontal chart or table scroll.
  for width in [768,390,320]:
