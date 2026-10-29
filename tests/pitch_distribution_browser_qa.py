@@ -11,7 +11,7 @@ with sync_playwright()as p:
  b=p.chromium.launch(executable_path=CHROME,headless=True,args=['--no-sandbox']);ctx=b.new_context(viewport={'width':1440,'height':1100});page=ctx.new_page();errors,failed,requests=[],[],[]
  page.add_init_script("localStorage.setItem('kbo-lang','ko')");page.on('pageerror',lambda e:errors.append(str(e)));page.on('response',lambda r:failed.append(r.url)if r.status>=400 and r.url.startswith(BASE)else None);page.on('request',lambda r:requests.append(r.url))
  page.goto(BASE+'/',wait_until='networkidle',timeout=60000);assert page.locator('#home').is_visible();assert page.locator('#visuals-distribution').is_hidden()
- page.locator('.main-nav a[href="#visuals"]').click();page.wait_for_selector('.visuals-card');assert page.locator('.visuals-card').count()==3
+ page.locator('.main-nav a[href="#visuals"]').click();page.wait_for_selector('.visuals-card');assert page.locator('.visuals-card').count()==4
  page.locator('.visuals-card[href$="#visuals/distribution"]').click();page.wait_for_selector('[data-curve]');assert page.locator('#visuals-distribution').is_visible();assert page.locator('.data-navigation').is_hidden()
  assert page.evaluate('PitchDistribution.state.player')=='76715';assert page.evaluate('PitchDistribution.state.playing')
  page.wait_for_function('PitchDistribution.state.year==="2026"&&!PitchDistribution.state.playing',timeout=12000)

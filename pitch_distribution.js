@@ -22,8 +22,7 @@ window.PitchDistribution=(()=>{
   }
   async function data(code){
     if(!state.cache.has(code)){
-      const years=SeasonRecords.years().filter(y=>SeasonRecords.info(y).players[code]).sort();
-      state.cache.set(code,Promise.all(years.map(async y=>[y,await SeasonRecords.records(y,code)])).then(pairs=>core.build(Object.fromEntries(pairs),SeasonRecords.index.pitchTypes)).catch(e=>{state.cache.delete(code);throw e}));
+      state.cache.set(code,SeasonVisuals.records(code).then(rows=>core.build(rows,SeasonRecords.index.pitchTypes)).catch(e=>{state.cache.delete(code);throw e}));
       while(state.cache.size>12)state.cache.delete(state.cache.keys().next().value);
     }
     return state.cache.get(code);
@@ -35,7 +34,7 @@ window.PitchDistribution=(()=>{
     stop();
     try{
       await SeasonRecords.load();
-      if(!state.players.length){const players=new Map();for(const y of SeasonRecords.years())for(const p of Object.values(SeasonRecords.info(y).players))if(!players.has(p.code))players.set(p.code,{code:p.code,name:p.name});state.players=[...players.values()].sort((a,b)=>a.name.localeCompare(b.name,'ko')||a.code.localeCompare(b.code));}
+      if(!state.players.length)state.players=SeasonVisuals.players();
       const requested=q.get('player')||q.get('playerId');
       const selected=state.players.find(p=>p.code===requested)||state.players.find(p=>p.name==='류현진')||state.players[0];
       host.innerHTML=`<p role="status">${text('투구 기록을 불러오는 중입니다.','Loading pitch records…')}</p>`;
@@ -55,8 +54,8 @@ window.PitchDistribution=(()=>{
   }
   function render(host){
     const p=state.players.find(p=>p.code===state.player),m=state.model;
-    host.innerHTML=`<a class="visuals-back" href="${href('#visuals')}">← Visuals</a><header class="visuals-heading distribution-heading"><div><span class="visuals-kicker">03 / PITCH DISTRIBUTIONS</span><h1>${title()}</h1><p>${text('구종별 구속과 구사 비율의 변화를 시즌 순서대로 살펴보세요.','Watch how pitch velocity and usage change from season to season.')}</p></div><button class="button-outline" id="distribution-share">${text('링크 복사','Copy link')}</button></header><div class="distribution-picker"><label for="distribution-search">${text('투수 찾기','Find a pitcher')}</label><input id="distribution-search" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="distribution-players" autocomplete="off" value="${esc(playerLabel(p))}" placeholder="${text('이름으로 검색','Search by name')}"><ul id="distribution-players" role="listbox" aria-label="${text('투수 선택','Select a pitcher')}" hidden></ul></div>
-      <section class="distribution-panel" aria-labelledby="distribution-player-title"><div class="distribution-chart-head"><div><h2 id="distribution-player-title">${esc(playerLabel(p))}</h2><p id="distribution-scope"></p></div><strong id="distribution-year">${state.year}</strong></div><div class="distribution-plot-wrap"><svg id="distribution-chart" role="img" aria-label="${text('구종별 구속 분포','Pitch velocity distributions')}"></svg><div id="distribution-tooltip" role="tooltip" hidden></div></div><div id="distribution-legend" aria-label="${text('구종 강조','Highlight a pitch type')}"></div>
+    host.innerHTML=`<a class="visuals-back" href="${href('#visuals')}">← Visuals</a><header class="visuals-heading distribution-heading"><div><span class="visuals-kicker">03 / PITCH DISTRIBUTIONS</span><h1>${title()}</h1><p>${text('구종별 구속과 구사 비율의 변화를 시즌 순서대로 살펴보세요.','Watch how pitch velocity and usage change from season to season.')}</p></div><button class="button-outline" id="distribution-share">${text('링크 복사','Copy link')}</button></header><div class="distribution-picker"><label for="distribution-search">${text('투수 찾기','Find a pitcher')}</label><input id="distribution-search" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="distribution-players" autocomplete="off" value="${esc(playerLabel(p))}" placeholder="${text('이름으로 검색','Search by name')}"><ul class="season-player-options" id="distribution-players" role="listbox" aria-label="${text('투수 선택','Select a pitcher')}" hidden></ul></div>
+      <section class="distribution-panel" aria-labelledby="distribution-player-title"><div class="distribution-chart-head"><div><h2 id="distribution-player-title">${esc(playerLabel(p))}</h2><p id="distribution-scope"></p></div><strong id="distribution-year">${state.year}</strong></div><div class="distribution-plot-wrap"><svg id="distribution-chart" role="img" aria-label="${text('구종별 구속 분포','Pitch velocity distributions')}"></svg><div id="distribution-tooltip" role="tooltip" hidden></div></div><div class="season-legend" id="distribution-legend" aria-label="${text('구종 강조','Highlight a pitch type')}"></div>
       <div class="distribution-timeline"><button id="distribution-play" class="button-primary"></button><button id="distribution-prev" aria-label="${text('이전 시즌','Previous season')}">‹</button><div class="distribution-slider"><label class="sr-only" for="distribution-season">${text('시즌 선택','Choose a season')}</label><input id="distribution-season" type="range" min="0" max="${m.years.length-1}" step="1" value="${index()}"><div class="distribution-year-ticks">${m.years.map((y,i)=>`<button data-distribution-year="${y.year}" style="--tick:${i}">${y.year}</button>`).join('')}</div></div><button id="distribution-next" aria-label="${text('다음 시즌','Next season')}">›</button></div><div class="distribution-options"><label><input id="distribution-trail" type="checkbox" ${state.trail?'checked':''}>${text('이전 시즌 겹쳐보기','Show earlier seasons')}</label><span id="distribution-single"></span></div><p class="distribution-note">${text('가로축은 구속, 세로축은 해당 시즌 전체 구속 기록에서 차지하는 비율입니다.','Velocity is on the horizontal axis; frequency is the share of all recorded velocities in that season.')}</p></section><p id="distribution-status" class="sr-only" role="status"></p>`;
     picker();
     host.querySelector('#distribution-play').onclick=()=>state.playing?stop():play();
@@ -70,29 +69,7 @@ window.PitchDistribution=(()=>{
     legend();draw();update();
   }
   function picker(){
-    const input=document.getElementById('distribution-search'),list=document.getElementById('distribution-players');let matches=[],active=-1;
-    function close(){list.hidden=true;active=-1;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');}
-    function show(query=''){
-      matches=state.players.filter(p=>(p.name+' '+p.code).toLowerCase().includes(query.trim().toLowerCase()));active=-1;
-      list.innerHTML=matches.map((p,i)=>`<li role="option" id="distribution-option-${i}" data-index="${i}" aria-selected="${p.code===state.player}">${esc(playerLabel(p))}</li>`).join('')||`<li role="presentation">${text('검색 결과가 없습니다.','No matching pitchers.')}</li>`;
-      list.hidden=false;input.setAttribute('aria-expanded','true');input.removeAttribute('aria-activedescendant');
-    }
-    async function choose(i){
-      const p=matches[i];if(!p)return;close();stop();const q=new URLSearchParams({player:p.code});history.pushState(null,'',href('#visuals/distribution?'+q));await route(true);document.getElementById('distribution-search')?.focus();
-    }
-    input.onfocus=()=>input.select();input.onclick=()=>show();input.oninput=()=>show(input.value);
-    input.onblur=()=>setTimeout(()=>{if(!list.contains(document.activeElement)){close();input.value=playerLabel(state.players.find(p=>p.code===state.player));}},0);
-    list.tabIndex=-1;list.onpointerdown=e=>{if(e.pointerType==='mouse')e.preventDefault();else list.focus({preventScroll:true});};
-    list.onclick=e=>{const li=e.target.closest('[data-index]');if(li)choose(Number(li.dataset.index));};
-    list.onblur=()=>close();
-    input.onkeydown=e=>{
-      if(e.key==='ArrowDown'||e.key==='ArrowUp'){
-        e.preventDefault();if(list.hidden)show();if(!matches.length)return;
-        active=active<0?(e.key==='ArrowDown'?0:matches.length-1):(active+(e.key==='ArrowDown'?1:-1)+matches.length)%matches.length;
-        list.querySelectorAll('[data-index]').forEach((el,i)=>el.classList.toggle('is-active',i===active));input.setAttribute('aria-activedescendant','distribution-option-'+active);list.children[active].scrollIntoView({block:'nearest'});
-      }else if(e.key==='Enter'&&!list.hidden&&matches.length){e.preventDefault();choose(Math.max(0,active));}
-      else if(e.key==='Escape'){close();input.value=playerLabel(state.players.find(p=>p.code===state.player));}
-    };
+    SeasonVisuals.picker({prefix:'distribution',players:state.players,current:()=>state.player,label:playerLabel,choose:async code=>{stop();history.pushState(null,'',href('#visuals/distribution?'+new URLSearchParams({player:code})));await route(true);}});
   }
   function update(){
     if(routePath()!=='#visuals/distribution'||!document.getElementById('distribution-play')||!state.model)return;

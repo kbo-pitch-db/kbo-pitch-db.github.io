@@ -26,6 +26,8 @@ Player repertoire/velocity/movement, the record explorer and full filtered expor
 
 [Seasonal pitch velocity distributions](https://kbo-pitch-db.github.io/#visuals/distribution) add animated pitch-type curves with a season slider, playback, earlier-season traces and shared links. The chart uses actual 1 km/h bins over all recorded velocities in each season and fixed axes across the selected pitcher's available years. It reuses existing records for all 449 pitchers without the similarity eligibility gate. See [scope and interaction behaviour](docs/pitch-distribution.md).
 
+[Seasonal pitch movement](https://kbo-pitch-db.github.io/#visuals/movement) adds observed HB/IVB clouds, matched pitch-type mean arrows and signed changes in movement and velocity. Season playback crossfades actual point clouds and moves means; it never pairs unrelated individual pitches. Selecting a pitch zooms to fixed bounds across its available seasons, with equal physical scales in both axes. Mean comparisons require at least three observations in each sample. See [scope, missing-data rules and interpretation](docs/pitch-movement.md).
+
 ## Visitor player pages (2026-10-29)
 
 `?pitcher=65320#pitchers` opens three sections in order: an actual synchronized 2D/3D delivery, directly labelled pitch-mix/mean-speed bars, and three illustrated mechanics cards. Player identity, record `season`, optional `pitch` and the set/windup `delivery` selection belong to this route. The landing page remains `/`. The header has Home, Pitchers, Visuals and Explore data; the download page contains data access rather than processing documentation.

@@ -20,7 +20,7 @@ with sync_playwright() as p:
     assert page.locator('#home').is_visible()
     assert not any('/data/visuals/' in u for u in requests)
     page.locator('.main-nav a[href="#visuals"]').click(); page.wait_for_selector('.visuals-card')
-    assert page.locator('.visuals-card').count()==3
+    assert page.locator('.visuals-card').count()==4
     page.locator('.visuals-card[href$="#visuals/map"]').click(); page.wait_for_selector('.pitcher-map-node')
     assert page.locator('#pitcher-map-season').input_value()=='2026'
     assert page.locator('.pitcher-map-node').count()==125

@@ -83,7 +83,7 @@ window.PitchPortal = (() => {
   function activeNav(renderPlayer=true){
     const previousRoute=$('.shell').dataset.route,hash=location.hash||'#home',route=hash==='#downloads'?'guide':hash.slice(1).split('?')[0];
     if(route==='pitchers'&&previousRoute==='analysis'&&state.active){const clean=window.PlayerOverview.playerLink(state.active,new URL(location.href).searchParams.get('pitch')||'');history.replaceState(null,'',clean)}
-    $('.shell').dataset.route=['database','home','pitchers','analysis','explore','compare','guide','visuals','visuals/affinity','visuals/map','visuals/distribution'].includes(route)?route:'home';
+    $('.shell').dataset.route=['database','home','pitchers','analysis','explore','compare','guide','visuals','visuals/affinity','visuals/map','visuals/distribution','visuals/movement'].includes(route)?route:'home';
     if(!['pitchers','analysis'].includes(route))window.PitcherExperience?.stop();if(route!=='explore')app.video?.pause();if(route!=='compare')stopComparison();
     if(hash==='#downloads')requestAnimationFrame(()=>$('#downloads').scrollIntoView({behavior:'smooth'}));
     const navHash=['database','analysis','explore','compare','guide'].includes(route)?'#database':route.startsWith('visuals')?'#visuals':hash;
