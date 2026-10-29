@@ -53,3 +53,4 @@
 .visitor-inline-graph{min-width:0;background:#fffef8;border:1px solid #ccd6c7;border-radius:10px;padding:22px}
 .visitor-inline-graph h4{margin:0 0 16px;font-size:19px}.visitor-wave-cursor{stroke:#a64d21;stroke-width:2;stroke-dasharray:5 4}
 @media(max-width:700px){.visitor-wave-grid{grid-template-columns:1fr}.visitor-inline-graph{padding:20px 14px}.visitor-frame-control{gap:8px}.visitor-frame-control output{min-width:72px;font-size:14px}}
+.visitor-season-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.visitor-season-heading label{font-size:17px;display:flex;align-items:center;gap:12px}.visitor-season-heading select{font:inherit;min-height:46px;padding:8px 14px;border:1px solid #9db6a7;background:#fff;border-radius:6px;color:#173c36}

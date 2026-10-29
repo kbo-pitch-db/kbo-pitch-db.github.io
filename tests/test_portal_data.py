@@ -26,11 +26,11 @@ class PortalDataTests(unittest.TestCase):
         s = self.summary
         self.assertEqual(s['poseVersion'], self.index['packageVersion'])
         self.assertEqual(s['clipIndexSha256'], hashlib.sha256((SITE/'data/clips.json').read_bytes()).hexdigest())
-        self.assertEqual((s['clipCount'], s['playerCount'], s['gameCount']), (813, 155, 32))
-        self.assertEqual(s['motionPlayerCount'], 123)
-        self.assertEqual(sum(p['clipCount'] for p in s['players']), 813)
+        self.assertEqual((s['clipCount'], s['playerCount'], s['gameCount']), (891, 159, 37))
+        self.assertEqual(s['motionPlayerCount'], 126)
+        self.assertEqual(sum(p['clipCount'] for p in s['players']), 891)
         self.assertEqual(sum(p['recordCount'] for p in s['players']), s['profileRecordCount'])
-        self.assertEqual(sum(s['links'].values()), 813)
+        self.assertEqual(sum(s['links'].values()), 891)
 
     def test_records_are_deduplicated_and_every_link_has_same_identity(self):
         seen_records, seen_clips, linked = set(), set(), 0
@@ -66,13 +66,13 @@ class PortalDataTests(unittest.TestCase):
                 for cid in record['clipIds']:
                     self.assertEqual(detail['clips'][cid]['pitchId'], record['id'])
         self.assertEqual(linked, 390)
-        self.assertEqual(len(seen_clips), 813)
-        self.assertEqual(len(seen_records), 9754)
+        self.assertEqual(len(seen_clips), 891)
+        self.assertEqual(len(seen_records), 11161)
 
     def test_statistics_use_all_acquired_records_including_players_without_video(self):
         no_video = [d for d in self.details if d['profile']['clipCount'] == 0]
-        self.assertEqual(len(no_video), 32)
-        self.assertEqual(sum(len(d['records']) for d in no_video), 806)
+        self.assertEqual(len(no_video), 33)
+        self.assertEqual(sum(len(d['records']) for d in no_video), 882)
         for detail in self.details:
             p = detail['profile']
             stats = builder.pitch_statistics(detail['records'])
@@ -120,9 +120,9 @@ class PortalDataTests(unittest.TestCase):
         archive = gzip.decompress((SITE/'data/portal/pitch_records.csv.gz').read_bytes())
         self.assertEqual(hashlib.sha256(archive).hexdigest(), self.summary['provenance']['naver_sports/pitches.csv'])
         records = list(csv.DictReader(io.StringIO(archive.decode('utf-8-sig'))))
-        self.assertEqual(len(records), 9754)
-        self.assertEqual(len({r['naver_pitch_id'] for r in records}), 9754)
-        self.assertEqual(len({r['naver_game_id'] for r in records}), 32)
+        self.assertEqual(len(records), 11161)
+        self.assertEqual(len({r['naver_pitch_id'] for r in records}), 11161)
+        self.assertEqual(len({r['naver_game_id'] for r in records}), 37)
 
     def test_angles_are_included_angles_with_explicit_quality_gates(self):
         frame = {'keypoints': [[1, 0, .9], [0, 0, .9], [0, 1, .9]]}

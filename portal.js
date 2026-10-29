@@ -56,7 +56,9 @@ window.PitchPortal = (() => {
     Object.assign(I18N.en,en);Object.assign(I18N.ko,ko);window.PitcherExperience?.install();window.MetricsDatabase?.install();window.KBOVisuals?.install();
     Object.assign(I18N.ko,{navOverview:'홈',navPitchers:'선수',navMetrics:'데이터 탐색',dataTables:'투구 데이터',dataMotion:'투구 영상',browsePitchers:'선수 찾기',heroDesc:'KBO 투수들의 구종과 구속, 투구 동작을 살펴보세요.',pitchersDesc:'선수를 선택해 투구폼과 기록을 살펴보세요.',downloadsDesc:'경기 기록과 투구 동작 데이터를 내려받으세요.',methodsTitle:'데이터 다운로드',methodsDesc:'수집된 경기의 기록과 투구 동작입니다.',citationTitle:'데이터 인용',termsTitle:'출처',termsDesc:'경기 기록은 네이버, 선수 사진은 KBO, 원본 영상은 각 영상 제공자의 자료입니다. 재사용 시 각 출처의 이용 조건을 확인해 주세요.',homePlayers:'선수별 투구폼과 기록',collectionDesc:'투구를 골라 동작과 기록을 살펴보세요.'});
     Object.assign(I18N.en,{navOverview:'Home',navPitchers:'Pitchers',navMetrics:'Explore data',dataTables:'Pitch data',dataMotion:'Pitch videos',browsePitchers:'Find a pitcher',heroDesc:'Explore the pitches, velocity and deliveries of KBO pitchers.',pitchersDesc:'Choose a player to see their delivery and pitch records.',downloadsDesc:'Download pitch records and motion data.',methodsTitle:'Download data',methodsDesc:'Records and deliveries from the acquired games.',citationTitle:'Cite the dataset',termsTitle:'Sources',termsDesc:'Records: Naver. Portraits: KBO. Broadcast footage: the linked video providers. Check each source’s terms before reuse.',homePlayers:'Explore a pitcher',collectionDesc:'Choose a pitch to explore its motion and records.'});
+    Object.assign(I18N.ko,{recordSeason:'기록 연도',downloadRecords:'2024 동작 수집 경기 기록 · CSV.gz ↓',eyebrow:'2024–2026 KBO · 투구 데이터'});Object.assign(I18N.en,{recordSeason:'Season',downloadRecords:'2024 motion-game records · CSV.gz ↓',eyebrow:'2024–2026 KBO · PITCH DATA'});
     $('#pitcher-search').addEventListener('input',()=>{state.limit=12;renderPitchers()});
+    $('#pitcher-season').addEventListener('change',()=>{state.directorySeason=$('#pitcher-season').value;const u=new URL(location.href);u.search='';u.searchParams.set('season',state.directorySeason);history.replaceState(null,'',u);state.limit=12;$('#pitcher-team').value='';renderPitchers()});
     $('#pitcher-team').addEventListener('change',()=>{state.limit=12;renderPitchers()});
     $('#pitcher-motion').addEventListener('change',()=>{state.limit=12;renderPitchers()});
     $('#pitcher-sort').addEventListener('change',()=>{state.limit=12;renderPitchers()});
@@ -65,7 +67,7 @@ window.PitchPortal = (() => {
     $('#demo-open').addEventListener('click',event=>{event.preventDefault();const id=event.currentTarget.dataset.clip;if(id)openClip(id)});
     $('#load-compare').addEventListener('click',loadCompare);
     $('#copy-citation').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#citation-text').textContent);showToast(tr('copied'))}catch(error){showToast(tr('copyFailed'))}});
-    document.querySelector('.main-nav a[href="#pitchers"]').addEventListener('click',()=>{state.active=null;window.PitcherExperience?.stop();window.PitcherExperience?.directory(false);$('#pitcher-profile').hidden=true;const u=new URL(location.href);u.search='';history.replaceState(null,'',u)});
+    document.querySelector('.main-nav a[href="#pitchers"]').addEventListener('click',()=>{state.active=null;window.PitcherExperience?.stop();window.PitcherExperience?.directory(false);$('#pitcher-profile').hidden=true;const u=new URL(location.href);u.search='';if(state.directorySeason&&state.directorySeason!==SeasonRecords.year())u.searchParams.set('season',state.directorySeason);history.replaceState(null,'',u)});
     window.addEventListener('hashchange',activeNav);window.addEventListener('popstate',()=>{const code=new URL(location.href).searchParams.get('pitcher');if(code&&profile(code)&&['#pitchers','#analysis'].includes(location.hash)){openPlayer(code,{scroll:false})}else if(!code&&location.hash==='#pitchers'){state.active=null;window.PitcherExperience?.stop();window.PitcherExperience?.directory(false);$('#pitcher-profile').hidden=true}activeNav()});
   }
   async function load(index) {
@@ -74,6 +76,7 @@ window.PitchPortal = (() => {
       if(!response.ok)throw Error('summary');state.summary=await response.json();
       // Never apply a stale summary to a different canonical pose release.
       if(state.summary.schemaVersion!==2||state.summary.poseVersion!==index.packageVersion)throw Error('version mismatch');
+      await window.SeasonRecords?.extend(state.summary);state.directorySeason=SeasonRecords.year(new URL(location.href).searchParams.get('season'));$('#pitcher-season').value=state.directorySeason;
       for(const c of app.clips)c.hand=profile(c.playerCode)?.hand||'';
     }catch(error){state.summary=null;$('#pitcher-grid').innerHTML=`<p role="alert">${e(tr('portalFailed'))}</p>`}
   }
@@ -93,8 +96,8 @@ window.PitchPortal = (() => {
   function render(){
     activeNav();if(!state.summary)return;
     const s=state.summary;
-    $('#release-line').textContent=`${s.season} KBO · ${s.dateStart} — ${s.dateEnd}`;
-    $('#overview-stats').innerHTML=[[s.playerCount,'players'],[s.clipCount,'sampleClips'],[s.gameCount,'games'],[s.recordCount,'pitchRecords']].map(([value,key])=>`<div><strong>${n(value)}</strong><span>${e(tr(key))}</span></div>`).join('')+`<div class="stat-period"><strong>${s.dateStart.slice(5).replace('-','.')} — ${s.dateEnd.slice(5).replace('-','.')}</strong><span>2024 · ${e(tr('period'))}</span></div>`;
+    $('#release-line').textContent=app.lang==='ko'?'투구 기록 2024–2026 · 동작 영상 2024':'Pitch records 2024–2026 · Motion 2024';
+    $('#overview-stats').innerHTML=[[s.playerCount,'players'],[s.clipCount,'sampleClips'],[SeasonRecords.index?Object.values(SeasonRecords.index.seasons).reduce((n,v)=>n+v.games.length,0):s.gameCount,'games'],[s.seasonRecordCount||s.recordCount,'pitchRecords']].map(([value,key])=>`<div><strong>${n(value)}</strong><span>${e(tr(key))}</span></div>`).join('')+`<div class="stat-period"><strong>2024.03 — 2026.08</strong><span>${e(tr('period'))}</span></div>`;
     const teamValue=$('#pitcher-team').value;
     $('#pitcher-team').innerHTML=`<option value="">${e(tr('allProfileTeams'))}</option>`+[...new Set(s.players.flatMap(p=>p.teams))].sort().map(t=>`<option value="${e(t)}">${e(teamLabel(t))}</option>`).join('');$('#pitcher-team').value=teamValue;
     renderPitchers();setupDemo();renderCompareSelectors();renderMethods();window.PitcherExperience?.renderHome();window.MetricsDatabase?.refresh();
@@ -106,28 +109,31 @@ window.PitchPortal = (() => {
     if(!state.summary)return;
     const query=$('#pitcher-search').value.trim().toLowerCase(),team=$('#pitcher-team').value;
     const onlyMotion=$('#pitcher-motion').value==='motion',sort=$('#pitcher-sort').value;
-    const players=state.summary.players.filter(p=>(!query||`${p.name} ${p.code} ${p.teams.join(' ')} ${p.teams.map(teamLabel).join(' ')}`.toLowerCase().includes(query))&&(!team||p.teams.includes(team))&&(!onlyMotion||p.clipCount>0)).sort((a,b)=>(sort==='clips'?b.clipCount-a.clipCount:b.recordCount-a.recordCount)||a.name.localeCompare(b.name));
+    const season=SeasonRecords.year($('#pitcher-season').value);state.directorySeason=season;const teamControl=$('#pitcher-team'),teamOptions=[...new Set(state.summary.players.flatMap(p=>SeasonRecords.profile(p,season).teams))].sort();const chosenTeam=teamOptions.includes(teamControl.value)?teamControl.value:'';teamControl.innerHTML=`<option value="">${e(tr('allProfileTeams'))}</option>`+teamOptions.map(t=>`<option value="${e(t)}">${e(teamLabel(t))}</option>`).join('');teamControl.value=chosenTeam;teamControl.disabled=!teamOptions.length;
+    const players=state.summary.players.map(p=>SeasonRecords.profile(p,season)).filter(p=>!p._seasonMissing||onlyMotion&&p.clipCount>0).filter(p=>(!query||`${p.name} ${p.code} ${p.teams.join(' ')} ${p.teams.map(teamLabel).join(' ')}`.toLowerCase().includes(query))&&(!chosenTeam||p.teams.includes(chosenTeam))&&(!onlyMotion||p.clipCount>0)).sort((a,b)=>(sort==='clips'?b.clipCount-a.clipCount:b.recordCount-a.recordCount)||a.name.localeCompare(b.name));
     $('#pitcher-result-count').textContent=`${players.length} / ${state.summary.playerCount}`;
     $('#pitcher-grid').innerHTML=players.slice(0,state.limit).map(p=>{
       const c=playerClips(p.code)[0]||{player:p.name,playerKnown:true,playerCode:p.code,playerKey:'naver:'+p.code};
       const stats=p.statistics;
-      return `<button class="pitcher-card ${state.active===p.code?'is-selected':''}" data-profile="${e(p.code)}" aria-label="${e(p.name)} · ${e(recordCountText(p.recordCount))}"><span class="portrait-wrap">${playerPortrait(c)}</span><span class="pitcher-card-body"><span class="micro-label">2024 · ${e(p.teams.map(teamLabel).join(' / ')||tr('unknownTeam'))}</span><strong>${e(p.name)}</strong><span class="pitcher-card-info">${e(tr('style_'+stats.archetype))}</span><span class="pitcher-card-bottom"><span><b>${e(recordCountText(p.recordCount))}</b></span><span aria-hidden="true">↗</span></span><span class="pitcher-mini-stat">${e(tr('fastballVelocity'))} ${stats.fastballVelocity?.toFixed(1)||'—'} km/h · ${e(clipCountText(p.clipCount))}</span></span></button>`;
+      return `<button class="pitcher-card ${state.active===p.code?'is-selected':''}" data-profile="${e(p.code)}" aria-label="${e(p.name)} · ${e(recordCountText(p.recordCount))}"><span class="portrait-wrap">${playerPortrait(c)}</span><span class="pitcher-card-body"><span class="micro-label">${e(p.season)}${p.teams.length?' · '+e(p.teams.map(teamLabel).join(' / ')):''}</span><strong>${e(p.name)}</strong><span class="pitcher-card-info">${e(tr('style_'+stats.archetype))}</span><span class="pitcher-card-bottom"><span><b>${e(recordCountText(p.recordCount))}</b></span><span aria-hidden="true">↗</span></span><span class="pitcher-mini-stat">${e(tr('fastballVelocity'))} ${stats.fastballVelocity?.toFixed(1)||'—'} km/h · ${e(clipCountText(p.clipCount))}</span></span></button>`;
     }).join('')||`<p class="sample-note">${e(tr('emptyTitle'))}</p>`;
     bindPortraits($('#pitcher-grid'));$('#pitcher-grid').querySelectorAll('[data-profile]').forEach(b=>b.addEventListener('click',()=>openPlayer(b.dataset.profile)));
     $('#more-pitchers').hidden=players.length<=state.limit;
   }
   async function fetchPlayer(code){
-    if(state.players.has(code))return state.players.get(code);
+    const recordYear=SeasonRecords.year(new URL(location.href).searchParams.get('season')||state.directorySeason);
+    if(state.players.has(code)&&(profile(code).detailPath||state.players.get(code).recordYear===recordYear))return state.players.get(code);
+    if(!profile(code).detailPath){const meta=await SeasonRecords.summary(recordYear);const p={...profile(code),season:recordYear,recordCount:0,statistics:{...profile(code).statistics,byPitch:{},pitchCounts:{}},...meta.players[code]};Object.assign(profile(code),p);const data={schemaVersion:2,recordYear,profile:p,records:await SeasonRecords.records(recordYear,code),clips:{},clipMetrics:{}};state.players.set(code,data);return data;}
     const response=await fetch(url(profile(code).detailPath));if(!response.ok)throw Error('player');const data=await response.json();if(data.schemaVersion!==2||data.profile?.code!==code)throw Error('player version mismatch');state.players.set(code,data);return data;
   }
   async function openPlayer(code,{scroll=true}={}){
     if(!profile(code))return;const request=++state.request;state.active=code;state.mechanicMetric=null;state.formClip=null;state.linkedOnly=false;state.scope='records';state.pitch='';state.hand='';state.inning='';state.count=null;state.pair=null;state.region=null;state.selectedRecord=null;
     const incoming=new URL(location.href),same=incoming.searchParams.get('pitcher')===code;
-    if(!same){incoming.search='';incoming.searchParams.set('pitcher',code);incoming.hash='pitchers'}
+    if(!same){incoming.search='';incoming.searchParams.set('pitcher',code);incoming.searchParams.set('season',state.directorySeason||SeasonRecords.year());incoming.hash='pitchers'}
     const advanced=same&&(incoming.hash==='#analysis'||[...incoming.searchParams.keys()].some(k=>k.startsWith('pm_')||k.startsWith('db_')||['mechanics','analysis_tab'].includes(k)));
     if(advanced)incoming.hash='analysis';else if(scroll)incoming.hash='pitchers';
     state.reportTab=incoming.searchParams.get('mechanics')==='lead-knee'?'mechanics':['metrics','arsenal','mechanics','overview'].includes(incoming.searchParams.get('analysis_tab'))?incoming.searchParams.get('analysis_tab'):'metrics';
-    if(!advanced&&incoming.hash==='#pitchers'){const pitch=incoming.searchParams.get('pitch'),delivery=incoming.searchParams.get('delivery');incoming.search='';incoming.searchParams.set('pitcher',code);if(pitch)incoming.searchParams.set('pitch',pitch);if(['set','windup'].includes(delivery))incoming.searchParams.set('delivery',delivery)}
+    if(!advanced&&incoming.hash==='#pitchers'){const pitch=incoming.searchParams.get('pitch'),delivery=incoming.searchParams.get('delivery'),season=SeasonRecords.year(incoming.searchParams.get('season'));incoming.search='';incoming.searchParams.set('pitcher',code);incoming.searchParams.set('season',season);if(pitch)incoming.searchParams.set('pitch',pitch);if(['set','windup'].includes(delivery))incoming.searchParams.set('delivery',delivery)}
     history.replaceState(null,'',incoming);window.PitcherExperience?.stop();window.PitcherExperience?.directory(true);activeNav(false);
     const section=$(advanced?'#analysis-profile':'#pitcher-profile');section.hidden=false;section.innerHTML=`<p class="sample-note">${e(tr('loading'))}</p>`;
 
@@ -190,6 +196,7 @@ window.PitchPortal = (() => {
   function renderMethods(){
     const s=state.summary;
     $('#dataset-card').innerHTML=`<div class="dataset-facts"><div><span>${e(tr('period'))}</span><strong>${s.dateStart} — ${s.dateEnd}</strong></div><div><span>${e(tr('frames'))}</span><strong>${n(s.frameCount)}</strong></div><div><span>${e(tr('pitchRecords'))}</span><strong>${n(s.recordCount)} / ${s.recordGames} ${e(tr('games'))}</strong></div><div><span>${e(tr('linkedClips'))}</span><strong>${s.links.auto_accepted} / ${s.clipCount}</strong></div></div>`;
+    if(!document.getElementById('season-downloads')){const box=document.createElement('div');box.id='season-downloads';box.className='download-links';document.getElementById('dataset-card').after(box);}document.getElementById('season-downloads').innerHTML=SeasonRecords.years().map(y=>`<a class="button-outline" href="${e(SeasonRecords.info(y).source.url.replace('github.com/','raw.githubusercontent.com/').replace('/blob/','/'))}" target="_blank" rel="noopener noreferrer">${y} ${app.lang==='ko'?'원본 투구 기록 · CSV':'source pitches · CSV'} ↗</a>`).join('');
     $('#citation-text').textContent=`KBO Pitch Lab. ${s.season} KBO · ${s.recordCount.toLocaleString()} ${tr('pitchRecords')} · ${s.clipCount} ${tr('motionClips')}. https://kbo-pitch-db.github.io/`;
   }
   return {install,load,render,clipSelected,mountClip,openPlayer,openClip,fetchPlayer,addComparison,countHeatmap,transitionHeatmap,jointAngle,transitionPairs,state};

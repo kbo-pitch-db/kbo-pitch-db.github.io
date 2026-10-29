@@ -1,4 +1,5 @@
 """Repertoire distributions keep true counts, physics and missingness."""
+import gzip
 import copy
 import json
 import math
@@ -63,7 +64,7 @@ class AffinityDataTests(unittest.TestCase):
         self.assertEqual(data['players'][0]['pitches'],1)
 
     def test_published_count_projection_and_histogram_contracts(self):
-        data=json.loads((ROOT/'data/visuals/affinity.json').read_text())
+        data=json.loads(gzip.decompress((ROOT/'data/visuals/affinity-2024.json.gz').read_bytes()))
         self.assertEqual(data['sourcePitches'],data['usablePitches']+sum(data['excluded'].values()))
         self.assertEqual(data['sourcePitches'],215525)
         self.assertEqual(data['games'],708)
@@ -84,7 +85,9 @@ class AffinityDataTests(unittest.TestCase):
                 for h in t['histograms']:self.assertEqual(sum(n for _,n in h),t['n'])
                 for projection in t['projections']:
                     self.assertEqual(len(projection),data['similarity']['quantileCount'])
-                    self.assertEqual(projection,sorted(projection))
+                    if data['similarity'].get('projectionEncoding')=='delta-int-1e4':
+                        self.assertTrue(all(v>=0 for v in projection[1:]))
+                    else:self.assertEqual(projection,sorted(projection))
                     self.assertTrue(all(math.isfinite(v)for v in projection))
 
 

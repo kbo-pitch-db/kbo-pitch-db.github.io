@@ -22,12 +22,12 @@ with sync_playwright() as p:
     assert page.locator('#home').is_visible()
     assert page.locator('.main-nav a').count() == 4
     assert not page.locator('.home-steps,.method-pipeline,.model-details').count()
-    page.goto(BASE + '/?pitcher=65320#pitchers', wait_until='networkidle')
+    page.goto(BASE + '/?pitcher=65320&season=2024#pitchers', wait_until='networkidle')
     page.wait_for_selector('#visitor-form[data-ready=true]')
     root = page.locator('#pitcher-profile')
     assert root.locator('.visitor-section').count() == 3
     assert root.locator('table,[role=tablist],details,[download]').count() == 0
-    assert root.locator('select:visible').count() == 1
+    assert root.locator('select:visible').count() == 2
     assert root.locator('.visitor-mechanism').count() == 3
     assert root.locator('.motion-pitch-label').is_hidden()
     assert '구종 미상' not in root.locator('.visitor-delivery-meta').inner_text()
@@ -87,8 +87,8 @@ with sync_playwright() as p:
     slider.fill(str(maximum // 2));selected_frame(maximum // 2)
     assert root.locator('[data-pitch-row="슬라이더"]').get_attribute('aria-pressed') == 'true'
     assert root.locator('[data-pitch-row="직구"]').get_attribute('aria-pressed') == 'false'
-    assert root.locator('[data-pitch-row="슬라이더"] strong').first.inner_text() == '32.6%'
-    assert set(parse_qs(urlparse(page.url).query)) <= {'pitcher', 'pitch', 'delivery'}
+    assert root.locator('[data-pitch-row="슬라이더"] strong').first.inner_text() == page.evaluate("SeasonRecords.records(2024,'65320').then(rs=>(100*rs.filter(r=>r.pitch==='슬라이더').length/rs.length).toFixed(1)+'%')")
+    assert set(parse_qs(urlparse(page.url).query)) <= {'pitcher', 'pitch', 'delivery', 'season'}
     separation = root.locator('[data-mechanism="thorax_pelvis_axial_fc"]')
     assert '16.5' in separation.inner_text() and '3구' in separation.inner_text()
     knee = root.locator('[data-mechanism="lead_knee_net_extension"]')
@@ -107,8 +107,8 @@ with sync_playwright() as p:
     page.screenshot(path=str(OUT / 'player-desktop.png'), full_page=True)
     # Real PTS data supply both the movement map and fixed-axis VAA chart.
     assert root.locator('#visitor-flight .flight-panel').count() == 2
-    assert root.locator('#visitor-flight .flight-point').count() == 10
-    assert 'n=356' in root.locator('#visitor-flight').inner_text()
+    assert root.locator('#visitor-flight .flight-point').count() == page.evaluate("SeasonRecords.records(2024,'65320').then(rs=>new Set(rs.filter(r=>r.flight.status==='derived_pts').map(r=>r.pitch)).size*2)")
+    assert 'n='+str(page.evaluate("SeasonRecords.records(2024,'65320').then(rs=>rs.filter(r=>r.flight.status==='derived_pts').length)")) in root.locator('#visitor-flight').inner_text()
     assert root.locator('#visitor-flight [data-flight-pitch="슬라이더"]').first.get_attribute('aria-pressed') == 'true'
     page.locator('#visitor-pitch').select_option('커브')
     page.wait_for_function("document.querySelector('.visitor-delivery-meta')?.textContent.includes('커브')")
@@ -129,7 +129,7 @@ with sync_playwright() as p:
     assert urlparse(page.url).fragment == 'analysis'
     assert page.locator('#knee-phase').input_value() == '45'
     # Bare player URLs never inherit the previous analysis context.
-    page.goto(BASE + '/?pitcher=65320#pitchers', wait_until='networkidle')
+    page.goto(BASE + '/?pitcher=65320&season=2024#pitchers', wait_until='networkidle')
     page.wait_for_selector('#visitor-form[data-ready=true]')
     page.locator('[data-visitor-explore]').click()
     page.wait_for_selector('#player-metrics-root .db-pitch-table')
@@ -142,7 +142,7 @@ with sync_playwright() as p:
     assert page.locator('#home').is_visible()
     page.locator('.main-nav a[href="#pitchers"]').click()
     assert page.locator('#pitcher-grid').is_visible()
-    assert not urlparse(page.url).query
+    assert set(parse_qs(urlparse(page.url).query)) <= {'season'}
     # Global DB links and exports are still accessible.
     page.goto(BASE + '/?db_scope=linked&db_player=65320&db_metric=lead_knee_net_extension&db_status=#database', wait_until='networkidle')
     page.wait_for_selector('#metrics-database-root table')
@@ -151,7 +151,7 @@ with sync_playwright() as p:
     # Real mobile layout: no table, no horizontal page scroll, stacked motion/cards.
     for width in [768, 390, 320]:
         page.set_viewport_size({'width': width, 'height': 844})
-        page.goto(BASE + '/?pitcher=65320#pitchers', wait_until='networkidle')
+        page.goto(BASE + '/?pitcher=65320&season=2024#pitchers', wait_until='networkidle')
         page.wait_for_selector('#visitor-form[data-ready=true]')
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
         if width < 620:
@@ -160,9 +160,9 @@ with sync_playwright() as p:
         assert root.locator('table').count() == 0
         page.screenshot(path=str(OUT / f'player-{width}.png'), full_page=True)
     # A player without video keeps real record charts and honest mechanics states.
-    page.goto(BASE + '/?pitcher=50030#pitchers', wait_until='networkidle')
+    page.goto(BASE + '/?pitcher=50030&season=2024#pitchers', wait_until='networkidle')
     assert '수집된 동작 영상이 없습니다' in root.inner_text()
-    assert root.locator('.visitor-pitch-row').count() == 3
+    assert root.locator('.visitor-pitch-row').count() == page.evaluate("SeasonRecords.records(2024,'50030').then(rs=>new Set(rs.map(r=>r.pitch||'unknown')).size)")
     assert root.locator('.visitor-metric-value strong').count() == 0
     assert root.locator('#visitor-frame,.visitor-inline-graph').count() == 0
     # English uses the same three-section screen.

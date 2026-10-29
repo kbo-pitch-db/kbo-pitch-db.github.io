@@ -26,6 +26,8 @@ with sync_playwright()as p:
     assert '비슷한 투수 찾기'in page.locator('.visuals-card').inner_text()
     page.screenshot(path=str(OUT/'gallery.png'),full_page=True)
     page.locator('.visuals-card').click();page.wait_for_selector('#affinity-shapes svg')
+    assert page.locator('#affinity-season').input_value()=='2026'
+    page.locator('#affinity-season').select_option('2024');page.wait_for_function('KBOVisuals.state.data.season===2024');page.wait_for_selector('#affinity-shapes svg')
     assert page.locator('.main-nav a[href="#visuals"]').get_attribute('aria-current')=='page'
     assert page.locator('#visuals-affinity').is_visible()
     assert page.locator('#affinity-search').input_value()=='네일'
@@ -68,7 +70,7 @@ with sync_playwright()as p:
     # Keyboard search and distinct IDs for homonyms.
     search=page.locator('#affinity-search');search.fill('투수없음')
     assert '검색 결과가 없습니다'in page.locator('#affinity-options').inner_text();page.keyboard.press('Escape')
-    search.fill('김광현');page.keyboard.press('ArrowDown');page.keyboard.press('Enter')
+    search.fill('김광현');page.keyboard.press('ArrowDown');page.keyboard.press('Enter');page.wait_for_function('KBOVisuals.state.selected.name==="김광현"')
     assert page.locator('#affinity-search').input_value()=='김광현'
     page.locator('#affinity-search').fill('이승현')
     assert page.locator('#affinity-options [role=option]').count()==2
@@ -108,7 +110,7 @@ with sync_playwright()as p:
         assert page.locator('#affinity-shapes svg').count()==3
         for selector in ['.affinity-heading p','.affinity-scope','.affinity-bar-name','.affinity-shapes-heading label','.affinity-density-values p']:
             assert page.locator(selector).first.evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)')>=17
-        for selector in ['#affinity-search','#affinity-share','#affinity-threshold','#affinity-pitch','#affinity-ranking button']:
+        for selector in ['#affinity-season','#affinity-search','#affinity-share','#affinity-threshold','#affinity-pitch','#affinity-ranking button']:
             assert page.locator(selector).first.bounding_box()['height']>=44
         if width<1000:
             cells=page.locator('.affinity-shape').all()
@@ -132,8 +134,9 @@ with sync_playwright()as p:
     mobile=browser.new_context(viewport={'width':390,'height':844},has_touch=True,is_mobile=True)
     touch=mobile.new_page();touch.add_init_script("localStorage.setItem('kbo-lang','ko')")
     touch.goto(BASE+'/#visuals/affinity',wait_until='networkidle');touch.wait_for_selector('#affinity-search')
+    touch.locator('#affinity-season').select_option('2024');touch.wait_for_function('KBOVisuals.state.data.season===2024');touch.wait_for_selector('#affinity-search')
     touch.locator('#affinity-search').tap();touch.locator('#affinity-search').fill('김광현')
-    touch.locator('#affinity-options [role=option]').tap();assert touch.locator('#affinity-search').input_value()=='김광현'
+    touch.locator('#affinity-options [role=option]').tap();touch.wait_for_function('KBOVisuals.state.selected.name==="김광현"');assert touch.locator('#affinity-search').input_value()=='김광현'
     assert touch.locator('#affinity-shapes svg').count()==3;mobile.close()
     print(json.dumps({'result':'passed','base':BASE,'shared':shared,'errors':errors,'failed':failed,'screenshots':str(OUT)},ensure_ascii=False))
     browser.close()

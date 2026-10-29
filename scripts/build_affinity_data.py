@@ -6,6 +6,7 @@ remain a separate cohort. Source pitches with incomplete fits are not imputed.
 import argparse
 from collections import Counter
 import csv
+import gzip
 import hashlib
 import itertools
 import json
@@ -30,6 +31,7 @@ TYPE_INFO = [
     ('Fork', '포크', 'Forkball', '#6e85a1'),
     ('Sinker', '싱커', 'Sinker', '#53745d'),
     ('Knuckle', '너클볼', 'Knuckleball', '#72786f'),
+    ('슬러브', '슬러브', 'Slurve', '#8a6d9b'),
 ]
 TYPE_IDS = [p[0] for p in TYPE_INFO]
 AXES = [dict(id='speed', unit='km/h', step=1.),
@@ -47,7 +49,7 @@ def directions():
     return sorted(vectors, key=lambda v: (sum(x != 0 for x in v), v))
 
 
-def observation(row):
+def observation(row, with_vaa=False):
     """Same crossing-x gate and movement implementation as existing PTS release."""
     try:
         speed = float(row['speed'])
@@ -65,7 +67,7 @@ def observation(row):
         values = calculate(fit)
         if values['status'] != 'derived_pts':
             return None, values['status']
-        return [speed, values['hb_cm'], values['ivb_cm']], None
+        return [speed, values['hb_cm'], values['ivb_cm'], *([values['vaa_deg']] if with_vaa else [])], None
     except (KeyError, TypeError, ValueError, OverflowError):
         return None, 'missing_or_invalid_fields'
 
@@ -86,11 +88,26 @@ def summarize(points, vectors):
                 histograms=histograms, quantiles=ranges)
 
 
-def aggregate(rows, minimum=MIN_PITCHES, minimum_coverage=MIN_COVERAGE):
+def pack_projections(data):
+    data['similarity']['projectionEncoding']='delta-int-1e4'
+    for player in data['players']:
+        for t in player['types']:
+            if t:
+                packed=[]
+                for q in t['projections']:
+                    values=[round(v*10000) for v in q]
+                    packed.append([values[0]]+[b-a for a,b in zip(values,values[1:])])
+                t['projections']=packed
+    return data
+
+
+def aggregate(rows, minimum=MIN_PITCHES, minimum_coverage=MIN_COVERAGE, season=2024):
     groups, seen, dates, games = {}, set(), set(), set()
     excluded, totals = Counter(), Counter()
     for row in rows:
         key = (row['game_id'],row['pitchId'])
+        if row['game_id'][:4] != str(season):
+            raise ValueError('Mixed seasons are not a comparison cohort')
         if key in seen:
             raise ValueError('Duplicate pitch identity: '+repr(key))
         seen.add(key)
@@ -128,7 +145,7 @@ def aggregate(rows, minimum=MIN_PITCHES, minimum_coverage=MIN_COVERAGE):
             observedPitches=p['observed'],excluded=dict(p['excluded']),games=len(p['games']),
             dateStart=min(p['dates']),dateEnd=max(p['dates'])))
         eligible_pitches += count
-    return dict(schemaVersion=2,version='kbo-arsenal-20261030-v1',season=2024,
+    return dict(schemaVersion=2,version='kbo-arsenal-20261030-v1',season=season,
         dateStart=min(dates),dateEnd=max(dates),games=len(games),sourcePitches=len(seen),
         usablePitches=sum(totals.values()),eligiblePitches=eligible_pitches,
         excluded=dict(excluded),minimumPitches=minimum,minimumCoverage=minimum_coverage,
@@ -139,7 +156,7 @@ def aggregate(rows, minimum=MIN_PITCHES, minimum_coverage=MIN_COVERAGE):
             movement=FLIGHT_VERSION,horizontalSign='Catcher right; signed; no handedness reflection',
             unknowns='Excluded; no imputation; all three features required per pitch'),
         source=dict(url=SOURCE_URL,sha256=SOURCE_SHA256,
-            coverage='Available tracked 2024 pitches, not complete season coverage',
+            coverage=f'Available tracked {season} pitches, not complete season coverage',
             movement='HB/IVB derived from PTS fits; 40 ft reference; gravity/drag corrected'),
         players=sorted(players,key=lambda p:p['key']))
 
@@ -147,16 +164,32 @@ def aggregate(rows, minimum=MIN_PITCHES, minimum_coverage=MIN_COVERAGE):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source',type=Path,required=True)
-    parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parents[1]/'data/visuals/affinity.json')
+    parser.add_argument('--season',type=int,default=2024)
+    parser.add_argument('--output',type=Path)
     args=parser.parse_args()
-    if hashlib.sha256(args.source.read_bytes()).hexdigest()!=SOURCE_SHA256:
+    root=Path(__file__).resolve().parents[1]
+    config=json.loads((root/'scripts/pts_sources.json').read_text())
+    spec=config['seasons'][str(args.season)]
+    if hashlib.sha256(args.source.read_bytes()).hexdigest()!=spec['sha256']:
         raise ValueError('Source SHA256 mismatch')
     with args.source.open(encoding='cp949',newline='') as stream:
-        result=aggregate(csv.DictReader(stream))
-    args.output.parent.mkdir(parents=True,exist_ok=True)
-    args.output.write_text(json.dumps(result,ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n')
+        result=aggregate(csv.DictReader(stream),season=args.season)
+    result['source'].update(sha256=spec['sha256'],url=f"https://github.com/{config['repository']}/blob/{config['commit']}/data/{args.season}.csv")
+    output=args.output or root/f'data/visuals/affinity-{args.season}.json.gz'
+    index_path=root/'data/visuals/affinity.json'
+    if output.resolve()==index_path.resolve():raise ValueError('affinity.json is the season index; choose a cohort output')
+    output.parent.mkdir(parents=True,exist_ok=True)
+    encoded=(json.dumps(pack_projections(result),ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n').encode()
+    payload=gzip.compress(encoded,compresslevel=9,mtime=0)if output.suffix=='.gz'else encoded
+    output.write_bytes(payload)
+    if args.output is None:
+        index=json.loads(index_path.read_text())if index_path.exists()else dict(schemaVersion=3,version='kbo-pts-seasons-20261030-v1',seasons={})
+        if index.get('schemaVersion')!=3:raise ValueError('Unexpected season index schema')
+        index['seasons'][str(args.season)]=dict(season=args.season,dateStart=result['dateStart'],dateEnd=result['dateEnd'],sourcePitches=result['sourcePitches'],pitchers=len(result['players']),path=str(output.relative_to(root/'data')),sha256=hashlib.sha256(payload).hexdigest(),bytes=len(payload))
+        index['latestSeason']=max(map(int,index['seasons']))
+        index_path.write_text(json.dumps(index,separators=(',',':'))+'\n')
     print(json.dumps({key:result[key] for key in ['sourcePitches','usablePitches','eligiblePitches','games','excluded']}))
-    print('Pitchers:',len(result['players']),'bytes:',args.output.stat().st_size)
+    print('Pitchers:',len(result['players']),'bytes:',output.stat().st_size)
 
 
 if __name__=='__main__':main()

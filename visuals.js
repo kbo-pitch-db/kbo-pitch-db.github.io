@@ -1,16 +1,16 @@
 /* Visuals load their own cohort; player/motion explorer parameters stay separate. */
 window.KBOVisuals = (() => {
   'use strict';
-  const dataURL = new URL('data/visuals/affinity.json?v=20261030-arsenal1', document.currentScript.src).href;
+  const dataURL = new URL('data/visuals/affinity.json?v=20261030-seasons1', document.currentScript.src).href;
   const core = window.AffinityCore;
-  const state = {data:null,pending:null,signature:'',compare:'',ranked:[],selected:null,pitch:null};
+  const state = {data:null,pending:null,manifest:null,cohorts:new Map(),request:0,signature:'',compare:'',ranked:[],selected:null,pitch:null};
   const copy = {
     ko: {
       intro:'야구 데이터를 다른 각도에서 살펴보세요.',name:'비슷한 투수 찾기',
       card:'구종 구성과 구속, 공의 움직임이 비슷한 투수를 찾아보세요.',
       open:'살펴보기',back:'← Visuals',title:'비슷한 투수 찾기',
       subtitle:'구종별 구사 비율과 구속·무브먼트 분포를 함께 비교합니다.',
-      player:'투수 찾기',choose:'투수 선택',search:'이름으로 검색',noPlayer:'검색 결과가 없습니다.',
+      season:'기록 연도',player:'투수 찾기',choose:'투수 선택',search:'이름으로 검색',noPlayer:'검색 결과가 없습니다.',
       loading:'투수 기록을 불러오는 중입니다.',failed:'기록을 불러오지 못했습니다.',retry:'다시 불러오기',
       near:'비슷한 투수',score:'유사도',threshold:'유사도 기준',compare:'구종별 비교',
       selected:'기준 투수',counterpart:'비교 투수',recenter:'이 투수 중심으로 보기',
@@ -35,7 +35,7 @@ window.KBOVisuals = (() => {
       card:'Find pitchers with similar repertoires, velocity and movement.',
       open:'Explore',back:'← Visuals',title:'Pitcher similarity',
       subtitle:'Compare pitch usage and joint velocity–movement distributions.',
-      player:'Find a pitcher',choose:'Select a pitcher',search:'Search by name',noPlayer:'No matching pitchers.',
+      season:'Season',player:'Find a pitcher',choose:'Select a pitcher',search:'Search by name',noPlayer:'No matching pitchers.',
       loading:'Loading pitcher records…',failed:'Could not load the records.',retry:'Try again',
       near:'Similar pitchers',score:'Similarity',threshold:'Minimum similarity',compare:'Compare repertoires',
       selected:'Selected pitcher',counterpart:'Comparison',recenter:'Explore this pitcher',
@@ -97,32 +97,32 @@ window.KBOVisuals = (() => {
     if (!['#visuals', '#visuals/affinity'].includes(path)) return;
     if (path === '#visuals') {gallery(); return;}
     const host = document.getElementById('visuals-affinity');
-    if (!state.data) {
-      host.innerHTML=`<p role="status">${t().loading}</p>`;
-      try {
-        if (!state.pending) state.pending=fetch(dataURL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('affinity');return r.json()}).then(data=>{
-          if(data.schemaVersion!==2||data.similarity?.id!=='usage-overlap-sliced-wasserstein-v1'||!data.players?.length)throw Error('Unsupported repertoire data');
-          for(const p of data.players){
-            if(p.counts.length!==data.pitchTypes.length||p.pitches!==p.counts.reduce((a,b)=>a+b,0)||p.pitches<data.minimumPitches||p.pitches/p.observedPitches<data.minimumCoverage)throw Error('Invalid denominator');
-            core.proportions(p.counts);
-            p.types.forEach((type,i)=>{
-              if(!p.counts[i]){if(type!==null)throw Error('Unexpected distribution');return;}
-              if(type?.n!==p.counts[i]||type.projections.length!==data.similarity.directions.length)throw Error('Invalid distribution');
-              for(const q of type.projections)if(q.length!==data.similarity.quantileCount||q.some(v=>!Number.isFinite(v)))throw Error('Invalid projections');
-              for(const h of type.histograms)if(h.reduce((n,pair)=>n+pair[1],0)!==type.n)throw Error('Invalid histogram');
-            });
-          }
-          return data;
-        });
-        state.data=await state.pending;
-      } catch(error) {
-        state.pending=null;
-        host.innerHTML=`<p role="alert">${t().failed}</p><button class="button-outline" id="affinity-retry">${t().retry}</button>`;
-        host.querySelector('button').onclick=()=>route(true);return;
+    const ticket=++state.request;
+    try {
+      if(!state.manifest){
+        host.innerHTML=`<p role="status">${t().loading}</p>`;
+        if(!state.pending)state.pending=fetch(dataURL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Affinity index');return r.json()}).catch(e=>{state.pending=null;throw e});
+        state.manifest=await state.pending;
+        if(state.manifest.schemaVersion!==3)throw Error('Affinity seasons');
       }
+      const requested=core.parse(location.hash),year=state.manifest.seasons[requested.year]?requested.year:String(state.manifest.latestSeason);
+      if(!state.cohorts.has(year)){
+        host.innerHTML=`<p role="status">${t().loading}</p>`;
+        const path=state.manifest.seasons[year].path;
+        const u=new URL(path,new URL('data/',location.href));u.searchParams.set('v','20261030-seasons1');
+        const cohort=fetch(u,{cache:'no-cache'}).then(r=>ReconstructionRegistry.decode(r,path)).then(core.unpack).catch(e=>{state.cohorts.delete(year);throw e});
+        state.cohorts.set(year,cohort);
+      }
+      const data=await state.cohorts.get(year);
+      if(ticket!==state.request||currentRoute()!=='#visuals/affinity')return;
+      if(data.schemaVersion!==2||data.season!==Number(year)||data.similarity.id!=='usage-overlap-sliced-wasserstein-v1')throw Error('Season mismatch');
+      state.data=data;
+    }catch(error){
+      if(ticket!==state.request)return;
+      host.innerHTML=`<p role="alert">${t().failed}</p><button class="button-outline" id="affinity-retry">${t().retry}</button>`;
+      host.querySelector('button').onclick=()=>route(true);return;
     }
-    if(currentRoute()!=='#visuals/affinity')return;
-    const parsed=core.parse(location.hash), players=state.data.players;
+    const parsed=core.parse(location.hash),players=state.data.players;parsed.year=String(state.data.season);
     const fallback=players.find(p=>p.name==='네일')||players.reduce((a,b)=>a.pitches>b.pitches?a:b);
     const selected=players.find(p=>p.key===parsed.key)||fallback;
     parsed.key=selected.key;
@@ -141,18 +141,18 @@ window.KBOVisuals = (() => {
     const s={...state.current,...next};
     const target=href(core.fragment(s));
     history[replace?'replaceState':'pushState'](null,'',target);
-    route(true);
-    if(activeId)document.getElementById(activeId)?.focus();
+    return route(true).then(()=>{if(activeId)document.getElementById(activeId)?.focus();});
   }
   function render(host,players,visible) {
     const s=state.current,d=state.data,p=state.selected;
     const cohort=lang()==='ko'?`${d.season} · ${date(d.dateStart)}–${date(d.dateEnd)} · 확보한 투구 ${number(d.usablePitches)}구`:`${d.season} · ${date(d.dateStart)}–${date(d.dateEnd)} · ${number(d.usablePitches)} acquired pitches`;
     const coverage=lang()==='ko'?`유효 투구 ${number(d.minimumPitches)}구 이상 · 투수 ${players.length}명`:`At least ${number(d.minimumPitches)} usable pitches · ${players.length} pitchers`;
     host.innerHTML=`<a class="visuals-back" href="${esc(href('#visuals'))}">${t().back}</a><header class="visuals-heading affinity-heading"><div><span class="visuals-kicker">01 / PITCHER SIMILARITY</span><h1>${t().title}</h1><p>${t().subtitle}</p></div><button class="button-outline" id="affinity-share">${t().copy}</button></header>
-      <div class="affinity-controls"><div class="affinity-picker"><label for="affinity-search">${t().player}</label><input id="affinity-search" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="affinity-options" autocomplete="off" value="${esc(label(p))}" placeholder="${t().search}"><ul id="affinity-options" role="listbox" aria-label="${t().choose}" hidden></ul></div><span class="affinity-cohort">${coverage}</span></div>
+      <div class="affinity-controls"><label class="affinity-season-label" for="affinity-season">${t().season}<select id="affinity-season">${Object.keys(state.manifest.seasons).sort().reverse().map(y=>`<option value="${y}" ${y===s.year?'selected':''}>${y}</option>`).join('')}</select></label><div class="affinity-picker"><label for="affinity-search">${t().player}</label><input id="affinity-search" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="affinity-options" autocomplete="off" value="${esc(label(p))}" placeholder="${t().search}"><ul id="affinity-options" role="listbox" aria-label="${t().choose}" hidden></ul></div><span class="affinity-cohort">${coverage}</span></div>
       <p class="affinity-scope">${cohort}</p><div class="affinity-workspace"><div class="affinity-map-panel"><div class="affinity-map-head"><div><span>${t().selected}</span><h2>${esc(label(p))}</h2><p>${sample(p)}</p></div><span class="affinity-badge">${t().score}<b>100</b></span></div><div id="affinity-map"></div><p class="affinity-map-hint">${t().hint}</p></div><aside class="affinity-neighbors" aria-labelledby="affinity-near-heading"><div class="affinity-neighbors-title"><h2 id="affinity-near-heading">${t().near}</h2><span id="affinity-count"></span></div><label class="affinity-threshold-label" for="affinity-threshold">${t().threshold}<output id="affinity-threshold-value">${s.threshold.toFixed(1)}</output></label><input id="affinity-threshold" type="range" min="0" max="100" step="0.1" value="${s.threshold}" aria-valuetext="${s.threshold.toFixed(1)} / 100"><div id="affinity-ranking" aria-live="polite"></div></aside></div>
       <section class="affinity-distribution"><h2>${t().allScores}</h2><div id="affinity-beeswarm"></div><p>${t().distribution}</p></section><section class="affinity-comparison" aria-labelledby="affinity-compare-title"><div class="affinity-comparison-top"><div><span class="visuals-kicker">PITCH REPERTOIRE</span><h2 id="affinity-compare-title">${t().compare}</h2></div><button class="button-outline" id="affinity-recenter">${t().recenter} ↗</button></div><div id="affinity-compare-head"></div><h3 class="affinity-subtitle">${t().mix}</h3><div id="affinity-bars"></div><p class="affinity-bars-note">${t().barsNote}</p><div class="affinity-shapes-heading"><h3>${t().shapes}</h3><label for="affinity-pitch">${t().pitch}<select id="affinity-pitch"></select></label></div><div id="affinity-type-samples"></div><div id="affinity-shapes"></div><p class="affinity-bars-note">${t().graphNote}</p></section>
       <details class="affinity-method"><summary>${t().method}</summary><p>${t().methodText}</p><p>${t().methodScope}</p><p>${t().methodMath}</p><p><a href="${esc(d.source.url)}" target="_blank" rel="noopener noreferrer">${t().source} ↗</a> · <a href="https://baseballsavant.mlb.com/affinity-pitchers-bySHV" target="_blank" rel="noopener noreferrer">${t().reference} ↗</a> · <a href="docs/visuals-affinity.md">${t().math} ↗</a></p></details><p class="sr-only" id="affinity-announcement" role="status"></p>`;
+    host.querySelector('#affinity-season').onchange=e=>change({year:e.target.value,compare:''});
     host.querySelector('#affinity-share').onclick=async()=>{
       const announcement=host.querySelector('#affinity-announcement');
       try{await navigator.clipboard.writeText(location.href);announcement.textContent=t().copied;host.querySelector('#affinity-share').textContent=t().copied;}catch(error){announcement.textContent=t().copyFailed;}
@@ -179,7 +179,7 @@ window.KBOVisuals = (() => {
       list.innerHTML=matches.map((p,i)=>`<li id="affinity-option-${i}" role="option" aria-selected="${p.key===state.selected.key}" data-index="${i}"><span>${esc(label(p))}</span><small>${number(p.pitches)}${lang()==='ko'?'구':' pitches'}</small></li>`).join('')||`<li role="presentation">${t().noPlayer}</li>`;
       list.hidden=false;input.setAttribute('aria-expanded','true');input.removeAttribute('aria-activedescendant');
     }
-    function choose(i){const p=matches[i];if(p){close();change({key:p.key,compare:''});document.getElementById('affinity-search').focus();document.getElementById('affinity-search').select();}}
+    function choose(i){const p=matches[i];if(p){close();change({key:p.key,compare:''}).then(()=>{document.getElementById('affinity-search')?.focus();document.getElementById('affinity-search')?.select();});}}
     input.onfocus=()=>{input.select();};input.onclick=()=>show();input.oninput=()=>show(input.value);
     input.onblur=()=>{setTimeout(()=>{if(!list.contains(document.activeElement)){close();input.value=label(state.selected);}},0);};
     list.tabIndex=-1;

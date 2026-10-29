@@ -7,12 +7,12 @@
   <title>KBO Pitch Lab — Pitch records meet motion</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261028-portal1"><link rel="stylesheet" href="portal.css?v=20261028-portal1"><link rel="stylesheet" href="experience.css?v=20261028-ux2"><link rel="stylesheet" href="readability.css?v=20261028-reading1"><link rel="stylesheet" href="mechanics_report.css?v=20261028-knee2"><link rel="stylesheet" href="metrics_database.css?v=20261029-bio2">
-  <link rel="stylesheet" href="player_overview.css?v=20261029-visitor2">
+  <link rel="stylesheet" href="styles.css?v=20261028-portal1"><link rel="stylesheet" href="portal.css?v=20261028-portal1"><link rel="stylesheet" href="experience.css?v=20261028-ux2"><link rel="stylesheet" href="readability.css?v=20261028-reading1"><link rel="stylesheet" href="mechanics_report.css?v=20261028-knee2"><link rel="stylesheet" href="metrics_database.css?v=20261030-seasons1">
+  <link rel="stylesheet" href="player_overview.css?v=20261030-seasons1">
   <link rel="stylesheet" href="pitch_flight.css?v=20261029-flight1">
   <link rel="stylesheet" href="data_explorer.css?v=20261029-flight1">
   <link rel="stylesheet" href="kinematic_sequence.css?v=20261029-events3">
-  <link rel="stylesheet" href="visuals.css?v=20261030-arsenal1">
+  <link rel="stylesheet" href="visuals.css?v=20261030-seasons1">
 </head>
 <body>
 <a class="skip-link" href="#pitchers" data-i18n="skipContent">Skip to pitchers</a>
@@ -25,7 +25,7 @@
       <a class="nav-link" href="#visuals" data-i18n="navVisuals">Visuals</a>
       <a class="nav-link" href="#database" data-i18n="navMetrics">Explore data</a>
     </nav>
-    <div class="top-actions"><span class="dataset-status"><i></i>2024 KBO</span><button id="lang-toggle" class="lang-toggle" aria-label="Switch language">한국어 ↗</button></div>
+    <div class="top-actions"><span class="dataset-status"><i></i>2024–2026 KBO</span><button id="lang-toggle" class="lang-toggle" aria-label="Switch language">한국어 ↗</button></div>
     <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
   </header>
   <main>
@@ -59,7 +59,7 @@
     </section>
     <section class="portal-section" id="pitchers">
       <div class="section-head" data-directory><div><div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="pitchersEyebrow">01 / THE PEOPLE BEHIND THE PITCH</span></div><h2 data-i18n="pitchersTitle">Every pitcher has a <em>story.</em></h2></div><p data-i18n="pitchersDesc">Find a player and explore the pitches and motion actually captured in this dataset.</p></div>
-      <div class="pitcher-toolbar" data-directory><label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only" data-i18n="pitcherSearch">Search pitchers</span><input id="pitcher-search" type="search" data-i18n-placeholder="pitcherSearch" placeholder="Search pitchers"></label><label><span class="sr-only" data-i18n="team">Team</span><select id="pitcher-team" aria-label="Pitcher team"></select></label><label><span class="sr-only" data-i18n="season">Season</span><select id="pitcher-season" aria-label="Season"><option value="2024">2024 KBO</option></select></label><label><span class="sr-only" data-i18n="motionFilter">Motion availability</span><select id="pitcher-motion" aria-label="Motion availability"><option value="" data-i18n="recordsAll">All pitchers</option><option value="motion" data-i18n="motionAvailable">With motion examples</option></select></label><label><span class="sr-only" data-i18n="reportSort">Sort reports</span><select id="pitcher-sort" aria-label="Sort reports"><option value="records" data-i18n="mostRecords">Most pitch records</option><option value="clips" data-i18n="mostClips">Most motion examples</option></select></label><span id="pitcher-result-count" class="micro-label" aria-live="polite"></span></div>
+      <div class="pitcher-toolbar" data-directory><label class="search-wrap"><span aria-hidden="true">⌕</span><span class="sr-only" data-i18n="pitcherSearch">Search pitchers</span><input id="pitcher-search" type="search" data-i18n-placeholder="pitcherSearch" placeholder="Search pitchers"></label><label><span id="directory-season-label" data-i18n="recordSeason">Season</span><select id="pitcher-season" aria-labelledby="directory-season-label"><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option></select></label><label><span class="sr-only" data-i18n="team">Team</span><select id="pitcher-team" aria-label="Pitcher team"></select></label><label><span class="sr-only" data-i18n="motionFilter">Motion availability</span><select id="pitcher-motion" aria-label="Motion availability"><option value="" data-i18n="recordsAll">All pitchers</option><option value="motion" data-i18n="motionAvailable">With motion examples</option></select></label><label><span class="sr-only" data-i18n="reportSort">Sort reports</span><select id="pitcher-sort" aria-label="Sort reports"><option value="records" data-i18n="mostRecords">Most pitch records</option><option value="clips" data-i18n="mostClips">Most motion examples</option></select></label><span id="pitcher-result-count" class="micro-label" aria-live="polite"></span></div>
       <div data-directory id="pitcher-grid" class="pitcher-grid"><p data-i18n="loading">Loading pitchers…</p></div>
       <button data-directory id="more-pitchers" class="button-outline centered" hidden data-i18n="showMore">Show more pitchers</button>
       <section id="pitcher-profile" class="pitcher-profile" aria-label="Pitcher profile" aria-live="polite" hidden></section>
@@ -93,14 +93,15 @@
 <script src="motion_viewer.js?v=20261029-visitor1"></script>
 <script src="pitch_charts.js?v=20261028-ux2"></script>
 <script src="mechanics_report.js?v=20261029-visitor1"></script>
-<script src="metrics_database.js?v=20261029-events3"></script>
-<script src="pitch_flight.js?v=20261029-flight1"></script>
+<script src="metrics_database.js?v=20261030-seasons1"></script>
+<script src="season_records.js?v=20261030-seasons1"></script>
+<script src="pitch_flight.js?v=20261030-seasons1"></script>
 <script src="kinematic_sequence.js?v=20261029-expand1"></script>
-<script src="player_overview.js?v=20261029-expand1"></script>
-<script src="profile_experience.js?v=20261029-visitor1"></script>
-<script src="affinity_core.js?v=20261030-arsenal1"></script>
-<script src="visuals.js?v=20261030-arsenal1"></script>
-<script src="portal.js?v=20261030-affinity1"></script>
+<script src="player_overview.js?v=20261030-seasons1"></script>
+<script src="profile_experience.js?v=20261030-seasons1"></script>
+<script src="affinity_core.js?v=20261030-seasons1"></script>
+<script src="visuals.js?v=20261030-seasons1"></script>
+<script src="portal.js?v=20261030-seasons1"></script>
 <script src="hero_motion.js?v=20261029-visitor1"></script>
 <script src="app.js?v=20261028-ko-copy1"></script>
 </body>

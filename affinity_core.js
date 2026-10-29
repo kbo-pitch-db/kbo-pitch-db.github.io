@@ -6,6 +6,13 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function() {
   'use strict';
   const MODEL='arsenal1', DEFAULT_THRESHOLD=30;
+  function unpack(data){
+    if(data.similarity.projectionEncoding==='delta-int-1e4'){
+      for(const p of data.players)for(const t of p.types)if(t)t.projections=t.projections.map(q=>{let n=0;return q.map(v=>{n+=v;return n/10000});});
+      data.similarity.projectionEncoding='float';
+    }
+    return data;
+  }
   function proportions(counts) {
     if(!Array.isArray(counts)||!counts.length||counts.some(v=>!Number.isFinite(v)||v<0))throw Error('Invalid repertoire');
     const total=counts.reduce((a,b)=>a+b,0);
@@ -47,13 +54,14 @@
     // Old scores had a different meaning. Preserve valid pitcher identities,
     // reset old thresholds, and never remount the removed player group.
     const raw=p.get('s'),n=raw===null||raw.trim()===''?NaN:Number(raw);
-    return {key:p.get('player')||'',compare:p.get('compare')||'',
+    return {key:p.get('player')||'',compare:p.get('compare')||'',year:/^202[456]$/.test(p.get('year')||'')?p.get('year'):p.has('v')||p.has('players')?'2024':'',
       threshold:p.get('v')===MODEL&&Number.isFinite(n)?Math.round(Math.max(0,Math.min(100,n))*10)/10:DEFAULT_THRESHOLD};
   }
   function fragment(s) {
     const p=new URLSearchParams({v:MODEL,player:s.key,s:String(s.threshold)});
+    if(s.year)p.set('year',s.year);
     if(s.compare)p.set('compare',s.compare);
     return '#visuals/affinity?'+p;
   }
-  return {proportions,slicedDistance,compare,similarity,rank,parse,fragment};
+  return {unpack,proportions,slicedDistance,compare,similarity,rank,parse,fragment};
 });

@@ -1,0 +1,9 @@
+{
+  "commit": "37cf62be0604aa8a7f077759eebf7a6eda002edb",
+  "repository": "leekichang/where-do-the-robot-umpires-see",
+  "seasons": {
+    "2024": {"sha256":"b4fc2497f579cc60c714b54c1fe91e9046c905cccc4dfae6eae6f85a2a6d21f4","blob":"c96f7e24fb50f08381b6c8060342f7a3d4ccd754"},
+    "2025": {"sha256":"83a26876e08bd63d943453ff5ce9d236730bc16f4572615c4d5b009465747a20","blob":"bb33f8d4f4c1d46e303313558680a647a8a2292b"},
+    "2026": {"sha256":"9995835e8759614371f9e6008a4da272ece39abc502b8ab127ef4cca725987b7","blob":"ce71d3057e7af29bb7c5d9ff98d4f6a3cfa769cc"}
+  }
+}

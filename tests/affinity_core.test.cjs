@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const core=require('../affinity_core.js');
-const data=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/visuals/affinity.json')));
+const zlib=require('node:zlib');const data=core.unpack(JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(__dirname,'../data/visuals/affinity-2024.json.gz')))));
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
 function fixture(counts,pointsByType){
  return {counts,types:pointsByType.map(points=>points?{projections:data.similarity.directions.map(dir=>{
@@ -41,7 +41,7 @@ for(const p of data.players){
  }
 }
 for(const [raw,expected]of [['',30],['NaN',30],['Infinity',30],['-10',0],['1000',100],['45.25',45.3]])assert.equal(core.parse('#visuals/affinity?v=arsenal1&s='+raw).threshold,expected);
-const state={key:'54640',threshold:43.2,compare:'67246'};assert.deepEqual(core.parse(core.fragment(state)),state);
+const state={key:'54640',threshold:43.2,compare:'67246',year:'2024'};assert.deepEqual(core.parse(core.fragment(state)),state);
 const legacy=core.parse('#visuals/affinity?players=pitchers&player=54640&s=95');assert.equal(legacy.key,'54640');assert.equal(legacy.threshold,30);
 assert.equal(core.fragment(state).includes('players='),false);
 console.log('PASS: usage, each feature, spread, covariance, pitch-type identity, all-pitcher rankings and link migration.');
