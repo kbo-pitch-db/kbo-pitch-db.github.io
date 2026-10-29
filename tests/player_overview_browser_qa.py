@@ -20,7 +20,7 @@ with sync_playwright() as p:
     page.add_init_script("localStorage.setItem('kbo-lang','ko')")
     page.goto(BASE + '/', wait_until='networkidle')
     assert page.locator('#home').is_visible()
-    assert page.locator('.main-nav a').count() == 3
+    assert page.locator('.main-nav a').count() == 4
     assert not page.locator('.home-steps,.method-pipeline,.model-details').count()
     page.goto(BASE + '/?pitcher=65320#pitchers', wait_until='networkidle')
     page.wait_for_selector('#visitor-form[data-ready=true]')

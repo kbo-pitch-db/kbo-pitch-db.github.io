@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="pitch_flight.css?v=20261029-flight1">
   <link rel="stylesheet" href="data_explorer.css?v=20261029-flight1">
   <link rel="stylesheet" href="kinematic_sequence.css?v=20261029-events3">
+  <link rel="stylesheet" href="visuals.css?v=20261030-affinity1">
 </head>
 <body>
 <a class="skip-link" href="#pitchers" data-i18n="skipContent">Skip to pitchers</a>
@@ -21,12 +22,15 @@
     <nav class="main-nav" aria-label="Main navigation">
       <a class="nav-link active" href="#home" data-i18n="navOverview">Home</a>
       <a class="nav-link" href="#pitchers" data-i18n="navPitchers">Pitchers</a>
+      <a class="nav-link" href="#visuals" data-i18n="navVisuals">Visuals</a>
       <a class="nav-link" href="#database" data-i18n="navMetrics">Explore data</a>
     </nav>
     <div class="top-actions"><span class="dataset-status"><i></i>2024 KBO</span><button id="lang-toggle" class="lang-toggle" aria-label="Switch language">한국어 ↗</button></div>
     <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
   </header>
   <main>
+    <section id="visuals-gallery" aria-label="Visuals"></section>
+    <section id="visuals-affinity" aria-label="Player similarity"></section>
     <nav class="data-navigation" aria-label="Data explorer"><a href="#database" data-i18n="dataTables">Metric tables</a><a href="#explore" data-i18n="dataMotion">Pitch videos</a><a href="#compare" data-i18n="navCompare">Compare</a><a href="#guide" data-i18n="downloadData">Downloads</a></nav>
     <section id="player-analysis" aria-label="Player data explorer"><div id="analysis-profile" hidden></div></section>
     <section id="metrics-database" aria-label="Mechanics metrics database"><div id="metrics-database-root"></div></section>
@@ -94,7 +98,9 @@
 <script src="kinematic_sequence.js?v=20261029-expand1"></script>
 <script src="player_overview.js?v=20261029-expand1"></script>
 <script src="profile_experience.js?v=20261029-visitor1"></script>
-<script src="portal.js?v=20261029-events3"></script>
+<script src="affinity_core.js?v=20261030-affinity1"></script>
+<script src="visuals.js?v=20261030-affinity1"></script>
+<script src="portal.js?v=20261030-affinity1"></script>
 <script src="hero_motion.js?v=20261029-visitor1"></script>
 <script src="app.js?v=20261028-ko-copy1"></script>
 </body>
