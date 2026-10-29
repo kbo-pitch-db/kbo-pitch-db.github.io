@@ -62,6 +62,14 @@ with sync_playwright() as p:
     before=page.evaluate('PitcherMap.state.dx'); page.mouse.move(box['x']+100,box['y']+80); page.mouse.down(); page.mouse.move(box['x']+150,box['y']+110,steps=4); page.mouse.up()
     assert page.evaluate('PitcherMap.state.dx')!=before
     page.locator('#pitcher-map-reset').click(); assert page.evaluate('[PitcherMap.state.zoom,PitcherMap.state.dx,PitcherMap.state.dy]')==[1,0,0]
+    # Enlarged rings remain clickable away from their centre, with a touch
+    # target that grows with the visible marker rather than a fixed radius.
+    for _ in range(4):page.locator('#pitcher-map-plus').click()
+    target=page.evaluate('''()=>{const s=PitcherMap.state;return s.positions.map(p=>({...p,cx:p.x*s.zoom+s.dx,cy:p.y*s.zoom+s.dy})).find(p=>p.cx>40&&p.cx<s.width-40&&p.cy>40&&p.cy<s.height-40&&!s.positions.some(q=>q.key!==p.key&&Math.hypot(q.x*s.zoom+s.dx-p.cx-24,q.y*s.zoom+s.dy-p.cy)<=24))}''')
+    assert target is not None
+    box=page.locator('#pitcher-map-plot').bounding_box(); page.mouse.click(box['x']+target['cx']+24,box['y']+target['cy'])
+    assert page.evaluate('PitcherMap.state.selected')==target['key']
+    page.locator('#pitcher-map-reset').click()
     # All years use their own entire eligible cohort; homonyms remain distinct.
     for year, count in [('2024',154),('2025',146),('2026',125)]:
         page.locator('#pitcher-map-season').select_option(year); page.wait_for_function('(y)=>PitcherMap.state.data.season===Number(y)',arg=year)

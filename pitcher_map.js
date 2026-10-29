@@ -179,7 +179,12 @@ window.PitcherMap=(()=>{
     };
     svg.onpointerup=e=>{
       const hadPinch=!!pinch;pointers.delete(e.pointerId);if(pointers.size<2)pinch=null;
-      if(!moved&&!hadPinch){const rect=svg.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;const closest=state.positions.map(p=>({p,d:Math.hypot(p.x*state.zoom+state.dx-x,p.y*state.zoom+state.dy-y)})).sort((a,b)=>a.d-b.d)[0];if(closest?.d<=18)select(closest.p.key);}
+      if(!moved&&!hadPinch){
+        const rect=svg.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;
+        const closest=state.positions.map(p=>({p,d:Math.hypot(p.x*state.zoom+state.dx-x,p.y*state.zoom+state.dy-y)})).sort((a,b)=>a.d-b.d)[0];
+        const radius=(closest?.p.key===state.selected?15:10)*state.zoom;
+        if(closest?.d<=Math.max(22,radius))select(closest.p.key);
+      }
       origin=null;
     };
     svg.onpointercancel=e=>{pointers.delete(e.pointerId);origin=null;pinch=null;moved=true;};
