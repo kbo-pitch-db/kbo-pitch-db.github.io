@@ -165,7 +165,8 @@ def main():
     parser.add_argument('--timeout', type=float, default=12)
     parser.add_argument('--attempts', type=int, default=2)
     args = parser.parse_args()
-    if args.to_date < args.from_date or args.to_date > date.today() or args.timeout <= 0 or args.attempts < 1:
+    today_kst = datetime.now(timezone(timedelta(hours=9))).date()
+    if args.to_date < args.from_date or args.to_date > today_kst or args.timeout <= 0 or args.attempts < 1:
         parser.error('Use a valid past date range, positive timeout and at least one attempt.')
     report = Collector(args.output, args.timeout, args.attempts).collect(args.from_date, args.to_date)
     return 0 if report['complete'] else 1
