@@ -188,6 +188,8 @@ def main():
         index['seasons'][str(args.season)]=dict(season=args.season,dateStart=result['dateStart'],dateEnd=result['dateEnd'],sourcePitches=result['sourcePitches'],pitchers=len(result['players']),path=str(output.relative_to(root/'data')),sha256=hashlib.sha256(payload).hexdigest(),bytes=len(payload))
         index['latestSeason']=max(map(int,index['seasons']))
         index_path.write_text(json.dumps(index,separators=(',',':'))+'\n')
+        from build_pitcher_map import build as build_map
+        build_map()
     print(json.dumps({key:result[key] for key in ['sourcePitches','usablePitches','eligiblePitches','games','excluded']}))
     print('Pitchers:',len(result['players']),'bytes:',output.stat().st_size)
 

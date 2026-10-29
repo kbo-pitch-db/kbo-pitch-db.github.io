@@ -22,6 +22,8 @@ Player repertoire/velocity/movement, the record explorer and full filtered expor
 
 [Pitcher similarity](https://kbo-pitch-db.github.io/#visuals/affinity) compares usage overlap and joint speed/HB/IVB distributions within each pitch type and **within the selected year**. There are 154 eligible pitchers in 2024, 146 in 2025 and 125 in the acquired 2026 data. The 500-pitch / 90%-coverage minimum, fixed directions and feature scales are unchanged. Velocity/movement histograms, counts and medians accompany the comparison. See [definitions and reconstruction](docs/visuals-affinity.md).
 
+[Pitcher similarity map](https://kbo-pitch-db.github.io/#visuals/map) adds a league-wide view of every eligible pitcher in the selected year: 154 in 2024, 146 in 2025 and 125 in the acquired 2026 data. Fixed 2D metric-MDS coordinates use the existing pairwise similarity. Search, selection, zoom, pan and touch preserve those coordinates; the five neighbours and displayed scores always use the original metric. See [map scope, measured projection error and reproduction](docs/pitcher-map.md). This does not extend the 2026 source beyond August 4.
+
 ## Visitor player pages (2026-10-29)
 
 `?pitcher=65320#pitchers` opens three sections in order: an actual synchronized 2D/3D delivery, directly labelled pitch-mix/mean-speed bars, and three illustrated mechanics cards. Player identity, record `season`, optional `pitch` and the set/windup `delivery` selection belong to this route. The landing page remains `/`. The header has Home, Pitchers, Visuals and Explore data; the download page contains data access rather than processing documentation.

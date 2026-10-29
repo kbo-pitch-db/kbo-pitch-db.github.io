@@ -23,9 +23,9 @@ with sync_playwright()as p:
     page.locator('.main-nav a[href="#visuals"]').click();page.wait_for_selector('.visuals-card')
     assert page.locator('.data-navigation').is_hidden()
     assert '타자'not in page.locator('#visuals-gallery').inner_text()
-    assert '비슷한 투수 찾기'in page.locator('.visuals-card').inner_text()
+    assert '비슷한 투수 찾기'in page.locator('.visuals-card').first.inner_text()
     page.screenshot(path=str(OUT/'gallery.png'),full_page=True)
-    page.locator('.visuals-card').click();page.wait_for_selector('#affinity-shapes svg')
+    page.locator('.visuals-card').first.click();page.wait_for_selector('#affinity-shapes svg')
     assert page.locator('#affinity-season').input_value()=='2026'
     page.locator('#affinity-season').select_option('2024');page.wait_for_function('KBOVisuals.state.data.season===2024');page.wait_for_selector('#affinity-shapes svg')
     assert page.locator('.main-nav a[href="#visuals"]').get_attribute('aria-current')=='page'

@@ -81,6 +81,7 @@ window.KBOVisuals = (() => {
   }
   function gallery() {
     document.getElementById('visuals-gallery').innerHTML=`<header class="visuals-heading"><span class="visuals-kicker">KBO PITCH LAB</span><h1>Visuals</h1><p>${t().intro}</p></header><div class="visuals-grid"><a class="visuals-card" href="${esc(href('#visuals/affinity'))}"><div class="visuals-thumbnail">${preview()}</div><div class="visuals-card-copy"><span class="visuals-kicker">01 / PITCHER SIMILARITY</span><h2>${t().name}</h2><p>${t().card}</p><span class="visuals-card-link">${t().open} <span aria-hidden="true">↗</span></span></div></a></div>`;
+    document.querySelector('#visuals-gallery .visuals-grid').insertAdjacentHTML('beforeend',window.PitcherMap.card());
   }
   function install() {
     I18N.ko.navVisuals='Visuals'; I18N.en.navVisuals='Visuals';
@@ -94,28 +95,16 @@ window.KBOVisuals = (() => {
   }
   async function route(force=false) {
     const path = currentRoute();
+    if(path==='#visuals/map')return window.PitcherMap.route(force);
     if (!['#visuals', '#visuals/affinity'].includes(path)) return;
     if (path === '#visuals') {gallery(); return;}
     const host = document.getElementById('visuals-affinity');
     const ticket=++state.request;
     try {
-      if(!state.manifest){
-        host.innerHTML=`<p role="status">${t().loading}</p>`;
-        if(!state.pending)state.pending=fetch(dataURL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Affinity index');return r.json()}).catch(e=>{state.pending=null;throw e});
-        state.manifest=await state.pending;
-        if(state.manifest.schemaVersion!==3)throw Error('Affinity seasons');
-      }
-      const requested=core.parse(location.hash),year=state.manifest.seasons[requested.year]?requested.year:String(state.manifest.latestSeason);
-      if(!state.cohorts.has(year)){
-        host.innerHTML=`<p role="status">${t().loading}</p>`;
-        const path=state.manifest.seasons[year].path;
-        const u=new URL(path,new URL('data/',location.href));u.searchParams.set('v','20261030-seasons1');
-        const cohort=fetch(u,{cache:'no-cache'}).then(r=>ReconstructionRegistry.decode(r,path)).then(core.unpack).catch(e=>{state.cohorts.delete(year);throw e});
-        state.cohorts.set(year,cohort);
-      }
-      const data=await state.cohorts.get(year);
+      const requested=core.parse(location.hash),year=requested.year||String(state.manifest?.latestSeason||'');
+      if(!state.manifest||!state.cohorts.has(year))host.innerHTML=`<p role="status">${t().loading}</p>`;
+      const data=await cohort(requested.year);
       if(ticket!==state.request||currentRoute()!=='#visuals/affinity')return;
-      if(data.schemaVersion!==2||data.season!==Number(year)||data.similarity.id!=='usage-overlap-sliced-wasserstein-v1')throw Error('Season mismatch');
       state.data=data;
     }catch(error){
       if(ticket!==state.request)return;
@@ -279,5 +268,18 @@ window.KBOVisuals = (() => {
       container.innerHTML=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(t().axes[a]+' · '+pitchName(i))}"><title>${esc(t().graphNote)}</title>${[0,peak/2,peak].map(v=>`<line x1="44" x2="${width-14}" y1="${y(v)}" y2="${y(v)}" stroke="#dbe5da"/><text x="37" y="${y(v)+5}" text-anchor="end" font-size="14" fill="#4d655c">${Math.round(v*100)}%</text>`).join('')}${min<0&&end>0?`<line x1="${x(0)}" x2="${x(0)}" y1="26" y2="163" stroke="#a5b8ab" stroke-dasharray="3 4"/>`:''}${paths}${[min,(min+end)/2,end].map(v=>`<text x="${x(v)}" y="190" text-anchor="middle" font-size="17" fill="#4d655c">${Number.isInteger(v)?v:v.toFixed(1)}</text>`).join('')}</svg>`;
     });
   }
-  return {install,route,state};
+  async function cohort(year='') {
+    if(!state.manifest){
+      if(!state.pending)state.pending=fetch(dataURL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Affinity index');return r.json()}).catch(e=>{state.pending=null;throw e});
+      state.manifest=await state.pending;
+      if(state.manifest.schemaVersion!==3)throw Error('Affinity seasons');
+    }
+    year=Object.hasOwn(state.manifest.seasons,year)?String(year):String(state.manifest.latestSeason);
+    if(!state.cohorts.has(year)){
+      const path=state.manifest.seasons[year].path,u=new URL(path,new URL('data/',location.href));u.searchParams.set('v','20261030-seasons1');
+      state.cohorts.set(year,fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Cohort unavailable');return ReconstructionRegistry.decode(r,path)}).then(core.unpack).then(data=>{if(data.schemaVersion!==2||data.season!==Number(year)||data.similarity?.id!=='usage-overlap-sliced-wasserstein-v1')throw Error('Season mismatch');return data;}).catch(e=>{state.cohorts.delete(year);throw e}));
+    }
+    return state.cohorts.get(year);
+  }
+  return {install,route,state,cohort};
 })();

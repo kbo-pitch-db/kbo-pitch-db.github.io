@@ -102,6 +102,8 @@ def build(source_paths,output=ROOT/'data/seasons'):
         print(json.dumps(dict(season=year,records=len(records),source=len(rows),supplement=additions,players=len(profiles),bytes=sum(p['bytes']for p in meta['shards'])+meta['summary']['bytes'],affinityBytes=index_affinity['seasons'][str(year)]['bytes']),ensure_ascii=False),flush=True)
     output.mkdir(parents=True,exist_ok=True);(output/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,separators=(',',':'),allow_nan=False)+'\n')
     (ROOT/'data/visuals/affinity.json').write_text(json.dumps(index_affinity,separators=(',',':'))+'\n')
+    from build_pitcher_map import build as build_map
+    build_map()
     return manifest
 
 
