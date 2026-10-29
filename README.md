@@ -14,9 +14,9 @@ Five additional highlight videos produced 130 clips that met the existing ingest
 
 The public record catalog now has **11,161 pitches / 159 pitchers / 37 games**. The published CSV adds 1,407 observed tracked pitches, without inventing cumulative counts or half innings. Current local final poses are indexed by `dataset/motion_gvhmr_combined.csv`, separately from historical WHAM tables. See [source scope and reproduction](docs/dataset-expansion-20261029.md).
 
-## Visuals: player similarity (2026-10-30)
+## Visuals: pitcher similarity (2026-10-30)
 
-The new [Visuals gallery](https://kbo-pitch-db.github.io/#visuals) starts with [player similarity](https://kbo-pitch-db.github.io/#visuals/affinity). This user-approved KBO adaptation compares observed pitch-outcome proportions, **not** Savant's exit-velocity/launch-angle contact profiles. The independent 2024 PTS aggregation contains 214,732 non-bunt pitches from 708 acquired games, with a 500-pitch minimum: 139 batting-side profiles for 135 hitters and 154 pitchers. It does not expand the 37-game motion-linked record catalog. Search, outcome rings, a neighbor list, minimum-similarity slider, all-player score distribution, paired outcome bars and shareable state work on desktop and mobile. No new pose inference or at-bat outcome reconstruction is involved. See [definitions, source and reproduction](docs/visuals-affinity.md); checks are `tests/test_affinity_data.py`, `tests/affinity_core.test.cjs` and `tests/visuals_browser_qa.py`.
+The [Visuals gallery](https://kbo-pitch-db.github.io/#visuals) starts with [pitcher similarity](https://kbo-pitch-db.github.io/#visuals/affinity). It compares pitch repertoire and usage plus the joint distributions of velocity, HB and IVB within each pitch type. The independent 2024 PTS source contains 215,525 tracked pitches from 708 acquired games. The 154 eligible pitchers have 187,722 pitches, with at least 500 complete pitches per pitcher and 90% coverage. Scores combine usage overlap with fixed-direction sliced Wasserstein distances; they are not performance ratings. The comparison shows usage bars, actual per-type distribution histograms, sample counts and medians. See [definitions, source and reproduction](docs/visuals-affinity.md). Existing motion data and the 37-game linked record catalog are unchanged.
 
 ## Visitor player pages (2026-10-29)
 
